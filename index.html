@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents Solutions – Autonome KI-Agenten</title>
+<meta name="description" content="AI Agents Solutions: Maßgeschneiderte KI-Agenten für Unternehmen (Sales, Support, Finance, ESG, Data Engineering). Sicher, skalierbar, Cloud- oder On-Premise-Lösungen.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#4a4aff;
+  --muted:#9aa4b2;
+  --glass: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg),#071023);
+  color:#e6eef8;
+  line-height:1.5;
+}
+header{
+  position:sticky;
+  top:0;
+  background:rgba(5,8,15,0.6);
+  backdrop-filter: blur(6px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 28px;
+  z-index:1000;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent),#6a6aff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+nav a{color:#cfe3ff;margin-left:18px;text-decoration:none;font-weight:600;}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px;}
+#hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 0;}
+.hero-left h1{font-size:38px;color:#fff;margin-bottom:8px;}
+.hero-lead{color:var(--muted);font-size:18px;margin-bottom:12px;}
+.cta-row{display:flex;gap:14px;align-items:center;margin-bottom:12px;}
+.btn{background:var(--accent);color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;}
+.btn.secondary{background:transparent;color:#cfe3ff;border:1px solid rgba(255,255,255,0.06);}
+.hero-right{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
+.feature{background:var(--glass);padding:12px;border-radius:10px;}
+section h2{font-size:26px;margin-bottom:6px;}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:6px;}
+.agent-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.agent-card:hover{
+  transform: translateY(-8px) scale(1.03);
+  box-shadow:0 16px 32px rgba(0,0,0,0.6);
+}
+.agent-icon{
+  font-size:28px;
+  color:var(--accent);
+  margin-bottom:8px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition: transform 0.3s ease;
+}
+.agent-card:hover .agent-icon{
+  transform: scale(1.15);
+}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+.badge{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:600;color:#d7e6ff;}
+#kontakt form{display:grid;gap:8px;}
+input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;}
+footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;margin-top:28px;}
+@media(max-width:900px){#hero{grid-template-columns:1fr;padding:30px 0}.hero-right{order:2}.hero-left{order:1}}
+@media(max-width:520px){.container{padding:18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">AI</div>
+    <div>
+      <div style="font-weight:700">AI Agents Solutions</div>
+      <div style="font-size:12px;color:var(--muted)">Sichere KI-Agenten für Unternehmen</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#agenten">Agenten</a>
+    <a href="#technologien">Technologien</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main class="container">
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-left">
+    <h1>Autonome KI-Agenten, die Ihr Business voranbringen</h1>
+    <p class="hero-lead">Maßgeschneiderte Agenten für alle Branchen: KI, IT, Finanzen, Banken, Versicherung, Logistik, Lebensmittel, Agrar, Dienstleister und Freelancer. Sicher, skalierbar, sofort einsetzbar.</p>
+    <div class="cta-row">
+      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView()">Demo anfragen</button>
+      <button class="btn secondary" onclick="window.location='#technologien'">Technologien ansehen</button>
+    </div>
+    <div class="features">
+      <div class="feature">Schnelle Implementierung (Pilot in 7–14 Tagen)</div>
+      <div class="feature">DSGVO & Security by Design</div>
+      <div class="feature">On‑Premise, Cloud oder Hybrid</div>
+    </div>
+    <div>
+      <strong>Technologie-Stack:</strong>
+      <div class="badges">
+        <div class="badge">FastAPI</div>
+        <div class="badge">React</div>
+        <div class="badge">PostgreSQL</div>
+        <div class="badge">MySQL</div>
+        <div class="badge">MongoDB</div>
+        <div class="badge">AWS</div>
+        <div class="badge">Azure</div>
+        <div class="badge">GCP</div>
+        <div class="badge">OpenAI</div>
+        <div class="badge">HuggingFace</div>
+      </div>
+    </div>
+  </div>
+  <aside class="hero-right">
+    <h3>Schnelle Fakten</h3>
+    <p style="color:var(--muted)">Launch in wenigen Wochen, flexible Integrationen (CRM, ERP, Ticketing), volle Kontrolle über Daten.</p>
+  </aside>
+</section>
+
+<!-- Agenten -->
+<section id="agenten" class="section">
+<h2>Unsere Agenten</h2>
+<div class="agents-grid">
+  <!-- Alle Agenten -->
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-chart-line"></i></div><h4>Datenanalyse-Agent</h4><p>Automatisiert Berichte, Visualisierungen & KPIs.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-database"></i></div><h4>Data Engineer Agent</h4><p>Pipeline-Management, ETL & Cloud-Sync.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-leaf"></i></div><h4>ESG-Agent</h4><p>Erfasst ESG-Daten & unterstützt Reporting.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-file-alt"></i></div><h4>Nachhaltigkeitsbericht-Agent</h4><p>Automatisierte Berichte, Prüfpfade & Exportformate.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-receipt"></i></div><h4>Buchhaltungs-Agent</h4><p>Belegerkennung, Kontierung, Monatsabschlüsse.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-wallet"></i></div><h4>Finanz-Agent</h4><p>Forecasting, Liquiditätsplanung & Simulationen.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-university"></i></div><h4>Banken-Agent</h4><p>Kreditprüfung, Scoring & Fraud-Monitoring.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-calculator"></i></div><h4>Controlling-Agent</h4><p>Kostenanalysen, Budgeting & Soll-Ist-Vergleiche.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-headset"></i></div><h4>Support-Agent</h4><p>24/7 Kundenbetreuung, Tickettriage & Eskalation.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing-Agent</h4><p>Content, Ads & Social Media Automatisierung.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-people-arrows"></i></div><h4>Sales-Agent</h4><p>Prospecting, Outreach & Terminvereinbarung.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-users"></i></div><h4>CrewAI Team-Agenten</h4><p>Orchestrierte Agenten-Teams lösen komplexe Workflows.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-desktop"></i></div><h4>IT-Agent</h4><p>Automatisierung von IT-Workflows, Monitoring & DevOps.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-brain"></i></div><h4>KI-Agent</h4><p>Machine Learning, Datenanalyse & LLM-Integration.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-file-contract"></i></div><h4>Versicherungs-Agent</h4><p>Policenverwaltung, Schadenbearbeitung & Risikoanalysen.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-shipping-fast"></i></div><h4>Logistik-Agent</h4><p>Transportplanung, Lagersteuerung & Lieferkettenoptimierung.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-carrot"></i></div><h4>Lebensmittel-Agent</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-tractor"></i></div><h4>Agrar-Agent</h4><p>Bodenanalyse, Ernteplanung & Agrardatenmanagement.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-handshake"></i></div><h4>Dienstleister-Agent</h4><p>Workflow-Automatisierung für Services & Kundenmanagement.</p></div>
+  <div class="agent-card"><div class="agent-icon"><i class="fas fa-user-pen"></i></div><h4>Freelancer-Agent</h4><p>Projektmanagement, Zeiterfassung & Aufgabenautomatisierung.</p></div>
+</div>
+<p style="margin-top:10px;color:var(--muted)"><strong>Für Hosting und Agenten bieten wir sichere Lösungen in SaaS, AWS, Azure und Google Cloud.</strong></p>
+</section>
+
+<!-- Technologien -->
+<section id="technologien" class="section">
+<h2>Technologien & Tools</h2>
+<div class="agents-grid">
+  <div class="agent-card"><h4>Code & Backend</h4><p>Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
+  <div class="agent-card"><h4>Frontend & UX</h4><p>React, Next.js, Tailwind CSS, Responsive Design.</p></div>
+  <div class="agent-card"><h4>No-Code / Automation</h4><p>ChatGPT, n8n, Make, AutoGen, Dify, MindStudio – schnelle Prototypen & Automationen.</p></div>
+  <div class="agent-card"><h4>LLM</h4><p>Interne LLM-Plattform, Fine-Tuning auf Unternehmensdaten, sichere API-Schnittstellen, On-Premise & Private Cloud.</p></div>
+  <div class="agent-card"><h4>Datenbanken</h4><p>PostgreSQL, MySQL, MariaDB, MongoDB, Oracle, Snowflake; Cloud-DBs auf AWS, Azure, GCP.</p></div>
+</div>
+</section>
+
+<!-- Interne LLM-Plattform -->
+<section class="section">
+<h2>Interne LLM-Plattform</h2>
+<p>AI Agents Solutions entwickelt eine eigene LLM-Plattform, die Unternehmen vollständige Kontrolle über ihre KI ermöglicht. Unsere Plattform bietet:</p>
+<ul>
+  <li>Deployment eigener Large Language Models (Open-Source & Proprietär)</li>
+  <li>Fine-Tuning auf Unternehmensdaten</li>
+  <li>On-Premise, Private Cloud oder Hybrid-Hosting</li>
+  <li>Sichere API-Schnittstellen für interne Systeme & Agenten</li>
+  <li>Mandantenfähige Architektur für große Unternehmen</li>
+</ul>
+</section>
+
+<!-- Warum wir -->
+<section class="section">
+<h2>Warum wir?</h2>
+<div class="agents-grid">
+  <div class="agent-card"><strong>Schneller Mehrwert</strong><p style="color:var(--muted)">Innerhalb von 8 Wochen wurde unser Sales-Workflow automatisiert. Leads stiegen um 42 %. – Kunde A</p></div>
+  <div class="agent-card"><strong>Datenschutz & Sicherheit</strong><p style="color:var(--muted)">On-Premise Option und DSGVO-Konzept erleichterten unsere Entscheidung. – Kunde B</p></div>
+</div>
+</section>
+
+<!-- Kontakt -->
+<section id="kontakt" class="section">
+<h2>Kontakt</h2>
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Ihr Name" required>
+  <input type="email" name="email" placeholder="Ihre E-Mail" required>
+  <input type="text" name="company" placeholder="Firma (optional)">
+  <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button type="submit" class="btn">Senden</button>
+    <button type="button" class="btn secondary" onclick="window.location='mailto:vertrieb@ai-agents-solutions.com'">vertrieb@ai-agents-solutions.com</button>
+  </div>
+  <p style="color:var(--muted);margin-top:8px">Oder rufen Sie uns an: <strong>0049 176/31591931</strong></p>
+</form>
+<p id="formStatus" style="color:var(--muted)"></p>
+</section>
+
+<!-- Impressum -->
+<section class="section">
+<h2>Impressum</h2>
+<p>AI Agents Solutions<br>Verantwortlich: Dr. Sigfried Weiss<br>Telefon: 0049 176/31591931<br>E-Mail: vertrieb@aisolutios.com<br>Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II</p>
+</section>
+
+<!-- Datenschutz -->
+<section class="section">
+<h2>Datenschutz</h2>
+<p>Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle von Ihnen übermittelten Informationen werden nur zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Bereitstellung unserer Dienstleistungen verwendet.</p>
+<p>Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsüberprüfungen.</p>
+<p>Ihre Daten werden nur so lange gespeichert, wie es für den Zweck der Verarbeitung notwendig ist oder gesetzlich vorgeschrieben wird. Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten.</p>
+<p>Unsere Website verwendet ggf. Cookies und Tracking-Technologien, um die Funktionalität zu verbessern und statistische Auswertungen vorzunehmen. Sie können der Nutzung von Cookies jederzeit widersprechen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt und direkt an unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.</p>
+</section>
+
+</main>
+
+<footer>
+© 2025 AI Agents Solutions — Automatisierung für moderne Unternehmen
+</footer>
+
+<script>
+const webhookUrl = 'https://YOUR-N8N-DOMAIN/webhook/CONTACT';
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target));
+  try{
+    const res = await fetch(webhookUrl, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+    document.getElementById('formStatus').textContent = res.ok ? 'Nachricht erfolgreich gesendet.' : 'Fehler beim Senden.';
+    if(res.ok) e.target.reset();
+  } catch(err){
+    document.getElementById('formStatus').textContent='Fehler beim Senden.';
+  }
+});
+</script>
+
+</body>
+</html>
