@@ -6,15 +6,6 @@
 <title>AI Agents Solutions – Autonome KI-Agenten</title>
 <meta name="description" content="AI Agents Solutions: Maßgeschneiderte KI-Agenten für Unternehmen (Sales, Support, Finance, ESG, Data Engineering). Sicher, skalierbar, Cloud- oder On-Premise-Lösungen.">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FBRY11ETSS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-FBRY11ETSS');
-</script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -22,26 +13,9 @@
 :root{
   --bg:#0f1724;
   --card:#0b1220;
+  --accent:#4a4aff;
   --muted:#9aa4b2;
-
-  /* Branchenfarben */
-  --automobile:#ff6b6b;
-  --automotive:#ff922b;
-  --pharma:#51cf66;
-  --kiit:#339af0;
-  --finanzen:#f783ac;
-  --banken:#845ef7;
-  --versicherung:#fcc419;
-  --logistik:#15aabf;
-  --transport:#4dabf7;
-  --lebensmittel:#ffd43b;
-  --agrar:#40c057;
-  --dienstleister:#ff922b;
-  --sales:#ff6fff;
-  --marketing:#ff922b;
-  --support:#00b4d8;
-  --nachhaltigkeit:#63e6be;
-  --forecast:#ffa94d;
+  --glass: rgba(255,255,255,0.04);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
@@ -66,7 +40,7 @@ header{
   width:44px;
   height:44px;
   border-radius:10px;
-  background:linear-gradient(90deg,#4a4aff,#6a6aff);
+  background:linear-gradient(90deg,var(--accent),#6a6aff);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -74,45 +48,74 @@ header{
 }
 nav a{color:#cfe3ff;margin-left:18px;text-decoration:none;font-weight:600;}
 .container{max-width:1200px;margin:0 auto;padding:40px 20px;}
-section{margin-top:60px;padding-bottom:60px;}
+section{margin-bottom:60px;}
 #hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 0;}
 .hero-left h1{font-size:38px;color:#fff;margin-bottom:8px;}
 .hero-lead{color:var(--muted);font-size:18px;margin-bottom:12px;}
 .cta-row{display:flex;gap:14px;align-items:center;margin-bottom:12px;}
-.btn{background:#4a4aff;color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;transition:0.3s;}
-.btn:hover{opacity:0.9;transform:scale(1.03);}
+.btn{background:var(--accent);color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;}
 .btn.secondary{background:transparent;color:#cfe3ff;border:1px solid rgba(255,255,255,0.06);}
 .hero-right{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
-.feature{background:rgba(255,255,255,0.04);padding:12px;border-radius:10px;}
-section h2{font-size:26px;margin-bottom:16px;}
-.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:6px;}
+.feature{background:var(--glass);padding:12px;border-radius:10px;}
+section h2{font-size:26px;margin-bottom:12px;}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
 .agent-card{
   padding:16px;
   border-radius:12px;
-  border:1px solid rgba(255,255,255,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-  text-align:center;
+  border:1px solid rgba(255,255,255,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   color:#fff;
-  background:var(--card);
+  font-weight:600;
+  text-align:center;
 }
 .agent-card:hover{
   transform: translateY(-8px) scale(1.03);
   box-shadow:0 16px 32px rgba(0,0,0,0.6);
-  filter: brightness(1.2);
 }
 .agent-icon{
-  font-size:36px;
-  margin-bottom:10px;
+  font-size:28px;
+  margin-bottom:8px;
   display:flex;
   justify-content:center;
   align-items:center;
   transition: transform 0.3s ease;
 }
 .agent-card:hover .agent-icon{
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
-#kontakt form{display:grid;gap:8px;}
+
+/* Farbcode für Branchen & Agenten */
+.agent-card[data-category]{
+  background:#1f1f2f;
+}
+.agent-card[data-category="Automobile"]{background:#e74c3c;}
+.agent-card[data-category="Automotive"]{background:#c0392b;}
+.agent-card[data-category="Pharma"]{background:#8e44ad;}
+.agent-card[data-category="KI & IT"]{background:#2980b9;}
+.agent-card[data-category="Finanzen"]{background:#f39c12;}
+.agent-card[data-category="Banken"]{background:#d35400;}
+.agent-card[data-category="Versicherung"]{background:#16a085;}
+.agent-card[data-category="Logistik"]{background:#27ae60;}
+.agent-card[data-category="Transport"]{background:#2ecc71;}
+.agent-card[data-category="Lebensmittel"]{background:#f1c40f;color:#000;}
+.agent-card[data-category="Agrar"]{background:#e67e22;}
+.agent-card[data-category="Dienstleister"]{background:#3498db;}
+.agent-card[data-category="Freelancer"]{background:#1abc9c;}
+.agent-card[data-category="Bau"]{background:#7f8c8d;}
+.agent-card[data-category="Immobilien"]{background:#34495e;}
+.agent-card[data-category="Marketing"]{background:#9b59b6;}
+.agent-card[data-category="Werbekampagnen"]{background:#8e44ad;}
+.agent-card[data-category="Sales"]{background:#e67e22;}
+.agent-card[data-category="Support"]{background:#16a085;}
+.agent-card[data-category="ESG"]{background:#27ae60;}
+.agent-card[data-category="Forecasting"]{background:#d35400;}
+.agent-card[data-category="DataEngineer"]{background:#2980b9;}
+.agent-card[data-category="Buchhaltung"]{background:#f39c12;}
+.agent-card[data-category="Controlling"]{background:#f1c40f;}
+.agent-card[data-category="KI-Agenten"]{background:#3498db;}
+.agent-card[data-category="Team"]{background:#1abc9c;}
+
 input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;}
 footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;margin-top:28px;}
 @media(max-width:900px){#hero{grid-template-columns:1fr;padding:30px 0}.hero-right{order:2}.hero-left{order:1}}
@@ -130,12 +133,10 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
     </div>
   </div>
   <nav>
-    <a href="#hero">Start</a>
-    <a href="#uberuns">Über uns</a>
     <a href="#branchen">Branchen</a>
     <a href="#agenten">Agenten</a>
+    <a href="#llm">Interne LLM-Plattform</a>
     <a href="#technologien">Technologien</a>
-    <a href="#llm">Interne LLMs</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
 </header>
@@ -146,11 +147,7 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 <section id="hero">
   <div class="hero-left">
     <h1>Autonome KI-Agenten, die Ihr Business voranbringen</h1>
-    <p class="hero-lead">Maßgeschneiderte Agenten für alle Branchen: KI, IT, Finanzen, Banken, Versicherung, Automotive, Automobile, Pharma, Logistik, Transport, Lebensmittel & Agrar, Dienstleister & Freelancer. Sicher, skalierbar, sofort einsetzbar.</p>
-    <div class="cta-row">
-      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView()">Demo anfragen</button>
-      <button class="btn secondary" onclick="window.location='#technologien'">Technologien ansehen</button>
-    </div>
+    <p class="hero-lead">Maßgeschneiderte Agenten für alle Branchen: KI, IT, Finanzen, Banken, Versicherung, Logistik, Transport, Lebensmittel, Agrar, Dienstleister, Freelancer, Automobile, Automotive, Pharma, Bau, Immobilien, Marketing, Werbekampagnen.</p>
   </div>
   <aside class="hero-right">
     <h3>Schnelle Fakten</h3>
@@ -158,27 +155,27 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
   </aside>
 </section>
 
-<!-- Über uns -->
-<section id="uberuns">
-<h2>Über uns</h2>
-<p>AI Agents Solutions entwickelt maßgeschneiderte KI-Agenten für Unternehmen jeder Größe. Wir kombinieren modernste Technologien, Datenschutz und skalierbare Lösungen, um Prozesse zu automatisieren, Workflows zu optimieren und Entscheidungsprozesse zu verbessern.</p>
-</section>
-
 <!-- Branchen -->
 <section id="branchen">
 <h2>Branchen</h2>
 <div class="agents-grid">
-  <div class="agent-card" style="background:var(--automobile)">Automobile</div>
-  <div class="agent-card" style="background:var(--automotive)">Automotive</div>
-  <div class="agent-card" style="background:var(--pharma)">Pharma</div>
-  <div class="agent-card" style="background:var(--kiit)">KI & IT</div>
-  <div class="agent-card" style="background:var(--finanzen)">Finanzen</div>
-  <div class="agent-card" style="background:var(--banken)">Banken</div>
-  <div class="agent-card" style="background:var(--versicherung)">Versicherung</div>
-  <div class="agent-card" style="background:var(--logistik)">Logistik</div>
-  <div class="agent-card" style="background:var(--transport)">Transport</div>
-  <div class="agent-card" style="background:var(--lebensmittel)">Lebensmittel & Agrar</div>
-  <div class="agent-card" style="background:var(--dienstleister)">Dienstleister & Freelancer</div>
+  <div class="agent-card" data-category="Automobile">Automobile</div>
+  <div class="agent-card" data-category="Automotive">Automotive</div>
+  <div class="agent-card" data-category="Pharma">Pharma</div>
+  <div class="agent-card" data-category="KI & IT">KI & IT</div>
+  <div class="agent-card" data-category="Finanzen">Finanzen</div>
+  <div class="agent-card" data-category="Banken">Banken</div>
+  <div class="agent-card" data-category="Versicherung">Versicherung</div>
+  <div class="agent-card" data-category="Logistik">Logistik</div>
+  <div class="agent-card" data-category="Transport">Transport</div>
+  <div class="agent-card" data-category="Lebensmittel">Lebensmittel</div>
+  <div class="agent-card" data-category="Agrar">Agrar</div>
+  <div class="agent-card" data-category="Dienstleister">Dienstleister</div>
+  <div class="agent-card" data-category="Freelancer">Freelancer</div>
+  <div class="agent-card" data-category="Bau">Bau</div>
+  <div class="agent-card" data-category="Immobilien">Immobilien</div>
+  <div class="agent-card" data-category="Marketing">Marketing</div>
+  <div class="agent-card" data-category="Werbekampagnen">Werbekampagnen</div>
 </div>
 </section>
 
@@ -186,94 +183,51 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 <section id="agenten">
 <h2>Agenten</h2>
 <div class="agents-grid">
-  <div class="agent-card" style="background:var(--forecast)">
-    <div class="agent-icon"><i class="fas fa-chart-line"></i></div>
-    <h4>Datenanalyse-Agenten</h4>
-    <p>Berichte, Visualisierungen & KPIs automatisiert.</p>
-  </div>
-  <div class="agent-card" style="background:var(--forecast)">
-    <div class="agent-icon"><i class="fas fa-wallet"></i></div>
-    <h4>Finanz-Agenten</h4>
-    <p>Forecasting für Umsatz, Vorrat und Liquidität.</p>
-  </div>
-  <div class="agent-card" style="background:var(--banken)">
-    <div class="agent-icon"><i class="fas fa-university"></i></div>
-    <h4>Banken-Agenten</h4>
-    <p>Kreditprüfung, Scoring & Fraud-Monitoring.</p>
-  </div>
-  <div class="agent-card" style="background:var(--versicherung)">
-    <div class="agent-icon"><i class="fas fa-file-contract"></i></div>
-    <h4>Versicherungs-Agenten</h4>
-    <p>Policenverwaltung & Schadenbearbeitung.</p>
-  </div>
-  <div class="agent-card" style="background:var(--logistik)">
-    <div class="agent-icon"><i class="fas fa-shipping-fast"></i></div>
-    <h4>Transport-Agenten</h4>
-    <p>Transportplanung & Lieferkettenoptimierung.</p>
-  </div>
-  <div class="agent-card" style="background:var(--lebensmittel)">
-    <div class="agent-icon"><i class="fas fa-tractor"></i></div>
-    <h4>Agrar & Lebensmittel-Agenten</h4>
-    <p>Supply Chain, Qualitätskontrolle & Produkttracking.</p>
-  </div>
-  <div class="agent-card" style="background:var(--dienstleister)">
-    <div class="agent-icon"><i class="fas fa-user-pen"></i></div>
-    <h4>Dienstleister & Freelancer-Agenten</h4>
-    <p>Projektmanagement & Aufgabenautomatisierung.</p>
-  </div>
-  <div class="agent-card" style="background:var(--sales)">
-    <div class="agent-icon"><i class="fas fa-people-arrows"></i></div>
-    <h4>Sales-Agenten</h4>
-    <p>Prospecting, Outreach & Terminvereinbarung.</p>
-  </div>
-  <div class="agent-card" style="background:var(--marketing)">
-    <div class="agent-icon"><i class="fas fa-bullhorn"></i></div>
-    <h4>Marketing-Agenten</h4>
-    <p>Content, Ads & Social Media Automatisierung.</p>
-  </div>
-  <div class="agent-card" style="background:var(--support)">
-    <div class="agent-icon"><i class="fas fa-headset"></i></div>
-    <h4>Support-Agenten</h4>
-    <p>24/7 Kundenbetreuung & Tickettriage.</p>
-  </div>
-  <div class="agent-card" style="background:var(--nachhaltigkeit)">
-    <div class="agent-icon"><i class="fas fa-leaf"></i></div>
-    <h4>ESG-Agenten</h4>
-    <p>Erfassung & Reporting von ESG-Daten.</p>
-  </div>
-  <div class="agent-card" style="background:var(--kiit)">
-    <div class="agent-icon"><i class="fas fa-brain"></i></div>
-    <h4>KI-Agenten</h4>
-    <p>Machine Learning, LLM-Integration & Automatisierung.</p>
-  </div>
+  <div class="agent-card" data-category="DataEngineer">Data Engineer Agenten<br><small>Pipeline-Management, ETL & Cloud-Sync.</small></div>
+  <div class="agent-card" data-category="Datenanalyse">Datenanalyse-Agenten<br><small>Berichte, Visualisierungen & KPIs automatisiert.</small></div>
+  <div class="agent-card" data-category="Nachhaltigkeit">Nachhaltigkeitsbericht-Agent<br><small>Automatisierte Berichte, Prüfpfade & Exportformate.</small></div>
+  <div class="agent-card" data-category="Buchhaltung">Buchhaltungs-Agent<br><small>Belegerkennung, Kontierung, Monatsabschlüsse.</small></div>
+  <div class="agent-card" data-category="Controlling">Controlling-Agent<br><small>Kostenanalysen, Budgeting & Soll-Ist-Vergleiche.</small></div>
+  <div class="agent-card" data-category="Team">CrewAI Team-Agenten<br><small>Orchestrierte Agenten-Teams lösen komplexe Workflows.</small></div>
+  <div class="agent-card" data-category="ForecastingUmsatz">Forecasting Agenten (Umsatz)</div>
+  <div class="agent-card" data-category="ForecastingVorrat">Forecasting Agenten (Vorrat)</div>
+  <div class="agent-card" data-category="AutomobileAgent">Agenten für Automobile</div>
+  <div class="agent-card" data-category="AutomotiveAgent">Agenten für Automotive</div>
+  <div class="agent-card" data-category="Finanzen">Finanz-Agenten<br><small>Forecasting für Umsatz, Vorrat und Liquidität.</small></div>
+  <div class="agent-card" data-category="BankingAgent">Banken-Agenten<br><small>Kreditprüfung, Scoring & Fraud-Monitoring.</small></div>
+  <div class="agent-card" data-category="VersicherungAgent">Versicherungs-Agenten<br><small>Policenverwaltung & Schadenbearbeitung.</small></div>
+  <div class="agent-card" data-category="TransportAgent">Transport-Agenten<br><small>Transportplanung & Lieferkettenoptimierung.</small></div>
+  <div class="agent-card" data-category="AgrarAgent">Agrar-Agenten<br><small>Supply Chain, Qualitätskontrolle & Produkttracking.</small></div>
+  <div class="agent-card" data-category="LebensmittelAgent">Lebensmittel-Agenten<br><small>Supply Chain, Qualitätskontrolle & Produkttracking.</small></div>
+  <div class="agent-card" data-category="DienstleisterAgent">Dienstleister-Agenten<br><small>Projektmanagement & Aufgabenautomatisierung.</small></div>
+  <div class="agent-card" data-category="FreelancerAgent">Freelancer-Agenten<br><small>Projektmanagement & Aufgabenautomatisierung.</small></div>
+  <div class="agent-card" data-category="SalesAgent">Sales-Agenten<br><small>Prospecting, Outreach & Terminvereinbarung.</small></div>
+  <div class="agent-card" data-category="MarketingAgent">Marketing-Agenten<br><small>Content, Ads & Social Media Automatisierung.</small></div>
+  <div class="agent-card" data-category="WerbekampagnenAgent">Werbekampagnen-Agenten<br><small>Automatisierung von Kampagnen.</small></div>
+  <div class="agent-card" data-category="SupportAgent">Support-Agenten<br><small>24/7 Kundenbetreuung & Tickettriage.</small></div>
+  <div class="agent-card" data-category="ESGAgent">ESG-Agenten<br><small>Erfassung & Reporting von ESG-Daten.</small></div>
+  <div class="agent-card" data-category="KI-Agenten">KI-Agenten<br><small>Machine Learning, LLM-Integration & Automatisierung.</small></div>
 </div>
+</section>
+
+<!-- Interne LLM Plattform -->
+<section id="llm">
+<h2>Interne LLM-Plattform</h2>
+<p>Unsere Plattform bietet vollständige Kontrolle über KI-Modelle, Fine-Tuning auf Unternehmensdaten, On-Premise & Private Cloud Hosting sowie sichere API-Schnittstellen.</p>
 </section>
 
 <!-- Technologien -->
 <section id="technologien">
 <h2>Technologien & Tools</h2>
 <div class="agents-grid">
-  <div class="agent-card"><h4>Code & Backend</h4><p>Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
+  <div class="agent-card"><h4>Code & Backend</h4><p>Python, FastAPI, Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
   <div class="agent-card"><h4>Frontend & UX</h4><p>React, Next.js, Tailwind CSS, Responsive Design.</p></div>
-  <div class="agent-card"><h4>No-Code / Automation</h4><p>ChatGPT, n8n, Make, AutoGen, Dify, MindStudio.</p></div>
+  <div class="agent-card"><h4>No-Code / Automation</h4><p>n8n, Make, AutoGen, Dify, MindStudio.</p></div>
   <div class="agent-card"><h4>Datenbanken</h4><p>PostgreSQL, MySQL, MongoDB, Oracle, Snowflake; AWS, Azure, GCP.</p></div>
 </div>
 </section>
 
-<!-- Interne LLMs -->
-<section id="llm">
-<h2>Interne LLM-Plattform</h2>
-<p>AI Agents Solutions entwickelt eine eigene LLM-Plattform für maximale Kontrolle. Sie ermöglicht:</p>
-<ul>
-<li>Deployment eigener Large Language Models (Open-Source & Proprietär)</li>
-<li>Fine-Tuning auf Unternehmensdaten</li>
-<li>On-Premise, Private Cloud oder Hybrid-Hosting</li>
-<li>Sichere API-Schnittstellen für interne Systeme & Agenten</li>
-<li>Mandantenfähige Architektur für große Unternehmen</li>
-</ul>
-</section>
-
-<!-- Kontakt -->
+<!-- Kontakt, Impressum & Datenschutz -->
 <section id="kontakt">
 <h2>Kontakt</h2>
 <form id="contactForm">
@@ -290,11 +244,19 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 <p id="formStatus" style="color:var(--muted)"></p>
 </section>
 
-<!-- Impressum & Datenschutz -->
-<section>
+<section id="impressum">
 <h2>Impressum</h2>
-<p>AI Agents Solutions<br>Verantwortlich: Dr. Sigfried Weiss<br>Telefon: 0049 176/31591931<br>E-Mail: vertrieb@aisolutios.de<br>Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II<br>Anschrift: Obere Waiblinger Strasse 147a, 70374 Stuttgart</p>
+<p>
+AI Agents Solutions<br>
+Verantwortlich: Dr. Sigfried Weiss<br>
+Telefon: 0049 176/31591931<br>
+E-Mail: vertrieb@aisolutios.de<br>
+Adresse: Obere Waiblinger Strasse 147a, 70374 Stuttgart<br>
+Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II
+</p>
+</section>
 
+<section id="datenschutz">
 <h2>Datenschutz</h2>
 <p>Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle von Ihnen übermittelten Informationen werden nur zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Bereitstellung unserer Dienstleistungen verwendet.</p>
 <p>Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsüberprüfungen.</p>
@@ -302,31 +264,25 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 <p>Unsere Website verwendet ggf. Cookies und Tracking-Technologien, um die Funktionalität zu verbessern und statistische Auswertungen vorzunehmen. Sie können der Nutzung von Cookies jederzeit widersprechen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt und direkt an unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.</p>
 </section>
 
-</main>
-
 <footer>
 © 2025 AI Agents Solutions — Automatisierung für moderne Unternehmen
 </footer>
 
 <script>
 const webhookUrl = 'https://YOUR-N8N-DOMAIN/webhook/CONTACT';
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
+document.getElementById('contactForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
+  const status = document.getElementById('formStatus');
   const data = Object.fromEntries(new FormData(e.target));
   try{
-    const res = await fetch(webhookUrl, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-    document.getElementById('formStatus').innerText = 'Nachricht gesendet!';
+    await fetch(webhookUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    status.textContent='Nachricht gesendet!';
     e.target.reset();
   }catch(err){
-    document.getElementById('formStatus').innerText = 'Fehler beim Senden.';
+    status.textContent='Fehler beim Senden, bitte versuchen Sie später.';
   }
 });
 </script>
 
 </body>
 </html>
-
