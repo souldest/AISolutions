@@ -9,11 +9,12 @@
 <!-- 🔥 Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBRY11ETSS"></script>
 <script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);} 
-gtag('js', new Date());
-gtag('config', 'G-FBRY11ETSS');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FBRY11ETSS');
 </script>
+<!-- 🔥 Ende GA -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -56,53 +57,45 @@ header{
   font-weight:700;
 }
 nav a{color:#cfe3ff;margin-left:18px;text-decoration:none;font-weight:600;}
-nav a:hover{color:#6a6aff;}
 .container{max-width:1200px;margin:0 auto;padding:40px 20px;}
 #hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 0;}
 .hero-left h1{font-size:38px;color:#fff;margin-bottom:8px;}
 .hero-lead{color:var(--muted);font-size:18px;margin-bottom:12px;}
 .cta-row{display:flex;gap:14px;align-items:center;margin-bottom:12px;}
-.btn{background:var(--accent);color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;transition: all 0.3s;}
-.btn:hover{transform: scale(1.05);}
+.btn{background:var(--accent);color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;}
 .btn.secondary{background:transparent;color:#cfe3ff;border:1px solid rgba(255,255,255,0.06);}
 .hero-right{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
-.feature{background:var(--glass);padding:12px;border-radius:10px;transition:all 0.3s;}
-.feature:hover{transform: translateY(-5px) scale(1.02); box-shadow:0 10px 20px rgba(0,0,0,0.4);}
-section h2{font-size:26px;margin-bottom:12px;color:#fff;}
-.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:12px;}
+.feature{background:var(--glass);padding:12px;border-radius:10px;}
+section h2{font-size:26px;margin-bottom:6px;}
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:6px;}
 .agent-card{
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  padding:16px;
+  padding:12px;
   border-radius:12px;
   border:1px solid rgba(255,255,255,0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  cursor:pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .agent-card:hover{
-  transform: translateY(-8px) scale(1.04);
+  transform: translateY(-8px) scale(1.03);
   box-shadow:0 16px 32px rgba(0,0,0,0.6);
-  background: linear-gradient(180deg, rgba(74,74,255,0.1), rgba(74,74,255,0.05));
 }
 .agent-icon{
-  font-size:32px;
+  font-size:28px;
   color:var(--accent);
-  margin-bottom:12px;
+  margin-bottom:8px;
   display:flex;
   justify-content:center;
   align-items:center;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 .agent-card:hover .agent-icon{
-  transform: scale(1.3) rotate(-5deg);
-  color:#6a6aff;
+  transform: scale(1.15);
 }
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-.badge{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:600;color:#d7e6ff;transition: all 0.3s;}
-.badge:hover{transform: scale(1.1); background: rgba(74,74,255,0.1);}
+.badge{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:600;color:#d7e6ff;}
 #kontakt form{display:grid;gap:8px;}
-input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;transition: all 0.3s;}
-input:focus, textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 10px rgba(74,74,255,0.3);}
+input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;}
 footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;margin-top:28px;}
 @media(max-width:900px){#hero{grid-template-columns:1fr;padding:30px 0}.hero-right{order:2}.hero-left{order:1}}
 @media(max-width:520px){.container{padding:18px}}
@@ -123,14 +116,11 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
     <a href="#agenten">Agenten</a>
     <a href="#technologien">Technologien</a>
     <a href="#kontakt">Kontakt</a>
-    <a href="#impressum">Impressum</a>
-    <a href="#datenschutz">Datenschutz</a>
   </nav>
 </header>
 
 <main class="container">
 
-<!-- Hero -->
 <section id="hero">
   <div class="hero-left">
     <h1>Autonome KI-Agenten, die Ihr Business voranbringen</h1>
@@ -166,10 +156,10 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
   </aside>
 </section>
 
-<!-- Agenten -->
 <section id="agenten" class="section">
 <h2>Unsere Agenten</h2>
 <div class="agents-grid">
+
   <div class="agent-card"><div class="agent-icon"><i class="fas fa-chart-line"></i></div><h4>Datenanalyse-Agent</h4><p>Automatisiert Berichte, Visualisierungen & KPIs.</p></div>
   <div class="agent-card"><div class="agent-icon"><i class="fas fa-database"></i></div><h4>Data Engineer Agent</h4><p>Pipeline-Management, ETL & Cloud-Sync.</p></div>
   <div class="agent-card"><div class="agent-icon"><i class="fas fa-leaf"></i></div><h4>ESG-Agent</h4><p>Erfasst ESG-Daten & unterstützt Reporting.</p></div>
@@ -194,7 +184,6 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 <p style="margin-top:10px;color:var(--muted)"><strong>Für Hosting und Agenten bieten wir sichere Lösungen in SaaS, AWS, Azure und Google Cloud.</strong></p>
 </section>
 
-<!-- Technologien -->
 <section id="technologien" class="section">
 <h2>Technologien & Tools</h2>
 <div class="agents-grid">
@@ -206,7 +195,6 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 </div>
 </section>
 
-<!-- Interne LLM-Plattform -->
 <section class="section">
 <h2>Interne LLM-Plattform</h2>
 <p>AI Agents Solutions entwickelt eine eigene LLM-Plattform, die Unternehmen vollständige Kontrolle über ihre KI ermöglicht. Unsere Plattform bietet:</p>
@@ -219,7 +207,6 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 </ul>
 </section>
 
-<!-- Warum wir -->
 <section class="section">
 <h2>Warum wir?</h2>
 <div class="agents-grid">
@@ -228,7 +215,6 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 </div>
 </section>
 
-<!-- Kontakt -->
 <section id="kontakt" class="section">
 <h2>Kontakt</h2>
 <form id="contactForm">
@@ -238,28 +224,24 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
   <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
   <div style="display:flex;gap:10px;align-items:center">
     <button type="submit" class="btn">Senden</button>
-    <button type="button" class="btn secondary" onclick="window.location='mailto:vertrieb@aisolutios.de'">vertrieb@aisolutios.de</button>
+    <button type="button" class="btn secondary" onclick="window.location='mailto:vertrieb@ai-agents-solutions.com'">vertrieb@aisolutios.de</button>
   </div>
   <p style="color:var(--muted);margin-top:8px">Oder rufen Sie uns an: <strong>0049 176/31591931</strong></p>
-  <p id="formStatus" style="color:#4aff4a;margin-top:6px"></p>
 </form>
+<p id="formStatus" style="color:var(--muted)"></p>
 </section>
 
-<!-- Impressum -->
-<section id="impressum" class="section">
+<section class="section">
 <h2>Impressum</h2>
-<p>AI Agents Solutions GmbH<br>
-Musterstraße 12, 12345 Berlin<br>
-Geschäftsführer: Max Mustermann<br>
-E-Mail: info@aisolutions.de<br>
-Telefon: 0049 176/31591931<br>
-Handelsregister: HRB 123456 B</p>
+<p>AI Agents Solutions<br>Verantwortlich: Dr. Sigfried Weiss<br>Telefon: 0049 176/31591931<br>E-Mail: vertrieb@aisolutios.de<br>Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II</p>
 </section>
 
-<!-- Datenschutz -->
-<section id="datenschutz" class="section">
+<section class="section">
 <h2>Datenschutz</h2>
-<p>Wir erheben und verarbeiten Ihre Daten ausschließlich zur Bearbeitung Ihrer Anfrage. Alle Daten werden DSGVO-konform gespeichert.</p>
+<p>Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle von Ihnen übermittelten Informationen werden nur zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Bereitstellung unserer Dienstleistungen verwendet.</p>
+<p>Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsüberprüfungen.</p>
+<p>Ihre Daten werden nur so lange gespeichert, wie es für den Zweck der Verarbeitung notwendig ist oder gesetzlich vorgeschrieben wird. Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten.</p>
+<p>Unsere Website verwendet ggf. Cookies und Tracking-Technologien, um die Funktionalität zu verbessern und statistische Auswertungen vorzunehmen. Sie können der Nutzung von Cookies jederzeit widersprechen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt und direkt an unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.</p>
 </section>
 
 </main>
