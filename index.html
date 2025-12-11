@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agents Solutions – Autonome KI-Agenten</title>
-<meta name="description" content="AI Agents Solutions: Maßgeschneiderte KI-Agenten für Unternehmen. Sicher, skalierbar, Cloud- oder On-Premise-Lösungen.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI Agents Solutions – Autonome KI-Agenten / Autonomous AI Agents</title>
+<meta name="description" content="AI Agents Solutions: Maßgeschneiderte KI-Agenten für Unternehmen. Sicher, skalierbar, Cloud- oder On-Premise-Lösungen. / AI Agents Solutions: Custom AI agents for businesses. Secure, scalable, cloud or on-premise." />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,238 +15,348 @@
   --card:#0b1220;
   --accent:#4a4aff;
   --accent2:#ff7f50;
-  --accent3:#32cd32;
   --muted:#9aa4b2;
   --glass: rgba(255,255,255,0.04);
+  --glass-strong: rgba(255,255,255,0.06);
+  --radius:12px;
 }
-*{box-sizing:border-box;margin:0;padding:0;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 body{
   font-family:Inter,Arial,sans-serif;
   background:linear-gradient(180deg,var(--bg),#071023);
   color:#e6eef8;
-  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
 }
-header{
-  position:sticky;
-  top:0;
-  background:rgba(5,8,15,0.6);
-  backdrop-filter: blur(6px);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 28px;
-  z-index:1000;
+
+/* Header */
+.header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(6,10,18,0.6);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.02);
 }
-.brand{display:flex;align-items:center;gap:12px;}
-.logo{
-  width:44px;
-  height:44px;
-  border-radius:10px;
-  background:linear-gradient(90deg,var(--accent),#6a6aff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#6a6aff);display:flex;align-items:center;justify-content:center;font-weight:700}
+nav a{color:#cfe3ff;margin-left:14px;text-decoration:none;font-weight:600;font-size:14px}
+
+/* Language toggle */
+.lang-toggle{display:flex;gap:8px;align-items:center}
+.lang-btn{
+  padding:6px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);
+  background:transparent;color:#cfe3ff;cursor:pointer;font-weight:700;font-size:13px
 }
-nav a{color:#cfe3ff;margin-left:18px;text-decoration:none;font-weight:600;}
-.container{max-width:1200px;margin:0 auto;padding:40px 20px;}
-section{margin-bottom:60px;}
-#hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 0;}
-.hero-left h1{font-size:38px;color:#fff;margin-bottom:8px;}
-.hero-lead{color:var(--muted);font-size:18px;margin-bottom:12px;}
-.cta-row{display:flex;gap:14px;align-items:center;margin-bottom:12px;}
-.btn{background:var(--accent);color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;}
-.btn.secondary{background:transparent;color:#cfe3ff;border:1px solid rgba(255,255,255,0.06);}
-.hero-right{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
-.feature{background:var(--glass);padding:12px;border-radius:10px;}
-section h2{font-size:26px;margin-bottom:12px;}
-.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:6px;}
-.agent-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  padding:16px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.agent-card:hover{
-  transform: translateY(-8px) scale(1.03);
-  box-shadow:0 16px 32px rgba(0,0,0,0.6);
-}
-.agent-icon{
-  font-size:28px;
-  color:var(--accent);
-  margin-bottom:8px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition: transform 0.3s ease;
-}
-.agent-card:hover .agent-icon{
-  transform: scale(1.15);
-}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-.badge{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:600;color:#d7e6ff;}
-input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;width:100%;}
-footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;margin-top:28px;}
-@media(max-width:900px){#hero{grid-template-columns:1fr;padding:30px 0}.hero-right{order:2}.hero-left{order:1}}
-@media(max-width:520px){.container{padding:18px}}
+.lang-btn.active{background:var(--accent);color:#03102b;border-color:transparent}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:28px 20px}
+
+/* Hero */
+#hero{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:center;margin-bottom:40px}
+.hero-left h1{font-size:34px;color:#fff;margin-bottom:8px}
+.hero-lead{color:var(--muted);font-size:15px;margin-bottom:12px}
+.cta-row{display:flex;gap:12px;margin-bottom:12px}
+.btn{background:var(--accent);color:#03102b;padding:10px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer}
+.btn.secondary{background:transparent;color:#cfe3ff;border:1px solid rgba(255,255,255,0.06)}
+
+/* Features */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.feature{background:var(--glass);padding:10px;border-radius:10px;font-size:13px}
+
+/* Grids */
+.section-title{font-size:22px;margin-bottom:12px;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+
+/* Card */
+.card{border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 30px rgba(1,6,20,0.6);transition:transform .28s ease,box-shadow .28s ease}
+.card-inner{padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));color:#fff}
+.card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 26px 50px rgba(0,0,0,0.6)}
+.card .icon{font-size:24px;margin-bottom:8px;display:flex;align-items:center;justify-content:center}
+
+/* color classes */
+.bg-blue{background:linear-gradient(135deg,#4a4aff,#6a6aff)}
+.bg-orange{background:linear-gradient(135deg,#ff7f50,#ffb366)}
+.bg-green{background:linear-gradient(135deg,#32cd32,#90ee90)}
+.bg-yellow{background:linear-gradient(135deg,#ffa500,#ffec99)}
+.bg-pink{background:linear-gradient(135deg,#ff1493,#ff99c8)}
+.bg-purple{background:linear-gradient(135deg,#8a2be2,#b19cd9)}
+.bg-teal{background:linear-gradient(135deg,#00ced1,#40e0d0)}
+.bg-red{background:linear-gradient(135deg,#ff6347,#ff8c69)}
+.bg-dark{background:linear-gradient(135deg,#8b0000,#dc143c)}
+.bg-gold{background:linear-gradient(135deg,#daa520,#ffd700)}
+.bg-cyan{background:linear-gradient(135deg,#20b2aa,#3cb371)}
+.bg-brown{background:linear-gradient(135deg,#a52a2a,#d2691e)}
+.bg-sky{background:linear-gradient(135deg,#1e90ff,#87cefa)}
+.bg-sand{background:linear-gradient(135deg,#ffdead,#f0e68c)}
+
+.badge{display:inline-block;background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:999px;font-weight:700;color:#d7e6ff;font-size:13px;margin-top:6px}
+
+/* form */
+form input,form textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:#e7f2ff;width:100%;margin-bottom:10px}
+footer{padding:24px 18px;text-align:left;color:var(--muted);font-size:14px;margin-top:28px;border-top:1px solid rgba(255,255,255,0.03);background:transparent}
+
+/* language visibility */
+.lang-de{display:none}
+.lang-en{display:none}
+
+/* responsive */
+@media(max-width:920px){#hero{grid-template-columns:1fr}}
+@media(max-width:520px){.container{padding:16px}}
 </style>
 </head>
 <body>
 
-<header>
+<header class="header">
   <div class="brand">
     <div class="logo">AI</div>
     <div>
       <div style="font-weight:700">AI Agents Solutions</div>
-      <div style="font-size:12px;color:var(--muted)">Sichere KI-Agenten für Unternehmen</div>
+      <div style="font-size:12px;color:var(--muted)"><span class="lang-de">Sichere KI-Agenten für Unternehmen</span><span class="lang-en">Secure AI agents for businesses</span></div>
     </div>
   </div>
-  <nav>
-    <a href="#agenten">Agenten</a>
-    <a href="#llm">Interne LLM-Plattform</a>
-    <a href="#technologien">Technologien</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
+
+  <div style="display:flex;align-items:center;gap:12px">
+    <nav>
+      <a href="#agenten"><span class="lang-de">Agenten</span><span class="lang-en">Agents</span></a>
+      <a href="#llm"><span class="lang-de">Interne LLM-Plattform</span><span class="lang-en">LLM Platform</span></a>
+      <a href="#technologien"><span class="lang-de">Technologien</span><span class="lang-en">Technologies</span></a>
+      <a href="#kontakt"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></a>
+    </nav>
+
+    <div class="lang-toggle" style="margin-left:12px">
+      <button id="btn-de" class="lang-btn">DE</button>
+      <button id="btn-en" class="lang-btn">EN</button>
+    </div>
+  </div>
 </header>
 
 <main class="container">
 
-<section id="hero">
-  <div class="hero-left">
-    <h1>Autonome KI-Agenten, die Ihr Business voranbringen</h1>
-    <p class="hero-lead">Maßgeschneiderte Agenten für alle Branchen: KI, IT, Finanzen, Banken, Versicherung, Logistik, Transport, Lebensmittel, Agrar, Bau, Immobilien, Marketing, Automotive, Automobile, Dienstleister und Freelancer. Sicher, skalierbar, sofort einsetzbar.</p>
-    <div class="cta-row">
-      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView()">Demo anfragen</button>
-      <button class="btn secondary" onclick="document.getElementById('technologien').scrollIntoView()">Technologien ansehen</button>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <h1><span class="lang-de">Autonome KI-Agenten, die Ihr Business voranbringen</span><span class="lang-en">Autonomous AI agents that accelerate your business</span></h1>
+      <p class="hero-lead">
+        <span class="lang-de">Maßgeschneiderte Agenten für Branchen: Finanzen, Banken, Automotive, KI, IT, Versicherungen, Pharma, Medizin, Marketing, Transport, Logistik, E-Commerce, Handel, Immobilien, Bau, Ernährung, Jura u.v.m.</span>
+        <span class="lang-en">Custom agents for industries: Finance, Banking, Automotive, AI, IT, Insurance, Pharma, Healthcare, Marketing, Transport, Logistics, E-Commerce, Retail, Real Estate, Construction, Food, Legal & more.</span>
+      </p>
+
+      <div class="cta-row">
+        <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView()"><span class="lang-de">Demo anfragen</span><span class="lang-en">Request demo</span></button>
+        <button class="btn secondary" onclick="document.getElementById('technologien').scrollIntoView()"><span class="lang-de">Technologien ansehen</span><span class="lang-en">View technologies</span></button>
+      </div>
+
+      <div class="features">
+        <div class="feature"><span class="lang-de">Schnelle Implementierung (Pilot in 7–14 Tagen)</span><span class="lang-en">Fast implementation (pilot in 7–14 days)</span></div>
+        <div class="feature"><span class="lang-de">DSGVO & Security by Design</span><span class="lang-en">GDPR & security by design</span></div>
+        <div class="feature"><span class="lang-de">On-Premise, Cloud oder Hybrid</span><span class="lang-en">On-premise, cloud or hybrid</span></div>
+      </div>
     </div>
-    <div class="features">
-      <div class="feature">Schnelle Implementierung (Pilot in 7–14 Tagen)</div>
-      <div class="feature">DSGVO & Security by Design</div>
-      <div class="feature">On-Premise, Cloud oder Hybrid</div>
+
+    <aside class="hero-right">
+      <h3><span class="lang-de">Schnelle Fakten</span><span class="lang-en">Quick facts</span></h3>
+      <p style="color:var(--muted)"><span class="lang-de">Flexible Integrationen (CRM, ERP, Ticketing), volle Kontrolle über Daten.</span><span class="lang-en">Flexible integrations (CRM, ERP, ticketing), full control over data.</span></p>
+    </aside>
+  </section>
+
+  <!-- AGENTEN (alle) -->
+  <section id="agenten">
+    <h2 class="section-title"><span class="lang-de">Unsere Agenten</span><span class="lang-en">Our agents</span></h2>
+
+    <div class="grid">
+      <!-- Core agents (including the ones you had) -->
+      <div class="card bg-blue"><div class="card-inner"><div class="icon"><i class="fas fa-code-branch"></i></div><h4>analyze.py / Data Analysis Agent</h4><p><span class="lang-de">Datenanalyse-Agent zur Mustererkennung, KPI-Berechnung und automatisierten Berichten.</span><span class="lang-en">Data analysis agent for pattern detection, KPI calculation and automated reports.</span></p></div></div>
+
+      <div class="card bg-orange"><div class="card-inner"><div class="icon"><i class="fas fa-chart-line"></i></div><h4>forecast.py / Forecast Agent</h4><p><span class="lang-de">Vorhersageagent für Umsatz, Nachfrage und Vorräte (Zeitreihen, Lag-Features, ML).</span><span class="lang-en">Forecasting agent for revenue, demand and inventory (time series, lag-features, ML).</span></p></div></div>
+
+      <div class="card bg-green"><div class="card-inner"><div class="icon"><i class="fas fa-hands-helping"></i></div><h4>kundengewinnung.py / Customer Acquisition Agent</h4><p><span class="lang-de">Lead-Generierung, Kundensegmentierung & Kampagnenoptimierung.</span><span class="lang-en">Lead generation, customer segmentation & campaign optimization.</span></p></div></div>
+
+      <div class="card bg-pink"><div class="card-inner"><div class="icon"><i class="fas fa-file-contract"></i></div><h4>proposal.py / Proposal Agent</h4><p><span class="lang-de">Automatische Angebotserstellung, Preisberechnung & Dokumentengenerierung.</span><span class="lang-en">Automated proposal creation, pricing and document generation.</span></p></div></div>
+
+      <div class="card bg-teal"><div class="card-inner"><div class="icon"><i class="fas fa-bullseye"></i></div><h4>sales_leads.py / Sales Leads Agent</h4><p><span class="lang-de">Sales-Intelligence: Priorisierung und Analyse von Verkaufschancen.</span><span class="lang-en">Sales intelligence: prioritizing and analyzing sales opportunities.</span></p></div></div>
+
+      <div class="card bg-sky"><div class="card-inner"><div class="icon"><i class="fas fa-headset"></i></div><h4>kunden_support.py / Customer Support Agent</h4><p><span class="lang-de">Ticketklassifikation, automatische Antworten & Knowledge-Base Integration.</span><span class="lang-en">Ticket classification, automated replies & knowledge base integration.</span></p></div></div>
+
+      <!-- Additional industry/functional agents -->
+      <div class="card bg-red"><div class="card-inner"><div class="icon"><i class="fas fa-wallet"></i></div><h4>Finanz-Agenten / Finance Agents</h4><p><span class="lang-de">Forecasts für Liquidität, Cashflow & Budgetplanung.</span><span class="lang-en">Forecasts for liquidity, cashflow & budgeting.</span></p></div></div>
+
+      <div class="card bg-cyan"><div class="card-inner"><div class="icon"><i class="fas fa-university"></i></div><h4>Banken-Agenten / Banking Agents</h4><p><span class="lang-de">Kreditprüfung, Scoring & Fraud-Monitoring.</span><span class="lang-en">Credit decisioning, scoring & fraud monitoring.</span></p></div></div>
+
+      <div class="card bg-gold"><div class="card-inner"><div class="icon"><i class="fas fa-file-alt"></i></div><h4>Nachhaltigkeitsbericht-Agenten / Sustainability Reporting</h4><p><span class="lang-de">Automatisierte Nachhaltigkeitsberichte, Audit-Trails & Exporte.</span><span class="lang-en">Automated sustainability reports, audit trails & exports.</span></p></div></div>
+
+      <div class="card bg-brown"><div class="card-inner"><div class="icon"><i class="fas fa-car"></i></div><h4>Automobile & Automotive Agents</h4><p><span class="lang-de">Produktionsdaten, Workflow-Optimierung & Predictive Maintenance.</span><span class="lang-en">Production data, workflow optimization & predictive maintenance.</span></p></div></div>
+
+      <div class="card bg-sand"><div class="card-inner"><div class="icon"><i class="fas fa-building"></i></div><h4>Bau-Agenten / Construction Agents</h4><p><span class="lang-de">Projektplanung, Ressourcen- & Materialmanagement.</span><span class="lang-en">Project planning, resource & material management.</span></p></div></div>
+
+      <div class="card bg-green"><div class="card-inner"><div class="icon"><i class="fas fa-home"></i></div><h4>Immobilien-Agenten / Real Estate Agents</h4><p><span class="lang-de">Objektverwaltung, Marktanalyse & Preistrends.</span><span class="lang-en">Property management, market analytics & price trends.</span></p></div></div>
+
+      <div class="card bg-yellow"><div class="card-inner"><div class="icon"><i class="fas fa-utensils"></i></div><h4>Lebensmittel & Ernährung Agents</h4><p><span class="lang-de">Supply Chain Monitoring, Qualitätskontrolle & Rückverfolgung.</span><span class="lang-en">Supply chain monitoring, quality control & traceability.</span></p></div></div>
+
+      <div class="card bg-purple"><div class="card-inner"><div class="icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing & Werbekampagnen Agents</h4><p><span class="lang-de">Kampagnenautomatisierung, Content-Generierung & A/B-Testing.</span><span class="lang-en">Campaign automation, content generation & A/B testing.</span></p></div></div>
+
+      <div class="card bg-dark"><div class="card-inner"><div class="icon"><i class="fas fa-leaf"></i></div><h4>ESG Agents</h4><p><span class="lang-de">Erfassung & Reporting von ESG-Kennzahlen.</span><span class="lang-en">Capture & reporting of ESG KPIs.</span></p></div></div>
+
+      <div class="card bg-blue"><div class="card-inner"><div class="icon"><i class="fas fa-users"></i></div><h4>CrewAI Team-Agenten / Orchestrated Teams</h4><p><span class="lang-de">Kombinierte Agententeams zur Lösung komplexer Workflows.</span><span class="lang-en">Orchestrated agent teams to solve complex workflows.</span></p></div></div>
+
+      <div class="card bg-orange"><div class="card-inner"><div class="icon"><i class="fas fa-receipt"></i></div><h4>Buchhaltung-Agenten / Accounting Agents</h4><p><span class="lang-de">Belegerkennung, Kontierung & Monatsabschlüsse.</span><span class="lang-en">Receipt recognition, posting & month-end closing.</span></p></div></div>
+
+      <div class="card bg-teal"><div class="card-inner"><div class="icon"><i class="fas fa-calculator"></i></div><h4>Controlling-Agenten / Controlling Agents</h4><p><span class="lang-de">Kostenanalyse, Budgeting & Soll-Ist-Vergleiche.</span><span class="lang-en">Cost analysis, budgeting & variance reporting.</span></p></div></div>
+
+      <div class="card bg-purple"><div class="card-inner"><div class="icon"><i class="fas fa-people-carry"></i></div><h4>Dienstleister & Freelancer Agents</h4><p><span class="lang-de">Projektmanagement, Aufgabenautomatisierung & Ressourcenplanung.</span><span class="lang-en">Project management, task automation & resource planning.</span></p></div></div>
+
+      <div class="card bg-pink"><div class="card-inner"><div class="icon"><i class="fas fa-brain"></i></div><h4>KI-Agenten / AI Agents</h4><p><span class="lang-de">ML-Modelle, LLM-Integration, Prompt-Engineering & Agent-Orchestration.</span><span class="lang-en">ML models, LLM integration, prompt engineering & agent orchestration.</span></p></div></div>
+
+      <div class="card bg-cyan"><div class="card-inner"><div class="icon"><i class="fas fa-database"></i></div><h4>Data Engineer Agents</h4><p><span class="lang-de">Pipeline-Management, ETL, DataOps & Cloud-Sync.</span><span class="lang-en">Pipeline management, ETL, DataOps & cloud sync.</span></p></div></div>
+
     </div>
-  </div>
-  <aside class="hero-right">
-    <h3>Schnelle Fakten</h3>
-    <p style="color:var(--muted)">Launch in wenigen Wochen, flexible Integrationen (CRM, ERP, Ticketing), volle Kontrolle über Daten.</p>
-  </aside>
-</section>
+  </section>
 
-<section id="agenten">
-<h2>Unsere Agenten</h2>
-<div class="agents-grid">
-  <!-- Agenten farbig -->
-  <div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)"><div class="agent-icon"><i class="fas fa-chart-line"></i></div><h4>Datenanalyse-Agenten</h4><p>Berichte, Visualisierungen & KPIs automatisiert.</p></div>
+  <!-- LLM Platform -->
+  <section id="llm" style="margin-top:36px">
+    <h2 class="section-title"><span class="lang-de">Interne LLM-Plattform</span><span class="lang-en">Internal LLM Platform</span></h2>
+    <div class="grid" style="margin-bottom:18px">
+      <div class="card bg-blue"><div class="card-inner"><h4><span class="lang-de">Deployment eigener LLMs</span><span class="lang-en">Deploy custom LLMs</span></h4><p><span class="lang-de">Open-Source & proprietäre Modelle, On-Premise oder Cloud.</span><span class="lang-en">Open-source & proprietary models, on-prem or cloud.</span></p></div></div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)"><div class="agent-icon"><i class="fas fa-wallet"></i></div><h4>Finanz-Agenten</h4><p>Forecasting für Umsatz, Vorrat und Liquidität.</p></div>
+      <div class="card bg-orange"><div class="card-inner"><h4><span class="lang-de">Fine-Tuning</span><span class="lang-en">Fine-tuning</span></h4><p><span class="lang-de">Feinabstimmung auf Unternehmensdaten, sicher & versioniert.</span><span class="lang-en">Fine-tuning on company data, secure & versioned.</span></p></div></div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#7fffd4)"><div class="agent-icon"><i class="fas fa-university"></i></div><h4>Banken-Agenten</h4><p>Kreditprüfung, Scoring & Fraud-Monitoring.</p></div>
+      <div class="card bg-green"><div class="card-inner"><h4><span class="lang-de">Hosting & Sicherheit</span><span class="lang-en">Hosting & Security</span></h4><p><span class="lang-de">On-Premise, Private Cloud oder Hybrid mit sicheren APIs.</span><span class="lang-en">On-prem, private cloud or hybrid with secure APIs.</span></p></div></div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)"><div class="agent-icon"><i class="fas fa-file-contract"></i></div><h4>Versicherungs-Agenten</h4><p>Policenverwaltung & Schadenbearbeitung.</p></div>
+      <div class="card bg-yellow"><div class="card-inner"><h4><span class="lang-de">Mandantenfähigkeit</span><span class="lang-en">Multi-tenant</span></h4><p><span class="lang-de">Mandantenfähige Architektur für große Unternehmen.</span><span class="lang-en">Multi-tenant architecture for large enterprises.</span></p></div></div>
+    </div>
+  </section>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ff99c8)"><div class="agent-icon"><i class="fas fa-shipping-fast"></i></div><h4>Transport-Agenten</h4><p>Transportplanung & Lieferkettenoptimierung.</p></div>
+  <!-- Technologies -->
+  <section id="technologien">
+    <h2 class="section-title"><span class="lang-de">Technologien & Tools</span><span class="lang-en">Technologies & Tools</span></h2>
+    <div class="grid">
+      <div class="card bg-blue"><div class="card-inner"><h4>Code & Backend / Backend</h4><p><span class="lang-de">Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes</span><span class="lang-en">Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes</span></p></div></div>
+      <div class="card bg-orange"><div class="card-inner"><h4>Frontend & UX</h4><p><span class="lang-de">React, Next.js, Tailwind CSS, Responsive Design</span><span class="lang-en">React, Next.js, Tailwind CSS, Responsive Design</span></p></div></div>
+      <div class="card bg-green"><div class="card-inner"><h4>No-Code / Automation</h4><p><span class="lang-de">ChatGPT, n8n, Make, AutoGen, Dify, MindStudio</span><span class="lang-en">ChatGPT, n8n, Make, AutoGen, Dify, MindStudio</span></p></div></div>
+      <div class="card bg-yellow"><div class="card-inner"><h4>Datenbanken</h4><p><span class="lang-de">PostgreSQL, MySQL, MariaDB, MongoDB, Snowflake, Cloud DBs</span><span class="lang-en">PostgreSQL, MySQL, MariaDB, MongoDB, Snowflake, Cloud DBs</span></p></div></div>
+      <div class="card bg-pink"><div class="card-inner"><h4>LLM & ML</h4><p><span class="lang-de">Hugging Face, OpenAI, LangChain, TensorFlow, PyTorch</span><span class="lang-en">Hugging Face, OpenAI, LangChain, TensorFlow, PyTorch</span></p></div></div>
+      <div class="card bg-sky"><div class="card-inner"><h4>Cloud & DevOps</h4><p><span class="lang-de">Azure, AWS, GCP, Docker, Kubernetes, CI/CD</span><span class="lang-en">Azure, AWS, GCP, Docker, Kubernetes, CI/CD</span></p></div></div>
+    </div>
+  </section>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)"><div class="agent-icon"><i class="fas fa-carrot"></i></div><h4>Agrar-Agenten</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
+  <!-- ABOUT -->
+  <section id="about" style="margin-top:36px">
+    <h2 class="section-title"><span class="lang-de">Über uns</span><span class="lang-en">About us</span></h2>
+    <p><span class="lang-de">AI Agents Solutions entwickelt sichere, skalierbare KI-Agenten für Unternehmen – schnell einsetzbar und DSGVO-konform. Wir begleiten Projektplanung, Entwicklung, Rollout und Betrieb.</span><span class="lang-en">AI Agents Solutions builds secure, scalable AI agents for businesses — production-ready and GDPR-compliant. We cover planning, development, rollout and operations.</span></p>
+  </section>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffe400,#ffec99)"><div class="agent-icon"><i class="fas fa-utensils"></i></div><h4>Lebensmittel-Agenten</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
+  <!-- Contact -->
+  <section id="kontakt" style="margin-top:26px">
+    <h2 class="section-title"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></h2>
+    <form id="contactForm" onsubmit="handleSubmit(event)" style="max-width:800px">
+      <input id="name" name="name" type="text" placeholder="Ihr Name / Your name" required>
+      <input id="email" name="email" type="email" placeholder="Ihre E-Mail / Your email" required>
+      <input id="company" name="company" type="text" placeholder="Firma (optional) / Company (optional)">
+      <textarea id="message" name="message" rows="5" placeholder="Ihre Nachricht / Your message" required></textarea>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn" type="submit"><span class="lang-de">Senden</span><span class="lang-en">Send</span></button>
+        <button class="btn secondary" type="reset"><span class="lang-de">Zurücksetzen</span><span class="lang-en">Reset</span></button>
+      </div>
+    </form>
+    <p style="color:var(--muted);margin-top:10px"><span class="lang-de">Das Kontaktformular überträgt Ihre Daten verschlüsselt an unsere internen Systeme oder n8n-Workflows.</span><span class="lang-en">The contact form transmits your data securely to our internal systems or n8n workflows.</span></p>
+  </section>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#8a2be2,#b19cd9)"><div class="agent-icon"><i class="fas fa-people-arrows"></i></div><h4>Dienstleister-Agenten</h4><p>Projektmanagement & Aufgabenautomatisierung.</p></div>
+</main>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff69b4,#ffb6c1)"><div class="agent-icon"><i class="fas fa-user-pen"></i></div><h4>Freelancer-Agenten</h4><p>Projektmanagement & Aufgabenautomatisierung.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#00ced1,#40e0d0)"><div class="agent-icon"><i class="fas fa-people-carry"></i></div><h4>Sales-Agenten</h4><p>Prospecting, Outreach & Terminvereinbarung.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff6347,#ff8c69)"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing-Agenten</h4><p>Content, Ads & Social Media Automatisierung.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#1e90ff,#87cefa)"><div class="agent-icon"><i class="fas fa-headset"></i></div><h4>Support-Agenten</h4><p>24/7 Kundenbetreuung & Tickettriage.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff4500,#ff8c00)"><div class="agent-icon"><i class="fas fa-leaf"></i></div><h4>ESG-Agenten</h4><p>Erfassung & Reporting von ESG-Daten.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#8b0000,#dc143c)"><div class="agent-icon"><i class="fas fa-brain"></i></div><h4>KI-Agenten</h4><p>Machine Learning, LLM-Integration & Automatisierung.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#20b2aa,#3cb371)"><div class="agent-icon"><i class="fas fa-database"></i></div><h4>Data Engineer-Agenten</h4><p>Pipeline-Management, ETL & Cloud-Sync.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#daa520,#ffd700)"><div class="agent-icon"><i class="fas fa-file-alt"></i></div><h4>Nachhaltigkeitsbericht-Agenten</h4><p>Automatisierte Berichte, Prüfpfade & Exportformate.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff8c00,#ffa500)"><div class="agent-icon"><i class="fas fa-receipt"></i></div><h4>Buchhaltungs-Agenten</h4><p>Belegerkennung, Kontierung, Monatsabschlüsse.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#4682b4,#87cefa)"><div class="agent-icon"><i class="fas fa-calculator"></i></div><h4>Controlling-Agenten</h4><p>Kostenanalysen, Budgeting & Soll-Ist-Vergleiche.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ff69b4)"><div class="agent-icon"><i class="fas fa-users"></i></div><h4>CrewAI Team-Agenten</h4><p>Orchestrierte Agenten-Teams lösen komplexe Workflows.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#a52a2a,#d2691e)"><div class="agent-icon"><i class="fas fa-car"></i></div><h4>Automobile-Agenten</h4><p>Automatisierung und Datenanalyse für Automobilindustrie.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#5f9ea0,#7fffd4)"><div class="agent-icon"><i class="fas fa-industry"></i></div><h4>Automotive-Agenten</h4><p>Workflow-Optimierung & Produktionsdaten für Automotive.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffdead,#f0e68c)"><div class="agent-icon"><i class="fas fa-building"></i></div><h4>Bau-Agenten</h4><p>Projektplanung & Ressourcenmanagement.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#7cfc00,#32cd32)"><div class="agent-icon"><i class="fas fa-home"></i></div><h4>Immobilien-Agenten</h4><p>Objektverwaltung & Marktanalyse.</p></div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff4500,#ff6347)"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing & Werbekampagnen-Agenten</h4><p>Automatisierung von Kampagnen, Content & Ads.</p></div>
-</div>
-</section>
-
-<section id="llm">
-<h2>Interne LLM-Plattform</h2>
-<p>Unsere Plattform ermöglicht Unternehmen vollständige Kontrolle über KI:</p>
-<ul>
-<li>Deployment eigener LLMs (Open-Source & Proprietär)</li>
-<li>Fine-Tuning auf Unternehmensdaten</li>
-<li>On-Premise, Private Cloud oder Hybrid-Hosting</li>
-<li>Sichere API-Schnittstellen für interne Systeme & Agenten</li>
-<li>Mandantenfähige Architektur für große Unternehmen</li>
-</ul>
-</section>
-
-<section id="technologien">
-<h2>Technologien & Tools</h2>
-<div class="agents-grid">
-<div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)"><h4>Code & Backend</h4><p>Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)"><h4>Frontend & UX</h4><p>React, Next.js, Tailwind CSS, Responsive Design.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)"><h4>No-Code / Automation</h4><p>ChatGPT, n8n, Make, AutoGen, Dify, MindStudio – schnelle Prototypen & Automationen.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)"><h4>Datenbanken</h4><p>PostgreSQL, MySQL, MariaDB, MongoDB, Oracle, Snowflake; Cloud-DBs auf AWS, Azure, GCP.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ffb6c1)"><h4>LLM</h4><p>Interne LLM-Plattform, Fine-Tuning auf Unternehmensdaten, sichere API-Schnittstellen.</p></div>
-</div>
-</section>
-
-<section id="kontakt">
-<h2>Kontakt</h2>
-<form id="contactForm">
-<input type="text" name="name" placeholder="Ihr Name" required>
-<input type="email" name="email" placeholder="Ihre E-Mail" required>
-<input type="text" name="company" placeholder="Firma (optional)">
-<textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
-<div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-<button type="submit" class="btn">Senden</button>
-<button type="reset" class="btn secondary">Zurücksetzen</button>
-</div>
-</form>
-</section>
-
+<!-- Footer with Impressum and Datenschutz (German as provided + English translation) -->
 <footer>
-<section id="impressum">
-<h3>Impressum</h3>
-<p>
-AI Agents Solutions<br>
-Verantwortlich: Dr. Sigfried Weiss<br>
-Telefon: 0049 176/31591931<br>
-E-Mail: vertrieb@aisolutios.de<br>
-Adresse: Obere Waiblinger Strasse 147a, 70374 Stuttgart<br>
-Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II
-</p>
-<h3>Datenschutz</h3>
-<p>
-Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle von Ihnen übermittelten Informationen werden nur zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Bereitstellung unserer Dienstleistungen verwendet.<br><br>
+  <div style="max-width:1100px;margin:0 auto">
+    <h3><span class="lang-de">Impressum</span><span class="lang-en">Imprint</span></h3>
 
-Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsüberprüfungen.<br><br>
+    <p>
+      <strong class="lang-de">AI Agents Solutions</strong>
+      <strong class="lang-en">AI Agents Solutions</strong><br>
 
-Ihre Daten werden nur so lange gespeichert, wie es für den Zweck der Verarbeitung notwendig ist oder gesetzlich vorgeschrieben wird. Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten.<br><br>
+      <span class="lang-de">
+        Verantwortlich: Dr. Sigfried Weiss<br>
+        Telefon: 0049 176/31591931<br>
+        E-Mail: vertrieb@aisolutios.de<br>
+        Adresse: Obere Waiblinger Strasse 147a, 70374 Stuttgart<br>
+        Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II
+      </span>
 
-Unsere Website verwendet ggf. Cookies und Tracking-Technologien, um die Funktionalität zu verbessern und statistische Auswertungen vorzunehmen. Sie können der Nutzung von Cookies jederzeit widersprechen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt und direkt an unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.
-</p>
-</section>
+      <span class="lang-en">
+        Responsible: Dr. Sigfried Weiss<br>
+        Phone: +49 176 31591931<br>
+        Email: vertrieb@aisolutios.de<br>
+        Address: Obere Waiblinger Strasse 147a, 70374 Stuttgart, Germany<br>
+        Tax number: 95 408 / 320 96, Finanzamt Stuttgart II
+      </span>
+    </p>
+
+    <h3 style="margin-top:12px"><span class="lang-de">Datenschutz</span><span class="lang-en">Privacy</span></h3>
+    <p style="color:var(--muted)">
+      <span class="lang-de">
+        Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle von Ihnen übermittelten Informationen werden nur zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Bereitstellung unserer Dienstleistungen verwendet.<br><br>
+
+        Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsüberprüfungen.<br><br>
+
+        Ihre Daten werden nur so lange gespeichert, wie es für den Zweck der Verarbeitung notwendig ist oder gesetzlich vorgeschrieben wird. Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten.<br><br>
+
+        Unsere Website verwendet ggf. Cookies und Tracking-Technologien, um die Funktionalität zu verbessern und statistische Auswertungen vorzunehmen. Sie können der Nutzung von Cookies jederzeit widersprechen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt und direkt an unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.
+      </span>
+
+      <span class="lang-en">
+        Protecting your personal data is very important to us. We process your data exclusively in accordance with the legal provisions of the GDPR. All information you provide will only be used to process your inquiries, to communicate with you, and to provide our services.<br><br>
+
+        We take technical and organizational measures to protect your data from unauthorized access, loss or misuse. These include encryption, access controls and regular security reviews.<br><br>
+
+        Your data will only be stored for as long as necessary for the purpose of processing or as required by law. You have the right to request information, correction, deletion or restriction of processing at any time.<br><br>
+
+        Our website may use cookies and tracking technologies to improve functionality and perform statistical analyses. You can object to the use of cookies at any time. The contact form transmits your data only encrypted and directly to our internal systems or n8n workflows. There is no transfer to uninvolved third parties.
+      </span>
+    </p>
+  </div>
 </footer>
 
+<script>
+/* Language toggle logic */
+const btnDe = document.getElementById('btn-de');
+const btnEn = document.getElementById('btn-en');
+
+function showLang(lang){
+  document.querySelectorAll('.lang-de').forEach(e => e.style.display = (lang === 'de' ? '' : 'none'));
+  document.querySelectorAll('.lang-en').forEach(e => e.style.display = (lang === 'en' ? '' : 'none'));
+  if(lang === 'de'){ btnDe.classList.add('active'); btnEn.classList.remove('active'); document.documentElement.lang='de'; }
+  else { btnEn.classList.add('active'); btnDe.classList.remove('active'); document.documentElement.lang='en'; }
+  try{ localStorage.setItem('site_lang', lang);}catch(e){}
+}
+
+// initialize: prefer localStorage, then navigator
+(function initLang(){
+  let lang = null;
+  try{ lang = localStorage.getItem('site_lang'); }catch(e){}
+  if(!lang){
+    const nav = (navigator.language || navigator.userLanguage || 'de').toLowerCase();
+    lang = nav.startsWith('en') ? 'en' : 'de';
+  }
+  showLang(lang);
+})();
+
+btnDe.addEventListener('click', ()=> showLang('de'));
+btnEn.addEventListener('click', ()=> showLang('en'));
+
+/* Basic contact form handler (demo) - replace with secure backend integration */
+function handleSubmit(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if(!name || !email || !message){
+    alert(document.documentElement.lang === 'en' ? 'Please fill required fields.' : 'Bitte füllen Sie die Pflichtfelder aus.');
+    return;
+  }
+  // TODO: integrate with backend webhook (n8n, FastAPI etc.)
+  const success = document.documentElement.lang === 'en' ? 'Thank you! Your message was sent.' : 'Vielen Dank! Ihre Nachricht wurde gesendet.';
+  alert(success);
+  document.getElementById('contactForm').reset();
+}
+</script>
 </body>
 </html>
