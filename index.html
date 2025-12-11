@@ -33,7 +33,7 @@ header{
   backdrop-filter: blur(6px);
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-start;
   padding:18px 28px;
   z-index:1000;
 }
@@ -48,7 +48,18 @@ header{
   justify-content:center;
   font-weight:700;
 }
-nav a{color:#cfe3ff;margin-left:18px;text-decoration:none;font-weight:600;cursor:pointer;}
+nav{
+  display:flex;
+  flex-direction:column;
+  margin-left:20px;
+}
+nav a{
+  color:#cfe3ff;
+  margin-bottom:12px;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+}
 .container{max-width:1200px;margin:0 auto;padding:40px 20px;}
 section{margin-bottom:60px;}
 #hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 0;}
@@ -85,8 +96,6 @@ section h2{font-size:26px;margin-bottom:12px;}
 .agent-card:hover .agent-icon{
   transform: scale(1.15);
 }
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-.badge{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:600;color:#d7e6ff;}
 input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;width:100%;}
 footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;margin-top:28px;}
 @media(max-width:900px){#hero{grid-template-columns:1fr;padding:30px 0}.hero-right{order:2}.hero-left{order:1}}
@@ -104,10 +113,10 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
     </div>
   </div>
   <nav>
-    <a onclick="scrollToSection('agenten-de')">Agenten</a>
-    <a onclick="scrollToSection('llm-de')">Interne LLM-Plattform</a>
-    <a onclick="scrollToSection('technologien-de')">Technologien</a>
-    <a onclick="scrollToSection('kontakt-de')">Kontakt</a>
+    <a onclick="scrollToSection('agenten')">Agenten</a>
+    <a onclick="scrollToSection('llm')">Interne LLM-Plattform</a>
+    <a onclick="scrollToSection('technologien')">Technologien</a>
+    <a onclick="scrollToSection('kontakt')">Kontakt</a>
   </nav>
 </header>
 
@@ -118,8 +127,8 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
     <h1>Autonome KI-Agenten, die Ihr Business voranbringen</h1>
     <p class="hero-lead">Maßgeschneiderte Agenten für alle Branchen: KI, IT, Finanzen, Banken, Versicherung, Logistik, Transport, Lebensmittel, Agrar, Bau, Immobilien, Marketing, Automotive, Dienstleister und Freelancer. Sicher, skalierbar, sofort einsetzbar.</p>
     <div class="cta-row">
-      <button class="btn" onclick="scrollToSection('kontakt-de')">Demo anfragen</button>
-      <button class="btn secondary" onclick="scrollToSection('technologien-de')">Technologien ansehen</button>
+      <button class="btn" onclick="scrollToSection('kontakt')">Demo anfragen</button>
+      <button class="btn secondary" onclick="scrollToSection('technologien')">Technologien ansehen</button>
     </div>
     <div class="features">
       <div class="feature">Schnelle Implementierung (Pilot in 7–14 Tagen)</div>
@@ -133,39 +142,23 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
   </aside>
 </section>
 
-<!-- Agenten -->
-<section id="agenten-de">
+<section id="agenten">
 <h2>Unsere Agenten</h2>
 <div class="agents-grid">
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-chart-line"></i></div><h4>Datenanalyse-Agenten</h4><p>Berichte, Visualisierungen & KPIs automatisiert.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-wallet"></i></div><h4>Finanz-Agenten</h4><p>Forecasting für Umsatz, Vorrat und Liquidität.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-university"></i></div><h4>Banken-Agenten</h4><p>Kreditprüfung, Scoring & Fraud-Monitoring.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-file-contract"></i></div><h4>Versicherungs-Agenten</h4><p>Policenverwaltung & Schadenbearbeitung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-shipping-fast"></i></div><h4>Transport-Agenten</h4><p>Transportplanung & Lieferkettenoptimierung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-carrot"></i></div><h4>Agrar-Agenten</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-utensils"></i></div><h4>Lebensmittel-Agenten</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-people-arrows"></i></div><h4>Dienstleister-Agenten</h4><p>Projektmanagement & Aufgabenautomatisierung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-user-pen"></i></div><h4>Freelancer-Agenten</h4><p>Projektmanagement & Aufgabenautomatisierung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-people-carry"></i></div><h4>Sales-Agenten</h4><p>Prospecting, Outreach & Terminvereinbarung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing-Agenten</h4><p>Content, Ads & Social Media Automatisierung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-headset"></i></div><h4>Support-Agenten</h4><p>24/7 Kundenbetreuung & Tickettriage.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-leaf"></i></div><h4>ESG-Agenten</h4><p>Erfassung & Reporting von ESG-Daten.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-brain"></i></div><h4>KI-Agenten</h4><p>Machine Learning, LLM-Integration & Automatisierung.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-database"></i></div><h4>Data Engineer-Agenten</h4><p>Pipeline-Management, ETL & Cloud-Sync.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-file-alt"></i></div><h4>Nachhaltigkeitsbericht-Agenten</h4><p>Automatisierte Berichte, Prüfpfade & Exportformate.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-receipt"></i></div><h4>Buchhaltungs-Agenten</h4><p>Belegerkennung, Kontierung, Monatsabschlüsse.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-calculator"></i></div><h4>Controlling-Agenten</h4><p>Kostenanalysen, Budgeting & Soll-Ist-Vergleiche.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-users"></i></div><h4>CrewAI Team-Agenten</h4><p>Orchestrierte Agenten-Teams lösen komplexe Workflows.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-car"></i></div><h4>Automobile-Agenten</h4><p>Automatisierung und Datenanalyse für Automobilindustrie.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-industry"></i></div><h4>Automotive-Agenten</h4><p>Workflow-Optimierung & Produktionsdaten für Automotive.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-building"></i></div><h4>Bau-Agenten</h4><p>Projektplanung & Ressourcenmanagement.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-home"></i></div><h4>Immobilien-Agenten</h4><p>Objektverwaltung & Marktanalyse.</p></div>
-  <div class="agent-card"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing & Werbekampagnen-Agenten</h4><p>Automatisierung von Kampagnen, Content & Ads.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)"><div class="agent-icon"><i class="fas fa-chart-line"></i></div><h4>Datenanalyse-Agenten</h4><p>Berichte, Visualisierungen & KPIs automatisiert.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)"><div class="agent-icon"><i class="fas fa-wallet"></i></div><h4>Finanz-Agenten</h4><p>Forecasting für Umsatz, Vorrat und Liquidität.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#7fffd4)"><div class="agent-icon"><i class="fas fa-university"></i></div><h4>Banken-Agenten</h4><p>Kreditprüfung, Scoring & Fraud-Monitoring.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)"><div class="agent-icon"><i class="fas fa-file-contract"></i></div><h4>Versicherungs-Agenten</h4><p>Policenverwaltung & Schadenbearbeitung.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ff99c8)"><div class="agent-icon"><i class="fas fa-shipping-fast"></i></div><h4>Transport-Agenten</h4><p>Transportplanung & Lieferkettenoptimierung.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)"><div class="agent-icon"><i class="fas fa-carrot"></i></div><h4>Agrar-Agenten</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#ffe400,#ffec99)"><div class="agent-icon"><i class="fas fa-utensils"></i></div><h4>Lebensmittel-Agenten</h4><p>Supply Chain, Qualitätskontrolle & Produkttracking.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#8a2be2,#b19cd9)"><div class="agent-icon"><i class="fas fa-people-arrows"></i></div><h4>Dienstleister-Agenten</h4><p>Projektmanagement & Aufgabenautomatisierung.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#ff69b4,#ffb6c1)"><div class="agent-icon"><i class="fas fa-user-pen"></i></div><h4>Freelancer-Agenten</h4><p>Projektmanagement & Aufgabenautomatisierung.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#00ced1,#40e0d0)"><div class="agent-icon"><i class="fas fa-people-carry"></i></div><h4>Sales-Agenten</h4><p>Prospecting, Outreach & Terminvereinbarung.</p></div>
 </div>
 </section>
 
-<!-- Interne LLM -->
-<section id="llm-de">
+<section id="llm">
 <h2>Interne LLM-Plattform</h2>
 <p>Unsere Plattform ermöglicht Unternehmen vollständige Kontrolle über KI:</p>
 <ul>
@@ -177,20 +170,18 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 </ul>
 </section>
 
-<!-- Technologien -->
-<section id="technologien-de">
+<section id="technologien">
 <h2>Technologien & Tools</h2>
 <div class="agents-grid">
-<div class="agent-card"><h4>Code & Backend</h4><p>Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
-<div class="agent-card"><h4>Frontend & UX</h4><p>React, Next.js, Tailwind CSS, Responsive Design.</p></div>
-<div class="agent-card"><h4>No-Code / Automation</h4><p>ChatGPT, n8n, Make, AutoGen, Dify, MindStudio – schnelle Prototypen & Automationen.</p></div>
-<div class="agent-card"><h4>Datenbanken</h4><p>PostgreSQL, MySQL, MariaDB, MongoDB, Oracle, Snowflake; Cloud-DBs auf AWS, Azure, GCP.</p></div>
-<div class="agent-card"><h4>LLM</h4><p>Interne LLM-Plattform, Fine-Tuning auf Unternehmensdaten, sichere API-Schnittstellen.</p></div>
+<div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)"><h4>Code & Backend</h4><p>Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
+<div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)"><h4>Frontend & UX</h4><p>React, Next.js, Tailwind CSS, Responsive Design.</p></div>
+<div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)"><h4>No-Code / Automation</h4><p>ChatGPT, n8n, Make, AutoGen, Dify, MindStudio – schnelle Prototypen & Automationen.</p></div>
+<div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)"><h4>Datenbanken</h4><p>PostgreSQL, MySQL, MariaDB, MongoDB, Oracle, Snowflake; Cloud-DBs auf AWS, Azure, GCP.</p></div>
+<div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ffb6c1)"><h4>LLM</h4><p>Interne LLM-Plattform, Fine-Tuning auf Unternehmensdaten, sichere API-Schnittstellen.</p></div>
 </div>
 </section>
 
-<!-- Kontakt -->
-<section id="kontakt-de">
+<section id="kontakt">
 <h2>Kontakt</h2>
 <form id="contactForm">
 <input type="text" name="name" placeholder="Ihr Name" required>
@@ -204,7 +195,6 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 </form>
 </section>
 
-<!-- Footer -->
 <footer>
 <section id="impressum">
 <h3>Impressum</h3>
@@ -219,8 +209,11 @@ Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II
 <h3>Datenschutz</h3>
 <p>
 Der Schutz Ihrer personenbezogenen Daten ist uns sehr wichtig. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle von Ihnen übermittelten Informationen werden nur zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Bereitstellung unserer Dienstleistungen verwendet.<br><br>
+
 Wir treffen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsüberprüfungen.<br><br>
+
 Ihre Daten werden nur so lange gespeichert, wie es für den Zweck der Verarbeitung notwendig ist oder gesetzlich vorgeschrieben wird. Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten.<br><br>
+
 Unsere Website verwendet ggf. Cookies und Tracking-Technologien, um die Funktionalität zu verbessern und statistische Auswertungen vorzunehmen. Sie können der Nutzung von Cookies jederzeit widersprechen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt und direkt an unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.
 </p>
 </section>
