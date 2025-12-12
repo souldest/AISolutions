@@ -238,251 +238,288 @@ AI Agents Solutions · Stuttgart<br>
 </body>
 </html>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Agents Solutions – Autonomous AI Agents</title>
-<meta name="description" content="AI Agents Solutions: Custom AI agents for businesses. Secure, scalable, cloud or on-premise solutions.">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>AI Agents Solutions – Secure AI Agents for Enterprises</title>
+<meta name="description" content="Enterprise-grade AI agents, internal LLM platforms, automation and analytics. Secure, scalable and GDPR-compliant.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --accent:#4a4aff;
-  --accent2:#ff7f50;
-  --accent3:#32cd32;
+  --bg:#0b0f1a;
+  --bg2:#0e1426;
+  --card:#121a33;
+  --primary:#ff6a00;
+  --secondary:#7b61ff;
+  --accent:#00d1b2;
+  --text:#e8ecf3;
   --muted:#9aa4b2;
-  --glass: rgba(255,255,255,0.04);
 }
-*{box-sizing:border-box;margin:0;padding:0;}
+
+*{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:Inter,Arial,sans-serif;
-  background:linear-gradient(180deg,var(--bg),#071023);
-  color:#e6eef8;
-  line-height:1.5;
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--text);
+  line-height:1.6;
 }
-.container{max-width:1200px;margin:0 auto;padding:40px 20px;}
-section{margin-bottom:60px;}
-#hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:60px 0;}
-.hero-left h1{font-size:38px;color:#fff;margin-bottom:8px;}
-.hero-lead{color:var(--muted);font-size:18px;margin-bottom:12px;}
-.cta-row{display:flex;gap:14px;align-items:center;margin-bottom:12px;}
-.btn{background:var(--accent);color:#03102b;padding:12px 20px;border-radius:10px;border:none;font-weight:700;cursor:pointer;}
-.btn.secondary{background:transparent;color:#cfe3ff;border:1px solid rgba(255,255,255,0.06);}
-.hero-right{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px;}
-.feature{background:var(--glass);padding:12px;border-radius:10px;}
-section h2{font-size:26px;margin-bottom:12px;}
-.agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:6px;}
+
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(10,15,30,.85);
+  backdrop-filter:blur(10px);
+  padding:18px 28px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+}
+
+nav a{
+  color:#fff;text-decoration:none;margin-left:18px;font-weight:600;
+}
+nav a:hover{color:var(--primary)}
+
+.container{max-width:1200px;margin:auto;padding:80px 20px}
+section{margin-bottom:90px}
+
+h1{font-size:44px;margin-bottom:14px}
+h2{font-size:32px;margin-bottom:16px}
+h4{margin-bottom:6px}
+
+.hero-lead{
+  font-size:18px;
+  color:var(--muted);
+  max-width:900px;
+}
+
+.btn{
+  background:linear-gradient(135deg,var(--primary),#ff8c42);
+  color:#000;
+  padding:14px 26px;
+  border:none;border-radius:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+.btn.secondary{
+  background:transparent;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+}
+
+.cta-row{
+  display:flex;
+  gap:14px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.grid, .agents-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
 .agent-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-  padding:16px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius:18px;
+  padding:22px;
+  color:#000;
+  font-weight:500;
+  transition:.35s;
 }
 .agent-card:hover{
-  transform: translateY(-8px) scale(1.03);
-  box-shadow:0 16px 32px rgba(0,0,0,0.6);
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:0 25px 50px rgba(0,0,0,.45);
 }
-.agent-icon{
-  font-size:28px;
-  color:var(--accent);
-  margin-bottom:8px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition: transform 0.3s ease;
+
+.card{
+  background:linear-gradient(180deg,#141c3a,#0f162f);
+  border-radius:18px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.06);
+  transition:.35s;
 }
-.agent-card:hover .agent-icon{
-  transform: scale(1.15);
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 25px 50px rgba(0,0,0,.6);
 }
-input,textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:6px;color:#e7f2ff;width:100%;}
-footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;margin-top:28px;}
-@media(max-width:900px){#hero{grid-template-columns:1fr;padding:30px 0}.hero-right{order:2}.hero-left{order:1}}
-@media(max-width:520px){.container{padding:18px}}
+
+input,textarea{
+  width:100%;
+  background:#0f162f;
+  border:1px solid rgba(255,255,255,.15);
+  padding:12px;
+  border-radius:10px;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+footer{
+  background:#070b18;
+  padding:50px 20px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+@media(max-width:768px){
+  h1{font-size:34px}
+}
 </style>
 </head>
+
 <body>
 
-<main class="container">
-
-<section id="hero">
-  <div class="hero-left">
-    <h1>Autonomous AI Agents that move your business forward</h1>
-    <p class="hero-lead">Custom agents for all industries: AI, IT, finance, banking, insurance, logistics, transport, food, agriculture, construction, real estate, marketing, automotive, service providers and freelancers. Secure, scalable, ready to deploy.</p>
-    <div class="cta-row">
-      <button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Request Demo</button>
-      <button class="btn secondary" onclick="document.getElementById('technologies').scrollIntoView()">View Technologies</button>
-    </div>
-    <div class="features">
-      <div class="feature">Fast implementation (Pilot in 7–14 days)</div>
-      <div class="feature">GDPR & Security by Design</div>
-      <div class="feature">On‑Premise, Cloud or Hybrid</div>
+<header>
+  <div class="brand">
+    <div class="logo">AI</div>
+    <div>
+      <strong>AI Agents Solutions</strong><br>
+      <small style="color:var(--muted)">Secure AI agents for enterprises</small>
     </div>
   </div>
-  <aside class="hero-right">
-    <h3>Quick Facts</h3>
-    <p style="color:var(--muted)">Launch within weeks, flexible integrations (CRM, ERP, ticketing), full data control.</p>
-  </aside>
-</section>
+  <nav>
+    <a href="#agents">Agents</a>
+    <a href="#industries">Industries</a>
+    <a href="#llm-platform">Internal LLM Platform</a>
+    <a href="#technologies">Technologies</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<!-- Agents Section -->
-<section id="agents">
-<h2>Our Agents</h2>
-<div class="agents-grid">
-<div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)"><div class="agent-icon"><i class="fas fa-chart-line"></i></div><h4>Data Analytics Agents</h4><p>Automated reports, visualizations & KPIs.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)"><div class="agent-icon"><i class="fas fa-wallet"></i></div><h4>Finance Agents</h4><p>Revenue, inventory and liquidity forecasting.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#7fffd4)"><div class="agent-icon"><i class="fas fa-university"></i></div><h4>Banking Agents</h4><p>Credit checks, scoring & fraud monitoring.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)"><div class="agent-icon"><i class="fas fa-file-contract"></i></div><h4>Insurance Agents</h4><p>Policy management & claims processing.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ff99c8)"><div class="agent-icon"><i class="fas fa-shipping-fast"></i></div><h4>Transport Agents</h4><p>Transport planning & supply chain optimization.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)"><div class="agent-icon"><i class="fas fa-carrot"></i></div><h4>Agriculture Agents</h4><p>Supply chain, quality control & product tracking.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ffe400,#ffec99)"><div class="agent-icon"><i class="fas fa-utensils"></i></div><h4>Food Industry Agents</h4><p>Supply chain, quality control & product tracking.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#8a2be2,#b19cd9)"><div class="agent-icon"><i class="fas fa-people-arrows"></i></div><h4>Service Provider Agents</h4><p>Project management & workflow automation.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff69b4,#ffb6c1)"><div class="agent-icon"><i class="fas fa-user-pen"></i></div><h4>Freelancer Agents</h4><p>Project management & workflow automation.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#00ced1,#40e0d0)"><div class="agent-icon"><i class="fas fa-people-carry"></i></div><h4>Sales Agents</h4><p>Prospecting, outreach & appointment setting.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff6347,#ff8c69)"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing Agents</h4><p>Content, ads & social media automation.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#1e90ff,#87cefa)"><div class="agent-icon"><i class="fas fa-headset"></i></div><h4>Support Agents</h4><p>24/7 customer support & ticket triage.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff4500,#ff8c00)"><div class="agent-icon"><i class="fas fa-leaf"></i></div><h4>ESG Agents</h4><p>ESG data capture & reporting.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#8b0000,#dc143c)"><div class="agent-icon"><i class="fas fa-brain"></i></div><h4>AI Agents</h4><p>Machine learning, LLM integration & automation.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#20b2aa,#3cb371)"><div class="agent-icon"><i class="fas fa-database"></i></div><h4>Data Engineering Agents</h4><p>Pipelines, ETL & cloud sync.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#daa520,#ffd700)"><div class="agent-icon"><i class="fas fa-file-alt"></i></div><h4>Sustainability Reporting Agents</h4><p>Automated reports & audit trails.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff8c00,#ffa500)"><div class="agent-icon"><i class="fas fa-receipt"></i></div><h4>Accounting Agents</h4><p>Document capture, posting & month-end closing.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#4682b4,#87cefa)"><div class="agent-icon"><i class="fas fa-calculator"></i></div><h4>Controlling Agents</h4><p>Cost analysis, budgeting & variance reporting.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ff69b4)"><div class="agent-icon"><i class="fas fa-users"></i></div><h4>CrewAI Team Agents</h4><p>Coordinated agent teams solving complex workflows.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#a52a2a,#d2691e)"><div class="agent-icon"><i class="fas fa-car"></i></div><h4>Automobile Agents</h4><p>Automation & analytics for the automotive industry.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#5f9ea0,#7fffd4)"><div class="agent-icon"><i class="fas fa-industry"></i></div><h4>Automotive Agents</h4><p>Workflow optimization & production data.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ffdead,#f0e68c)"><div class="agent-icon"><i class="fas fa-building"></i></div><h4>Construction Agents</h4><p>Project planning & resource management.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#7cfc00,#32cd32)"><div class="agent-icon"><i class="fas fa-home"></i></div><h4>Real Estate Agents</h4><p>Property management & market analysis.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff4500,#ff6347)"><div class="agent-icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing & Advertising Campaign Agents</h4><p>Automation of campaigns, content & ads.</p></div>
+<main>
+
+<!-- HERO -->
+<section class="container">
+<h1>Autonomous AI Agents for Enterprise Transformation</h1>
+<p class="hero-lead">
+We design, build and operate secure AI agents for analytics, automation,
+decision support and internal knowledge — fully scalable and GDPR-compliant.
+</p>
+
+<div class="cta-row">
+<button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Free Consultation</button>
+<button class="btn secondary" onclick="document.getElementById('agents').scrollIntoView()">View Agents</button>
 </div>
 </section>
-<!-- NEW: Industries & How Our AI Agents Help -->
-<section id="industries">
-<h2>Industries & How Our AI Agents Deliver Value</h2>
+
+<!-- AGENTS -->
+<section id="agents" class="container">
+<h2>AI Agents</h2>
 
 <div class="agents-grid">
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)">
-    <h4>Finance</h4>
-    <p>Automated forecasting, risk analysis, liquidity planning, and fraud detection for faster and more secure decisions.</p>
+  <div class="agent-card" style="background:linear-gradient(135deg,#ff9a9e,#fad0c4)">
+    <h4>Finance & Controlling</h4>
+    <p>Forecasting, cashflow optimization, reporting automation and risk monitoring.</p>
   </div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#7fffd4)">
-    <h4>Banking</h4>
-    <p>Credit scoring, automated KYC processes, loan risk assessment, and real-time monitoring of suspicious activities.</p>
+  <div class="agent-card" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)">
+    <h4>Banking & Risk</h4>
+    <p>Credit scoring, fraud detection, compliance checks and document intelligence.</p>
   </div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)">
+  <div class="agent-card" style="background:linear-gradient(135deg,#84fab0,#8fd3f4)">
     <h4>Insurance</h4>
-    <p>Claims automation, policy verification, intelligent document processing, and fraud detection using AI-driven agents.</p>
+    <p>Claims automation, fraud detection, contract analysis and customer support.</p>
   </div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#5f9ea0,#7fffd4)">
-    <h4>Automotive</h4>
-    <p>Production optimization, quality control, predictive maintenance, and supply-chain analytics powered by AI agents.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#a52a2a,#d2691e)">
-    <h4>Automobile Industry</h4>
-    <p>Process automation, error detection, manufacturing analytics, and sales support tailored for automotive workflows.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ff99c8)">
-    <h4>Transport & Logistics</h4>
-    <p>Optimized route planning, capacity forecasting, ticket analysis, disruption handling, and automated customer service.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)">
-    <h4>Agriculture</h4>
-    <p>Yield prediction, weather analytics, soil data evaluation, livestock monitoring, and resource optimization.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffe400,#ffec99)">
-    <h4>Food Industry</h4>
-    <p>Quality assurance, supply chain monitoring, traceability, and inventory optimization through intelligent automation.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#8a2be2,#b19cd9)">
-    <h4>Service Sector</h4>
-    <p>Automation of workflows, resource planning, project management, and smart customer support solutions.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff69b4,#ffb6c1)">
-    <h4>Freelancers</h4>
-    <p>Project organization, time tracking, client communication, proposal automation, and content generation.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#1e90ff,#87cefa)">
-    <h4>Marketing & Media</h4>
-    <p>Campaign automation, content creation, ad optimization, and data-driven audience analysis.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#7cfc00,#32cd32)">
-    <h4>Real Estate</h4>
-    <p>Property analysis, market forecasting, rental management, portfolio optimization, and document automation.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffdead,#f0e68c)">
-    <h4>Construction & Architecture</h4>
-    <p>Project planning, cost tracking, resource management, and risk analysis with AI-based intelligent agents.</p>
+  <div class="agent-card" style="background:linear-gradient(135deg,#fbc2eb,#a6c1ee)">
+    <h4>Automotive & Manufacturing</h4>
+    <p>Predictive maintenance, quality analytics and production optimization.</p>
   </div>
 
   <div class="agent-card" style="background:linear-gradient(135deg,#20b2aa,#3cb371)">
     <h4>Energy & Sustainability</h4>
-    <p>Load management, consumption analytics, ESG reporting, and optimization of renewable energy infrastructures.</p>
+    <p>Load management, consumption analytics, ESG reporting and renewable optimization.</p>
   </div>
 
   <div class="agent-card" style="background:linear-gradient(135deg,#00ced1,#40e0d0)">
     <h4>E-Commerce & Retail</h4>
-    <p>Personalization, demand forecasting, dynamic pricing, returns handling, and automated customer communication.</p>
+    <p>Personalization, demand forecasting, dynamic pricing and automated communication.</p>
   </div>
-
 </div>
 </section>
 
-<section id="llm-platform">
+<!-- INDUSTRIES -->
+<section id="industries" class="container">
+<h2>Industries We Serve</h2>
+<div class="grid">
+  <div class="card"><h4>Finance & Banking</h4><p>Risk, compliance, analytics and automation.</p></div>
+  <div class="card"><h4>Insurance</h4><p>Claims, fraud, document intelligence.</p></div>
+  <div class="card"><h4>Automotive</h4><p>Production, quality and supply chain.</p></div>
+  <div class="card"><h4>Logistics</h4><p>Routing, forecasting and optimization.</p></div>
+  <div class="card"><h4>Energy & ESG</h4><p>Sustainability analytics and reporting.</p></div>
+  <div class="card"><h4>Retail & Marketing</h4><p>Customer intelligence and automation.</p></div>
+</div>
+</section>
+
+<!-- LLM PLATFORM -->
+<section id="llm-platform" class="container">
 <h2>Internal LLM Platform</h2>
-<p>Our platform enables companies to maintain full control over AI:</p>
-<ul>
-<li>Deployment of own LLMs (Open-Source & Proprietary)</li>
-<li>Fine-tuning on enterprise data</li>
+<p>Our enterprise LLM platform ensures full AI sovereignty:</p>
+<ul style="margin-left:20px">
+<li>Deployment of proprietary & open-source LLMs</li>
+<li>Fine-tuning and RAG on internal enterprise data</li>
 <li>On-premise, private cloud or hybrid hosting</li>
-<li>Secure API interfaces for internal systems & agents</li>
-<li>Multi-tenant architecture for large enterprises</li>
+<li>Secure APIs for internal systems and agents</li>
+<li>Multi-tenant architecture for large organizations</li>
 </ul>
 </section>
 
-<section id="technologies">
+<!-- TECHNOLOGIES -->
+<section id="technologies" class="container">
 <h2>Technologies & Tools</h2>
 <div class="agents-grid">
-<div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)"><h4>Code & Backend</h4><p>Python (FastAPI), Node.js, REST/GraphQL, Docker, Kubernetes.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)"><h4>Frontend & UX</h4><p>React, Next.js, Tailwind CSS, responsive design.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)"><h4>No-Code / Automation</h4><p>ChatGPT, n8n, Make, AutoGen, Dify, MindStudio – rapid prototyping & automation.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)"><h4>Databases</h4><p>PostgreSQL, MySQL, MariaDB, MongoDB, Oracle, Snowflake; cloud DBs on AWS, Azure, GCP.</p></div>
-<div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ffb6c1)"><h4>LLM</h4><p>Internal LLM platform, fine-tuning, secure API integrations.</p></div>
+  <div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)">
+    <h4>Backend & APIs</h4>
+    <p>Python (FastAPI), Node.js, REST, GraphQL, Docker, Kubernetes.</p>
+  </div>
+
+  <div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)">
+    <h4>Frontend & UX</h4>
+    <p>React, Next.js, Tailwind CSS, responsive enterprise UX.</p>
+  </div>
+
+  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)">
+    <h4>No-Code & Automation</h4>
+    <p>n8n, Make, AutoGen, Dify, MindStudio, ChatGPT.</p>
+  </div>
+
+  <div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)">
+    <h4>Databases</h4>
+    <p>PostgreSQL, MySQL, MongoDB, Oracle, Snowflake, AWS, Azure, GCP.</p>
+  </div>
+
+  <div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ffb6c1)">
+    <h4>LLM & AI</h4>
+    <p>Internal LLMs, fine-tuning, RAG, secure AI pipelines.</p>
+  </div>
 </div>
 </section>
 
-<section id="contact">
+<!-- CONTACT -->
+<section id="contact" class="container">
 <h2>Contact</h2>
-<form id="contactForm">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<input type="text" name="company" placeholder="Company (optional)">
-<textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-<div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-<button type="submit" class="btn">Send</button>
-<button type="reset" class="btn secondary">Reset</button>
-</div>
+<form>
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<input type="text" placeholder="Company (optional)">
+<textarea rows="5" placeholder="Your Message" required></textarea>
+<button class="btn">Send Message</button>
 </form>
 </section>
+
+</main>
 
 <footer>
 <section id="impressum">
@@ -490,22 +527,21 @@ footer{padding:24px 20px;text-align:center;color:var(--muted);font-size:14px;mar
 <p>
 AI Agents Solutions<br>
 Responsible: Dr. Sigfried Weiss<br>
-Phone: 0049 176/31591931<br>
+Phone: +49 176 31591931<br>
 Email: vertrieb@aisolutios.de<br>
 Address: Obere Waiblinger Strasse 147a, 70374 Stuttgart<br>
 Tax number: 95 408 / 320 96, Finanzamt Stuttgart II
 </p>
+
 <h3>Data Protection</h3>
 <p>
-We take the protection of your personal data very seriously. We process your data exclusively in accordance with the legal provisions of the GDPR. All information you provide will only be used to process your inquiries, communicate with you, and deliver our services.<br><br>
-We take technical and organizational measures to protect your data from unauthorized access, loss or misuse. This includes encryption, access controls and regular security audits.<br><br>
-Your data is stored only as long as necessary for the purpose of processing or as required by law. You always have the right to access, correct, delete or restrict the processing of your data.<br><br>
-Our website may use cookies and tracking technologies to improve functionality and perform statistical analysis. The contact form transfers your data exclusively encrypted and directly to our internal systems or n8n workflows. There is no transfer to unaffiliated third parties.
+We process personal data strictly in accordance with GDPR regulations.
+Data is used exclusively for communication and service delivery.
+All transmissions are encrypted and processed via secure internal systems or n8n workflows.
+No data is shared with unaffiliated third parties.
 </p>
 </section>
 </footer>
 
 </body>
 </html>
-
-
