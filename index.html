@@ -244,8 +244,8 @@ AI Agents Solutions · Stuttgart<br>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Agents Solutions – Secure AI Agents for Enterprises</title>
-<meta name="description" content="Enterprise-grade AI agents, internal LLM platforms, automation and analytics. Secure, scalable and GDPR-compliant.">
+<title>AI Agents Solutions – Autonomous AI Agents for Enterprises</title>
+<meta name="description" content="Secure, GDPR-compliant AI agents for enterprises. Automation, analytics, LLM platform, on-premise & cloud.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -272,8 +272,8 @@ body{
 
 header{
   position:sticky;top:0;z-index:1000;
-  background:rgba(10,15,30,.85);
-  backdrop-filter:blur(10px);
+  background:rgba(10,15,30,.8);
+  backdrop-filter:blur(8px);
   padding:18px 28px;
   display:flex;justify-content:space-between;align-items:center;
 }
@@ -291,83 +291,74 @@ nav a{
 }
 nav a:hover{color:var(--primary)}
 
-.container{max-width:1200px;margin:auto;padding:80px 20px}
-section{margin-bottom:90px}
+.container{max-width:1200px;margin:auto;padding:70px 20px}
+section{margin-bottom:80px}
 
-h1{font-size:44px;margin-bottom:14px}
-h2{font-size:32px;margin-bottom:16px}
+h1{font-size:42px;margin-bottom:12px}
+h2{font-size:30px;margin-bottom:14px}
 h4{margin-bottom:6px}
 
-.hero-lead{
-  font-size:18px;
-  color:var(--muted);
-  max-width:900px;
-}
+.hero-lead{font-size:18px;color:var(--muted);max-width:850px}
 
 .btn{
   background:linear-gradient(135deg,var(--primary),#ff8c42);
   color:#000;
-  padding:14px 26px;
-  border:none;border-radius:14px;
+  padding:14px 24px;
+  border:none;border-radius:12px;
   font-weight:700;
   cursor:pointer;
 }
 .btn.secondary{
   background:transparent;
   color:#fff;
-  border:1px solid rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.2);
 }
 
-.cta-row{
-  display:flex;
-  gap:14px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
+.cta-row{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
 
-.grid, .agents-grid{
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:18px;
 }
 
-.agent-card{
-  border-radius:18px;
-  padding:22px;
-  color:#000;
-  font-weight:500;
-  transition:.35s;
-}
-.agent-card:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 25px 50px rgba(0,0,0,.45);
-}
-
 .card{
   background:linear-gradient(180deg,#141c3a,#0f162f);
-  border-radius:18px;
+  border-radius:16px;
   padding:22px;
-  border:1px solid rgba(255,255,255,.06);
-  transition:.35s;
+  border:1px solid rgba(255,255,255,.05);
+  transition:.3s;
 }
 .card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 25px 50px rgba(0,0,0,.6);
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.card i{
+  font-size:28px;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.feature{
+  background:rgba(255,255,255,.04);
+  padding:14px;
+  border-radius:12px;
 }
 
 input,textarea{
   width:100%;
   background:#0f162f;
-  border:1px solid rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.1);
   padding:12px;
-  border-radius:10px;
+  border-radius:8px;
   color:#fff;
   margin-bottom:10px;
 }
 
 footer{
   background:#070b18;
-  padding:50px 20px;
+  padding:40px 20px;
   color:var(--muted);
   font-size:14px;
 }
@@ -385,15 +376,14 @@ footer{
     <div class="logo">AI</div>
     <div>
       <strong>AI Agents Solutions</strong><br>
-      <small style="color:var(--muted)">Secure AI agents for enterprises</small>
+      <small style="color:var(--muted)">Secure AI Agents for Enterprises</small>
     </div>
   </div>
   <nav>
-    <a href="#agents">Agents</a>
-    <a href="#industries">Industries</a>
-    <a href="#llm-platform">Internal LLM Platform</a>
-    <a href="#technologies">Technologies</a>
-    <a href="#contact">Contact</a>
+    <a href="#agenten">Agents</a>
+    <a href="#branchen">Industries</a>
+    <a href="#llm">LLM Platform</a>
+    <a href="#kontakt">Contact</a>
   </nav>
 </header>
 
@@ -401,147 +391,90 @@ footer{
 
 <!-- HERO -->
 <section class="container">
-<h1>Autonomous AI Agents for Enterprise Transformation</h1>
+<h1>Autonomous AI Agents for Your Enterprise</h1>
 <p class="hero-lead">
-We design, build and operate secure AI agents for analytics, automation,
-decision support and internal knowledge — fully scalable and GDPR-compliant.
+We design customized AI agents for analytics, automation,
+reporting and decision support — secure, scalable and GDPR-compliant.
 </p>
 
 <div class="cta-row">
-<button class="btn" onclick="document.getElementById('contact').scrollIntoView()">Free Consultation</button>
-<button class="btn secondary" onclick="document.getElementById('agents').scrollIntoView()">View Agents</button>
+<button class="btn" onclick="document.getElementById('kontakt').scrollIntoView()">Free Initial Consultation</button>
+<button class="btn secondary" onclick="document.getElementById('agenten').scrollIntoView()">View Agents</button>
+</div>
+
+<div class="grid" style="margin-top:30px">
+<div class="feature">🚀 Pilot in 7–14 days</div>
+<div class="feature">🔒 On-premise, cloud or hybrid</div>
+<div class="feature">📜 GDPR & audit-ready</div>
 </div>
 </section>
 
 <!-- AGENTS -->
-<section id="agents" class="container">
-<h2>AI Agents</h2>
+<section id="agenten" class="container">
+<h2>Our AI Agents</h2>
 
-<div class="agents-grid">
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff9a9e,#fad0c4)">
-    <h4>Finance & Controlling</h4>
-    <p>Forecasting, cashflow optimization, reporting automation and risk monitoring.</p>
-  </div>
+<div class="grid">
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)">
-    <h4>Banking & Risk</h4>
-    <p>Credit scoring, fraud detection, compliance checks and document intelligence.</p>
-  </div>
+<div class="card"><i class="fas fa-chart-line"></i><h4>Data Analytics Agents</h4><p>Automated reports, KPIs and dashboards.</p></div>
+<div class="card"><i class="fas fa-wallet"></i><h4>Finance Agents</h4><p>Forecasting, cashflow and budget planning.</p></div>
+<div class="card"><i class="fas fa-university"></i><h4>Banking Agents</h4><p>Credit scoring and fraud detection.</p></div>
+<div class="card"><i class="fas fa-file-contract"></i><h4>Insurance Agents</h4><p>Claims processing and policy analysis.</p></div>
+<div class="card"><i class="fas fa-car"></i><h4>Automotive Agents</h4><p>Production data and predictive maintenance.</p></div>
+<div class="card"><i class="fas fa-shipping-fast"></i><h4>Logistics Agents</h4><p>Routing, capacity planning and supply chain.</p></div>
+<div class="card"><i class="fas fa-bullhorn"></i><h4>Marketing Agents</h4><p>Content, campaigns and ads.</p></div>
+<div class="card"><i class="fas fa-headset"></i><h4>Support Agents</h4><p>24/7 customer service and ticket triage.</p></div>
+<div class="card"><i class="fas fa-database"></i><h4>Data Engineering Agents</h4><p>ETL, pipelines and cloud synchronization.</p></div>
+<div class="card"><i class="fas fa-brain"></i><h4>LLM Agents</h4><p>Internal AI, RAG and automation.</p></div>
 
-  <div class="agent-card" style="background:linear-gradient(135deg,#84fab0,#8fd3f4)">
-    <h4>Insurance</h4>
-    <p>Claims automation, fraud detection, contract analysis and customer support.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#fbc2eb,#a6c1ee)">
-    <h4>Automotive & Manufacturing</h4>
-    <p>Predictive maintenance, quality analytics and production optimization.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#20b2aa,#3cb371)">
-    <h4>Energy & Sustainability</h4>
-    <p>Load management, consumption analytics, ESG reporting and renewable optimization.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#00ced1,#40e0d0)">
-    <h4>E-Commerce & Retail</h4>
-    <p>Personalization, demand forecasting, dynamic pricing and automated communication.</p>
-  </div>
 </div>
 </section>
 
 <!-- INDUSTRIES -->
-<section id="industries" class="container">
-<h2>Industries We Serve</h2>
+<section id="branchen" class="container">
+<h2>Industries & Value Creation</h2>
+
 <div class="grid">
-  <div class="card"><h4>Finance & Banking</h4><p>Risk, compliance, analytics and automation.</p></div>
-  <div class="card"><h4>Insurance</h4><p>Claims, fraud, document intelligence.</p></div>
-  <div class="card"><h4>Automotive</h4><p>Production, quality and supply chain.</p></div>
-  <div class="card"><h4>Logistics</h4><p>Routing, forecasting and optimization.</p></div>
-  <div class="card"><h4>Energy & ESG</h4><p>Sustainability analytics and reporting.</p></div>
-  <div class="card"><h4>Retail & Marketing</h4><p>Customer intelligence and automation.</p></div>
+<div class="card"><h4>Finance & Banking</h4><p>Risk, compliance, reporting and scoring.</p></div>
+<div class="card"><h4>Insurance</h4><p>Claims, documents and fraud detection.</p></div>
+<div class="card"><h4>Automotive</h4><p>Quality, production and supply chain.</p></div>
+<div class="card"><h4>Logistics</h4><p>Routing, planning and disruption management.</p></div>
+<div class="card"><h4>Marketing & Media</h4><p>Content and campaign automation.</p></div>
+<div class="card"><h4>Energy & ESG</h4><p>Reporting and sustainability analytics.</p></div>
 </div>
 </section>
 
-<!-- LLM PLATFORM -->
-<section id="llm-platform" class="container">
+<!-- LLM -->
+<section id="llm" class="container">
 <h2>Internal LLM Platform</h2>
-<p>Our enterprise LLM platform ensures full AI sovereignty:</p>
 <ul style="margin-left:20px">
-<li>Deployment of proprietary & open-source LLMs</li>
-<li>Fine-tuning and RAG on internal enterprise data</li>
-<li>On-premise, private cloud or hybrid hosting</li>
-<li>Secure APIs for internal systems and agents</li>
-<li>Multi-tenant architecture for large organizations</li>
+<li>Proprietary LLMs (open-source & commercial)</li>
+<li>RAG & fine-tuning on enterprise data</li>
+<li>On-premise / private cloud deployment</li>
+<li>Full data sovereignty & security</li>
 </ul>
 </section>
 
-<!-- TECHNOLOGIES -->
-<section id="technologies" class="container">
-<h2>Technologies & Tools</h2>
-<div class="agents-grid">
-  <div class="agent-card" style="background:linear-gradient(135deg,#4a4aff,#6a6aff)">
-    <h4>Backend & APIs</h4>
-    <p>Python (FastAPI), Node.js, REST, GraphQL, Docker, Kubernetes.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff7f50,#ffb366)">
-    <h4>Frontend & UX</h4>
-    <p>React, Next.js, Tailwind CSS, responsive enterprise UX.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#32cd32,#90ee90)">
-    <h4>No-Code & Automation</h4>
-    <p>n8n, Make, AutoGen, Dify, MindStudio, ChatGPT.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ffa500,#ffec99)">
-    <h4>Databases</h4>
-    <p>PostgreSQL, MySQL, MongoDB, Oracle, Snowflake, AWS, Azure, GCP.</p>
-  </div>
-
-  <div class="agent-card" style="background:linear-gradient(135deg,#ff1493,#ffb6c1)">
-    <h4>LLM & AI</h4>
-    <p>Internal LLMs, fine-tuning, RAG, secure AI pipelines.</p>
-  </div>
-</div>
-</section>
-
 <!-- CONTACT -->
-<section id="contact" class="container">
+<section id="kontakt" class="container">
 <h2>Contact</h2>
 <form>
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<input type="text" placeholder="Company (optional)">
-<textarea rows="5" placeholder="Your Message" required></textarea>
-<button class="btn">Send Message</button>
+<input placeholder="Name" required>
+<input type="email" placeholder="Email" required>
+<textarea rows="5" placeholder="Your inquiry"></textarea>
+<button class="btn">Submit</button>
 </form>
 </section>
 
 </main>
 
 <footer>
-<section id="impressum">
-<h3>Legal Notice</h3>
 <p>
-AI Agents Solutions<br>
-Responsible: Dr. Sigfried Weiss<br>
-Phone: +49 176 31591931<br>
-Email: vertrieb@aisolutios.de<br>
-Address: Obere Waiblinger Strasse 147a, 70374 Stuttgart<br>
-Tax number: 95 408 / 320 96, Finanzamt Stuttgart II
+AI Agents Solutions · Stuttgart<br>
+📧 vertrieb@aisolutios.de · ☎ +49 176 31591931<br><br>
+© 2025 – GDPR compliant · All rights reserved
 </p>
-
-<h3>Data Protection</h3>
-<p>
-We process personal data strictly in accordance with GDPR regulations.
-Data is used exclusively for communication and service delivery.
-All transmissions are encrypted and processed via secure internal systems or n8n workflows.
-No data is shared with unaffiliated third parties.
-</p>
-</section>
 </footer>
 
 </body>
 </html>
+
