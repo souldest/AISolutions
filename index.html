@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AI Agents Solutions – Autonome KI-Agenten für Unternehmen</title>
-<meta name="description" content="Sichere, DSGVO-konforme KI-Agenten für Unternehmen. Automatisierung, Analyse, LLM-Plattform, On-Premise & Cloud.">
+<meta name="description" content="Autonome, sichere und DSGVO-konforme KI-Agenten für Unternehmen. Analyse, Automatisierung, interne LLM-Plattform – On-Premise & Cloud.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
   --text:#e8ecf3;
   --muted:#9aa4b2;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:Inter,Arial,sans-serif;
@@ -29,15 +28,13 @@ body{
   color:var(--text);
   line-height:1.6;
 }
-
 header{
   position:sticky;top:0;z-index:1000;
-  background:rgba(10,15,30,.8);
+  background:rgba(10,15,30,.85);
   backdrop-filter:blur(8px);
   padding:18px 28px;
   display:flex;justify-content:space-between;align-items:center;
 }
-
 .brand{display:flex;align-items:center;gap:12px}
 .logo{
   width:44px;height:44px;border-radius:12px;
@@ -45,25 +42,20 @@ header{
   display:flex;align-items:center;justify-content:center;
   font-weight:700;
 }
-
 nav a{
   color:#fff;text-decoration:none;margin-left:18px;font-weight:600;
 }
 nav a:hover{color:var(--primary)}
-
 .container{max-width:1200px;margin:auto;padding:70px 20px}
-section{margin-bottom:80px}
-
-h1{font-size:42px;margin-bottom:12px}
-h2{font-size:30px;margin-bottom:14px}
+section{margin-bottom:90px}
+h1{font-size:44px;margin-bottom:14px}
+h2{font-size:32px;margin-bottom:16px}
 h4{margin-bottom:6px}
-
-.hero-lead{font-size:18px;color:var(--muted);max-width:850px}
-
+.hero-lead{font-size:18px;color:var(--muted);max-width:900px}
 .btn{
   background:linear-gradient(135deg,var(--primary),#ff8c42);
   color:#000;
-  padding:14px 24px;
+  padding:14px 26px;
   border:none;border-radius:12px;
   font-weight:700;
   cursor:pointer;
@@ -71,21 +63,18 @@ h4{margin-bottom:6px}
 .btn.secondary{
   background:transparent;
   color:#fff;
-  border:1px solid rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.25);
 }
-
-.cta-row{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
-
+.cta-row{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:18px;
 }
-
 .card{
   background:linear-gradient(180deg,#141c3a,#0f162f);
   border-radius:16px;
-  padding:22px;
+  padding:24px;
   border:1px solid rgba(255,255,255,.05);
   transition:.3s;
 }
@@ -93,19 +82,17 @@ h4{margin-bottom:6px}
   transform:translateY(-8px);
   box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
-
 .card i{
-  font-size:28px;
+  font-size:30px;
   color:var(--primary);
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
-
 .feature{
-  background:rgba(255,255,255,.04);
-  padding:14px;
+  background:rgba(255,255,255,.05);
+  padding:16px;
   border-radius:12px;
+  font-weight:600;
 }
-
 input,textarea{
   width:100%;
   background:#0f162f;
@@ -113,16 +100,14 @@ input,textarea{
   padding:12px;
   border-radius:8px;
   color:#fff;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
-
 footer{
   background:#070b18;
-  padding:40px 20px;
+  padding:50px 20px;
   color:var(--muted);
   font-size:14px;
 }
-
 @media(max-width:768px){
   h1{font-size:34px}
 }
@@ -151,52 +136,54 @@ footer{
 
 <!-- HERO -->
 <section class="container">
-<h1>Autonome KI-Agenten für Ihr Unternehmen</h1>
+<h1>Autonome KI-Agenten, die Prozesse messbar verbessern</h1>
 <p class="hero-lead">
-Wir entwickeln maßgeschneiderte KI-Agenten für Analyse, Automatisierung, Reporting und Entscheidungsunterstützung – sicher, skalierbar und DSGVO-konform.
+Wir entwickeln unternehmensspezifische KI-Agenten für Analyse, Automatisierung und Entscheidungsunterstützung –  
+sicher, skalierbar und vollständig DSGVO-konform.  
+Von der ersten Idee bis zum produktiven Einsatz in wenigen Wochen.
 </p>
 
 <div class="cta-row">
 <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView()">Kostenlose Erstberatung</button>
-<button class="btn secondary" onclick="document.getElementById('agenten').scrollIntoView()">Agenten ansehen</button>
+<button class="btn secondary" onclick="document.getElementById('agenten').scrollIntoView()">Use-Cases ansehen</button>
 </div>
 
-<div class="grid" style="margin-top:30px">
-<div class="feature">🚀 Pilot in 7–14 Tagen</div>
-<div class="feature">🔒 On-Premise, Cloud oder Hybrid</div>
-<div class="feature">📜 DSGVO & auditfähig</div>
+<div class="grid" style="margin-top:34px">
+<div class="feature">🚀 Pilot & MVP in 7–14 Tagen</div>
+<div class="feature">🔒 On-Premise, Private Cloud oder Hybrid</div>
+<div class="feature">📜 DSGVO-konform & auditfähig</div>
 </div>
 </section>
 
 <!-- AGENTEN -->
 <section id="agenten" class="container">
-<h2>Unsere KI-Agenten</h2>
+<h2>Unsere KI-Agentenlösungen</h2>
 
 <div class="grid">
-<div class="card"><i class="fas fa-chart-line"></i><h4>Datenanalyse-Agenten</h4><p>Automatisierte Reports, KPIs & Dashboards.</p></div>
-<div class="card"><i class="fas fa-wallet"></i><h4>Finanz-Agenten</h4><p>Forecasting, Cashflow & Budgetplanung.</p></div>
-<div class="card"><i class="fas fa-university"></i><h4>Banken-Agenten</h4><p>Kredit-Scoring & Fraud Detection.</p></div>
-<div class="card"><i class="fas fa-file-contract"></i><h4>Versicherungs-Agenten</h4><p>Schadenbearbeitung & Policenprüfung.</p></div>
-<div class="card"><i class="fas fa-car"></i><h4>Automotive-Agenten</h4><p>Produktionsdaten & Predictive Maintenance.</p></div>
-<div class="card"><i class="fas fa-shipping-fast"></i><h4>Logistik-Agenten</h4><p>Routen, Kapazitäten & Supply Chain.</p></div>
-<div class="card"><i class="fas fa-bullhorn"></i><h4>Marketing-Agenten</h4><p>Content, Kampagnen & Ads.</p></div>
-<div class="card"><i class="fas fa-headset"></i><h4>Support-Agenten</h4><p>24/7 Kundenservice & Ticket-Triage.</p></div>
-<div class="card"><i class="fas fa-database"></i><h4>Data-Engineering-Agenten</h4><p>ETL, Pipelines & Cloud-Synchronisation.</p></div>
-<div class="card"><i class="fas fa-brain"></i><h4>LLM-Agenten</h4><p>Interne KI, RAG & Automatisierung.</p></div>
+<div class="card"><i class="fas fa-chart-line"></i><h4>Datenanalyse-Agenten</h4><p>Automatisierte Analysen, KPI-Monitoring und Management-Reports in Echtzeit.</p></div>
+<div class="card"><i class="fas fa-wallet"></i><h4>Finanz-Agenten</h4><p>Forecasting, Cashflow-Prognosen, Budgetkontrolle und Abweichungsanalysen.</p></div>
+<div class="card"><i class="fas fa-university"></i><h4>Banken-Agenten</h4><p>Kredit-Scoring, Risikomodelle, Betrugserkennung und regulatorische Reports.</p></div>
+<div class="card"><i class="fas fa-file-contract"></i><h4>Versicherungs-Agenten</h4><p>Schadenbearbeitung, Dokumentenanalyse und automatisierte Policenprüfung.</p></div>
+<div class="card"><i class="fas fa-car"></i><h4>Automotive-Agenten</h4><p>Produktionsüberwachung, Qualitätsanalysen und Predictive Maintenance.</p></div>
+<div class="card"><i class="fas fa-shipping-fast"></i><h4>Logistik-Agenten</h4><p>Routenoptimierung, Kapazitätsplanung und Störungsmanagement.</p></div>
+<div class="card"><i class="fas fa-bullhorn"></i><h4>Marketing-Agenten</h4><p>Kampagnensteuerung, Content-Generierung und Performance-Optimierung.</p></div>
+<div class="card"><i class="fas fa-headset"></i><h4>Support-Agenten</h4><p>24/7 Kundenservice, Ticket-Priorisierung und Wissensdatenbanken.</p></div>
+<div class="card"><i class="fas fa-database"></i><h4>Data-Engineering-Agenten</h4><p>ETL-Pipelines, Datenintegration und Cloud-Synchronisation.</p></div>
+<div class="card"><i class="fas fa-brain"></i><h4>LLM-Agenten</h4><p>Interne KI-Assistenten, RAG-Systeme und sichere Wissensautomatisierung.</p></div>
 </div>
 </section>
 
 <!-- BRANCHEN -->
 <section id="branchen" class="container">
-<h2>Branchen & Mehrwert</h2>
+<h2>Branchen & konkreter Mehrwert</h2>
 
 <div class="grid">
-<div class="card"><h4>Finanzen & Banken</h4><p>Risiko, Compliance, Reporting, Scoring.</p></div>
-<div class="card"><h4>Versicherungen</h4><p>Schäden, Dokumente, Betrug.</p></div>
-<div class="card"><h4>Automotive</h4><p>Qualität, Produktion, Supply Chain.</p></div>
-<div class="card"><h4>Logistik</h4><p>Routen, Planung, Störungen.</p></div>
-<div class="card"><h4>Marketing & Medien</h4><p>Content & Kampagnenautomatisierung.</p></div>
-<div class="card"><h4>Energie & ESG</h4><p>Reporting & Nachhaltigkeit.</p></div>
+<div class="card"><h4>Finanzen & Banken</h4><p>Automatisierte Reports, Risikoanalysen und Compliance-Unterstützung.</p></div>
+<div class="card"><h4>Versicherungen</h4><p>Effiziente Schadenprozesse, Betrugserkennung und Dokumenten-KI.</p></div>
+<div class="card"><h4>Automotive</h4><p>Datengetriebene Produktion, Qualitätssicherung und Wartungsprognosen.</p></div>
+<div class="card"><h4>Logistik</h4><p>Optimierte Lieferketten, Planungssicherheit und Kostensenkung.</p></div>
+<div class="card"><h4>Marketing & Medien</h4><p>Automatisierte Inhalte, Personalisierung und Kampagnen-ROI.</p></div>
+<div class="card"><h4>Energie & ESG</h4><p>Nachhaltigkeits-Reporting, Datenkonsolidierung und Regulierung.</p></div>
 </div>
 </section>
 
@@ -204,21 +191,22 @@ Wir entwickeln maßgeschneiderte KI-Agenten für Analyse, Automatisierung, Repor
 <section id="llm" class="container">
 <h2>Interne LLM-Plattform</h2>
 <ul style="margin-left:20px">
-<li>Eigene LLMs (Open Source & Proprietär)</li>
-<li>RAG & Fine-Tuning auf Unternehmensdaten</li>
-<li>On-Premise / Private Cloud</li>
-<li>Volle Datenhoheit & Sicherheit</li>
+<li>Betrieb eigener LLMs (Open Source & proprietär)</li>
+<li>RAG & Fine-Tuning auf Unternehmens- und Prozessdaten</li>
+<li>On-Premise, Private Cloud oder isolierte Cloud-Umgebungen</li>
+<li>Volle Datenhoheit, Sicherheit & Nachvollziehbarkeit</li>
 </ul>
 </section>
 
 <!-- KONTAKT -->
 <section id="kontakt" class="container">
-<h2>Kontakt</h2>
+<h2>Kontakt & Erstgespräch</h2>
+<p class="hero-lead">Lassen Sie uns gemeinsam prüfen, wie KI-Agenten Ihre Prozesse messbar verbessern können.</p>
 <form>
 <input placeholder="Name" required>
 <input type="email" placeholder="E-Mail" required>
-<textarea rows="5" placeholder="Ihre Anfrage"></textarea>
-<button class="btn">Absenden</button>
+<textarea rows="5" placeholder="Ihre Anfrage oder Ihr Use-Case"></textarea>
+<button class="btn">Anfrage senden</button>
 </form>
 </section>
 
@@ -232,22 +220,23 @@ Wir entwickeln maßgeschneiderte KI-Agenten für Analyse, Automatisierung, Repor
 AI Agents Solutions<br>
 Verantwortlich: Dr. Sigfried Weiss<br>
 Adresse: Obere Waiblinger Strasse 147a, 70374 Stuttgart, Deutschland<br>
-Telefon: 0049 176/31591931<br>
+Telefon: +49 176 31591931<br>
 E-Mail: vertrieb@aisolutios.de<br>
 Steuernummer: 95 408 / 320 96, Finanzamt Stuttgart II
 </p>
+
 <h3>Datenschutz</h3>
 <p>
-Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir verarbeiten Ihre Daten ausschließlich gemäß den gesetzlichen Bestimmungen der DSGVO. Alle Angaben werden ausschließlich zur Bearbeitung Ihrer Anfragen, zur Kommunikation mit Ihnen und zur Erbringung unserer Dienstleistungen genutzt.<br><br>
-Wir ergreifen technische und organisatorische Maßnahmen, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören Verschlüsselung, Zugriffskontrollen und regelmäßige Sicherheitsprüfungen.<br><br>
-Ihre Daten werden nur so lange gespeichert, wie es für die Verarbeitung erforderlich ist oder gesetzlich vorgeschrieben ist. Sie haben jederzeit das Recht, auf Ihre Daten zuzugreifen, diese zu berichtigen, zu löschen oder die Verarbeitung einzuschränken.<br><br>
-Unsere Website kann Cookies und Tracking-Technologien verwenden, um die Funktionalität zu verbessern und statistische Analysen durchzuführen. Das Kontaktformular überträgt Ihre Daten ausschließlich verschlüsselt direkt in unsere internen Systeme oder n8n-Workflows. Es findet keine Weitergabe an unbeteiligte Dritte statt.
+Wir verarbeiten personenbezogene Daten ausschließlich gemäß DSGVO. Daten werden nur zur Bearbeitung Ihrer Anfrage,
+zur Kommunikation und zur Erbringung unserer Leistungen verwendet.  
+Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen Systeme oder n8n-Workflows.
 </p>
 </section>
 </footer>
 
 </body>
 </html>
+
 
 <!DOCTYPE html>
 <html lang="en">
