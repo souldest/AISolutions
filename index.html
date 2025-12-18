@@ -157,9 +157,17 @@ Von der ersten Idee bis zum produktiven Einsatz in wenigen Wochen.
 </p>
 
 <div class="cta-row">
-<button class="btn" onclick="document.getElementById('calendly-inline-widget').scrollIntoView()">Kostenlose Erstberatung</button>
-<button class="btn secondary" onclick="document.getElementById('agenten').scrollIntoView()">Use-Cases ansehen</button>
+    <!-- Button direkt zu Calendly -->
+    <button class="btn" onclick="window.location.href='https://calendly.com/vertrieb-aisolutios/new-meeting'">
+        Kostenlose Erstberatung
+    </button>
+
+    <!-- Scroll zu Use-Cases -->
+    <button class="btn secondary" onclick="document.getElementById('agenten').scrollIntoView()">
+        Use-Cases ansehen
+    </button>
 </div>
+
 
 <div class="grid" style="margin-top:34px">
 <div class="feature"> Pilot & MVP in 7–14 Tagen</div>
@@ -324,12 +332,21 @@ KI-gestützte Entscheidungsunterstützung und Reporting.
 </main>
   
 <!-- Calendly inline widget begin -->
+<div style="margin-bottom:20px;">
+  <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/vertrieb-aisolutios/new-meeting'});return false;"
+     style="display:inline-block;padding:12px 24px;background-color:#0073e6;color:white;text-decoration:none;font-weight:bold;border-radius:4px;">
+    Ersttermin buchen
+  </a>
+</div>
+
 <div class="calendly-inline-widget" 
      data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" 
      style="min-width:320px;height:630px;">
 </div>
+
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
 <!-- Calendly inline widget end -->
+
 
 <!-- FOOTER -->
 <footer>
@@ -503,9 +520,17 @@ From initial idea to production deployment within weeks.
 </p>
 
 <div class="cta-row">
-<button class="btn" onclick="document.getElementById('calendly-inline-widget').scrollIntoView()">Free Initial Consultation</button>
-<button class="btn secondary" onclick="document.getElementById('agents').scrollIntoView()">View Use-Cases</button>
+    <!-- Button direkt zu Calendly -->
+    <button class="btn" onclick="window.location.href='https://calendly.com/vertrieb-aisolutios/new-meeting'">
+        Free Initial Consultation
+    </button>
+
+    <!-- Scroll zu Use-Cases -->
+    <button class="btn secondary" onclick="document.getElementById('agents').scrollIntoView()">
+        View Use-Cases
+    </button>
 </div>
+
 
 <div class="grid" style="margin-top:34px">
 <div class="feature"> Pilot & MVP in 7–14 Days</div>
@@ -656,14 +681,22 @@ Analysis of production and quality data, process optimization, AI-supported deci
 </form>
 </section>
 
-</main>
 <!-- Calendly inline widget begin -->
+<div style="margin-bottom:20px;">
+  <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/vertrieb-aisolutios/new-meeting'});return false;"
+     style="display:inline-block;padding:12px 24px;background-color:#0073e6;color:white;text-decoration:none;font-weight:bold;border-radius:4px;">
+    Book a first appointment
+  </a>
+</div>
+
 <div class="calendly-inline-widget" 
      data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" 
      style="min-width:320px;height:630px;">
 </div>
+
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
 <!-- Calendly inline widget end -->
+
 
 <!-- FOOTER -->
 <footer>
