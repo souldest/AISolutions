@@ -368,45 +368,47 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 </p>
 </section>
 </footer>
-<div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
-    <div id="chat-window" style="display: none; width: 320px; height: 450px; background: white; border: 1px solid #0056b3; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden;">
-        <div id="chat-header" style="background: #0056b3; color: white; padding: 12px; font-weight: bold; font-size: 16px;">
-            AISOLUTIOS Growth-Crew
+<div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div id="chat-window" style="display: none; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); flex-direction: column; overflow: hidden; border: 1px solid #e0e0e0;">
+        <div id="chat-header" style="background: #000000; color: white; padding: 15px; font-weight: bold; font-size: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span>AISOLUTIOS Growth-Crew</span>
+            <span onclick="toggleChat()" style="cursor: pointer; opacity: 0.8;">✕</span>
         </div>
-        <div id="chat-content" style="padding: 15px; flex-grow: 1; overflow-y: auto; font-size: 14px; line-height: 1.5; background: #fdfdfd;">
+        <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; font-size: 14px; line-height: 1.6; background: #f9f9f9; color: #333;">
             </div>
-        <div style="border-top: 1px solid #eee; padding: 10px; background: #fff;">
-            <input type="text" id="user-input" style="width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 10px; box-sizing: border-box; outline: none;">
+        <div style="padding: 15px; background: white; border-top: 1px solid #eee;">
+            <input type="text" id="user-input" style="width: 100%; border: 1px solid #ccc; border-radius: 8px; padding: 12px; box-sizing: border-box; outline: none; font-size: 14px; transition: border 0.3s;" onfocus="this.style.border='1px solid #0056b3'">
         </div>
     </div>
-    <button onclick="toggleChat()" style="background: #0056b3; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 28px; shadow: 0 4px 15px rgba(0,86,179,0.4);">
+    
+    <button onclick="toggleChat()" style="background: #000000; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         🤖
     </button>
 </div>
 
 <script>
-    // Spracherkennung (Standard: Deutsch)
     const lang = navigator.language.startsWith('de') ? 'de' : 'en';
     
     const texts = {
         de: {
-            welcome: "Guten Tag! Ich bin der digitale Kopf der Growth-Crew. Welches Unternehmen möchten Sie als Kunden gewinnen?",
+            welcome: "Guten Tag! Ich bin der KI-Assistent von <strong>Dr. Sidi Weiss</strong>. Welches Unternehmen möchten Sie als Kunden gewinnen? Ich erstelle Ihnen sofort eine kostenlose Kurzanalyse.",
             placeholder: "Firmenname eingeben...",
-            analyzing: "Crew analysiert... Bitte warten...",
-            success: (co) => `Der Funnel für <strong>${co}</strong> wurde gestartet! Die Crew recherchiert jetzt.`,
-            error: "Verbindung fehlgeschlagen. Ist das Backend aktiv?"
+            analyzing: "AISOLUTIOS Crew analysiert Potenziale... Bitte warten...",
+            success: (co) => `Hervorragend! Die Analyse für <strong>${co}</strong> läuft. Dr. Weiss erhält soeben die Ergebnisse und wird sich zeitnah bei Ihnen melden.`,
+            error: "Der Server ist aktuell ausgelastet. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter vertrieb@aisolutios.de."
         },
         en: {
-            welcome: "Welcome! I am the digital lead of the Growth-Crew. Which company would you like to win as a client?",
+            welcome: "Hello! I am the AI assistant of <strong>Dr. Sidi Weiss</strong>. Which company would you like to win as a client? I'll create a free short analysis for you right away.",
             placeholder: "Enter company name...",
-            analyzing: "Crew is investigating... please wait...",
-            success: (co) => `Analysis for <strong>${co}</strong> has started! The Crew is on it.`,
-            error: "Connection failed. Is the backend running?"
+            analyzing: "AISOLUTIOS Crew is investigating... please wait...",
+            success: (co) => `Excellent! The analysis for <strong>${co}</strong> is underway. Dr. Weiss is receiving the results and will contact you shortly.`,
+            error: "The server is currently busy. Please try again later or contact us at vertrieb@aisolutios.de."
         }
     };
 
     // Initialisierung
-    document.getElementById('chat-content').innerHTML = `<div><strong>Agent:</strong> ${texts[lang].welcome}</div>`;
+    const content = document.getElementById('chat-content');
+    content.innerHTML = `<div style="margin-bottom: 15px; background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].welcome}</div>`;
     document.getElementById('user-input').placeholder = texts[lang].placeholder;
 
     function toggleChat() {
@@ -419,15 +421,16 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             const company = this.value.trim();
             this.value = '';
             
-            const content = document.getElementById('chat-content');
-            content.innerHTML += `<div style="margin-top: 10px; text-align: right;"><strong>You:</strong> ${company}</div>`;
+            // Nutzer Nachricht
+            content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 10px; border-radius: 10px; border-bottom-right-radius: 0; display: inline-block;">${company}</span></div>`;
             
+            // Status Nachricht
             const statusId = "status-" + Date.now();
-            content.innerHTML += `<div id="${statusId}" style="margin-top: 10px; color: #0056b3;"><em>${texts[lang].analyzing}</em></div>`;
+            content.innerHTML += `<div id="${statusId}" style="margin-bottom: 15px; color: #666; font-style: italic;">${texts[lang].analyzing}</div>`;
             content.scrollTop = content.scrollHeight;
 
             try {
-                // HIER: Ersetzen Sie 127.0.0.1 durch Ihre öffentliche IP für den Live-Betrieb!
+                // WICHTIG: Ersetzen Sie 'http://127.0.0.1:8003' durch Ihre echte Server-URL (z.B. https://api.aisolutios.de)
                 const response = await fetch('http://127.0.0.1:8003/run-funnel', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
@@ -435,10 +438,10 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                 });
 
                 if (response.ok) {
-                    document.getElementById(statusId).innerHTML = `<strong>Agent:</strong> ${texts[lang].success(company)}`;
+                    document.getElementById(statusId).innerHTML = `<div style="background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].success(company)}</div>`;
                 } else { throw new Error(); }
             } catch (err) {
-                document.getElementById(statusId).innerHTML = `<span style="color: red;">${texts[lang].error}</span>`;
+                document.getElementById(statusId).innerHTML = `<div style="color: #d9534f; background: #f9f2f2; padding: 10px; border-radius: 10px;">${texts[lang].error}</div>`;
             }
             content.scrollTop = content.scrollHeight;
         }
