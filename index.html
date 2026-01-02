@@ -368,7 +368,26 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 </p>
 </section>
 </footer>
+<div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <div id="chat-window" style="display: none; width: 300px; height: 400px; background: white; border: 1px solid #0056b3; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); flex-direction: column;">
+        <div style="background: #0056b3; color: white; padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+            <strong>aiSOLUTIOS Growth-Crew</strong>
+        </div>
+        <div id="chat-content" style="padding: 15px; flex-grow: 1; overflow-y: auto; font-size: 14px;">
+            Guten Tag! Ich bin der digitale Kopf der Growth-Crew. Welches Unternehmen möchten Sie als Kunden gewinnen?
+        </div>
+        <input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: none; border-top: 1px solid #ccc; padding: 10px;">
+    </div>
+    <button onclick="toggleChat()" style="background: #0056b3; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; font-size: 24px;">🤖</button>
+</div>
 
+<script>
+    function toggleChat() {
+        var win = document.getElementById('chat-window');
+        win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+    }
+    // Hier folgt die Logik, um die Daten an Port 8003 zu senden
+</script>
 </body>
 </html>
 
@@ -718,6 +737,66 @@ The contact form transmits data encrypted directly to our internal systems or n8
 </p>
 </section>
 </footer>
+<div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: Arial, sans-serif;">
+    <div id="chat-window" style="display: none; width: 350px; height: 450px; background: white; border: 1px solid #0056b3; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden;">
+        <div style="background: #0056b3; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+            <span>aiSOLUTIOS Growth-Crew</span>
+            <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-size:18px;">✕</button>
+        </div>
+        
+        <div id="chat-content" style="padding: 15px; flex-grow: 1; overflow-y: auto; font-size: 14px; background: #f9f9f9;">
+            <p><strong>Agent:</strong> Hello! I am the digital lead of the <strong>aiSOLUTIOS Growth-Crew</strong>.</p>
+            <p>Which company would you like to win as a client? Just enter the name below.</p>
+        </div>
 
+        <div style="padding: 10px; border-top: 1px solid #eee;">
+            <input type="text" id="target_company" placeholder="Target Company Name..." style="width: 80%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+            <button onclick="sendToCrew()" style="width: 15%; padding: 8px; background: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer;">Go</button>
+        </div>
+    </div>
+
+    <button onclick="toggleChat()" style="background: #0056b3; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">🤖</button>
+</div>
+
+<script>
+    function toggleChat() {
+        const win = document.getElementById('chat-window');
+        win.style.display = win.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    async function sendToCrew() {
+        const company = document.getElementById('target_company').value;
+        const content = document.getElementById('chat-content');
+
+        if (!company) return;
+
+        // Feedback im Chat geben
+        content.innerHTML += `<p style="color: blue;"><strong>You:</strong> Analyzing ${company}...</p>`;
+        content.innerHTML += `<p><strong>Agent:</strong> The Growth-Crew is now starting deep research. Please wait a moment...</p>`;
+
+        try {
+            const response = await fetch('http://YOUR_SERVER_IP:8003/run-growth-crew', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    target_company: company,
+                    target_industry: "General", // Wird durch Crew-Research präzisiert
+                    your_service: "Strategic AI Solutions"
+                })
+            });
+
+            const data = await response.json();
+            
+            if (data.success) {
+                content.innerHTML += `<p><strong>Agent:</strong> Analysis complete! I have generated a custom strategy for ${company}. Dr. Weiss has been notified to discuss this with you.</p>`;
+            }
+        } catch (error) {
+            content.innerHTML += `<p style="color: red;">Connection to Growth-Crew failed. Please try again later.</p>`;
+        }
+        
+        document.getElementById('target_company').value = '';
+        content.scrollTop = content.scrollHeight;
+    }
+</script>
 </body>
 </html>
