@@ -370,74 +370,79 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 </footer>
 <div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
     <div id="chat-window" style="display: none; width: 320px; height: 450px; background: white; border: 1px solid #0056b3; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden;">
-        <div style="background: #0056b3; color: white; padding: 12px; font-weight: bold; font-size: 16px;">
+        <div id="chat-header" style="background: #0056b3; color: white; padding: 12px; font-weight: bold; font-size: 16px;">
             AISOLUTIOS Growth-Crew
         </div>
-        
         <div id="chat-content" style="padding: 15px; flex-grow: 1; overflow-y: auto; font-size: 14px; line-height: 1.5; background: #fdfdfd;">
-            <div><strong>Agent:</strong> Guten Tag! Ich bin der digitale Kopf der Growth-Crew. Welches Unternehmen möchten Sie als Kunden gewinnen?</div>
-        </div>
-        
+            </div>
         <div style="border-top: 1px solid #eee; padding: 10px; background: #fff;">
-            <input type="text" id="user-input" placeholder="Firmenname eingeben..." 
-                   style="width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 10px; box-sizing: border-box; outline: none;">
-            <div style="font-size: 10px; color: #999; margin-top: 5px; text-align: right;">Dr. Sidi Weiss | aiSOLUTIOS</div>
+            <input type="text" id="user-input" style="width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 10px; box-sizing: border-box; outline: none;">
         </div>
     </div>
-    
-    <button onclick="toggleChat()" style="background: #0056b3; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 28px; box-shadow: 0 4px 15px rgba(0,86,179,0.4); transition: transform 0.2s;">
+    <button onclick="toggleChat()" style="background: #0056b3; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 28px; shadow: 0 4px 15px rgba(0,86,179,0.4);">
         🤖
     </button>
 </div>
 
 <script>
+    // Spracherkennung (Standard: Deutsch)
+    const lang = navigator.language.startsWith('de') ? 'de' : 'en';
+    
+    const texts = {
+        de: {
+            welcome: "Guten Tag! Ich bin der digitale Kopf der Growth-Crew. Welches Unternehmen möchten Sie als Kunden gewinnen?",
+            placeholder: "Firmenname eingeben...",
+            analyzing: "Crew analysiert... Bitte warten...",
+            success: (co) => `Der Funnel für <strong>${co}</strong> wurde gestartet! Die Crew recherchiert jetzt.`,
+            error: "Verbindung fehlgeschlagen. Ist das Backend aktiv?"
+        },
+        en: {
+            welcome: "Welcome! I am the digital lead of the Growth-Crew. Which company would you like to win as a client?",
+            placeholder: "Enter company name...",
+            analyzing: "Crew is investigating... please wait...",
+            success: (co) => `Analysis for <strong>${co}</strong> has started! The Crew is on it.`,
+            error: "Connection failed. Is the backend running?"
+        }
+    };
+
+    // Initialisierung
+    document.getElementById('chat-content').innerHTML = `<div><strong>Agent:</strong> ${texts[lang].welcome}</div>`;
+    document.getElementById('user-input').placeholder = texts[lang].placeholder;
+
     function toggleChat() {
         const win = document.getElementById('chat-window');
         win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
     }
 
-    const inputField = document.getElementById('user-input');
-    const chatContent = document.getElementById('chat-content');
-
-    // Listener für die "Enter"-Taste
-    inputField.addEventListener('keypress', function (e) {
+    document.getElementById('user-input').addEventListener('keypress', async function (e) {
         if (e.key === 'Enter' && this.value.trim() !== '') {
-            sendToGrowthCrew(this.value.trim());
-            this.value = ''; // Input leeren
+            const company = this.value.trim();
+            this.value = '';
+            
+            const content = document.getElementById('chat-content');
+            content.innerHTML += `<div style="margin-top: 10px; text-align: right;"><strong>You:</strong> ${company}</div>`;
+            
+            const statusId = "status-" + Date.now();
+            content.innerHTML += `<div id="${statusId}" style="margin-top: 10px; color: #0056b3;"><em>${texts[lang].analyzing}</em></div>`;
+            content.scrollTop = content.scrollHeight;
+
+            try {
+                // HIER: Ersetzen Sie 127.0.0.1 durch Ihre öffentliche IP für den Live-Betrieb!
+                const response = await fetch('http://127.0.0.1:8003/run-funnel', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ target_company: company })
+                });
+
+                if (response.ok) {
+                    document.getElementById(statusId).innerHTML = `<strong>Agent:</strong> ${texts[lang].success(company)}`;
+                } else { throw new Error(); }
+            } catch (err) {
+                document.getElementById(statusId).innerHTML = `<span style="color: red;">${texts[lang].error}</span>`;
+            }
+            content.scrollTop = content.scrollHeight;
         }
     });
-
-    async function sendToGrowthCrew(company) {
-        // User Nachricht anzeigen
-        chatContent.innerHTML += `<div style="margin-top: 10px; text-align: right;"><strong>Sie:</strong> ${company}</div>`;
-        
-        // Crew Status anzeigen
-        const statusId = "status-" + Date.now();
-        chatContent.innerHTML += `<div id="${statusId}" style="margin-top: 10px; color: #0056b3;"><em>Crew analysiert... Bitte warten...</em></div>`;
-        chatContent.scrollTop = chatContent.scrollHeight;
-
-        try {
-            // Verbindung zum Backend auf Port 8003
-            const response = await fetch('http://127.0.0.1:8003/run-funnel', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'accept': 'application/json'
-                },
-                body: JSON.stringify({ target_company: company })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                document.getElementById(statusId).innerHTML = `<strong>Agent:</strong> Der Funnel für <strong>${company}</strong> wurde gestartet! Die Crew recherchiert jetzt und unser Call-Agent bereitet den Kontakt vor.`;
-            } else {
-                throw new Error("Server Fehler");
-            }
-        } catch (error) {
-            document.getElementById(statusId).innerHTML = `<span style="color: red;"><strong>System:</strong> Verbindung zur Growth-Crew (Port 8003) fehlgeschlagen. Ist das Backend aktiv?</span>`;
-        }
-        chatContent.scrollTop = chatContent.scrollHeight;
-    }
 </script>
 </body>
 </html>
@@ -788,71 +793,6 @@ The contact form transmits data encrypted directly to our internal systems or n8
 </p>
 </section>
 </footer>
-<div id="aisolutios-agent-en" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
-    <div id="chat-window-en" style="display: none; width: 320px; height: 450px; background: white; border: 1px solid #0056b3; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden;">
-        <div style="background: #0056b3; color: white; padding: 12px; font-weight: bold; font-size: 16px;">
-            AISOLUTIOS Growth-Crew
-        </div>
-        
-        <div id="chat-content-en" style="padding: 15px; flex-grow: 1; overflow-y: auto; font-size: 14px; line-height: 1.5; background: #fdfdfd;">
-            <div><strong>Agent:</strong> Welcome! I am the digital lead of the aiSOLUTIOS Growth-Crew. Which company would you like to win as a client?</div>
-        </div>
-        
-        <div style="border-top: 1px solid #eee; padding: 10px; background: #fff;">
-            <input type="text" id="user-input-en" placeholder="Enter company name..." 
-                   style="width: 100%; border: 1px solid #ddd; border-radius: 5px; padding: 10px; box-sizing: border-box; outline: none;">
-            <div style="font-size: 10px; color: #999; margin-top: 5px; text-align: right;">Dr. Sidi Weiss | aiSOLUTIOS</div>
-        </div>
-    </div>
-    
-    <button onclick="toggleChatEn()" style="background: #0056b3; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 28px; box-shadow: 0 4px 15px rgba(0,86,179,0.4);">
-        🤖
-    </button>
-</div>
 
-<script>
-    function toggleChatEn() {
-        const win = document.getElementById('chat-window-en');
-        win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
-    }
-
-    const inputFieldEn = document.getElementById('user-input-en');
-    const chatContentEn = document.getElementById('chat-content-en');
-
-    inputFieldEn.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter' && this.value.trim() !== '') {
-            sendToGrowthCrewEn(this.value.trim());
-            this.value = ''; 
-        }
-    });
-
-    async function sendToGrowthCrewEn(company) {
-        chatContentEn.innerHTML += `<div style="margin-top: 10px; text-align: right;"><strong>You:</strong> ${company}</div>`;
-        
-        const statusId = "status-" + Date.now();
-        chatContentEn.innerHTML += `<div id="${statusId}" style="margin-top: 10px; color: #0056b3;"><em>Crew is investigating... please wait...</em></div>`;
-        chatContentEn.scrollTop = chatContentEn.scrollHeight;
-
-        try {
-            const response = await fetch('http://127.0.0.1:8003/run-funnel', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'accept': 'application/json'
-                },
-                body: JSON.stringify({ target_company: company })
-            });
-
-            if (response.ok) {
-                document.getElementById(statusId).innerHTML = `<strong>Agent:</strong> Analysis for <strong>${company}</strong> has started! Our Growth-Crew is researching now, and our Call Agent is preparing the outreach.`;
-            } else {
-                throw new Error("Server Error");
-            }
-        } catch (error) {
-            document.getElementById(statusId).innerHTML = `<span style="color: red;"><strong>System:</strong> Connection to Growth-Crew failed. Please check if the backend is active on Port 8003.</span>`;
-        }
-        chatContentEn.scrollTop = chatContentEn.scrollHeight;
-    }
-</script>
 </body>
 </html>
