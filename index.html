@@ -394,19 +394,19 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             welcome: "Guten Tag! Ich bin der KI-Assistent von <strong>AISOLUTIOS</strong>. Welches Unternehmen möchten Sie als Kunden gewinnen? Ich erstelle Ihnen sofort eine kostenlose Kurzanalyse.",
             placeholder: "Firmenname eingeben...",
             analyzing: "AISOLUTIOS Crew analysiert Potenziale... Bitte warten...",
-            success: (co) => `Hervorragend! Die Analyse für <strong>${co}</strong> läuft. AISOLUTIOS erhält soeben die Ergebnisse und wird sich zeitnah bei Ihnen melden.`,
-            error: "Der Server ist aktuell ausgelastet. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt unter vertrieb@aisolutios.de."
+            success: (co) => `Hervorragend! Die Analyse für <strong>${co}</strong> läuft. Dr. Weiss erhält soeben die Ergebnisse und wird sich zeitnah bei Ihnen melden.`,
+            error: "Verbindung zum AISOLUTIOS Server fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung oder kontaktieren Sie uns direkt unter vertrieb@aisolutios.de."
         },
         en: {
-            welcome: "Hello! I am the AI assistant of <strong> AISOLUTIOS </strong>. Which company would you like to win as a client? I'll create a free short analysis for you right away.",
+            welcome: "Hello! I am the AI assistant of <strong>AISOLUTIOS</strong>. Which company would you like to win as a client? I'll create a free short analysis for you right away.",
             placeholder: "Enter company name...",
             analyzing: "AISOLUTIOS Crew is investigating... please wait...",
-            success: (co) => `Excellent! The analysis for <strong>${co}</strong> is underway. AISOLUTIOS Team is receiving the results and will contact you shortly.`,
-            error: "The server is currently busy. Please try again later or contact us at vertrieb@aisolutios.de."
+            success: (co) => `Excellent! The analysis for <strong>${co}</strong> is underway. Dr. Weiss is receiving the results and will contact you shortly.`,
+            error: "Connection to AISOLUTIOS server failed. Please check your connection or contact us at vertrieb@aisolutios.de."
         }
     };
 
-    // Initialisierung
+    // Initialisierung des Chats
     const content = document.getElementById('chat-content');
     content.innerHTML = `<div style="margin-bottom: 15px; background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].welcome}</div>`;
     document.getElementById('user-input').placeholder = texts[lang].placeholder;
@@ -421,26 +421,30 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             const company = this.value.trim();
             this.value = '';
             
-            // Nutzer Nachricht
+            // Nutzer Nachricht anzeigen
             content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 10px; border-radius: 10px; border-bottom-right-radius: 0; display: inline-block;">${company}</span></div>`;
             
-            // Status Nachricht
+            // Status/Lade-Animation
             const statusId = "status-" + Date.now();
             content.innerHTML += `<div id="${statusId}" style="margin-bottom: 15px; color: #666; font-style: italic;">${texts[lang].analyzing}</div>`;
             content.scrollTop = content.scrollHeight;
 
             try {
-                // WICHTIG: Ersetzen Sie 'http://127.0.0.1:8003' durch Ihre echte Server-URL (z.B. https://api.aisolutios.de)
-                const response = await fetch('http://127.0.0.1:8003/run-funnel', {
+                // Live-IP Ihres WSL-Backends
+                const response = await fetch('http://47.64.113.184:8003/run-funnel', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ target_company: company })
+                    body: JSON.stringify({ 
+                        target_company: company,
+                        source: "web_chatbot" 
+                    })
                 });
 
                 if (response.ok) {
                     document.getElementById(statusId).innerHTML = `<div style="background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].success(company)}</div>`;
-                } else { throw new Error(); }
+                } else { throw new Error("Server Response Not OK"); }
             } catch (err) {
+                console.error("Fetch Error:", err);
                 document.getElementById(statusId).innerHTML = `<div style="color: #d9534f; background: #f9f2f2; padding: 10px; border-radius: 10px;">${texts[lang].error}</div>`;
             }
             content.scrollTop = content.scrollHeight;
