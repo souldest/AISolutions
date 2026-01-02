@@ -381,7 +381,7 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
         </div>
     </div>
     
-    <button onclick="toggleChat()" style="background: #000000; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <button onclick="toggleChat()" style="background: #000000; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
         🤖
     </button>
 </div>
@@ -395,18 +395,17 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             placeholder: "Firmenname eingeben...",
             analyzing: "AISOLUTIOS Crew analysiert Potenziale... Bitte warten...",
             success: (co) => `Hervorragend! Die Analyse für <strong>${co}</strong> läuft. Dr. Weiss erhält soeben die Ergebnisse und wird sich zeitnah bei Ihnen melden.`,
-            error: "Verbindung zum AISOLUTIOS Server fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung oder kontaktieren Sie uns direkt unter vertrieb@aisolutios.de."
+            error: "Verbindung zum AISOLUTIOS Server fehlgeschlagen. Bitte prüfen Sie die Router-Freigabe oder kontaktieren Sie uns unter vertrieb@aisolutios.de."
         },
         en: {
             welcome: "Hello! I am the AI assistant of <strong>AISOLUTIOS</strong>. Which company would you like to win as a client? I'll create a free short analysis for you right away.",
             placeholder: "Enter company name...",
             analyzing: "AISOLUTIOS Crew is investigating... please wait...",
             success: (co) => `Excellent! The analysis for <strong>${co}</strong> is underway. Dr. Weiss is receiving the results and will contact you shortly.`,
-            error: "Connection to AISOLUTIOS server failed. Please check your connection or contact us at vertrieb@aisolutios.de."
+            error: "Connection to AISOLUTIOS server failed. Please check router settings or contact us at vertrieb@aisolutios.de."
         }
     };
 
-    // Initialisierung des Chats
     const content = document.getElementById('chat-content');
     content.innerHTML = `<div style="margin-bottom: 15px; background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].welcome}</div>`;
     document.getElementById('user-input').placeholder = texts[lang].placeholder;
@@ -421,19 +420,21 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             const company = this.value.trim();
             this.value = '';
             
-            // Nutzer Nachricht anzeigen
             content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 10px; border-radius: 10px; border-bottom-right-radius: 0; display: inline-block;">${company}</span></div>`;
             
-            // Status/Lade-Animation
             const statusId = "status-" + Date.now();
             content.innerHTML += `<div id="${statusId}" style="margin-bottom: 15px; color: #666; font-style: italic;">${texts[lang].analyzing}</div>`;
             content.scrollTop = content.scrollHeight;
 
             try {
-                // Live-IP Ihres WSL-Backends
+                // Hier nutzen wir Ihre öffentliche IP und den Port 8003
                 const response = await fetch('http://47.64.113.184:8003/run-funnel', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    mode: 'cors', // Aktiviert Cross-Origin Resource Sharing
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     body: JSON.stringify({ 
                         target_company: company,
                         source: "web_chatbot" 
@@ -442,9 +443,13 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 
                 if (response.ok) {
                     document.getElementById(statusId).innerHTML = `<div style="background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].success(company)}</div>`;
-                } else { throw new Error("Server Response Not OK"); }
+                } else { 
+                    const errorData = await response.text();
+                    console.error("Server Error Details:", errorData);
+                    throw new Error("Server Response Not OK"); 
+                }
             } catch (err) {
-                console.error("Fetch Error:", err);
+                console.error("Verbindungsfehler:", err);
                 document.getElementById(statusId).innerHTML = `<div style="color: #d9534f; background: #f9f2f2; padding: 10px; border-radius: 10px;">${texts[lang].error}</div>`;
             }
             content.scrollTop = content.scrollHeight;
