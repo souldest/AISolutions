@@ -395,14 +395,14 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             placeholder: "Firmenname eingeben...",
             analyzing: "AISOLUTIOS Crew analysiert Potenziale... Bitte warten...",
             success: (co) => `Hervorragend! Die Analyse für <strong>${co}</strong> läuft. Dr. Weiss erhält soeben die Ergebnisse und wird sich zeitnah bei Ihnen melden.`,
-            error: "Verbindung zum AISOLUTIOS Server fehlgeschlagen. Bitte prüfen Sie die Router-Freigabe oder kontaktieren Sie uns unter vertrieb@aisolutios.de."
+            error: "Verbindung zum AISOLUTIOS Server fehlgeschlagen. Bitte prüfen Sie die Verbindung oder kontaktieren Sie uns unter vertrieb@aisolutios.de."
         },
         en: {
             welcome: "Hello! I am the AI assistant of <strong>AISOLUTIOS</strong>. Which company would you like to win as a client? I'll create a free short analysis for you right away.",
             placeholder: "Enter company name...",
             analyzing: "AISOLUTIOS Crew is investigating... please wait...",
             success: (co) => `Excellent! The analysis for <strong>${co}</strong> is underway. Dr. Weiss is receiving the results and will contact you shortly.`,
-            error: "Connection to AISOLUTIOS server failed. Please check router settings or contact us at vertrieb@aisolutios.de."
+            error: "Connection to AISOLUTIOS server failed. Please contact us at vertrieb@aisolutios.de."
         }
     };
 
@@ -427,10 +427,10 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             content.scrollTop = content.scrollHeight;
 
             try {
-                // Hier nutzen wir Ihre öffentliche IP und den Port 8003
-                const response = await fetch('http://47.64.113.184:8003/run-funnel', {
+                // Nutzung der aktiven ngrok-URL für HTTPS-Kompatibilität
+                const response = await fetch('https://dissimilar-subconcavely-filomena.ngrok-free.dev/run-funnel', {
                     method: 'POST',
-                    mode: 'cors', // Aktiviert Cross-Origin Resource Sharing
+                    mode: 'cors',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
@@ -444,8 +444,6 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                 if (response.ok) {
                     document.getElementById(statusId).innerHTML = `<div style="background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].success(company)}</div>`;
                 } else { 
-                    const errorData = await response.text();
-                    console.error("Server Error Details:", errorData);
                     throw new Error("Server Response Not OK"); 
                 }
             } catch (err) {
