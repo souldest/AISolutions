@@ -368,79 +368,69 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 </p>
 </section>
 </footer>
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS - KI-Infrastruktur</title>
-</head>
-<body>
-
-<div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
-    
-    <div id="bot-teaser" onclick="toggleChat()" style="position: fixed; bottom: 95px; right: 25px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); font-size: 14px; max-width: 240px; cursor: pointer; border: 2px solid #000; animation: bounce 3s infinite; z-index: 999;">
-        <div style="font-weight: bold; margin-bottom: 5px;">🚀 Unsere Crew arbeitet für Sie:</div>
-        <ul style="margin: 0; padding: 0 0 0 18px; list-style-type: 'check';">
-            <li>Leads generieren</li>
-            <li>Sales-Skripte erstellen</li>
-            <li>E-Mails versenden</li>
-        </ul>
-    </div>
-
-    <div id="chat-window" style="display: none; width: 370px; height: 550px; background: white; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden; border: 1px solid #eee;">
-        <div id="chat-header" style="background: #000; color: white; padding: 20px; font-weight: bold; display: flex; justify-content: space-between;">
-            <span>🤖 AISOLUTIOS Growth-Crew</span>
-            <span onclick="toggleChat()" style="cursor: pointer;">✕</span>
-        </div>
-        <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; background: #fdfdfd; display: flex; flex-direction: column;"></div>
-        <div id="input-area" style="padding: 15px; border-top: 1px solid #eee;">
-            <input type="text" id="user-input" placeholder="Antwort eingeben..." style="width: 100%; border: 1px solid #ddd; border-radius: 12px; padding: 12px; outline: none;">
-        </div>
-    </div>
-    
-    <button id="bot-button" onclick="toggleChat()" style="background: #000; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">🤖</button>
-</div>
-
-<style>
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
-</style>
-
 <script>
     const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
     let step = 0;
     let leadData = { target_company: "", user_name: "", user_email: "" };
-    const content = document.getElementById('chat-content');
 
-    function addBotMsg(text) {
-        content.innerHTML += `<div style="margin-bottom: 15px; background: #f0f0f0; padding: 12px; border-radius: 15px; align-self: flex-start; max-width: 85%;">${text}</div>`;
-        content.scrollTop = content.scrollHeight;
-    }
+    // Diese Funktion erst ausführen, wenn das Fenster geladen ist
+    window.onload = function() {
+        const content = document.getElementById('chat-content');
+        
+        function addBotMsg(text) {
+            if (!content) return;
+            content.innerHTML += `<div style="margin-bottom: 15px; background: #f0f0f0; padding: 12px; border-radius: 15px; align-self: flex-start; max-width: 85%; color: #000;">${text}</div>`;
+            content.scrollTop = content.scrollHeight;
+        }
+
+        // Erste Nachricht nach 500ms senden
+        setTimeout(() => {
+            addBotMsg("Guten Tag! Welches Unternehmen möchten Sie als Kunden gewinnen?");
+        }, 500);
+
+        // Event Listener für den Input
+        document.getElementById('user-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && this.value.trim() !== '') {
+                const val = this.value.trim();
+                this.value = '';
+                
+                // User-Nachricht anzeigen
+                content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; display: inline-block;">${val}</span></div>`;
+                content.scrollTop = content.scrollHeight;
+
+                if (step === 0) { 
+                    leadData.target_company = val; 
+                    step = 1; 
+                    setTimeout(() => addBotMsg("Gerne! Wie ist Ihr vollständiger Name?"), 500); 
+                }
+                else if (step === 1) { 
+                    leadData.user_name = val; 
+                    step = 2; 
+                    setTimeout(() => addBotMsg("Vielen Dank! Bitte geben Sie noch Ihre E-Mail an."), 500); 
+                }
+                else if (step === 2) { 
+                    leadData.user_email = val; 
+                    step = 3; 
+                    startAnalysis(); 
+                }
+            }
+        });
+    };
 
     function toggleChat() {
         const win = document.getElementById('chat-window');
         const teaser = document.getElementById('bot-teaser');
-        win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
-        if(teaser) teaser.style.display = 'none';
+        if (win) {
+            win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
+        }
+        if (teaser) teaser.style.display = 'none';
     }
 
-    setTimeout(() => addBotMsg("Guten Tag! Welches Unternehmen möchten Sie als Kunden gewinnen?"), 500);
-
-    document.getElementById('user-input').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter' && this.value.trim() !== '') {
-            const val = this.value.trim();
-            this.value = '';
-            content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; display: inline-block;">${val}</span></div>`;
-            
-            if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Wie ist Ihr vollständiger Name?"); }
-            else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Bitte geben Sie Ihre E-Mail an."); }
-            else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
-        }
-    });
-
     async function startAnalysis() {
+        const content = document.getElementById('chat-content');
         const statusId = "status-" + Date.now();
-        content.innerHTML += `<div id="${statusId}" style="margin-bottom: 15px; font-style: italic; font-size: 13px;">☁️ Analyse läuft...</div>`;
+        content.innerHTML += `<div id="${statusId}" style="margin-bottom: 15px; font-style: italic; font-size: 13px; color: #666;">☁️ Analyse läuft...</div>`;
+        content.scrollTop = content.scrollHeight;
         
         try {
             const response = await fetch(`${API_BASE}/run-funnel`, {
@@ -450,8 +440,8 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             });
             const result = await response.json();
             document.getElementById(statusId).innerHTML = `
-                <div style="background: #f0f0f0; padding: 12px; border-radius: 15px; margin-bottom: 10px;">
-                    Erfolg! Wir haben Leads gefunden. Wählen Sie Ihr Paket:
+                <div style="background: #f0f0f0; padding: 12px; border-radius: 15px; margin-bottom: 10px; color: #000;">
+                    Analyse für <strong>${leadData.target_company}</strong> fertig! Wir haben Leads gefunden. Wählen Sie Ihr Paket:
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
                     <button onclick="goToPayment(29, 'Leads')" style="background: #28a745; color: white; border: none; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold;">🥉 Nur Leads (29€)</button>
@@ -459,8 +449,9 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                     <button onclick="goToPayment(87, 'Full Service')" style="background: #000; color: white; border: none; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold;">🥇 Full Service (87€)</button>
                 </div>`;
         } catch (err) {
-            document.getElementById(statusId).innerHTML = "Fehler bei der Verbindung.";
+            document.getElementById(statusId).innerHTML = "Fehler bei der Verbindung zum Server.";
         }
+        content.scrollTop = content.scrollHeight;
     }
 
     async function goToPayment(amount, packageName) {
@@ -472,11 +463,11 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             });
             const session = await response.json();
             if (session.url) window.location.href = session.url;
-        } catch (err) { alert("Stripe Fehler."); }
+        } catch (err) { 
+            alert("Stripe Verbindung fehlgeschlagen."); 
+        }
     }
 </script>
-</body>
-</html>
 </body>
 </html>
 
