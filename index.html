@@ -392,12 +392,13 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 
     <script>
         (function() {
-            // PRÜFEN: Ist das die aktuelle Adresse aus Ihrem Terminal?
+            // WICHTIG: Prüfen Sie die ngrok-Adresse im Terminal!
             const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
             
             let step = 0;
             let leadData = { target_company: "", user_name: "", user_email: "" };
 
+            // Funktion global verfügbar machen
             window.aisoToggle = function() {
                 const win = document.getElementById('chat-window');
                 const teaser = document.getElementById('bot-teaser');
@@ -405,6 +406,7 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                 const isHidden = (win.style.display === 'none' || win.style.display === '');
                 win.style.display = isHidden ? 'flex' : 'none';
                 if (teaser) teaser.style.display = 'none';
+                if (isHidden) document.getElementById('user-input').focus();
             };
 
             function addBotMsg(text) {
@@ -417,22 +419,33 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                 content.scrollTop = content.scrollHeight;
             }
 
-            window.addEventListener('load', () => {
-                setTimeout(() => addBotMsg("Guten Tag Dr. Weiss! Welches Unternehmen möchten Sie heute als Kunden gewinnen?"), 1000);
-            });
+            // WARTEN BIS DAS HTML GELADEN IST
+            function initChat() {
+                const inputEl = document.getElementById('user-input');
+                if (!inputEl) return; // Falls Element noch nicht da, abbrechen
 
-            document.getElementById('user-input').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && this.value.trim() !== '') {
-                    const val = this.value.trim();
-                    this.value = '';
-                    const content = document.getElementById('chat-content');
-                    content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; display: inline-block;">${val}</span></div>`;
-                    
-                    if (step === 0) { leadData.target_company = val; step = 1; setTimeout(() => addBotMsg("Name für den Report?"), 500); }
-                    else if (step === 1) { leadData.user_name = val; step = 2; setTimeout(() => addBotMsg("E-Mail für die Leads?"), 500); }
-                    else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
-                }
-            });
+                inputEl.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && this.value.trim() !== '') {
+                        const val = this.value.trim();
+                        this.value = '';
+                        const content = document.getElementById('chat-content');
+                        content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; display: inline-block;">${val}</span></div>`;
+                        
+                        if (step === 0) { leadData.target_company = val; step = 1; setTimeout(() => addBotMsg("Name für den Report?"), 500); }
+                        else if (step === 1) { leadData.user_name = val; step = 2; setTimeout(() => addBotMsg("E-Mail für die Leads?"), 500); }
+                        else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
+                    }
+                });
+
+                setTimeout(() => addBotMsg("Guten Tag Dr. Weiss! Welches Unternehmen möchten Sie heute als Kunden gewinnen?"), 1000);
+            }
+
+            // Startet, sobald das Dokument bereit ist
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initChat);
+            } else {
+                initChat();
+            }
 
             async function startAnalysis() {
                 addBotMsg("☁️ Crew startet Analyse...");
@@ -444,9 +457,9 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                     });
                     if (!res.ok) throw new Error();
                     addBotMsg(`Analyse für ${leadData.target_company} bereit. Wählen Sie Ihr Paket:<br><br>` +
-                        `<button onclick="window.aisoPay(29)" style="width:100%; margin-bottom:5px; padding:10px; background:#28a745; color:#fff; border:none; border-radius:10px; cursor:pointer;">🥉 Leads (29€)</button>` +
-                        `<button onclick="window.aisoPay(58)" style="width:100%; margin-bottom:5px; padding:10px; background:#007bff; color:#fff; border:none; border-radius:10px; cursor:pointer;">🥈 Leads + Skript (58€)</button>` +
-                        `<button onclick="window.aisoPay(87)" style="width:100%; padding:10px; background:#000; color:#fff; border:none; border-radius:10px; cursor:pointer;">🥇 Full Service (87€)</button>`);
+                        `<button onclick="window.aisoPay(29)" style="width:100%; margin-bottom:5px; padding:10px; background:#28a745; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold;">🥉 Leads (29€)</button>` +
+                        `<button onclick="window.aisoPay(58)" style="width:100%; margin-bottom:5px; padding:10px; background:#007bff; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold;">🥈 Leads + Skript (58€)</button>` +
+                        `<button onclick="window.aisoPay(87)" style="width:100%; padding:10px; background:#000; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold;">🥇 Full Service (87€)</button>`);
                 } catch (err) {
                     addBotMsg("⚠️ Verbindung zum Backend fehlgeschlagen. Bitte ngrok-Adresse prüfen.");
                 }
@@ -467,7 +480,8 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
         })();
     </script>
 </div>
-
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
