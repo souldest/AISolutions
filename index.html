@@ -388,30 +388,33 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 
 <script>
     const lang = navigator.language.startsWith('de') ? 'de' : 'en';
+    const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
     
     const texts = {
         de: {
             welcome: "Guten Tag! Welches Unternehmen möchten Sie als Kunden gewinnen?",
             askName: "Gerne! Um den Report zu personalisieren: Wie ist Ihr vollständiger Name?",
-            askContact: "Vielen Dank! Bitte geben Sie noch Ihre E-Mail und optional Telefonnummer an.",
+            askContact: "Vielen Dank! Bitte geben Sie noch Ihre E-Mail an.",
             placeholder: "Antwort eingeben...",
             analyzing: "AISOLUTIOS Crew analysiert Potenziale... Bitte warten...",
-            success: (co) => `Hervorragend! Die Analyse für <strong>${co}</strong> läuft. Dr. Weiss wird Sie kontaktieren.`,
+            success: (co, count) => `Analyse für <strong>${co}</strong> fertig! Ich habe <strong>${count} Leads</strong> gefunden.`,
+            payBtn: "Liste jetzt für 29€ freischalten",
             error: "Verbindung fehlgeschlagen. vertrieb@aisolutios.de"
         },
         en: {
             welcome: "Hello! Which company would you like to win as a client?",
-            askName: "Great! To personalize the report: What is your full name?",
-            askContact: "Thank you! Please provide your email and optionally your phone number.",
+            askName: "Great! What is your full name?",
+            askContact: "Thank you! Please provide your email address.",
             placeholder: "Type your answer...",
             analyzing: "AISOLUTIOS Crew is investigating... please wait...",
-            success: (co) => `Excellent! The analysis for <strong>${co}</strong> is underway. Dr. Weiss will contact you.`,
+            success: (co, count) => `Analysis for <strong>${co}</strong> complete! Found <strong>${count} leads</strong>.`,
+            payBtn: "Unlock list now for 29€",
             error: "Connection failed. vertrieb@aisolutios.de"
         }
     };
 
-    let step = 0; // 0: Company, 1: Name, 2: Contact/Email
-    let leadData = { target_company: "", user_name: "", user_email: "", user_phone: "" };
+    let step = 0; 
+    let leadData = { target_company: "", user_name: "", user_email: "" };
 
     const content = document.getElementById('chat-content');
     
@@ -421,7 +424,6 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
     }
 
     addBotMsg(texts[lang].welcome);
-    document.getElementById('user-input').placeholder = texts[lang].placeholder;
 
     function toggleChat() {
         const win = document.getElementById('chat-window');
@@ -432,8 +434,6 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
         if (e.key === 'Enter' && this.value.trim() !== '') {
             const val = this.value.trim();
             this.value = '';
-            
-            // User Nachricht anzeigen
             content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 10px; border-radius: 10px; border-bottom-right-radius: 0; display: inline-block;">${val}</span></div>`;
 
             if (step === 0) {
@@ -445,7 +445,6 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
                 step = 2;
                 addBotMsg(texts[lang].askContact);
             } else if (step === 2) {
-                // Einfache Logik: Alles im letzten Schritt als Kontakt-Info werten
                 leadData.user_email = val; 
                 step = 3;
                 startAnalysis();
@@ -459,22 +458,43 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
         content.innerHTML += `<div id="${statusId}" style="margin-bottom: 15px; color: #666; font-style: italic;">${texts[lang].analyzing}</div>`;
         
         try {
-            const response = await fetch('https://dissimilar-subconcavely-filomena.ngrok-free.dev/run-funnel', {
+            const response = await fetch(`${API_BASE}/run-funnel`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
-                },
+                headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
                 body: JSON.stringify(leadData)
             });
 
             if (response.ok) {
-                document.getElementById(statusId).innerHTML = `<div style="background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">${texts[lang].success(leadData.target_company)}</div>`;
+                const result = await response.json();
+                document.getElementById(statusId).innerHTML = `
+                    <div style="background: #eef2f7; padding: 10px; border-radius: 10px; border-bottom-left-radius: 0;">
+                        ${texts[lang].success(leadData.target_company, result.leads_count)}
+                    </div>
+                    <button onclick="goToPayment()" style="margin-top: 10px; background: #28a745; color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; transition: background 0.3s;">
+                        ${texts[lang].payBtn}
+                    </button>
+                `;
             } else { throw new Error(); }
         } catch (err) {
             document.getElementById(statusId).innerHTML = `<div style="color: #d9534f;">${texts[lang].error}</div>`;
         }
         content.scrollTop = content.scrollHeight;
+    }
+
+    async function goToPayment() {
+        try {
+            const response = await fetch(`${API_BASE}/create-checkout-session`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+                body: JSON.stringify(leadData)
+            });
+            const session = await response.json();
+            if (session.url) {
+                window.location.href = session.url;
+            }
+        } catch (err) {
+            alert("Zahlungs-Fehler. Kontakt: vertrieb@aisolutios.de");
+        }
     }
 </script>
 </body>
