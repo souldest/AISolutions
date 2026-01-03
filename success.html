@@ -2,21 +2,43 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zahlung erfolgreich - AISOLUTIOS</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 100px 20px; background: #f9f9f9; }
-        .card { max-width: 500px; margin: auto; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        h1 { color: #28a745; font-size: 2.5em; }
-        p { color: #333; font-size: 1.1em; line-height: 1.6; }
-        .btn { display: inline-block; margin-top: 30px; padding: 15px 30px; background: #000; color: #fff; text-decoration: none; border-radius: 10px; font-weight: bold; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; text-align: center; padding: 80px 20px; background: #f4f7f6; color: #333; }
+        .card { max-width: 550px; margin: auto; padding: 50px; background: white; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); border: 1px solid #eee; }
+        .icon { font-size: 50px; margin-bottom: 20px; }
+        h1 { color: #000; font-size: 2.2em; margin-bottom: 10px; }
+        .status-badge { background: #e8f5e9; color: #2e7d32; padding: 8px 16px; border-radius: 50px; font-weight: bold; font-size: 0.9em; display: inline-block; margin-bottom: 20px; }
+        p { font-size: 1.1em; line-height: 1.7; color: #555; }
+        .details { background: #f9f9f9; padding: 20px; border-radius: 15px; margin: 25px 0; text-align: left; font-size: 0.95em; border-left: 4px solid #000; }
+        .btn { display: inline-block; margin-top: 20px; padding: 16px 35px; background: #000; color: #fff; text-decoration: none; border-radius: 12px; font-weight: bold; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.02); }
+        .footer-note { font-size: 0.85em; color: #999; margin-top: 30px; }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1>Vielen Dank! ✅</h1>
-        <p>Ihre Zahlung war erfolgreich.</p>
-        <p>Unsere KI-Crew erstellt gerade Ihre Leads. Sie erhalten in Kürze eine E-Mail von uns an die angegebene Adresse.</p>
-        <a href="/" class="btn">Zurück zur Startseite</a>
+        <div class="icon">✅</div>
+        <div class="status-badge">ZAHLUNG ERFOLGREICH</div>
+        <h1>Vielen Dank!</h1>
+        <p>Ihre Bestellung wurde erfolgreich entgegengenommen. Unsere KI-Crew in Stuttgart hat bereits mit der Bearbeitung begonnen.</p>
+        
+        <div class="details">
+            <strong>Was passiert als Nächstes?</strong><br>
+            1. Wir finalisieren Ihre Lead-Liste & Analysen.<br>
+            2. Wir erstellen (je nach Paket) Ihre individuellen Sales-Skripte.<br>
+            3. Die Ergebnisse werden per E-Mail an Ihre Adresse versendet.
+        </div>
+
+        <p>Sollten Sie innerhalb der nächsten 15 Minuten keine E-Mail erhalten, prüfen Sie bitte Ihren Spam-Ordner oder kontaktieren Sie uns direkt.</p>
+        
+        <a href="https://www.aisolutios.de" class="btn">Zurück zur Startseite</a>
+        
+        <div class="footer-note">
+            Dr. Sidi Weiss | AISOLUTIOS Stuttgart<br>
+            vertrieb@aisolutios.de
+        </div>
     </div>
 </body>
 </html>
