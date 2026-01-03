@@ -368,51 +368,6 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
 </p>
 </section>
 </footer>
-<div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-    
-    <div id="bot-teaser" onclick="toggleChat()" style="position: fixed; bottom: 95px; right: 25px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); font-size: 14px; max-width: 240px; cursor: pointer; border: 2px solid #000; animation: bounce 3s infinite; z-index: 999; line-height: 1.4;">
-        <div style="font-weight: bold; color: #000; margin-bottom: 5px;">🚀 Unsere Crew arbeitet für Sie:</div>
-        <ul style="margin: 0; padding: 0 0 0 18px; list-style-type: 'check';">
-            <li>Leads generieren</li>
-            <li>Sales-Skripte erstellen</li>
-            <li>E-Mails an Kunden senden</li>
-        </ul>
-        <div style="position: absolute; bottom: -12px; right: 20px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 12px solid #000;"></div>
-        <div style="position: absolute; bottom: -10px; right: 20px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 12px solid white;"></div>
-    </div>
-
-    <div id="chat-window" style="display: none; width: 370px; height: 550px; background: white; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden; border: 1px solid #eee;">
-        <div id="chat-header" style="background: #000; color: white; padding: 20px; font-weight: bold; font-size: 16px; display: flex; justify-content: space-between; align-items: center;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 20px;">🤖</span>
-                <span>AISOLUTIOS Growth-Crew</span>
-            </div>
-            <span onclick="toggleChat()" style="cursor: pointer; font-size: 20px; opacity: 0.7;">✕</span>
-        </div>
-        
-        <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; font-size: 14px; line-height: 1.6; background: #fdfdfd; color: #333;">
-            </div>
-
-        <div id="input-area" style="padding: 15px; background: white; border-top: 1px solid #eee;">
-            <input type="text" id="user-input" placeholder="Antwort eingeben..." style="width: 100%; border: 1px solid #ddd; border-radius: 12px; padding: 14px; box-sizing: border-box; outline: none; font-size: 14px; transition: all 0.3s; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);" onfocus="this.style.borderColor='#000';">
-        </div>
-    </div>
-    
-    <button id="bot-button" onclick="toggleChat()" style="background: #000; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.3s; display: flex; align-items: center; justify-content: center; z-index: 1000;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        🤖
-    </button>
-</div>
-
-<style>
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-        40% {transform: translateY(-12px);}
-        60% {transform: translateY(-6px);}
-    }
-    #chat-content::-webkit-scrollbar { width: 6px; }
-    #chat-content::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
-</style>
-
 <script>
     const lang = navigator.language.startsWith('de') ? 'de' : 'en';
     const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
@@ -423,9 +378,7 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             askName: "Gerne! Um den Report zu personalisieren: Wie ist Ihr vollständiger Name?",
             askContact: "Vielen Dank! Bitte geben Sie noch Ihre E-Mail an.",
             analyzing: "Unsere Crew analysiert Potenziale... Bitte warten...",
-            success: (co, count) => `Analyse für <strong>${co}</strong> fertig! Wir haben <strong>${count} Leads</strong> gefunden.`,
-            payBtn: "Liste & Skripte jetzt freischalten (29€)",
-            redirecting: "Leite sicher zu Stripe weiter...",
+            success: (co, count) => `Analyse für <strong>${co}</strong> fertig! Wir haben <strong>${count} Leads</strong> gefunden. Wählen Sie Ihr Paket:`,
             error: "Verbindung fehlgeschlagen. Kontakt: vertrieb@aisolutios.de"
         },
         en: {
@@ -433,9 +386,7 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             askName: "Great! What is your full name?",
             askContact: "Thank you! Please provide your email address.",
             analyzing: "Our crew is investigating... please wait...",
-            success: (co, count) => `Analysis for <strong>${co}</strong> complete! Found <strong>${count} leads</strong>.`,
-            payBtn: "Unlock list & scripts now (29€)",
-            redirecting: "Redirecting to secure payment...",
+            success: (co, count) => `Analysis for <strong>${co}</strong> complete! Found <strong>${count} leads</strong>. Choose your package:`,
             error: "Connection failed. Contact: vertrieb@aisolutios.de"
         }
     };
@@ -449,24 +400,20 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
         content.scrollTop = content.scrollHeight;
     }
 
-    // Erster Gruß
     setTimeout(() => addBotMsg(texts[lang].welcome), 500);
 
     function toggleChat() {
         const win = document.getElementById('chat-window');
         const teaser = document.getElementById('bot-teaser');
         const isOpening = (win.style.display === 'none' || win.style.display === '');
-        
         win.style.display = isOpening ? 'flex' : 'none';
-        if(teaser) teaser.style.display = 'none'; // Teaser verschwindet nach erstem Klick
+        if(teaser) teaser.style.display = 'none';
     }
 
     document.getElementById('user-input').addEventListener('keypress', async function (e) {
         if (e.key === 'Enter' && this.value.trim() !== '') {
             const val = this.value.trim();
             this.value = '';
-            
-            // User Nachricht anzeigen
             content.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; border-bottom-right-radius: 0; display: inline-block; max-width: 85%;">${val}</span></div>`;
             content.scrollTop = content.scrollHeight;
 
@@ -501,12 +448,20 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             if (response.ok) {
                 const result = await response.json();
                 document.getElementById(statusId).innerHTML = `
-                    <div style="background: #f0f0f0; padding: 12px; border-radius: 15px; border-bottom-left-radius: 0; color: #000; margin-bottom: 10px;">
+                    <div style="background: #f0f0f0; padding: 12px; border-radius: 15px; border-bottom-left-radius: 0; color: #000; margin-bottom: 12px;">
                         ${texts[lang].success(leadData.target_company, result.leads_count)}
                     </div>
-                    <button id="pay-button" onclick="goToPayment()" style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 12px; width: 100%; cursor: pointer; font-weight: bold; font-size: 14px; transition: all 0.3s;">
-                        💰 ${texts[lang].payBtn}
-                    </button>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button onclick="goToPayment(29, 'Leads')" style="background: #28a745; color: white; border: none; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 13px;">
+                            🥉 Nur Leads (29€)
+                        </button>
+                        <button onclick="goToPayment(58, 'Leads + Skripte')" style="background: #007bff; color: white; border: none; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 13px;">
+                            🥈 Leads + E-Mail schreiben (58€)
+                        </button>
+                        <button onclick="goToPayment(87, 'Full Service')" style="background: #000; color: white; border: none; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 13px;">
+                            🥇 Leads + Skript + Versand (87€)
+                        </button>
+                    </div>
                 `;
             } else { throw new Error(); }
         } catch (err) {
@@ -515,17 +470,20 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
         content.scrollTop = content.scrollHeight;
     }
 
-    async function goToPayment() {
-        const btn = document.getElementById('pay-button');
-        btn.disabled = true;
-        btn.innerHTML = `<span style="opacity: 0.8;">${texts[lang].redirecting}</span>`;
-        btn.style.background = "#6c757d";
-
+    async function goToPayment(amount, packageName) {
+        // Finden des geklickten Buttons für Feedback
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(b => b.disabled = true);
+        
         try {
             const response = await fetch(`${API_BASE}/create-checkout-session`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-                body: JSON.stringify(leadData)
+                body: JSON.stringify({
+                    ...leadData,
+                    amount: amount,
+                    package_name: packageName
+                })
             });
             const session = await response.json();
             if (session.url) {
@@ -533,9 +491,7 @@ Das Kontaktformular überträgt Daten verschlüsselt direkt in unsere internen S
             }
         } catch (err) {
             alert("Fehler bei der Weiterleitung. Kontakt: vertrieb@aisolutios.de");
-            btn.disabled = false;
-            btn.innerHTML = texts[lang].payBtn;
-            btn.style.background = "#28a745";
+            buttons.forEach(b => b.disabled = false);
         }
     }
 </script>
