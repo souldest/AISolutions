@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AISOLUTIOS – Autonome KI-Agenten & Interne LLM Plattform</title>
-    <meta name="description" content="Sichere KI-Agenten und interne LLM-Plattformen für regulierte Industrien. AISOLUTIOS bietet MVPs in 7-14 Tagen, On-Premise oder Hybrid.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -36,8 +35,16 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
+        .brand-container { display: flex; align-items: center; gap: 12px; }
+        .ai-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 35px; height: 35px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; color: #000; font-size: 14px;
+        }
         .brand { display: flex; flex-direction: column; }
-        .logo-text { font-weight: 700; font-size: 22px; color: #fff; letter-spacing: 1px; }
+        .logo-text { font-weight: 700; font-size: 22px; color: #fff; letter-spacing: 1px; line-height: 1; }
+        
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
@@ -50,26 +57,19 @@
 
         .hero-lead { font-size: 18px; color: var(--muted); max-width: 850px; margin-bottom: 25px; }
         
-        /* Hero Highlights Style */
         .hero-highlights {
             list-style: none;
             margin-bottom: 35px;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
         }
         .hero-highlights li {
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            font-size: 16px;
-            color: #fff;
+            display: flex; align-items: center;
+            font-weight: 600; font-size: 16px; color: #fff;
         }
         .hero-highlights li::before {
-            content: "✓";
-            color: var(--primary);
-            margin-right: 8px;
-            font-weight: 700;
+            content: "✓"; color: var(--primary); margin-right: 10px; font-weight: 900;
         }
 
         .btn {
@@ -80,7 +80,6 @@
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
-        
         .card {
             background: linear-gradient(180deg, #141c3a, #0f162f);
             border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
@@ -98,9 +97,9 @@
 
         @media(max-width: 768px) { 
             h1 { font-size: 32px; } 
+            .hero-highlights { flex-direction: column; gap: 12px; }
             .grid { grid-template-columns: 1fr; } 
-            nav { display: none; }
-            .hero-highlights { flex-direction: column; gap: 10px; }
+            nav { display: none; } 
         }
     </style>
 </head>
@@ -108,9 +107,12 @@
 <body>
 
 <header>
-    <div class="brand">
-        <div class="logo-text">AISOLUTIOS</div>
-        <div style="color:var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Enterprise AI Architecture</div>
+    <div class="brand-container">
+        <div class="ai-icon">AI</div>
+        <div class="brand">
+            <div class="logo-text">AISOLUTIOS</div>
+            <div style="color:var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Enterprise AI Architecture</div>
+        </div>
     </div>
     <nav>
         <a href="#agents">KI-Agenten</a>
@@ -140,7 +142,7 @@
         <div class="grid">
             <div class="card">
                 <h4>Sales Crew Agenten</h4>
-                <p>Ein vollständiger KI-Funnel, der von der Lead-Generierung über die Qualifizierung bis zur Kundengewinnung alle Schritte autonom steuert.</p>
+                <p>Ein vollständiger KI-Funnel von AISOLUTIOS: Von der Lead-Generierung über die Qualifizierung bis zur aktiven Kundengewinnung.</p>
             </div>
             <div class="card">
                 <h4>Marketing Agenten</h4>
@@ -177,15 +179,12 @@
         <h2>Interne LLM Plattform</h2>
         <div class="grid" style="grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;">
             <div class="text-block">
-                <h4 style="color: #fff;">Was sind LLMs und warum eine interne Plattform?</h4>
+                <h4 style="color: #fff;">Sichere LLM-Infrastruktur für Unternehmen</h4>
                 <p style="margin-bottom: 15px; color: #fff;">
-                    Large Language Models (LLMs) sind KI-Systeme, die auf riesigen Datenmengen trainiert wurden, um komplexe Texte zu verstehen und präzise Antworten zu liefern.
+                    Öffentliche KI-Lösungen bergen Risiken für Ihre Geschäftsgeheimnisse. AISOLUTIOS baut sichere LLM-Strukturen maßgeschneidert für Sie.
                 </p>
                 <p style="margin-bottom: 20px; color: #fff;">
-                    Öffentliche Lösungen bergen Risiken für Ihre Geschäftsgeheimnisse. AISOLUTIOS baut sichere LLM-Strukturen maßgeschneidert für Sie. Wir integrieren die Power der KI direkt in Ihre IT-Landschaft, damit Ihre Daten bei Ihnen bleiben.
-                </p>
-                <p style="color: #fff; font-weight: 600;">
-                    Technologien wie RAG (Retrieval Augmented Generation) erlauben es der KI, Ihr internes Firmenarchiv zu "lesen", ohne dass die Daten nach außen dringen.
+                    Wir integrieren die Power der KI direkt in Ihre IT-Landschaft, damit Ihre Daten bei Ihnen bleiben. Unsere Technologie erlaubt es der KI, Ihr internes Firmenarchiv zu "lesen", ohne Daten nach außen zu geben.
                 </p>
             </div>
             <div class="card" style="border: 1px solid var(--secondary); background: rgba(123, 97, 255, 0.05);">
@@ -204,52 +203,22 @@
     <section id="industries" class="container">
         <h2>Branchen-Fokus</h2>
         <div class="grid">
-            <div class="card">
-                <h4>Solar & Erneuerbare Energien</h4>
-                <p>Ertragsprognosen, vorausschauende Wartung von Anlagen und intelligente Netzsteuerung.</p>
-            </div>
-            <div class="card">
-                <h4>Transport & Logistik</h4>
-                <p>Effiziente Lieferketten, Lastmeilen-Optimierung und automatisierte Dispositionsunterstützung.</p>
-            </div>
-            <div class="card">
-                <h4>Marketing & Sales</h4>
-                <p>Automatisierte Lead-Funnel und datenbasierte Skalierung von Vertriebsprozessen.</p>
-            </div>
-            <div class="card">
-                <h4>Pharma & Life Sciences</h4>
-                <p>KI-Validierung klinischer Daten und Unterstützung bei regulatorischen Einreichungen.</p>
-            </div>
-            <div class="card">
-                <h4>Banking & Finanzen</h4>
-                <p>Automatisierung für regulatorisches Reporting, KYC-Prozesse und algorithmische Risikoprüfung.</p>
-            </div>
-            <div class="card">
-                <h4>Automotive & Industrie</h4>
-                <p>Produktionsüberwachung, Qualitätsdaten-Analyse und Predictive Maintenance.</p>
-            </div>
+            <div class="card"><h4>Solar & Erneuerbare Energien</h4><p>Optimierung von Ertragsprognosen, Wartungszyklen und intelligentes Einspeisemanagement.</p></div>
+            <div class="card"><h4>Transport & Logistik</h4><p>Effiziente Lieferkettensteuerung und KI-basierte Dispositionsunterstützung.</p></div>
+            <div class="card"><h4>Marketing & Sales</h4><p>Automatisierte Lead-Funnel und datenbasierte Skalierung von Vertriebsprozessen.</p></div>
+            <div class="card"><h4>Pharma & Life Sciences</h4><p>KI-Validierung klinischer Daten und Unterstützung bei regulatorischen Einreichungen.</p></div>
+            <div class="card"><h4>Banking & Finanzen</h4><p>Automatisierung für regulatorisches Reporting, KYC-Prozesse und algorithmische Risikoprüfung.</p></div>
+            <div class="card"><h4>Automotive & Industrie</h4><p>Produktionsüberwachung, Qualitätsdaten-Analyse und Predictive Maintenance.</p></div>
         </div>
     </section>
 
     <section id="expertise" class="container">
         <h2>Expertise & Erfahrung</h2>
         <div class="grid">
-            <div class="card">
-                <h4>Pilot & MVP in 7–14 Tagen</h4>
-                <p>Wir liefern schnelle, greifbare Ergebnisse statt langer Konzepte. Ihr erster KI-Prototyp ist innerhalb von zwei Wochen einsatzbereit.</p>
-            </div>
-            <div class="card">
-                <h4>Banking & Konzern-Erfahrung</h4>
-                <p>Umfangreiche Projekterfahrung im Bankensektor (u.a. LBBW) in den Bereichen Analytics und ESG-Automatisierung.</p>
-            </div>
-            <div class="card">
-                <h4>Methodische Exzellenz</h4>
-                <p>AISOLUTIOS verbindet tiefe statistische Expertise mit moderner KI-Architektur für höchste Ergebnisgenauigkeit.</p>
-            </div>
-            <div class="card">
-                <h4>Messbarer ROI</h4>
-                <p>Erfolg wird bei uns direkt an Zeitersparnis, Kostensenkung und der Reduktion manueller Fehler gemessen.</p>
-            </div>
+            <div class="card"><h4>Geschwindigkeit</h4><p>AISOLUTIOS liefert Ergebnisse statt Konzepte. Ihr Pilot ist in 7–14 Tagen einsatzbereit.</p></div>
+            <div class="card"><h4>Banking-Expertise</h4><p>Umfangreiche Projekterfahrung im Bankensektor (u.a. LBBW) in Analytics und ESG-Automatisierung.</p></div>
+            <div class="card"><h4>Technologie-neutral</h4><p>Wir bauen herstellerunabhängige Architekturen für AISOLUTIOS Kunden, die perfekt in Ihre IT passen.</p></div>
+            <div class="card"><h4>Messbarer ROI</h4><p>Erfolg wird direkt an Zeitersparnis, Kostensenkung und der Reduktion manueller Fehler gemessen.</p></div>
         </div>
     </section>
 
@@ -268,10 +237,6 @@
             Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
             E-Mail: vertrieb@aisolutios.de<br>
             Web: www.aisolutios.de</p>
-        </div>
-        <div style="text-align: right;">
-            <p>&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
-            <p style="font-size: 11px; margin-top: 10px;">Security-by-Design für Enterprise KI.</p>
         </div>
     </div>
 
@@ -323,13 +288,13 @@
                 const val = this.value.trim();
                 this.value = '';
                 if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Vielen Dank. Wie ist Ihr Name?"); }
-                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Unter welcher E-Mail erreichen wir Sie?"); }
+                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Unter welcher E-Mail erreicht wir Sie?"); }
                 else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
             }
         });
 
         async function startAnalysis() {
-            addBotMsg("🔍 Analyse läuft...");
+            addBotMsg("🔍 AISOLUTIOS Analyse läuft...");
             try {
                 const response = await fetch(`${API_BASE}/run-funnel`, {
                     method: 'POST',
@@ -354,7 +319,7 @@
             } catch (err) { addBotMsg("Zahlungsfehler."); }
         };
 
-        setTimeout(() => addBotMsg("Willkommen bei AISOLUTIOS! Welches Unternehmen analysieren wir für Sie?"), 1000);
+        setTimeout(() => addBotMsg("Willkommen bei AISOLUTIOS! Welches Unternehmen analysieren wir heute?"), 1000);
     })();
 </script>
 </body>
