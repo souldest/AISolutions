@@ -12,114 +12,61 @@
 
 <style>
 :root{
-  --bg:#0b0f1a;
-  --bg2:#0e1426;
-  --card:#121a33;
-  --primary:#ff6a00;
-  --secondary:#7b61ff;
-  --accent:#00d1b2;
-  --text:#e8ecf3;
-  --muted:#9aa4b2;
+  --bg:#0b0f1a; --bg2:#0e1426; --card:#121a33; --primary:#ff6a00;
+  --secondary:#7b61ff; --accent:#00d1b2; --text:#e8ecf3; --muted:#9aa4b2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html { scroll-behavior: smooth; }
 body{
   font-family:Inter,Arial,sans-serif;
   background:linear-gradient(180deg,var(--bg),var(--bg2));
-  color:var(--text);
-  line-height:1.6;
+  color:var(--text); line-height:1.6;
 }
 header{
   position:sticky;top:0;z-index:1000;
-  background:rgba(10,15,30,.85);
-  backdrop-filter:blur(8px);
-  padding:18px 28px;
-  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,15,30,.85); backdrop-filter:blur(8px);
+  padding:18px 28px; display:flex;justify-content:space-between;align-items:center;
 }
 .brand{display:flex;align-items:center;gap:12px}
 .logo{
   width:44px;height:44px;border-radius:12px;
   background:linear-gradient(135deg,var(--primary),var(--secondary));
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;
+  display:flex;align-items:center;justify-content:center; font-weight:700;
 }
-nav a{
-  color:#fff;text-decoration:none;margin-left:18px;font-weight:600;
-}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600;}
 nav a:hover{color:var(--primary)}
 .container{max-width:1200px;margin:auto;padding:70px 20px}
 section{margin-bottom:90px}
 h1{font-size:44px;margin-bottom:14px}
-h2{font-size:32px;margin-bottom:16px}
-h4{margin-bottom:6px}
-.hero-lead{font-size:18px;color:var(--muted);max-width:900px}
+h2{font-size:32px;margin-bottom:24px; color:#fff;}
+h4{margin-bottom:6px; color:var(--primary);}
+.hero-lead{font-size:18px;color:var(--muted);max-width:900px; margin-bottom: 20px;}
 .btn{
   background:linear-gradient(135deg,var(--primary),#ff8c42);
-  color:#000;
-  padding:14px 26px;
-  border:none;border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  text-decoration: none;
-  display: inline-block;
+  color:#000; padding:14px 26px; border:none;border-radius:12px;
+  font-weight:700; cursor:pointer; text-decoration: none; display: inline-block;
 }
-.btn.secondary{
-  background:transparent;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.25);
-}
+.btn.secondary{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.25);}
 .cta-row{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:18px;
-}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;}
 .card{
   background:linear-gradient(180deg,#141c3a,#0f162f);
-  border-radius:16px;
-  padding:24px;
-  border:1px solid rgba(255,255,255,.05);
-  transition:.3s;
+  border-radius:16px; padding:24px; border:1px solid rgba(255,255,255,.05); transition:.3s;
 }
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,.6);
-}
-.card i{
-  font-size:30px;
-  color:var(--primary);
-  margin-bottom:12px;
-}
-.feature{
-  background:rgba(255,255,255,.05);
-  padding:16px;
-  border-radius:12px;
-  font-weight:600;
-}
-input,textarea{
-  width:100%;
-  background:#0f162f;
-  border:1px solid rgba(255,255,255,.1);
-  padding:12px;
-  border-radius:8px;
-  color:#fff;
-  margin-bottom:12px;
-}
-footer{
-  background:#070b18;
-  padding:50px 20px;
-  color:var(--muted);
-  font-size:14px;
-}
+.card:hover{transform:translateY(-8px); box-shadow:0 20px 40px rgba(0,0,0,.6);}
+.card i{font-size:30px; color:var(--primary); margin-bottom:12px;}
+.feature{background:rgba(255,255,255,.05); padding:16px; border-radius:12px; font-weight:600;}
 
-/* Chatbot Bounce Animation */
+input,textarea{
+  width:100%; background:#0f162f; border:1px solid rgba(255,255,255,.1);
+  padding:12px; border-radius:8px; color:#fff; margin-bottom:12px;
+}
+footer{background:#070b18; padding:50px 20px; color:var(--muted); font-size:14px;}
+
 @keyframes botBounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
 .aiso-bounce { animation: botBounce 3s infinite; }
 
-@media(max-width:768px){
-  h1{font-size:34px}
-  #chat-window { width: 90% !important; right: 5% !important; }
-}
+@media(max-width:768px){ h1{font-size:34px} }
 </style>
 </head>
 
@@ -128,16 +75,13 @@ footer{
 <header>
   <div class="brand">
     <div class="logo">AI</div>
-    <div>
-      <strong>Solutios</strong><br>
-      <small style="color:var(--muted)">Sichere KI-Agenten für Unternehmen</small>
-    </div>
+    <div><strong>Solutios</strong><br><small style="color:var(--muted)">Sichere KI-Agenten für Unternehmen</small></div>
   </div>
   <nav>
     <a href="#agents">Agenten</a>
     <a href="#industries">Branchen</a>
     <a href="#clients">Kunden</a>
-    <a href="#llm">LLM-Plattform</a>
+    <a href="#llm">LLM Plattform</a>
     <a href="#why-us">Warum wir?</a>
     <a href="#contact">Kontakt</a>
   </nav>
@@ -146,179 +90,165 @@ footer{
 <main>
 
 <section class="container">
-<h1>Autonome KI-Agenten, die Prozesse messbar verbessern</h1>
-<p class="hero-lead">
-Wir entwickeln unternehmensspezifische KI-Agenten für Analyse, Automatisierung und Entscheidungsunterstützung – 
-sicher, skalierbar und vollständig DSGVO-konform.
-</p>
-
-<div class="cta-row">
-    <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn">
-        Kostenlose Erstberatung
-    </a>
-    <button class="btn secondary" onclick="document.getElementById('agents').scrollIntoView()">
-        Use-Cases ansehen
-    </button>
-</div>
-
-<div class="grid" style="margin-top:34px">
-<div class="feature">🚀 Pilot & MVP in 7–14 Tagen</div>
-<div class="feature">🖥️ On-Premise, Private Cloud oder Hybrid</div>
-<div class="feature">🛡️ DSGVO-konform & Revisionssicher</div>
-</div>
+    <h1>Autonome KI-Agenten, die Prozesse messbar verbessern</h1>
+    <p class="hero-lead">
+        Wir entwickeln unternehmensspezifische KI-Agenten für Analyse, Automatisierung und Entscheidungsunterstützung – 
+        sicher, skalierbar und vollständig DSGVO-konform. Von der Idee bis zum produktiven Einsatz in wenigen Wochen.
+    </p>
+    <div class="cta-row">
+        <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn">Kostenlose Erstberatung</a>
+        <button class="btn secondary" onclick="document.getElementById('agents').scrollIntoView()">Use-Cases ansehen</button>
+    </div>
+    <div class="grid" style="margin-top:34px">
+        <div class="feature"> Pilot & MVP in 7–14 Tagen</div>
+        <div class="feature"> On-Premise, Private Cloud oder Hybrid</div>
+        <div class="feature"> DSGVO-konform & Revisionssicher</div>
+    </div>
 </section>
 
 <section id="agents" class="container">
-<h2>Unsere KI-Agenten-Lösungen</h2>
-<div class="grid">
-<div class="card"><i class="fas fa-chart-line"></i><h4>Datenanalyse-Agenten</h4><p>Automatisierte Analysen und Management-Reports in Echtzeit.</p></div>
-<div class="card"><i class="fas fa-university"></i><h4>Banking-Agenten</h4><p>Credit Scoring, Risikomodelle und Betrugserkennung.</p></div>
-<div class="card"><i class="fas fa-car"></i><h4>Automotive-Agenten</h4><p>Produktionsüberwachung und Qualitätsanalyse.</p></div>
-<div class="card"><i class="fas fa-brain"></i><h4>LLM-Agenten</h4><p>Interne KI-Assistenten und sichere Wissensautomatisierung.</p></div>
-</div>
+    <h2>Unsere KI-Agenten-Lösungen</h2>
+    <div class="grid">
+        <div class="card"><i class="fas fa-chart-line"></i><h4>Datenanalyse-Agenten</h4><p>Automatisierte Analysen, KPI-Monitoring und Management-Berichte in Echtzeit.</p></div>
+        <div class="card"><i class="fas fa-wallet"></i><h4>Finance-Agenten</h4><p>Forecasting, Cashflow-Prognosen, Budgetkontrolle und Abweichungsanalysen.</p></div>
+        <div class="card"><i class="fas fa-university"></i><h4>Banking-Agenten</h4><p>Kredit-Scoring, Risikomodelle, Betrugserkennung und regulatorisches Reporting.</p></div>
+        <div class="card"><i class="fas fa-file-contract"></i><h4>Versicherungs-Agenten</h4><p>Schadenbearbeitung, Dokumentenanalyse und automatisierte Policenprüfungen.</p></div>
+        <div class="card"><i class="fas fa-car"></i><h4>Automotive-Agenten</h4><p>Produktionsüberwachung, Qualitätsanalyse und vorausschauende Wartung.</p></div>
+        <div class="card"><i class="fas fa-shipping-fast"></i><h4>Logistik-Agenten</h4><p>Routenoptimierung, Kapazitätsplanung und Störungsmanagement.</p></div>
+        <div class="card"><i class="fas fa-bullhorn"></i><h4>Marketing-Agenten</h4><p>Kampagnenmanagement, Content-Erstellung und Performance-Optimierung.</p></div>
+        <div class="card"><i class="fas fa-headset"></i><h4>Support-Agenten</h4><p>24/7 Kundenservice, Ticket-Priorisierung und Wissensdatenbanken.</p></div>
+        <div class="card"><i class="fas fa-database"></i><h4>Data Engineering Agenten</h4><p>ETL-Pipelines, Datenintegration und Cloud-Synchronisierung.</p></div>
+        <div class="card"><i class="fas fa-brain"></i><h4>LLM-Agenten</h4><p>Interne KI-Assistenten, RAG-Systeme und sichere Wissensautomatisierung.</p></div>
+    </div>
 </section>
 
 <section id="industries" class="container">
-<h2>Branchen & Fokus</h2>
-<div class="grid">
-<div class="card"><h4>Finanzen & Banking</h4><p>Reporting und Compliance-Unterstützung.</p></div>
-<div class="card"><h4>Versicherungen</h4><p>Schadenprozesse und Dokumenten-KI.</p></div>
-<div class="card"><h4>Automobilindustrie</h4><p>Qualitätssicherung und Wartungsprognosen.</p></div>
-</div>
+    <h2>Branchen & Messbarer Impact</h2>
+    <div class="grid">
+        <div class="card"><h4>Finanzen & Banking</h4><p>Automatisches Reporting, Risikoanalyse und Compliance-Unterstützung.</p></div>
+        <div class="card"><h4>Versicherungen</h4><p>Effiziente Schadenprozesse, Betrugserkennung und Dokumenten-KI.</p></div>
+        <div class="card"><h4>Automotive</h4><p>Datengetriebene Produktion, Qualitätssicherung und Wartungsprognosen.</p></div>
+        <div class="card"><h4>Logistik</h4><p>Optimierte Lieferketten, Planungssicherheit und Kostensenkung.</p></div>
+        <div class="card"><h4>Marketing & Medien</h4><p>Automatisierte Inhalte, Personalisierung und Kampagnen-ROI-Tracking.</p></div>
+        <div class="card"><h4>Energie & ESG</h4><p>Nachhaltigkeits-Reporting, Datenkonsolidierung und Compliance.</p></div>
+    </div>
 </section>
 
 <section id="clients" class="container">
-<h2>Kunden & Projekterfahrung</h2>
-<div class="grid">
-<div class="card"><h4>LBBW</h4><p>Regulatorische Automatisierung und Reporting.</p></div>
-<div class="card"><h4>Mercedes-Benz</h4><p>KI-gestützte Produktionsdatenanalyse.</p></div>
-<div class="card"><h4>Hallesche</h4><p>Datenanalyse und Prozessoptimierung.</p></div>
-</div>
+    <h2>Kunden & Projekterfahrung</h2>
+    <p class="hero-lead">Wir unterstützen führende Unternehmen aus regulierten Industrien bei KI und Automatisierung.</p>
+    <div class="grid">
+        <div class="card"><h4>Banking & Finanzen</h4><p>LBBW: Analytics, Reporting, Prognosen und regulatorische Automatisierung.</p></div>
+        <div class="card"><h4>Automotive & Industrie</h4><p>Mercedes-Benz, Porsche, K2-Systems: KI-Produktionsanalyse und Supply Chain Insights.</p></div>
+        <div class="card"><h4>Versicherung & Bau</h4><p>Hallesche, SOKA-BAU: Automatisierung von Schaden- und Bestandsdatenanlysen.</p></div>
+        <div class="card"><h4>Transport & Mobilität</h4><p>Transdev Vertrieb: Analyse von Verkaufsdaten und Management-Reporting.</p></div>
+        <div class="card"><h4>Marketing & Beratung</h4><p>Service Plan, T2-Systems: Kampagnen-Analytics und KI-Entscheidungsfindung.</p></div>
+        <div class="card"><h4>Ernährung & Agrar</h4><p>KWS, LKV Bayern: Prozessoptimierung und KI-gestütztes Reporting.</p></div>
+    </div>
 </section>
 
 <section id="llm" class="container">
-<h2>Interne LLM-Plattform</h2>
-<div class="card">
-<p>Betrieb proprietärer LLMs (Open Source & kommerziell) mit voller Datensouveränität auf Ihren eigenen Servern oder in isolierten Cloud-Umgebungen.</p>
-</div>
+    <h2>Interne LLM Plattform</h2>
+    <div class="card" style="border: 1px solid var(--secondary);">
+        <ul style="margin-left:20px; list-style-type: square;">
+            <li>Betrieb eigener LLMs (Open Source & Kommerziell)</li>
+            <li>RAG & Fine-Tuning auf Unternehmens- und Prozessdaten</li>
+            <li>On-Premise, Private Cloud oder isolierte Umgebungen</li>
+            <li>Volle Datensouveränität, Sicherheit & Revisionsfähigkeit</li>
+        </ul>
+    </div>
 </section>
 
 <section id="why-us" class="container">
-<h2>Warum Solutios?</h2>
-<div class="grid">
-<div class="card"><h4>Wissenschaftlich fundiert</h4><p>Dr. Sidi Weiss: Über 15 Jahre Erfahrung in Statistik und KI.</p></div>
-<div class="card"><h4>Enterprise & Sicherheit</h4><p>DSGVO, Revisionssicherheit und Security-by-Design sind Standard.</p></div>
-</div>
+    <h2>Warum Solutios?</h2>
+    <div class="grid">
+        <div class="card"><h4>Wissenschaftlich fundiert</h4><p>Promovierter Statistiker mit 15+ Jahren Erfahrung in ML & KI – verlässliche Lösungen, keine Experimente.</p></div>
+        <div class="card"><h4>Enterprise & Regulierung</h4><p>Erfahrung in Banking & Insurance – DSGVO und Security-by-Design sind bei uns Standard.</p></div>
+        <div class="card"><h4>Technologie-neutral</h4><p>Python, SQL, Cloud & On-Premise – wir wählen das beste Tool für Ihren Use-Case.</p></div>
+        <div class="card"><h4>Business Impact</h4><p>Weniger manuelle Arbeit, bessere Entscheidungen – KI mit messbarem ROI.</p></div>
+    </div>
 </section>
 
 <section id="contact" class="container">
-<h2>Kontakt & Erstberatung</h2>
-<div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <h2>Kontakt & Erstberatung</h2>
+    <p class="hero-lead">Prüfen wir gemeinsam, wie KI-Agenten Ihre Prozesse verbessern.</p>
+    <form style="margin-bottom: 40px;">
+        <input placeholder="Name" required>
+        <input type="email" placeholder="E-Mail" required>
+        <textarea rows="4" placeholder="Ihr Use-Case"></textarea>
+        <button class="btn">Anfrage senden</button>
+    </form>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </section>
 
 </main>
 
 <footer>
-<section id="legal">
-<h3>Impressum</h3>
-<p>
-Solutios | Dr. Sidi Weiss<br>
-Obere Waiblinger Straße 147a, 70374 Stuttgart<br>
-Mobil: 0176 31591931 | E-Mail: vertrieb@aisolutios.de
-</p>
-</section>
+    <section id="legal">
+        <h3>Impressum</h3>
+        <p>Solutios | Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br>Mobil: 0176 31591931 | E-Mail: vertrieb@aisolutios.de</p>
+        <h3 style="margin-top:20px;">Datenschutz</h3>
+        <p>Verarbeitung nach DSGVO. Daten dienen nur Ihrer Anfrage. Übertragung erfolgt verschlüsselt.</p>
+    </section>
 
-<div id="aisolutios-agent-container">
-    <div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 2147483647; font-family: 'Segoe UI', Arial, sans-serif;">
-        <div id="bot-teaser" onclick="window.aisoToggle()" class="aiso-bounce" style="position: absolute; bottom: 85px; right: 5px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 14px; width: 220px; cursor: pointer; border: 2px solid #000; color: #000; line-height: 1.4;">
-            <div style="font-weight: bold; margin-bottom: 5px;">🚀 Crew-Status: Bereit</div>
-            <p style="margin: 0; font-size: 12px; color: #444;">Leads generieren für Ihr Wunschunternehmen.</p>
-        </div>
-
-        <div id="chat-window" style="display: none; width: 370px; height: 550px; background: white; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; border: 1px solid #eee; position: absolute; bottom: 80px; right: 0;">
-            <div style="background: #000; color: white; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-                <span>🤖 AISOLUTIOS Growth-Crew</span>
-                <span onclick="window.aisoToggle()" style="cursor: pointer; font-size: 20px;">✕</span>
+    <div id="aisolutios-agent-container">
+        <div id="aisolutios-agent" style="position: fixed; bottom: 20px; right: 20px; z-index: 2147483647; font-family: 'Segoe UI', Arial, sans-serif;">
+            <div id="bot-teaser" onclick="window.aisoToggle()" class="aiso-bounce" style="position: absolute; bottom: 85px; right: 5px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 14px; width: 220px; cursor: pointer; border: 2px solid #000; color: #000;">
+                <div style="font-weight: bold;">🚀 Crew-Status: Bereit</div>
+                <p style="margin: 0; font-size: 12px;">Leads generieren für Ihr Unternehmen.</p>
             </div>
-            <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; background: #fdfdfd; display: flex; flex-direction: column; color: #000; font-size: 14px;"></div>
-            <div style="padding: 15px; border-top: 1px solid #eee; background: #fff;">
-                <input type="text" id="user-input" placeholder="Unternehmen eingeben..." 
-                       style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; color: #000 !important; background: #fff !important; font-size: 16px; display: block !important;">
+            <div id="chat-window" style="display: none; width: 370px; height: 500px; background: white; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; position: absolute; bottom: 80px; right: 0;">
+                <div style="background: #000; color: white; padding: 20px; font-weight: bold; display: flex; justify-content: space-between;">
+                    <span>🤖 Growth-Crew</span><span onclick="window.aisoToggle()" style="cursor: pointer;">✕</span>
+                </div>
+                <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; color: #000;"></div>
+                <div style="padding: 15px; border-top: 1px solid #eee;"><input type="text" id="user-input" placeholder="Firma eingeben..." style="background:#fff; color:#000; border:1px solid #ccc;"></div>
             </div>
+            <button onclick="window.aisoToggle()" style="background: #000; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 30px;">🤖</button>
         </div>
-        
-        <button onclick="window.aisoToggle()" style="background: #000; color: white; border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; outline: none;">🤖</button>
     </div>
-</div>
 </footer>
 
 <script>
     (function() {
         const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
-        let step = 0;
-        let leadData = { target_company: "", user_name: "", user_email: "" };
+        let step = 0; let leadData = { target_company: "", user_name: "", user_email: "" };
 
         window.aisoToggle = function() {
             const win = document.getElementById('chat-window');
-            const teaser = document.getElementById('bot-teaser');
-            const isHidden = (win.style.display === 'none' || win.style.display === '');
-            win.style.display = isHidden ? 'flex' : 'none';
-            if (teaser) teaser.style.display = 'none';
-            if (isHidden) {
-                // Tracking Event
-                if(typeof gtag === 'function') gtag('event', 'chat_open', {'event_category': 'Engagement'});
-                setTimeout(() => { document.getElementById('user-input').focus(); }, 200);
-            }
+            document.getElementById('bot-teaser').style.display = 'none';
+            win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
         };
 
         function addBotMsg(text) {
             const content = document.getElementById('chat-content');
             const div = document.createElement('div');
-            div.style.cssText = "margin-bottom: 15px; background: #f0f0f0; padding: 12px; border-radius: 15px; border-bottom-left-radius: 0; align-self: flex-start; max-width: 85%; color: #000; line-height: 1.4;";
-            div.innerHTML = text;
-            content.appendChild(div);
-            content.scrollTop = content.scrollHeight;
+            div.style.cssText = "margin-bottom: 10px; background: #eee; padding: 10px; border-radius: 10px; align-self: flex-start;";
+            div.innerHTML = text; content.appendChild(div); content.scrollTop = content.scrollHeight;
         }
 
         document.getElementById('user-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && this.value.trim() !== '') {
-                const val = this.value.trim();
-                this.value = '';
-                const contentEl = document.getElementById('chat-content');
-                contentEl.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; display: inline-block; text-align: left;">${val}</span></div>`;
-                
-                if (step === 0) { leadData.target_company = val; step = 1; setTimeout(() => addBotMsg("Top! Wie ist Ihr Name?"), 500); }
-                else if (step === 1) { leadData.user_name = val; step = 2; setTimeout(() => addBotMsg("Und Ihre E-Mail-Adresse für den Report?"), 500); }
-                else if (step === 2) { 
-                    leadData.user_email = val; step = 3; 
-                    if(typeof gtag === 'function') gtag('event', 'generate_lead', { 'event_label': leadData.target_company });
-                    startAnalysis(); 
-                }
+                const val = this.value.trim(); this.value = '';
+                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Name?"); }
+                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("E-Mail?"); }
+                else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
             }
         });
 
         async function startAnalysis() {
-            addBotMsg("🔍 Analysiere Potenziale...");
+            addBotMsg("🔍 Analyse läuft...");
             try {
-                const res = await fetch(`${API_BASE}/run-funnel`, {
-                    method: 'POST', headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(leadData)
-                });
-                addBotMsg(`Analyse für <b>${leadData.target_company}</b> bereit! <br><br> <button onclick="window.aisoPay(29)" style="width:100%; padding:10px; background:#28a745; color:#fff; border:none; border-radius:10px; cursor:pointer; font-weight:bold;">Report kaufen (29€)</button>`);
-            } catch { addBotMsg("⚠️ Backend-Verbindung prüfen."); }
+                await fetch(`${API_BASE}/run-funnel`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(leadData) });
+                addBotMsg("Fertig! <button onclick='window.aisoPay(29)' style='background:green; color:white; border:none; padding:5px; border-radius:5px;'>Report (29€)</button>");
+            } catch { addBotMsg("Fehler."); }
         }
-
-        window.aisoPay = async function(amt) {
-            if(typeof gtag === 'function') gtag('event', 'begin_checkout', { 'value': amt });
-            // Hier käme die Stripe-Weiterleitung
-            alert("Zahlungsprozess für " + amt + "€ wird gestartet...");
-        };
-
-        setTimeout(() => addBotMsg("Grüße aus Stuttgart, Dr. Weiss! Welches Unternehmen analysieren wir heute?"), 1000);
+        setTimeout(() => addBotMsg("Welches Unternehmen analysieren wir heute?"), 1000);
     })();
 </script>
-
+</body>
+</html>
 </body>
 </html>
 <!DOCTYPE html>
