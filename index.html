@@ -48,8 +48,30 @@
         h2 { font-size: 32px; margin-bottom: 35px; color: #fff; border-left: 4px solid var(--primary); padding-left: 15px; }
         h4 { margin-bottom: 12px; color: var(--primary); font-size: 1.25rem; font-weight: 700; }
 
-        .hero-lead { font-size: 18px; color: var(--muted); max-width: 850px; margin-bottom: 35px; }
+        .hero-lead { font-size: 18px; color: var(--muted); max-width: 850px; margin-bottom: 25px; }
         
+        /* Hero Highlights Style */
+        .hero-highlights {
+            list-style: none;
+            margin-bottom: 35px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .hero-highlights li {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: #fff;
+        }
+        .hero-highlights li::before {
+            content: "✓";
+            color: var(--primary);
+            margin-right: 8px;
+            font-weight: 700;
+        }
+
         .btn {
             background: linear-gradient(135deg, var(--primary), #ff8c42);
             color: #000; padding: 16px 32px; border: none; border-radius: 12px;
@@ -65,8 +87,6 @@
         }
         .card:hover { transform: translateY(-8px); border-color: var(--secondary); }
 
-        .llm-highlight { color: #fff; font-weight: 600; }
-
         footer { background: #070b18; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
 
         @keyframes botBounce { 
@@ -76,7 +96,12 @@
         }
         .aiso-bounce { animation: botBounce 3s infinite; }
 
-        @media(max-width: 768px) { h1 { font-size: 32px; } .grid { grid-template-columns: 1fr; } nav { display: none; } }
+        @media(max-width: 768px) { 
+            h1 { font-size: 32px; } 
+            .grid { grid-template-columns: 1fr; } 
+            nav { display: none; }
+            .hero-highlights { flex-direction: column; gap: 10px; }
+        }
     </style>
 </head>
 
@@ -100,6 +125,13 @@
     <section class="container">
         <h1>Autonome KI-Agenten für messbare Prozessoptimierung</h1>
         <p class="hero-lead">Wir entwickeln intelligente Systeme, die komplexe Datenanalysen übernehmen und Betriebsprozesse autonom optimieren. AISOLUTIOS kombiniert mathematische Präzision mit modernster KI für Ihren messbaren Erfolg.</p>
+        
+        <ul class="hero-highlights">
+            <li>Pilot & MVP in 7–14 Tagen</li>
+            <li>On-Premise, Private Cloud oder Hybrid</li>
+            <li>DSGVO-konform & Revisionssicher</li>
+        </ul>
+
         <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn">Kostenlose Erstberatung buchen</a>
     </section>
 
@@ -108,23 +140,23 @@
         <div class="grid">
             <div class="card">
                 <h4>Sales Crew Agenten</h4>
-                <p>Ein vollständiger KI-Funnel, der von der Lead-Generierung bis zur aktiven Kundengewinnung alle Schritte autonom steuert.</p>
+                <p>Ein vollständiger KI-Funnel, der von der Lead-Generierung über die Qualifizierung bis zur Kundengewinnung alle Schritte autonom steuert.</p>
             </div>
             <div class="card">
                 <h4>Marketing Agenten</h4>
-                <p>KI-Systeme für automatisierte Kampagnenplanung, Content-Erstellung und datengetriebene Zielgruppenanalyse.</p>
+                <p>Autonome Kampagnenplanung, Content-Erstellung und datengetriebene Zielgruppenanalyse zur Skalierung Ihrer Reichweite.</p>
             </div>
             <div class="card">
                 <h4>Umsatz- & Vorratsprognose</h4>
-                <p>Vorhersage-Agenten für präzise Sales-Forecasts und proaktive Bestandsverwaltung zur Vermeidung von Engpässen.</p>
+                <p>Vorhersage-Agenten für präzise Sales-Forecasts und intelligentes Bestandsmanagement zur Vermeidung von Engpässen.</p>
             </div>
             <div class="card">
                 <h4>Transport Agenten</h4>
-                <p>Optimierung von Logistikketten, intelligente Routenplanung und autonomes Flottenmanagement in Echtzeit.</p>
+                <p>KI-gestützte Routenoptimierung, Sendungsverfolgung und autonomes Flottenmanagement für maximale Logistikeffizienz.</p>
             </div>
             <div class="card">
                 <h4>Banking & Finanz Agenten</h4>
-                <p>Risikomodelle, Betrugserkennung (Fraud Detection) sowie automatisierte ESG- und Nachhaltigkeits-Berichterstattung.</p>
+                <p>Risikomodelle, Betrugserkennung sowie automatisierte ESG-Berichterstattung und Echtzeit-Cashflow-Monitoring.</p>
             </div>
             <div class="card">
                 <h4>Pharma & Medizin Agenten</h4>
@@ -147,12 +179,12 @@
             <div class="text-block">
                 <h4 style="color: #fff;">Was sind LLMs und warum eine interne Plattform?</h4>
                 <p style="margin-bottom: 15px; color: #fff;">
-                    Large Language Models (LLMs) sind KI-Systeme, die auf riesigen Datenmengen trainiert wurden, um komplexe Texte zu verstehen und präzise Antworten zu liefern. Sie sind der "Motor" moderner Automatisierung.
+                    Large Language Models (LLMs) sind KI-Systeme, die auf riesigen Datenmengen trainiert wurden, um komplexe Texte zu verstehen und präzise Antworten zu liefern.
                 </p>
                 <p style="margin-bottom: 20px; color: #fff;">
                     Öffentliche Lösungen bergen Risiken für Ihre Geschäftsgeheimnisse. AISOLUTIOS baut sichere LLM-Strukturen maßgeschneidert für Sie. Wir integrieren die Power der KI direkt in Ihre IT-Landschaft, damit Ihre Daten bei Ihnen bleiben.
                 </p>
-                <p class="llm-highlight">
+                <p style="color: #fff; font-weight: 600;">
                     Technologien wie RAG (Retrieval Augmented Generation) erlauben es der KI, Ihr internes Firmenarchiv zu "lesen", ohne dass die Daten nach außen dringen.
                 </p>
             </div>
@@ -186,11 +218,11 @@
             </div>
             <div class="card">
                 <h4>Pharma & Life Sciences</h4>
-                <p>KI-Validierung klinischer Daten und Unterstützung bei regulatorischen FDA/EMA Einreichungen.</p>
+                <p>KI-Validierung klinischer Daten und Unterstützung bei regulatorischen Einreichungen.</p>
             </div>
             <div class="card">
                 <h4>Banking & Finanzen</h4>
-                <p>Automatisierung für Basel IV Reporting, KYC-Prozesse und algorithmische Risikoprüfung.</p>
+                <p>Automatisierung für regulatorisches Reporting, KYC-Prozesse und algorithmische Risikoprüfung.</p>
             </div>
             <div class="card">
                 <h4>Automotive & Industrie</h4>
@@ -207,8 +239,8 @@
                 <p>Wir liefern schnelle, greifbare Ergebnisse statt langer Konzepte. Ihr erster KI-Prototyp ist innerhalb von zwei Wochen einsatzbereit.</p>
             </div>
             <div class="card">
-                <h4>Finanz- & Banking Expertise</h4>
-                <p>Umfangreiche Projekterfahrung im Bankensektor (u.a. LBBW) in den Bereichen Analytics, Reporting und ESG-Automatisierung.</p>
+                <h4>Banking & Konzern-Erfahrung</h4>
+                <p>Umfangreiche Projekterfahrung im Bankensektor (u.a. LBBW) in den Bereichen Analytics und ESG-Automatisierung.</p>
             </div>
             <div class="card">
                 <h4>Methodische Exzellenz</h4>
@@ -216,7 +248,7 @@
             </div>
             <div class="card">
                 <h4>Messbarer ROI</h4>
-                <p>Unsere Agenten werden an ihrer Performance gemessen: Zeitersparnis, Fehlerreduktion und direkte Kostensenkung.</p>
+                <p>Erfolg wird bei uns direkt an Zeitersparnis, Kostensenkung und der Reduktion manueller Fehler gemessen.</p>
             </div>
         </div>
     </section>
@@ -234,8 +266,8 @@
             <h3 style="color:#fff; margin-bottom: 15px;">Kontakt & Impressum</h3>
             <p><strong>AISOLUTIOS</strong><br>
             Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
-            E-Mail: <a href="mailto:vertrieb@aisolutios.de" style="color:var(--primary); text-decoration:none;">vertrieb@aisolutios.de</a><br>
-            Web: <a href="http://www.aisolutios.de" style="color:var(--muted); text-decoration:none;">www.aisolutios.de</a></p>
+            E-Mail: vertrieb@aisolutios.de<br>
+            Web: www.aisolutios.de</p>
         </div>
         <div style="text-align: right;">
             <p>&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
@@ -245,23 +277,18 @@
 
     <div id="aisolutios-agent-container">
         <div id="aisolutios-agent" style="position: fixed; bottom: 25px; right: 25px; z-index: 10000; font-family: 'Inter', sans-serif;">
-            
             <div id="bot-teaser" onclick="window.aisoToggle()" class="aiso-bounce" style="position: absolute; bottom: 90px; right: 5px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 13px; width: 230px; cursor: pointer; border: 2px solid #000; color: #000;">
                 <div style="font-weight: bold; margin-bottom: 4px;">🚀 Growth-Crew bereit</div>
-                <p style="margin: 0; font-size: 11px; color: #555;">AISOLUTIOS generiert Leads für Ihr Unternehmen in Echtzeit.</p>
+                <p style="margin: 0; font-size: 11px; color: #555;">AISOLUTIOS generiert Leads in Echtzeit.</p>
             </div>
-
             <div id="chat-window" style="display: none; width: 380px; height: 550px; background: white; border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; position: absolute; bottom: 85px; right: 0; border: 1px solid #eee;">
                 <div style="background: #000; color: white; padding: 22px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="letter-spacing: 1px;">🤖 AISOLUTIOS AGENT</span>
+                    <span>🤖 AISOLUTIOS AGENT</span>
                     <span onclick="window.aisoToggle()" style="cursor: pointer; font-size: 20px;">&times;</span>
                 </div>
                 <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; color: #333; display: flex; flex-direction: column; background: #fafafa;"></div>
-                <div style="padding: 15px; border-top: 1px solid #eee;">
-                    <input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; font-size: 15px; color: #000;">
-                </div>
+                <div style="padding: 15px; border-top: 1px solid #eee;"><input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; font-size: 15px; color: #000;"></div>
             </div>
-
             <button onclick="window.aisoToggle()" style="background: #000; color: white; border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">🤖</button>
         </div>
     </div>
@@ -285,7 +312,7 @@
         function addBotMsg(text) {
             const content = document.getElementById('chat-content');
             const div = document.createElement('div');
-            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px; line-height: 1.5;";
+            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px;";
             div.innerHTML = text;
             content.appendChild(div);
             content.scrollTop = content.scrollHeight;
@@ -295,14 +322,14 @@
             if (e.key === 'Enter' && this.value.trim() !== '') {
                 const val = this.value.trim();
                 this.value = '';
-                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Vielen Dank. Wie ist Ihr vollständiger Name?"); }
-                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Und unter welcher E-Mail-Adresse darf AISOLUTIOS Ihnen den Analyse-Report senden?"); }
+                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Vielen Dank. Wie ist Ihr Name?"); }
+                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Unter welcher E-Mail erreichen wir Sie?"); }
                 else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
             }
         });
 
         async function startAnalysis() {
-            addBotMsg("🔍 <b>Analyse läuft...</b> AISOLUTIOS identifiziert Potenziale für " + leadData.target_company);
+            addBotMsg("🔍 Analyse läuft...");
             try {
                 const response = await fetch(`${API_BASE}/run-funnel`, {
                     method: 'POST',
@@ -310,14 +337,9 @@
                     body: JSON.stringify(leadData)
                 });
                 if (response.ok) {
-                    addBotMsg(`Analyse abgeschlossen! Wir haben wertvolle Daten für ${leadData.target_company} generiert.`);
-                    addBotMsg(`
-                        <div style="background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin-top: 10px;">
-                            <button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Lead-Report kaufen (29€)</button>
-                        </div>
-                    `);
+                    addBotMsg(`Analyse für ${leadData.target_company} bereit! <br><br> <button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Report kaufen (29€)</button>`);
                 }
-            } catch (err) { addBotMsg("Fehler beim Starten der Analyse."); }
+            } catch (err) { addBotMsg("Fehler bei der Verbindung."); }
         }
 
         window.aisoPay = async function() {
@@ -329,10 +351,10 @@
                 });
                 const session = await res.json();
                 if (session.url) window.location.href = session.url;
-            } catch (err) { addBotMsg("Fehler beim Starten der Zahlung."); }
+            } catch (err) { addBotMsg("Zahlungsfehler."); }
         };
 
-        setTimeout(() => addBotMsg("Herzlich willkommen bei AISOLUTIOS! Welches Unternehmen sollen wir heute für Sie analysieren?"), 1000);
+        setTimeout(() => addBotMsg("Willkommen bei AISOLUTIOS! Welches Unternehmen analysieren wir für Sie?"), 1000);
     })();
 </script>
 </body>
