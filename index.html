@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solutios – Autonome KI-Agenten & Interne LLM Plattform</title>
-    <meta name="description" content="Sichere, DSGVO-konforme KI-Agenten für Pharma, Banking und Industrie. Dr. Sidi Weiss entwickelt maßgeschneiderte LLM-Lösungen.">
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --bg: #0b0f1a;
@@ -19,7 +16,6 @@
             --text: #e8ecf3;
             --muted: #9aa4b2;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
@@ -28,7 +24,6 @@
             color: var(--text);
             line-height: 1.6;
         }
-
         header {
             position: sticky; top: 0; z-index: 1000;
             background: rgba(10, 15, 30, 0.85);
@@ -37,49 +32,32 @@
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .brand { display: flex; flex-direction: column; }
         .logo-text { font-weight: 700; font-size: 22px; color: #fff; letter-spacing: 1px; }
-        
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
-
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         section { margin-bottom: 40px; }
-
-        h1 { font-size: 48px; line-height: 1.2; margin-bottom: 20px; background: linear-gradient(to right, #fff, var(--muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 48px; line-height: 1.2; margin-bottom: 20px; color: #fff; }
         h2 { font-size: 32px; margin-bottom: 30px; color: #fff; }
         h4 { margin-bottom: 10px; color: var(--primary); font-size: 1.25rem; font-weight: 700; }
-
         .hero-lead { font-size: 20px; color: var(--muted); max-width: 800px; margin-bottom: 30px; }
-        
         .btn {
             background: linear-gradient(135deg, var(--primary), #ff8c42);
             color: #000; padding: 16px 32px; border: none; border-radius: 12px;
             font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card {
             background: linear-gradient(180deg, #141c3a, #0f162f);
             border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
-            display: flex; flex-direction: column;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-
+        .card:hover { transform: translateY(-10px); border-color: var(--secondary); }
         footer { background: #070b18; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-content { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
-
-        /* Animation für Chatbot Teaser */
         @keyframes botBounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
         .aiso-bounce { animation: botBounce 3s infinite; }
-
-        @media(max-width: 768px) { h1 { font-size: 36px; } nav { display: none; } }
     </style>
 </head>
-
 <body>
 
 <header>
@@ -98,33 +76,32 @@
 
 <main>
     <section class="container">
-        <h1>Intelligente KI-Agenten für regulierte Industrien</h1>
-        <p class="hero-lead">Wir entwickeln autonome Systeme, die komplexe Daten analysieren und Prozesse automatisieren. Erfahren Sie, wie Dr. Sidi Weiss KI-Lösungen mit mathematischer Präzision und maximaler Sicherheit realisiert.</p>
-        <div class="cta-row">
-            <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn">Kostenlose Erstberatung buchen</a>
-        </div>
+        <h1>Autonome KI-Agenten für regulierte Industrien</h1>
+        <p class="hero-lead">Wir entwickeln KI-Systeme für komplexe Datenanalysen und Prozessautomatisierung. Erfahren Sie, wie Dr. Sidi Weiss mathematische Präzision in messbaren ROI verwandelt.</p>
+        <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn">Kostenlose Erstberatung buchen</a>
     </section>
 
     <section id="agents" class="container">
         <h2>Spezialisierte KI-Agenten</h2>
         <div class="grid">
-            <div class="card"><h4>Pharma & Medizin Agenten</h4><p>Automatisierung klinischer Studienberichte, Analyse medizinischer Dokumentationen und Unterstützung bei Regulatory Affairs.</p></div>
-            <div class="card"><h4>Banking & Finance Agenten</h4><p>Kredit-Scoring, Risikomodelle, Betrugserkennung und automatisiertes regulatorisches Reporting.</p></div>
-            <div class="card"><h4>Datenanalyse-Agenten</h4><p>Vorausschauende Analysen (Predictive Analytics), KPI-Monitoring und automatisierte Management-Dashboards.</p></div>
-            <div class="card"><h4>Versicherungs-Agenten</h4><p>Automatisierte Schadenbearbeitung, Policenprüfung und intelligente Dokumentenklassifizierung.</p></div>
-            <div class="card"><h4>Automotive & Industrie</h4><p>Produktionsüberwachung, Qualitätsdaten-Analyse und Predictive Maintenance Lösungen.</p></div>
-            <div class="card"><h4>Logistik-Agenten</h4><p>Intelligente Routenoptimierung, Bestandsmanagement und Kapazitätsplanung.</p></div>
+            <div class="card"><h4>Pharma & Medizin Agenten</h4><p>Automatisierung klinischer Studienberichte und Analyse medizinischer Dokumentationen.</p></div>
+            <div class="card"><h4>Banking-Agenten</h4><p>Risikomodelle, Betrugserkennung sowie automatisierte ESG- und Nachhaltigkeits-Berichterstattung.</p></div>
+            <div class="card"><h4>Finanz-Agenten</h4><p>Automatisierte Cashflow-Prognosen, Abweichungsanalysen und intelligentes Budget-Monitoring.</p></div>
+            <div class="card"><h4>Datenanalyse-Agenten</h4><p>Predictive Analytics, KPI-Monitoring und automatisierte Management-Dashboards.</p></div>
+            <div class="card"><h4>Versicherungs-Agenten</h4><p>KI-gestützte Schadenbearbeitung und intelligente Dokumentenklassifizierung.</p></div>
+            <div class="card"><h4>Automotive & Industrie</h4><p>Produktionsüberwachung und vorausschauende Wartung (Predictive Maintenance).</p></div>
             <div class="card"><h4>Data Engineering Agenten</h4><p>Sichere ETL-Strecken und nahtlose Integration heterogener Datenquellen.</p></div>
-            <div class="card"><h4>LLM & RAG Agenten</h4><p>Interne KI-Assistenten mit Zugriff auf Ihr Firmenwissen (Retrieval Augmented Generation).</p></div>
+            <div class="card"><h4>LLM & RAG Agenten</h4><p>Interne KI-Assistenten mit sicherem Zugriff auf Ihr Firmenwissen.</p></div>
         </div>
     </section>
 
     <section id="industries" class="container">
         <h2>Branchen-Fokus</h2>
         <div class="grid">
-            <div class="card"><h4>Pharma & Life Sciences</h4><p>KI-Systeme für klinische Daten, die höchsten Compliance-Anforderungen gerecht werden.</p></div>
-            <div class="card"><h4>Finanzen & Banking</h4><p>Skalierbare Automatisierung für ein reibungsloses Reporting und Risiko-Management.</p></div>
-            <div class="card"><h4>Automotive & Manufacturing</h4><p>Optimierung der Wertschöpfungskette durch datengetriebene Intelligenz.</p></div>
+            <div class="card"><h4>Pharma & Life Sciences</h4><p>KI-Systeme für klinische Daten unter höchsten Compliance-Standards.</p></div>
+            <div class="card"><h4>Banking</h4><p>Regulatorisches Reporting, KYC-Prozesse und algorithmische Risikoanalyse.</p></div>
+            <div class="card"><h4>Finanzen & Controlling</h4><p>Datengetriebene Unternehmenssteuerung und Automatisierung der Finanzberichte.</p></div>
+            <div class="card"><h4>Automotive</h4><p>Optimierung der Wertschöpfungskette durch Machine Learning Intelligenz.</p></div>
         </div>
     </section>
 
@@ -134,13 +111,10 @@
             <div class="text-block">
                 <h4>Schutz sensibler Daten als Fundament</h4>
                 <p style="margin-bottom: 20px;">
-                    Viele Unternehmen nutzen öffentliche KI-Tools und riskieren dabei den Abfluss sensibler Geschäftsgeheimnisse, da diese Daten oft zum Training der Modelle verwendet werden. In regulierten Branchen wie der <strong>Pharmazie oder dem Bankwesen</strong> ist dies unzulässig.
+                    Viele Unternehmen nutzen öffentliche KI-Tools und riskieren dabei den Abfluss sensibler Geschäftsgeheimnisse. In regulierten Branchen wie der Pharmazie oder dem Bankwesen ist dies unzulässig.
                 </p>
-                <p style="margin-bottom: 20px;">
-                    Unsere <strong>Interne LLM Plattform</strong> bietet die Lösung: Wir implementieren modernste Sprachmodelle (LLMs) innerhalb Ihrer eigenen Sicherheits-Infrastruktur. Ihre Daten verlassen niemals Ihr Unternehmen. Wir nutzen Techniken wie RAG (Retrieval Augmented Generation), um die KI auf Ihr internes Archiv (SharePoint, PDFs, Datenbanken) zugreifen zu lassen – absolut sicher und DSGVO-konform.
-                </p>
-                <p style="font-weight: 600; color: var(--accent);">
-                    AISOLUTIOS baut diese Plattformen maßgeschneidert für Kunden, die keine Kompromisse bei der Datensouveränität eingehen wollen.
+                <p style="margin-bottom: 20px; color: var(--text);">
+                    Unsere Interne LLM Plattform bietet die Lösung: Wir implementieren modernste Sprachmodelle innerhalb Ihrer eigenen Sicherheits-Infrastruktur. AISOLUTIOS baut diese sicheren LLM-Strukturen maßgeschneidert für Sie. Wir integrieren die Power der KI direkt in Ihre IT-Landschaft, damit Ihre Daten genau da bleiben, wo sie hingehören: Bei Ihnen.
                 </p>
             </div>
             <div class="card" style="border: 1px solid var(--secondary); background: rgba(123, 97, 255, 0.05);">
@@ -148,7 +122,6 @@
                     <li>✅ 100% Datensouveränität</li>
                     <li>✅ On-Premise oder Private Cloud</li>
                     <li>✅ Kein Training durch Dritte</li>
-                    <li>✅ Deep-Search im Firmenarchiv</li>
                     <li>✅ Revisionssichere Architektur</li>
                 </ul>
             </div>
@@ -156,23 +129,23 @@
     </section>
 
     <section id="why-us" class="container">
-        <h2>Warum AISOLUTIOS?</h2>
+        <h2>Expertise & Erfahrung</h2>
         <div class="grid">
             <div class="card">
                 <h4>Wissenschaftliche Exzellenz</h4>
-                <p>Unter der Leitung von Dr. Sidi Weiss, einem promovierten Statistiker mit über 15 Jahren Erfahrung, verbinden wir akademische Tiefe mit praktischer Implementierungskraft.</p>
+                <p>Dr. Sidi Weiss, promovierter Statistiker mit über 15 Jahren Erfahrung in regulierten Industrien.</p>
             </div>
             <div class="card">
-                <h4>Regulierungskompetenz</h4>
-                <p>Wir beherrschen die spezifischen Anforderungen von Banking, Pharma und Versicherungen. Security-by-Design ist bei uns kein Schlagwort, sondern Standard.</p>
+                <h4>Finanz- & Banking Expertise</h4>
+                <p>Umfangreiche Projekterfahrung im Bankensektor, u.a. bei der LBBW in den Bereichen Analytics, Reporting und ESG-Automatisierung.</p>
             </div>
             <div class="card">
-                <h4>Technologische Freiheit</h4>
-                <p>Wir sind technologie-neutral. Ob Python, R, Cloud-native oder On-Premise – wir bauen die Lösung, die perfekt in Ihre bestehende IT-Landschaft passt.</p>
+                <h4>Technologie-neutral</h4>
+                <p>Wir bauen die Lösung, die perfekt in Ihre bestehende IT-Landschaft passt – unabhängig vom Anbieter.</p>
             </div>
             <div class="card">
-                <h4>Messbarer Business Impact</h4>
-                <p>Wir bauen keine Spielereien. Unsere Agenten werden an ihrem Return on Investment (ROI) und der Reduktion manueller Fehlerquoten gemessen.</p>
+                <h4>Messbarer ROI</h4>
+                <p>Unsere KI-Agenten werden an der Reduktion manueller Fehler und echter Zeitersparnis gemessen.</p>
             </div>
         </div>
     </section>
@@ -185,53 +158,40 @@
 </main>
 
 <footer>
-    <div class="footer-content">
+    <div class="container" style="padding: 0 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
         <div>
             <h3 style="color:#fff; margin-bottom: 15px;">Impressum</h3>
             <p><strong>Solutios | Dr. Sidi Weiss</strong><br>
             Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
-            Mobil: 0176 31591931<br>
-            E-Mail: <a href="mailto:vertrieb@aisolutios.de" style="color:var(--primary); text-decoration:none;">vertrieb@aisolutios.de</a><br>
-            Web: <a href="http://www.aisolutios.de" style="color:var(--muted); text-decoration:none;">www.aisolutios.de</a></p>
-        </div>
-        <div style="text-align: right;">
-            <p>&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
-            <p style="font-size: 11px; margin-top: 10px;">Entwickelt für höchste Ansprüche in Datenanalyse & KI.</p>
+            E-Mail: vertrieb@aisolutios.de</p>
         </div>
     </div>
 
-    <div id="aiso-chat-wrapper">
+    <div id="aisolutios-agent-container">
         <div id="aisolutios-agent" style="position: fixed; bottom: 25px; right: 25px; z-index: 10000; font-family: 'Inter', sans-serif;">
-            
             <div id="bot-teaser" onclick="window.aisoToggle()" class="aiso-bounce" style="position: absolute; bottom: 90px; right: 5px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 13px; width: 230px; cursor: pointer; border: 2px solid #000; color: #000;">
                 <div style="font-weight: bold; margin-bottom: 4px;">🚀 Growth-Crew bereit</div>
-                <p style="margin: 0; font-size: 11px; color: #555;">Ich analysiere Leads für Ihr Unternehmen in Echtzeit.</p>
+                <p style="margin: 0; font-size: 11px;">Leads generieren für Ihr Unternehmen.</p>
             </div>
-
             <div id="chat-window" style="display: none; width: 380px; height: 550px; background: white; border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; position: absolute; bottom: 85px; right: 0; border: 1px solid #eee;">
                 <div style="background: #000; color: white; padding: 22px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="letter-spacing: 1px;">🤖 AISOLUTIOS AGENT</span>
-                    <span onclick="window.aisoToggle()" style="cursor: pointer; font-size: 20px;">&times;</span>
+                    <span>🤖 AISOLUTIOS AGENT</span>
+                    <span onclick="window.aisoToggle()" style="cursor: pointer;">&times;</span>
                 </div>
                 <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; color: #333; display: flex; flex-direction: column; background: #fafafa;"></div>
-                <div style="padding: 15px; border-top: 1px solid #eee; background: #fff;">
-                    <input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; font-size: 15px; color: #000;">
-                </div>
+                <div style="padding: 15px; border-top: 1px solid #eee;"><input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; font-size: 15px; color: #000;"></div>
             </div>
-
-            <button onclick="window.aisoToggle()" style="background: #000; color: white; border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 32px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">🤖</button>
+            <button onclick="window.aisoToggle()" style="background: #000; color: white; border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 32px; display: flex; align-items: center; justify-content: center;">🤖</button>
         </div>
     </div>
 </footer>
 
 <script>
     (function() {
-        // Backend URL (Ihr ngrok / Server)
         const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
         let step = 0;
         let leadData = { target_company: "", user_name: "", user_email: "" };
 
-        // Toggle Chat Window
         window.aisoToggle = function() {
             const win = document.getElementById('chat-window');
             const teaser = document.getElementById('bot-teaser');
@@ -241,105 +201,54 @@
             if (isOpening) document.getElementById('user-input').focus();
         };
 
-        // Nachricht vom Bot anzeigen
         function addBotMsg(text) {
             const content = document.getElementById('chat-content');
             const div = document.createElement('div');
-            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px; line-height: 1.5;";
+            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px;";
             div.innerHTML = text;
             content.appendChild(div);
             content.scrollTop = content.scrollHeight;
         }
 
-        // Nachricht vom User anzeigen
-        function addUserMsg(text) {
-            const content = document.getElementById('chat-content');
-            const div = document.createElement('div');
-            div.style.cssText = "margin-bottom: 12px; background: #000; color: #fff; padding: 12px; border-radius: 14px; align-self: flex-end; max-width: 85%; font-size: 14px;";
-            div.innerText = text;
-            content.appendChild(div);
-            content.scrollTop = content.scrollHeight;
-        }
-
-        // Eingabe-Logik
         document.getElementById('user-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && this.value.trim() !== '') {
                 const val = this.value.trim();
                 this.value = '';
-                addUserMsg(val);
-
-                if (step === 0) {
-                    leadData.target_company = val;
-                    step = 1;
-                    setTimeout(() => addBotMsg("Verstanden. Wie ist Ihr vollständiger Name?"), 600);
-                } else if (step === 1) {
-                    leadData.user_name = val;
-                    step = 2;
-                    setTimeout(() => addBotMsg("Vielen Dank. An welche E-Mail-Adresse darf ich den Lead-Report senden?"), 600);
-                } else if (step === 2) {
-                    leadData.user_email = val;
-                    step = 3;
-                    startAnalysis();
-                }
+                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Name?"); }
+                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("E-Mail?"); }
+                else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
             }
         });
 
-        // Backend Call: Analyse starten
         async function startAnalysis() {
-            addBotMsg("🔍 <b>Analyse läuft...</b> Ich identifiziere potenzielle Leads und Ansprechpartner für Ihr Zielunternehmen.");
+            addBotMsg("🔍 Analyse läuft...");
             try {
                 const response = await fetch(`${API_BASE}/run-funnel`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(leadData)
                 });
-                
                 if (response.ok) {
-                    addBotMsg("Die Analyse ist abgeschlossen! Ich habe wertvolle Sales-Potenziale gefunden.");
-                    addBotMsg(`
-                        <div style="background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin-top: 10px;">
-                            <p style="margin-bottom: 10px;"><b>Lead-Report: ${leadData.target_company}</b></p>
-                            <button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold; font-size: 14px;">Report jetzt kaufen (29€)</button>
-                        </div>
-                    `);
-                } else {
-                    addBotMsg("Der Prozess wurde angestoßen. Bitte nutzen Sie den folgenden Link zur Zahlung, um das Ergebnis freizuschalten.");
-                    addBotMsg(`<button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Zum Stripe Checkout</button>`);
+                    addBotMsg(`Analyse für ${leadData.target_company} bereit! <br><br> <button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Report kaufen (29€)</button>`);
                 }
-            } catch (err) {
-                addBotMsg("Die Analyse-Engine ist bereit. Bitte starten Sie den Kaufprozess, um die Ergebnisse zu generieren.");
-                addBotMsg(`<button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Zahlung via Stripe</button>`);
-            }
+            } catch (err) { addBotMsg("Server-Verbindung fehlgeschlagen."); }
         }
 
-        // Stripe Checkout Call
         window.aisoPay = async function() {
-            addBotMsg("💳 <i>Stripe-Sitzung wird erstellt...</i>");
             try {
                 const res = await fetch(`${API_BASE}/create-checkout-session`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        email: leadData.user_email,
-                        company: leadData.target_company
-                    })
+                    body: JSON.stringify({ email: leadData.user_email, company: leadData.target_company })
                 });
                 const session = await res.json();
-                if (session.url) {
-                    window.location.href = session.url;
-                } else {
-                    addBotMsg("Fehler beim Erstellen der Zahlungssitzung. Bitte versuchen Sie es später erneut.");
-                }
-            } catch (err) {
-                addBotMsg("Verbindung zum Zahlungsserver fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung.");
-            }
+                if (session.url) window.location.href = session.url;
+            } catch (err) { addBotMsg("Fehler beim Starten der Zahlung."); }
         };
 
-        // Begrüßung
-        setTimeout(() => addBotMsg(`Willkommen, ich bin die Growth-Crew von Dr. Sidi Weiss. Welches Unternehmen sollen wir heute für Sie analysieren?`), 1200);
+        setTimeout(() => addBotMsg("Welches Unternehmen analysieren wir heute?"), 1000);
     })();
 </script>
-
 </body>
 </html>
 <!DOCTYPE html>
