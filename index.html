@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AISOLUTIOS – Autonome KI-Agenten & Interne LLM Plattform</title>
-    <meta name="description" content="Sichere KI-Agenten und interne LLM-Plattformen für Pharma, Banking und Industrie. AISOLUTIOS entwickelt maßgeschneiderte KI-Architekturen.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --bg: #0b0f1a;
@@ -18,7 +16,6 @@
             --text: #e8ecf3;
             --muted: #9aa4b2;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
@@ -27,7 +24,6 @@
             color: var(--text);
             line-height: 1.6;
         }
-
         header {
             position: sticky; top: 0; z-index: 1000;
             background: rgba(10, 15, 30, 0.85);
@@ -36,46 +32,32 @@
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .brand { display: flex; flex-direction: column; }
         .logo-text { font-weight: 700; font-size: 22px; color: #fff; letter-spacing: 1px; }
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
-
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         section { margin-bottom: 60px; }
-
-        h1 { font-size: 48px; line-height: 1.2; margin-bottom: 10px; color: #fff; }
-        .sub-h1 { font-size: 24px; color: var(--accent); margin-bottom: 25px; font-weight: 600; }
+        h1 { font-size: 48px; line-height: 1.2; margin-bottom: 20px; color: #fff; }
         h2 { font-size: 32px; margin-bottom: 30px; color: #fff; border-left: 4px solid var(--primary); padding-left: 15px; }
         h4 { margin-bottom: 10px; color: var(--primary); font-size: 1.25rem; font-weight: 700; }
-
         .hero-lead { font-size: 18px; color: var(--muted); max-width: 850px; margin-bottom: 35px; }
-        
         .btn {
             background: linear-gradient(135deg, var(--primary), #ff8c42);
             color: #000; padding: 16px 32px; border: none; border-radius: 12px;
             font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card {
             background: linear-gradient(180deg, #141c3a, #0f162f);
             border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--secondary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-
+        .card:hover { transform: translateY(-10px); border-color: var(--secondary); }
         footer { background: #070b18; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-
         @keyframes botBounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
         .aiso-bounce { animation: botBounce 3s infinite; }
-
-        @media(max-width: 768px) { h1 { font-size: 34px; } .grid { grid-template-columns: 1fr; } nav { display: none; } }
     </style>
 </head>
-
 <body>
 
 <header>
@@ -85,8 +67,8 @@
     </div>
     <nav>
         <a href="#agents">KI-Agenten</a>
-        <a href="#industries">Branchen</a>
         <a href="#llm">LLM Plattform</a>
+        <a href="#industries">Branchen</a>
         <a href="#expertise">Expertise</a>
         <a href="#contact">Kontakt</a>
     </nav>
@@ -94,8 +76,7 @@
 
 <main>
     <section class="container">
-        <h1>Autonome KI-Agenten für regulierte Industrien</h1>
-        <div class="sub-h1">Autonomous AI Agents that Improve Processes Measurably</div>
+        <h1>Autonome KI-Agenten für messbare Prozessoptimierung</h1>
         <p class="hero-lead">Wir entwickeln intelligente Systeme, die komplexe Datenanalysen übernehmen und Betriebsprozesse autonom optimieren. AISOLUTIOS kombiniert mathematische Präzision mit modernster KI für Ihren messbaren Erfolg.</p>
         <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn">Kostenlose Erstberatung buchen</a>
     </section>
@@ -103,60 +84,14 @@
     <section id="agents" class="container">
         <h2>Spezialisierte KI-Agenten</h2>
         <div class="grid">
-            <div class="card">
-                <h4>Pharma & Medizin Agenten</h4>
-                <p>Automatisierung klinischer Studienberichte, Analyse medizinischer Dokumentationen und Unterstützung bei der Einhaltung regulatorischer Anforderungen (FDA/EMA).</p>
-            </div>
-            <div class="card">
-                <h4>Banking-Agenten</h4>
-                <p>Risikomodelle, Betrugserkennung (Fraud Detection) sowie vollständig automatisierte ESG- und Nachhaltigkeits-Berichterstattung für Finanzinstitute.</p>
-            </div>
-            <div class="card">
-                <h4>Finanz-Agenten</h4>
-                <p>Intelligente Cashflow-Prognosen, automatisierte Abweichungsanalysen und vorausschauendes Budget-Monitoring für das moderne Controlling.</p>
-            </div>
-            <div class="card">
-                <h4>Datenanalyse-Agenten</h4>
-                <p>Vorausschauende Analysen (Predictive Analytics), KPI-Monitoring in Echtzeit und KI-generierte Management-Berichte.</p>
-            </div>
-            <div class="card">
-                <h4>Versicherungs-Agenten</h4>
-                <p>KI-gestützte Schadenbearbeitung, automatisierte Policenprüfung und intelligente Klassifizierung komplexer Vertragsdokumente.</p>
-            </div>
-            <div class="card">
-                <h4>Automotive & Industrie</h4>
-                <p>Produktionsüberwachung, Qualitätsdaten-Analyse und Predictive Maintenance zur Minimierung von Ausfallzeiten in der Fertigung.</p>
-            </div>
-            <div class="card">
-                <h4>Data Engineering Agenten</h4>
-                <p>Aufbau sicherer ETL-Pipelines und nahtlose Integration heterogener Datenquellen in eine zentrale, KI-gestützte Wissensbasis.</p>
-            </div>
-            <div class="card">
-                <h4>LLM & RAG Agenten</h4>
-                <p>Interne KI-Assistenten, die mittels Retrieval Augmented Generation (RAG) sicher auf Ihr gesamtes Firmenwissen (SharePoint, PDFs) zugreifen.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="industries" class="container">
-        <h2>Branchen-Fokus</h2>
-        <div class="grid">
-            <div class="card">
-                <h4>Pharma & Life Sciences</h4>
-                <p>Implementierung hochsicherer KI-Lösungen für klinische Daten, die strengsten Validierungs- und Compliance-Standards entsprechen.</p>
-            </div>
-            <div class="card">
-                <h4>Banking</h4>
-                <p>Automatisierung für regulatorisches Reporting (Basel IV), KYC-Prozesse und algorithmische Risikobewertung.</p>
-            </div>
-            <div class="card">
-                <h4>Finanzen & Controlling</h4>
-                <p>Digitale Transformation der Unternehmenssteuerung durch KI-basierte Forecast-Modelle und automatisierte Konsolidierung.</p>
-            </div>
-            <div class="card">
-                <h4>Automotive</h4>
-                <p>Effizienzsteigerung in der Wertschöpfungskette durch autonome Agenten in Logistik und Produktion.</p>
-            </div>
+            <div class="card"><h4>Pharma & Medizin Agenten</h4><p>Automatisierung klinischer Studienberichte und Analyse medizinischer Dokumentationen unter Einhaltung strengster Regularien.</p></div>
+            <div class="card"><h4>Banking-Agenten</h4><p>Risikomodelle, Betrugserkennung sowie automatisierte ESG- und Nachhaltigkeits-Berichterstattung für Finanzinstitute.</p></div>
+            <div class="card"><h4>Finanz-Agenten</h4><p>Automatisierte Cashflow-Prognosen, intelligente Abweichungsanalysen und vorausschauendes Budget-Monitoring.</p></div>
+            <div class="card"><h4>Datenanalyse-Agenten</h4><p>Predictive Analytics, Echtzeit-KPI-Monitoring und automatisierte Management-Dashboards.</p></div>
+            <div class="card"><h4>Versicherungs-Agenten</h4><p>KI-gestützte Schadenbearbeitung, Policenprüfung und intelligente Dokumentenklassifizierung.</p></div>
+            <div class="card"><h4>Automotive & Industrie</h4><p>Produktionsüberwachung und vorausschauende Wartung (Predictive Maintenance) zur Vermeidung von Stillständen.</p></div>
+            <div class="card"><h4>Data Engineering Agenten</h4><p>Sichere ETL-Strecken und nahtlose Integration heterogener Datenquellen.</p></div>
+            <div class="card"><h4>LLM & RAG Agenten</h4><p>Interne KI-Assistenten, die mittels Retrieval Augmented Generation sicher auf Ihr Firmenwissen zugreifen.</p></div>
         </div>
     </section>
 
@@ -164,49 +99,48 @@
         <h2>Interne LLM Plattform</h2>
         <div class="grid" style="grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;">
             <div class="text-block">
-                <h4>Was sind LLMs und warum eine interne Plattform?</h4>
-                <p style="margin-bottom: 15px;">
-                    Large Language Models (LLMs) sind KI-Systeme, die auf riesigen Datenmengen trainiert wurden, um komplexe Texte zu verstehen, Zusammenhänge zu erkennen und präzise Antworten zu geben. Sie fungieren als "kognitiver Motor" für Ihre Datenverarbeitung.
+                <h4 style="color: #fff;">Was sind LLMs und warum eine interne Plattform?</h4>
+                <p style="margin-bottom: 15px; color: #fff;">
+                    Large Language Models (LLMs) sind hochentwickelte KI-Modelle, die menschliche Sprache verstehen und generieren können. Öffentliche Tools bergen jedoch das Risiko, dass sensible Geschäftsgeheimnisse zum Training der Modelle verwendet werden.
                 </p>
                 <p style="margin-bottom: 20px; color: #fff;">
-                    Öffentliche KI-Lösungen bergen jedoch das Risiko, dass Ihre sensiblen Geschäftsgeheimnisse zum Training der Modelle verwendet werden. In Branchen wie Pharmazie oder Banking ist dies ein Sicherheitsrisiko. AISOLUTIOS baut diese sicheren LLM-Strukturen maßgeschneidert für Sie. Wir integrieren die Power der KI direkt in Ihre IT-Landschaft, damit Ihre Daten genau da bleiben, wo sie hingehören: Bei Ihnen.
+                    AISOLUTIOS baut diese sicheren LLM-Strukturen maßgeschneidert für Sie. Wir integrieren die Power der KI direkt in Ihre IT-Landschaft, damit Ihre Daten genau da bleiben, wo sie hingehören: Bei Ihnen.
                 </p>
-                <p style="font-weight: 600; color: var(--accent);">
+                <p style="color: #fff; font-weight: 600;">
                     Technologien wie RAG (Retrieval Augmented Generation) erlauben es der KI, Ihr internes Firmenarchiv zu "lesen", ohne dass die Daten nach außen dringen.
                 </p>
             </div>
             <div class="card" style="border: 1px solid var(--secondary); background: rgba(123, 97, 255, 0.05);">
                 <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 15px;">Vorteile der Solutios LLMs Plattform</h4>
-                <ul style="list-style: none; line-height: 2.2;">
+                <ul style="list-style: none; line-height: 2.2; color: #fff;">
                     <li>✅ 100% Datensouveränität</li>
                     <li>✅ On-Premise oder Private Cloud</li>
-                    <li>✅ RAG: Zugriff auf interne PDFs & Daten</li>
-                    <li>✅ Kein Training durch externe Anbieter</li>
+                    <li>✅ RAG: Sicherer Zugriff auf interne Daten</li>
                     <li>✅ DSGVO-konforme Architektur</li>
                 </ul>
             </div>
         </div>
     </section>
 
+    <section id="industries" class="container">
+        <h2>Branchen-Fokus</h2>
+        <div class="grid">
+            <div class="card"><h4>Pharma & Life Sciences</h4><p>KI-Systeme für klinische Daten unter höchsten Compliance-Standards.</p></div>
+            <div class="card"><h4>Banking</h4><p>Lösungen für regulatorisches Reporting, KYC und Risikoanalyse.</p></div>
+            <div class="card"><h4>Finanzen & Controlling</h4><p>Automatisierte Unternehmenssteuerung und Finanzberichte.</p></div>
+            <div class="card"><h4>Automotive & Industrie</h4><p>Optimierung der Wertschöpfungskette durch Machine Learning.</p></div>
+            <div class="card"><h4>Versicherungswesen</h4><p>Effiziente Schadensregulierung und Risikoprüfung.</p></div>
+            <div class="card"><h4>Logistik</h4><p>KI-gestützte Routen- und Kapazitätsplanung.</p></div>
+        </div>
+    </section>
+
     <section id="expertise" class="container">
         <h2>Expertise & Erfahrung</h2>
         <div class="grid">
-            <div class="card">
-                <h4>Wissenschaftliche Exzellenz</h4>
-                <p>Geleitet von Dr. Sidi Weiss (promovierter Statistiker), verbindet AISOLUTIOS über 15 Jahre Erfahrung in der Entwicklung mathematischer KI-Modelle für Enterprise-Kunden.</p>
-            </div>
-            <div class="card">
-                <h4>Finanz- & Banking Expertise</h4>
-                <p>Umfangreiche Projekterfahrung im Bankensektor, u.a. bei der LBBW in den Bereichen Analytics, Reporting und ESG-Automatisierung.</p>
-            </div>
-            <div class="card">
-                <h4>Technologie-neutral</h4>
-                <p>AISOLUTIOS entwickelt herstellerunabhängige KI-Architekturen, die nahtlos in Ihre bestehende IT-Infrastruktur integriert werden.</p>
-            </div>
-            <div class="card">
-                <h4>Messbarer ROI</h4>
-                <p>Unsere Agenten werden an ihrer Performance gemessen: Signifikante Zeitersparnis, Reduktion manueller Fehler und effizientere Prozesse.</p>
-            </div>
+            <div class="card"><h4>Wissenschaftliche Exzellenz</h4><p>Geleitet von Dr. Sidi Weiss (promovierter Statistiker), verbindet AISOLUTIOS jahrelange Erfahrung in Enterprise-KI.</p></div>
+            <div class="card"><h4>Banking & Finanz Expertise</h4><p>Umfangreiche Projekterfahrung u.a. bei der LBBW in den Bereichen Analytics, Reporting und ESG.</p></div>
+            <div class="card"><h4>Technologie-neutral</h4><p>AISOLUTIOS entwickelt die Architektur, die perfekt in Ihre bestehende IT-Landschaft passt.</p></div>
+            <div class="card"><h4>Messbarer ROI</h4><p>Erfolg wird direkt an Zeitersparnis und Reduktion manueller Fehler gemessen.</p></div>
         </div>
     </section>
 
@@ -218,40 +152,29 @@
 </main>
 
 <footer>
-    <div class="container" style="padding: 0 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 40px;">
+    <div class="container" style="padding: 0 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
         <div>
             <h3 style="color:#fff; margin-bottom: 15px;">Impressum</h3>
             <p><strong>AISOLUTIOS | Dr. Sidi Weiss</strong><br>
             Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
-            Mobil: 0176 31591931<br>
-            E-Mail: <a href="mailto:vertrieb@aisolutios.de" style="color:var(--primary); text-decoration:none;">vertrieb@aisolutios.de</a><br>
-            Web: <a href="http://www.aisolutios.de" style="color:var(--muted); text-decoration:none;">www.aisolutios.de</a></p>
-        </div>
-        <div style="text-align: right;">
-            <p>&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
-            <p style="font-size: 11px; margin-top: 10px;">Security-by-Design für Enterprise KI.</p>
+            E-Mail: vertrieb@aisolutios.de</p>
         </div>
     </div>
 
-    <div id="aiso-chat-wrapper">
+    <div id="aisolutios-agent-container">
         <div id="aisolutios-agent" style="position: fixed; bottom: 25px; right: 25px; z-index: 10000; font-family: 'Inter', sans-serif;">
-            
             <div id="bot-teaser" onclick="window.aisoToggle()" class="aiso-bounce" style="position: absolute; bottom: 90px; right: 5px; background: white; padding: 15px; border-radius: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-size: 13px; width: 230px; cursor: pointer; border: 2px solid #000; color: #000;">
                 <div style="font-weight: bold; margin-bottom: 4px;">🚀 Growth-Crew bereit</div>
-                <p style="margin: 0; font-size: 11px; color: #555;">AISOLUTIOS generiert Leads für Ihr Unternehmen in Echtzeit.</p>
+                <p style="margin: 0; font-size: 11px; color: #555;">AISOLUTIOS generiert Leads in Echtzeit.</p>
             </div>
-
             <div id="chat-window" style="display: none; width: 380px; height: 550px; background: white; border-radius: 24px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); flex-direction: column; overflow: hidden; position: absolute; bottom: 85px; right: 0; border: 1px solid #eee;">
                 <div style="background: #000; color: white; padding: 22px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="letter-spacing: 1px;">🤖 AISOLUTIOS AGENT</span>
+                    <span>🤖 AISOLUTIOS AGENT</span>
                     <span onclick="window.aisoToggle()" style="cursor: pointer; font-size: 20px;">&times;</span>
                 </div>
                 <div id="chat-content" style="padding: 20px; flex-grow: 1; overflow-y: auto; color: #333; display: flex; flex-direction: column; background: #fafafa;"></div>
-                <div style="padding: 15px; border-top: 1px solid #eee;">
-                    <input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; font-size: 15px; color: #000;">
-                </div>
+                <div style="padding: 15px; border-top: 1px solid #eee;"><input type="text" id="user-input" placeholder="Firmenname eingeben..." style="width: 100%; border: 2px solid #ddd; border-radius: 12px; padding: 14px; outline: none; font-size: 15px; color: #000;"></div>
             </div>
-
             <button onclick="window.aisoToggle()" style="background: #000; color: white; border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">🤖</button>
         </div>
     </div>
@@ -275,7 +198,7 @@
         function addBotMsg(text) {
             const content = document.getElementById('chat-content');
             const div = document.createElement('div');
-            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px; line-height: 1.5;";
+            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px;";
             div.innerHTML = text;
             content.appendChild(div);
             content.scrollTop = content.scrollHeight;
@@ -285,14 +208,14 @@
             if (e.key === 'Enter' && this.value.trim() !== '') {
                 const val = this.value.trim();
                 this.value = '';
-                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Vielen Dank. Wie ist Ihr vollständiger Name?"); }
-                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Und unter welcher E-Mail-Adresse darf AISOLUTIOS Ihnen den Analyse-Report senden?"); }
+                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Vielen Dank. Wie ist Ihr Name?"); }
+                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Und Ihre E-Mail-Adresse für den Report?"); }
                 else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
             }
         });
 
         async function startAnalysis() {
-            addBotMsg("🔍 <b>Analyse läuft...</b> AISOLUTIOS identifiziert Potenziale für " + leadData.target_company);
+            addBotMsg("🔍 Analyse läuft...");
             try {
                 const response = await fetch(`${API_BASE}/run-funnel`, {
                     method: 'POST',
@@ -300,14 +223,9 @@
                     body: JSON.stringify(leadData)
                 });
                 if (response.ok) {
-                    addBotMsg(`Die Analyse ist abgeschlossen! AISOLUTIOS hat wertvolle Daten für ${leadData.target_company} generiert.`);
-                    addBotMsg(`
-                        <div style="background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin-top: 10px;">
-                            <button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Lead-Report kaufen (29€)</button>
-                        </div>
-                    `);
+                    addBotMsg(`Analyse für ${leadData.target_company} bereit! <br><br> <button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold;">Report kaufen (29€)</button>`);
                 }
-            } catch (err) { addBotMsg("Leider konnte die Analyse nicht gestartet werden."); }
+            } catch (err) { addBotMsg("Fehler bei der Analyse."); }
         }
 
         window.aisoPay = async function() {
@@ -319,10 +237,10 @@
                 });
                 const session = await res.json();
                 if (session.url) window.location.href = session.url;
-            } catch (err) { addBotMsg("Fehler beim Starten der Zahlung."); }
+            } catch (err) { addBotMsg("Zahlungsfehler."); }
         };
 
-        setTimeout(() => addBotMsg("Herzlich willkommen bei AISOLUTIOS! Welches Unternehmen sollen wir heute für Sie analysieren?"), 1000);
+        setTimeout(() => addBotMsg("Willkommen bei AISOLUTIOS! Welches Unternehmen analysieren wir?"), 1000);
     })();
 </script>
 </body>
