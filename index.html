@@ -11,7 +11,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-FBRY11ETSS');
+      gtag('config', 'G-FBRY11ETSS', { 'send_page_view': true });
     </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -49,7 +49,7 @@
         .btn{
           background:linear-gradient(135deg,var(--primary),#ff8c42);
           color:#000; padding:14px 26px; border:none;border-radius:12px;
-          font-weight:700; cursor:pointer;
+          font-weight:700; cursor:pointer; text-decoration: none; display: inline-block;
         }
         .btn.secondary{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.25);}
         .cta-row{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
@@ -99,8 +99,8 @@
             sicher, skalierbar und vollständig DSGVO-konform.
         </p>
         <div class="cta-row">
-            <button class="btn" onclick="window.location.href='https://calendly.com/vertrieb-aisolutios/new-meeting'">Kostenlose Erstberatung</button>
-            <button class="btn secondary" onclick="document.getElementById('agenten').scrollIntoView()">Use-Cases ansehen</button>
+            <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn" onclick="gtag('event', 'click_cta', {'event_label': 'Hero_Calendly_Start'});">Kostenlose Erstberatung</a>
+            <button class="btn secondary" onclick="gtag('event', 'click_cta', {'event_label': 'Hero_UseCases'}); document.getElementById('agenten').scrollIntoView();">Use-Cases ansehen</button>
         </div>
         <div class="grid" style="margin-top:34px">
             <div class="feature"><i class="fas fa-rocket"></i> Pilot & MVP in 7–14 Tagen</div>
@@ -142,8 +142,8 @@
             <p><strong>Solutios | Dr. Sidi Weiss</strong><br>
             Obere Waiblinger Str. 147a<br>
             70374 Stuttgart, Deutschland<br>
-            E-Mail: vertrieb@aisolutios.de<br>
-            Mobil: 0176 31591931</p>
+            E-Mail: <a href="mailto:vertrieb@aisolutios.de" onclick="gtag('event', 'contact', {'event_label': 'Email_Click'});" style="color:var(--primary)">vertrieb@aisolutios.de</a><br>
+            Mobil: <a href="tel:017631591931" onclick="gtag('event', 'contact', {'event_label': 'Phone_Click'});" style="color:var(--primary)">0176 31591931</a></p>
         </div>
         <div>
             <h3>Datenschutz</h3>
@@ -189,9 +189,8 @@
             win.style.display = isHidden ? 'flex' : 'none';
             if (teaser) teaser.style.display = 'none';
             if (isHidden) {
-                setTimeout(() => {
-                    document.getElementById('user-input').focus();
-                }, 200);
+                gtag('event', 'chat_open', {'event_label': 'Bot_Interaction'});
+                setTimeout(() => { document.getElementById('user-input').focus(); }, 200);
             }
         };
 
@@ -216,9 +215,23 @@
                     contentEl.innerHTML += `<div style="margin-bottom: 15px; text-align: right;"><span style="background: #000; color: #fff; padding: 12px; border-radius: 15px; display: inline-block; text-align: left;">${val}</span></div>`;
                     contentEl.scrollTop = contentEl.scrollHeight;
                     
-                    if (step === 0) { leadData.target_company = val; step = 1; setTimeout(() => addBotMsg("Vielen Dank! Wie ist Ihr Name für den Report?"), 500); }
-                    else if (step === 1) { leadData.user_name = val; step = 2; setTimeout(() => addBotMsg("Und Ihre E-Mail-Adresse für die Zusendung?"), 500); }
-                    else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
+                    if (step === 0) { 
+                        leadData.target_company = val; 
+                        step = 1; 
+                        setTimeout(() => addBotMsg("Vielen Dank! Wie ist Ihr Name für den Report?"), 500); 
+                    }
+                    else if (step === 1) { 
+                        leadData.user_name = val; 
+                        step = 2; 
+                        setTimeout(() => addBotMsg("Und Ihre E-Mail-Adresse für die Zusendung?"), 500); 
+                    }
+                    else if (step === 2) { 
+                        leadData.user_email = val; 
+                        step = 3; 
+                        // GA4 Event: Lead generiert
+                        gtag('event', 'generate_lead', { 'event_category': 'Chatbot', 'event_label': leadData.target_company });
+                        startAnalysis(); 
+                    }
                 }
             });
             setTimeout(() => addBotMsg("Guten Tag Dr. Weiss! Welches Unternehmen möchten Sie heute als Kunden gewinnen?"), 1000);
@@ -241,6 +254,7 @@
         }
 
         window.aisoPay = async function(amt) {
+            gtag('event', 'begin_checkout', { 'value': amt, 'currency': 'EUR', 'items': [{ 'item_name': 'Lead Analysis' }] });
             try {
                 const res = await fetch(`${API_BASE}/create-checkout-session`, {
                     method: 'POST', headers: {'Content-Type': 'application/json'},
@@ -250,6 +264,15 @@
                 if (data.url) window.location.href = data.url;
             } catch { alert("Stripe-Verbindung fehlgeschlagen."); }
         };
+
+        // Calendly Event Listener for GA4
+        window.addEventListener('message', function(e) {
+          if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+            if (e.data.event === 'calendly.event_scheduled') {
+                gtag('event', 'schedule_appointment', { 'event_category': 'Sales', 'event_label': 'Calendly_Success' });
+            }
+          }
+        });
     })();
 </script>
 </body>
