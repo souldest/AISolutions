@@ -201,23 +201,22 @@
     </section>
 </main>
 
-<footer>
-<footer style="margin-top: 50px; padding: 40px 0; border-top: 1px solid #eee;">
+<footer style="margin-top: 50px; padding: 40px 0; border-top: 1px solid #eee; font-family: sans-serif;">
     <div class="container">
         <div class="brand-wrapper" style="margin-bottom: 20px;">
             <div class="logo-ai-box">AI</div>
             <div class="logo-text">AISOLUTIOS</div>
         </div>
-        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart, Deutschland</p>
+        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart, Deutschland / Allemagne</p>
 
         <div id="stripe-payment-section" style="margin: 25px 0; padding: 20px; background: rgba(99, 91, 255, 0.05); border-radius: 12px; border: 1px solid #635bff; text-align: left;">
-            <h4 style="color: #635bff; margin-bottom: 10px;">💳 <span class="lang-de">Sichere Zahlung</span><span class="lang-fr" style="display:none;">Paiement Sécurisé</span></h4>
+            <h4 style="color: #635bff; margin-bottom: 10px;">💳 <span class="aiso-de">Sichere Zahlung</span><span class="aiso-fr">Paiement Sécurisé</span></h4>
             <p style="font-size: 14px; margin-bottom: 15px;">
-                <span class="lang-de">Buchen Sie Ihre Pakete sicher via Stripe (Port 8003).</span>
-                <span class="lang-fr" style="display:none;">Réservez vos services via Stripe (Port 8003).</span>
+                <span class="aiso-de">Buchen Sie Ihre Pakete sicher via Stripe (Port 8003).</span>
+                <span class="aiso-fr">Réservez vos services en toute sécurité via Stripe (Port 8003).</span>
             </p>
             <button onclick="handleAisoPayment()" style="background: #635bff; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
-                <span class="lang-de">Jetzt bezahlen</span><span class="lang-fr" style="display:none;">Payer maintenant</span>
+                <span class="aiso-de">Jetzt bezahlen</span><span class="aiso-fr">Payer maintenant</span>
             </button>
         </div>
 
@@ -225,17 +224,21 @@
             <a onclick="toggleAisoLegal('impressum-de')" class="footer-link" style="cursor:pointer; margin-right:15px;">Impressum</a>
             <a onclick="toggleAisoLegal('datenschutz-de')" class="footer-link" style="cursor:pointer; margin-right:15px;">Datenschutz</a>
             <a onclick="toggleAisoLegal('impressum-fr')" class="footer-link" style="cursor:pointer; margin-right:15px;">Mentions Légales</a>
+            <a onclick="toggleAisoLegal('datenschutz-fr')" class="footer-link" style="cursor:pointer;">Protection des Données</a>
         </p>
 
-        <div id="legal-impressum-de" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px;">
+        <div id="legal-impressum-de" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;">
             <h3>Impressum</h3>
-            <p>Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart...</p>
+            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br>E-Mail: vertrieb@aisolutios.de</p>
         </div>
-        <div id="legal-impressum-fr" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px;">
+        <div id="legal-impressum-fr" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;">
             <h3>Mentions Légales</h3>
-            <p>Responsable: Dr. Sidi Weiss, Stuttgart...</p>
+            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Allemagne<br>E-mail: vertrieb@aisolutios.de</p>
         </div>
-        <p style="margin-top: 20px; font-size: 12px; color: #777;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
+        <div id="legal-datenschutz-de" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;"><h3>Datenschutz</h3><p>Informationen nach DSGVO...</p></div>
+        <div id="legal-datenschutz-fr" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;"><h3>Protection des Données</h3><p>Informations selon le RGPD...</p></div>
+
+        <p style="margin-top: 20px; font-size: 12px; color: #777;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten / Tous droits réservés.</p>
     </div>
 </footer>
 
@@ -244,19 +247,24 @@
 </div>
 
 <div id="aiso-final-window" style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: #fff; border-radius: 15px; display: none; flex-direction: column; box-shadow: 0 5px 25px rgba(0,0,0,0.2); z-index: 10001; overflow: hidden; border: 1px solid #ddd; font-family: sans-serif;">
-    <div style="background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-        <span>AISOLUTIOS Sales-Agent</span>
+    <div style="background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #635bff;">
+        <span>AISOLUTIOS Agent</span>
         <span onclick="toggleAisoFinalChat()" style="cursor:pointer; font-size: 20px;">&times;</span>
     </div>
     <div id="aiso-final-body" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9;"></div>
     <div style="padding: 10px; border-top: 1px solid #eee;">
-        <input type="text" id="aiso-final-input" placeholder="Antworten..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none;">
+        <input type="text" id="aiso-final-input" placeholder="..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none;">
     </div>
 </div>
 
 <script>
 (function() {
-    // A. Stripe Schutz
+    // 1. Sprachsteuerung initialisieren
+    const isFrench = window.location.pathname.includes('/fr') || document.documentElement.lang === 'fr';
+    document.querySelectorAll('.aiso-de').forEach(el => el.style.display = isFrench ? 'none' : 'inline');
+    document.querySelectorAll('.aiso-fr').forEach(el => el.style.display = isFrench ? 'inline' : 'none');
+
+    // 2. Stripe Schutz
     if (!window.stripeInitDone) {
         var s = document.createElement('script');
         s.src = 'https://js.stripe.com/v3/';
@@ -264,26 +272,28 @@
         window.stripeInitDone = true;
     }
 
-    // B. Chat Variablen (Privater Scope - verhindert 'already declared' Fehler)
+    // 3. Chat Variablen (Isoliert gegen 'already declared' Fehler)
     const boxBody = document.getElementById('aiso-final-body');
     const boxInput = document.getElementById('aiso-final-input');
     let leadStep = 0;
     let leadStore = { name: '', email: '', firma: '' };
 
-    // Globale Funktionen sicher zuweisen
     window.toggleAisoFinalChat = function() {
         const win = document.getElementById('aiso-final-window');
         const isVisible = win.style.display === 'flex';
         win.style.display = isVisible ? 'none' : 'flex';
         if(!isVisible && boxBody.children.length === 0) {
-            printMsg("Willkommen! Ich bin Ihr KI-Analyst. Wie ist Ihr Name?");
+            printMsg(isFrench ? "Bienvenue ! Quel ist votre nom ?" : "Willkommen! Wie ist Ihr Name?");
         }
     };
 
     window.toggleAisoLegal = function(id) {
         document.querySelectorAll('.legal-section').forEach(s => s.style.display = 'none');
         const target = document.getElementById('legal-' + id);
-        if(target) target.style.display = 'block';
+        if(target) {
+            target.style.display = 'block';
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     window.handleAisoPayment = async function() {
@@ -294,7 +304,9 @@
             });
             const session = await response.json();
             if (session.url) window.location.href = session.url;
-        } catch (e) { alert("Backend offline (Port 8003)"); }
+        } catch (e) { 
+            alert(isFrench ? "Erreur: Port 8003 hors ligne" : "Backend offline (Port 8003)"); 
+        }
     };
 
     document.getElementById('aiso-chat-trigger').onclick = window.toggleAisoFinalChat;
@@ -302,7 +314,7 @@
     function printMsg(text, isBot = true) {
         const d = document.createElement('div');
         d.style.cssText = isBot 
-            ? "background:#eee; padding:10px 15px; border-radius:15px; align-self:flex-start; max-width:85%; font-size:14px;" 
+            ? "background:#eee; padding:10px 15px; border-radius:15px; align-self:flex-start; max-width:85%; font-size:14px; color:#333;" 
             : "background:#635bff; color:#fff; padding:10px 15px; border-radius:15px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold;";
         d.innerText = text;
         boxBody.appendChild(d);
@@ -316,24 +328,18 @@
             boxInput.value = '';
             if(leadStep === 0) {
                 leadStore.name = val; leadStep++;
-                setTimeout(() => printMsg(`Hallo ${val}, von welcher Firma sind Sie?`), 600);
+                setTimeout(() => printMsg(isFrench ? `Bonjour ${val}, quelle est votre entreprise ?` : `Hallo ${val}, von welcher Firma sind Sie?`), 600);
             } else if(leadStep === 1) {
                 leadStore.firma = val; leadStep++;
-                setTimeout(() => printMsg("Und Ihre E-Mail?"), 600);
+                setTimeout(() => printMsg(isFrench ? "Et votre e-mail ?" : "Und Ihre E-Mail?"), 600);
             } else if(leadStep === 2) {
                 leadStore.email = val; leadStep++;
-                // Hier könnte die Zahlung automatisch starten
-                printMsg("Vielen Dank! Ich bereite alles vor.");
+                printMsg(isFrench ? "Merci ! Je prépare tout." : "Vielen Dank! Ich bereite alles vor.");
             }
         }
     };
 })();
 </script>
-
-<script>
-  window.embeddedChatbotConfig = { chatbotId: "vuer9I3B9_H_m-JqXvY-T", domain: "www.aisolutios.de" }
-</script>
-<script src="https://www.chatbase.co/embed.min.js" chatbotId="vuer9I3B9_H_m-JqXvY-T" defer></script>
 </body>
 </html>
 <!DOCTYPE html>
