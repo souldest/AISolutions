@@ -15,6 +15,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <script src="https://js.stripe.com/v3/"></script>
 
     <style>
@@ -92,17 +93,13 @@
             font-size: 18px;
         }
 
-        /* Chatbot UI */
-        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 32px; cursor: pointer; z-index: 9999; }
-        #aiso-chat-window { position: fixed; bottom: 115px; right: 30px; width: 400px; height: 600px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 9999; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.5); }
-        .chat-header { background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; }
-        #chat-body { flex: 1; padding: 20px; overflow-y: auto; color: #333; display: flex; flex-direction: column; gap: 15px; background: #f4f7f9; }
-        .chat-input-area { padding: 20px; border-top: 1px solid #eee; }
-        .chat-input-area input { width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 12px; outline: none; }
-
+        /* Chatbot Design */
+        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 32px; cursor: pointer; z-index: 9999; box-shadow: 0 4px 20px rgba(255,106,0,0.4); }
+        
         footer { background: #050811; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
         .footer-link { color: var(--muted); text-decoration: none; cursor: pointer; margin-right: 15px; font-size: 13px; }
-        .legal-section { display: none; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; margin-top: 20px; border: 1px solid var(--secondary); }
+        .footer-link:hover { color: var(--primary); }
+        .legal-section { display: none; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; margin-top: 20px; border: 1px solid var(--secondary); color: var(--text); }
     </style>
 </head>
 
@@ -114,9 +111,9 @@
         <div class="logo-text">AISOLUTIOS</div>
     </div>
     <nav>
-        <a href="#agents">KI-Agenten & Crews</a>
+        <a href="#agents">KI-Agenten</a>
         <a href="#usp">Vorteile</a>
-        <a href="#llm">LLM Plattform</a>
+        <a href="#llm">Enterprise LLM</a>
         <a href="#contact">Kontakt</a>
     </nav>
 </header>
@@ -133,160 +130,97 @@
         <div class="grid">
             <div class="card">
                 <i class="fas fa-comments-dollar"></i>
-                <h4>Sales Crew: End-to-End Vertrieb</h4>
-                <p>Autonome Pipeline-Steuerung: Von der automatisierten Lead-Identifikation über personalisierte Ansprache bis zur Qualifizierung und Kundengewinnung.</p>
-                <strong>Einsatz: Skalierbarer B2B-Vertrieb</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-boxes-stacked"></i>
-                <h4>Umsatz- & Vorrat Agenten</h4>
-                <p>Prädiktive Bestandsprognosen und Bestandsoptimierung zur Reduktion von Kapitalbindung bei gleichzeitiger Lieferfähigkeit.</p>
-                <strong>Referenzen: K2-Systems, Transdev Vertrieb</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-magnifying-glass-chart"></i>
-                <h4>Datenanalyse & Research Agenten</h4>
-                <p>Extraktion und Analyse von komplexen Forschungs-, Qualitäts- und Ertragsdaten in Echtzeit.</p>
-                <strong>Referenzen: KWS, LKV Bayern</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-bullseye"></i>
-                <h4>Marketing Performance Crews</h4>
-                <p>Agenten zur autonomen Budget-Allokation und Optimierung von digitalen Werbekampagnen auf Basis von Live-Performance-Daten.</p>
-                <strong>Referenzen: Soka-Bau, Service Plan</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h4>Finance & Reporting Agenten</h4>
-                <p>Automatisierung von regulatorischen Berichten (ESG) und Identifikation von Anomalien in großen Finanztransaktions-Datensätzen.</p>
-                <strong>Referenz: LBBW (Nachhaltigkeits-Reporting)</strong>
+                <h4>Sales Crew: Vertriebs-KI</h4>
+                <p>Automatisierte Lead-Identifikation und Qualifizierung durch autonome Agenten.</p>
+                <strong>B2B-Fokus</strong>
             </div>
             <div class="card">
                 <i class="fas fa-brain"></i>
-                <h4>Custom Deep Learning Agenten</h4>
-                <p>Individuelle Agenten-Systeme für komplexe Objekterkennung, Fehleranalyse in der Produktion und Deep Learning Tasks.</p>
-                <strong>Referenzen: Mercedes-Benz, Porsche</strong>
+                <h4>Custom Deep Learning</h4>
+                <p>Neuronale Netze für Objekterkennung und komplexe Industrie-Tasks.</p>
+                <strong>Referenz: Porsche / Mercedes</strong>
             </div>
-        </div>
-    </section>
-
-    <section id="usp" class="container">
-        <h2>Warum AISOLUTIOS?</h2>
-        <div class="usp-grid">
-            <div class="usp-item"><h4>Deep Learning Expertise</h4><p>Wir entwickeln keine Standard-Bots, sondern neuronale Architekturen, die Ihre Fachdaten verstehen.</p></div>
-            <div class="usp-item"><h4>Echte Datensouveränität</h4><p>Ihre Daten verlassen nie das Haus. Wir hosten lokal oder in Ihrer geschützten Private Cloud.</p></div>
-            <div class="usp-item"><h4>Messbarer ROI</h4><p>Unsere Agenten-Crews sind auf Effizienz getrimmt – von der Zeitersparnis bis zur Umsatzsteigerung.</p></div>
-            <div class="usp-item"><h4>Konsequenter Datenschutz</h4><p>AISOLUTIOS garantiert DSGVO-konforme Implementierungen nach höchsten Industriestandards.</p></div>
-        </div>
-    </section>
-
-    <section id="llm" class="container">
-        <h2>Enterprise LLM Plattform</h2>
-        <div class="content-box">
-            <h3>Definition: Enterprise LLM</h3>
-            <p>Ein isoliertes Sprachmodell, das via Retrieval Augmented Generation (RAG) sicher auf Ihr Firmenwissen zugreift – ohne Training in öffentlichen Clouds.</p>
-        </div>
-        <div class="content-box">
-            <h3>Motivation: Sicherheit & Wettbewerbsvorteil</h3>
-            <p>Schützen Sie Ihre IP. Die Motivation hinter AISOLUTIOS ist die Bereitstellung von High-End KI, während die Kontrolle über die Daten zu 100% bei Ihnen bleibt.</p>
-        </div>
-        <div class="content-box" style="border-left: 5px solid var(--secondary);">
-            <h3>Infrastruktur: On-Premise Hosting</h3>
-            <p>Wir installieren Ihre LLM-Lösung direkt auf Ihren Servern oder in Ihrer Private Cloud. Volle Performance, null Datenabfluss.</p>
-        </div>
+            </div>
     </section>
 
     <section id="contact" class="container">
+        <h2>Termin vereinbaren</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
 </main>
 
-<footer style="margin-top: 50px; padding: 40px 0; border-top: 1px solid #eee; font-family: sans-serif;">
-    <div class="container">
+<footer>
+    <div class="container" style="padding: 0 20px;">
         <div class="brand-wrapper" style="margin-bottom: 20px;">
             <div class="logo-ai-box">AI</div>
             <div class="logo-text">AISOLUTIOS</div>
         </div>
-        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart, Deutschland / Allemagne</p>
+        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart, Deutschland</p>
 
-        <div id="stripe-payment-section" style="margin: 25px 0; padding: 20px; background: rgba(99, 91, 255, 0.05); border-radius: 12px; border: 1px solid #635bff; text-align: left;">
-            <h4 style="color: #635bff; margin-bottom: 10px;">💳 <span class="aiso-de">Sichere Zahlung</span><span class="aiso-fr">Paiement Sécurisé</span></h4>
-            <p style="font-size: 14px; margin-bottom: 15px;">
-                <span class="aiso-de">Buchen Sie Ihre Pakete sicher via Stripe (Port 8003).</span>
-                <span class="aiso-fr">Réservez vos services en toute sécurité via Stripe (Port 8003).</span>
-            </p>
-            <button onclick="handleAisoPayment()" style="background: #635bff; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
-                <span class="aiso-de">Jetzt bezahlen</span><span class="aiso-fr">Payer maintenant</span>
+        <div id="stripe-payment-section" style="margin: 25px 0; padding: 20px; background: rgba(123, 97, 255, 0.05); border-radius: 12px; border: 1px solid var(--secondary); text-align: left;">
+            <h4 style="color: var(--primary); margin-bottom: 10px;">💳 Sichere Zahlung (Stripe)</h4>
+            <p style="font-size: 14px; margin-bottom: 15px; color: var(--muted);">Buchen Sie Ihre Pakete via verschlüsseltem Stripe-Checkout.</p>
+            <button onclick="handleAisoPayment()" style="background: var(--primary); color: #000; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                Jetzt bezahlen
             </button>
         </div>
 
-        <p style="margin-top: 10px;">
-            <a onclick="toggleAisoLegal('impressum-de')" class="footer-link" style="cursor:pointer; margin-right:15px;">Impressum</a>
-            <a onclick="toggleAisoLegal('datenschutz-de')" class="footer-link" style="cursor:pointer; margin-right:15px;">Datenschutz</a>
-            <a onclick="toggleAisoLegal('impressum-fr')" class="footer-link" style="cursor:pointer; margin-right:15px;">Mentions Légales</a>
-            <a onclick="toggleAisoLegal('datenschutz-fr')" class="footer-link" style="cursor:pointer;">Protection des Données</a>
+        <p>
+            <a onclick="toggleAisoLegal('impressum-de')" class="footer-link">Impressum</a>
+            <a onclick="toggleAisoLegal('datenschutz-de')" class="footer-link">Datenschutz</a>
+            <a onclick="toggleAisoLegal('impressum-fr')" class="footer-link">Mentions Légales</a>
         </p>
 
-        <div id="legal-impressum-de" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;">
+        <div id="legal-impressum-de" class="legal-section">
             <h3>Impressum</h3>
-            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br>E-Mail: vertrieb@aisolutios.de</p>
+            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br>vertrieb@aisolutios.de</p>
         </div>
-        <div id="legal-impressum-fr" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;">
-            <h3>Mentions Légales</h3>
-            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Allemagne<br>E-mail: vertrieb@aisolutios.de</p>
+        
+        <div id="legal-datenschutz-de" class="legal-section">
+            <h3>Datenschutz</h3>
+            <p>Ihre Daten werden nach DSGVO lokal verarbeitet...</p>
         </div>
-        <div id="legal-datenschutz-de" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;"><h3>Datenschutz</h3><p>Informationen nach DSGVO...</p></div>
-        <div id="legal-datenschutz-fr" class="legal-section" style="display:none; text-align:left; padding:20px; border:1px solid #ddd; margin-top:10px; border-radius:10px;"><h3>Protection des Données</h3><p>Informations selon le RGPD...</p></div>
 
-        <p style="margin-top: 20px; font-size: 12px; color: #777;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten / Tous droits réservés.</p>
+        <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
     </div>
 </footer>
 
-<div id="aiso-chat-trigger" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10001; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #635bff;">
-    <i class="fas fa-robot" style="font-size: 24px;"></i>
+<div id="aiso-chat-trigger">
+    <i class="fas fa-robot"></i>
 </div>
 
-<div id="aiso-final-window" style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: #fff; border-radius: 15px; display: none; flex-direction: column; box-shadow: 0 5px 25px rgba(0,0,0,0.2); z-index: 10001; overflow: hidden; border: 1px solid #ddd; font-family: sans-serif;">
-    <div style="background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #635bff;">
-        <span>AISOLUTIOS Agent</span>
-        <span onclick="toggleAisoFinalChat()" style="cursor:pointer; font-size: 20px;">&times;</span>
+<div id="aiso-master-window" style="position: fixed; bottom: 115px; right: 30px; width: 380px; height: 550px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4); border: 1px solid #ddd; font-family: sans-serif;">
+    <div style="background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
+        <span>AISOLUTIOS AI Agent</span>
+        <span onclick="toggleAisoChat()" style="cursor:pointer; font-size: 24px;">&times;</span>
     </div>
-    <div id="aiso-final-body" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9;"></div>
-    <div style="padding: 10px; border-top: 1px solid #eee;">
-        <input type="text" id="aiso-final-input" placeholder="..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none;">
+    <div id="aiso-chat-content" style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f8f9fc; color: #333;"></div>
+    <div style="padding: 15px; border-top: 1px solid #eee;">
+        <input type="text" id="aiso-chat-input" placeholder="Nachricht schreiben..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; outline: none;">
     </div>
 </div>
 
 <script>
 (function() {
-    // 1. Sprachsteuerung initialisieren
-    const isFrench = window.location.pathname.includes('/fr') || document.documentElement.lang === 'fr';
-    document.querySelectorAll('.aiso-de').forEach(el => el.style.display = isFrench ? 'none' : 'inline');
-    document.querySelectorAll('.aiso-fr').forEach(el => el.style.display = isFrench ? 'inline' : 'none');
+    // Variablen (Eindeutig benannt gegen SyntaxError)
+    const cContent = document.getElementById('aiso-chat-content');
+    const cInput = document.getElementById('aiso-chat-input');
+    const cWin = document.getElementById('aiso-master-window');
+    let cStep = 0;
 
-    // 2. Stripe Schutz
-    if (!window.stripeInitDone) {
-        var s = document.createElement('script');
-        s.src = 'https://js.stripe.com/v3/';
-        document.head.appendChild(s);
-        window.stripeInitDone = true;
-    }
-
-    // 3. Chat Variablen (Isoliert gegen 'already declared' Fehler)
-    const boxBody = document.getElementById('aiso-final-body');
-    const boxInput = document.getElementById('aiso-final-input');
-    let leadStep = 0;
-    let leadStore = { name: '', email: '', firma: '' };
-
-    window.toggleAisoFinalChat = function() {
-        const win = document.getElementById('aiso-final-window');
-        const isVisible = win.style.display === 'flex';
-        win.style.display = isVisible ? 'none' : 'flex';
-        if(!isVisible && boxBody.children.length === 0) {
-            printMsg(isFrench ? "Bienvenue ! Quel ist votre nom ?" : "Willkommen! Wie ist Ihr Name?");
+    // Chat öffnen/schließen
+    window.toggleAisoChat = function() {
+        const isVisible = cWin.style.display === 'flex';
+        cWin.style.display = isVisible ? 'none' : 'flex';
+        if(!isVisible && cContent.children.length === 0) {
+            addMsg("Guten Tag, Dr. Weiss ist gerade in einem Projekt. Wie ist Ihr Name?");
         }
     };
 
+    document.getElementById('aiso-chat-trigger').onclick = window.toggleAisoChat;
+
+    // Legal Toggle
     window.toggleAisoLegal = function(id) {
         document.querySelectorAll('.legal-section').forEach(s => s.style.display = 'none');
         const target = document.getElementById('legal-' + id);
@@ -296,50 +230,51 @@
         }
     };
 
+    // Stripe Handler
     window.handleAisoPayment = async function() {
         try {
-            const response = await fetch('http://localhost:8003/create-checkout-session', {
+            const res = await fetch('http://localhost:8003/create-checkout-session', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             });
-            const session = await response.json();
-            if (session.url) window.location.href = session.url;
-        } catch (e) { 
-            alert(isFrench ? "Erreur: Port 8003 hors ligne" : "Backend offline (Port 8003)"); 
-        }
+            const s = await res.json();
+            if (s.url) window.location.href = s.url;
+        } catch (e) { alert("Backend offline (Port 8003)"); }
     };
 
-    document.getElementById('aiso-chat-trigger').onclick = window.toggleAisoFinalChat;
-
-    function printMsg(text, isBot = true) {
+    function addMsg(text, isBot = true) {
         const d = document.createElement('div');
         d.style.cssText = isBot 
-            ? "background:#eee; padding:10px 15px; border-radius:15px; align-self:flex-start; max-width:85%; font-size:14px; color:#333;" 
-            : "background:#635bff; color:#fff; padding:10px 15px; border-radius:15px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold;";
+            ? "background:#eee; padding:12px; border-radius:12px; align-self:flex-start; max-width:85%; font-size:14px; color:#333;" 
+            : "background:#ff6a00; color:#000; padding:12px; border-radius:12px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold;";
         d.innerText = text;
-        boxBody.appendChild(d);
-        boxBody.scrollTop = boxBody.scrollHeight;
+        cContent.appendChild(d);
+        cContent.scrollTop = cContent.scrollHeight;
     }
 
-    boxInput.onkeypress = async (e) => {
-        if(e.key === 'Enter' && boxInput.value.trim()) {
-            const val = boxInput.value.trim();
-            printMsg(val, false);
-            boxInput.value = '';
-            if(leadStep === 0) {
-                leadStore.name = val; leadStep++;
-                setTimeout(() => printMsg(isFrench ? `Bonjour ${val}, quelle est votre entreprise ?` : `Hallo ${val}, von welcher Firma sind Sie?`), 600);
-            } else if(leadStep === 1) {
-                leadStore.firma = val; leadStep++;
-                setTimeout(() => printMsg(isFrench ? "Et votre e-mail ?" : "Und Ihre E-Mail?"), 600);
-            } else if(leadStep === 2) {
-                leadStore.email = val; leadStep++;
-                printMsg(isFrench ? "Merci ! Je prépare tout." : "Vielen Dank! Ich bereite alles vor.");
-            }
+    cInput.onkeypress = (e) => {
+        if(e.key === 'Enter' && cInput.value.trim()) {
+            const val = cInput.value.trim();
+            addMsg(val, false);
+            cInput.value = '';
+            setTimeout(() => {
+                if(cStep === 0) {
+                    addMsg(`Danke ${val}! Für welches Unternehmen arbeiten Sie?`);
+                    cStep++;
+                } else {
+                    addMsg("Vielen Dank. Ich leite Ihre Daten an Dr. Weiss weiter.");
+                }
+            }, 800);
         }
     };
 })();
 </script>
+
+<script>
+  window.embeddedChatbotConfig = { chatbotId: "vuer9I3B9_H_m-JqXvY-T", domain: "www.aisolutios.de" }
+</script>
+<script src="https://www.chatbase.co/embed.min.js" chatbotId="vuer9I3B9_H_m-JqXvY-T" defer></script>
+
 </body>
 </html>
 <!DOCTYPE html>
