@@ -281,7 +281,36 @@
     }
     setTimeout(() => addMsg("Willkommen! Ich bin der AISOLUTIOS Sales-Agent. Für welches Unternehmen soll ich eine Potenzial-Analyse starten?"), 1000);
 </script>
+<script>
+      window.embeddedChatbotConfig = {
+        chatbotId: "vuer9I3B9_H_m-JqXvY-T",
+        domain: "www.aisolutios.de"
+      }
+    </script>
+    <script 
+      src="https://www.chatbase.co/embed.min.js" 
+      chatbotId="vuer9I3B9_H_m-JqXvY-T" 
+      defer>
+    </script>
 
+    <script>
+      async function handleStripePayment() {
+          try {
+              // Ihr Backend muss auf Port 8003 laufen
+              const response = await fetch('http://localhost:8003/create-checkout-session', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' }
+              });
+              const session = await response.json();
+              if (session.url) {
+                  window.location.href = session.url;
+              }
+          } catch (error) {
+              console.error("Fehler bei Stripe:", error);
+              alert("Zahlungsservice aktuell nicht erreichbar.");
+          }
+      }
+    </script>
 </body>
 </html>
 <!DOCTYPE html>
