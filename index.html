@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBRY11ETSS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FBRY11ETSS');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Enterprise AI, LLM Platform & Autonomous Agents</title>
+    <title>AISOLUTIOS – Enterprise AI & Deep Learning Plattform</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <script src="https://js.stripe.com/v3/"></script>
+
     <style>
         :root {
             --bg: #0b0f1a;
@@ -34,293 +47,196 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .brand-wrapper { display: flex; align-items: center; gap: 12px; }
-        .ai-badge {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            width: 38px; height: 38px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; color: #000; font-size: 15px;
-        }
-        .brand-text { display: flex; flex-direction: column; }
-        .logo-main { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; line-height: 1; }
-        .logo-sub { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+        .logo-main { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; }
         
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
         .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
         
-        .hero { padding: 80px 20px 40px 20px; }
-        h1 { font-size: 48px; line-height: 1.1; margin-bottom: 25px; color: #fff; max-width: 900px; }
-        .hero-lead { font-size: 20px; color: var(--muted); max-width: 800px; margin-bottom: 30px; }
+        .hero { padding: 80px 20px; }
+        h1 { font-size: 52px; line-height: 1.1; margin-bottom: 25px; color: #fff; }
+        .hero-lead { font-size: 20px; color: var(--muted); max-width: 900px; margin-bottom: 35px; }
         
-        .hero-check-list {
-            list-style: none; margin-bottom: 40px; display: flex; flex-wrap: wrap; gap: 30px;
-        }
-        .hero-check-list li {
-            display: flex; align-items: center; font-weight: 600; font-size: 17px; color: #fff;
-        }
-        .hero-check-list li::before {
-            content: "✓"; color: var(--primary); margin-right: 12px; font-weight: 900; font-size: 20px;
-        }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), #ff8c42);
             color: #000; padding: 18px 36px; border: none; border-radius: 12px;
-            font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s;
+            font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
         }
 
-        h2 { font-size: 34px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
-        h3 { color: var(--secondary); margin-bottom: 15px; font-size: 1.4rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 25px; }
+        h2 { font-size: 36px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         
         .card {
-            background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
+            background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
         }
-        .card:hover { transform: translateY(-8px); border-color: var(--secondary); background: rgba(20, 28, 58, 0.9); }
-        .card strong { color: var(--primary); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-        h4 { margin-bottom: 12px; color: var(--primary); font-size: 1.25rem; font-weight: 700; }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card i { color: var(--primary); font-size: 24px; margin-bottom: 15px; display: block; }
+        .card strong { color: var(--secondary); display: block; margin-top: 10px; font-size: 0.85rem; text-transform: uppercase; }
 
-        .llm-section { background: rgba(123, 97, 255, 0.05); padding: 40px; border-radius: 24px; border: 1px solid rgba(123, 97, 255, 0.2); margin-top: 40px; }
-        .compliance-box {
-            margin-top: 50px; padding: 30px; border-radius: 20px; background: rgba(123, 97, 255, 0.05);
-            border: 1px solid var(--secondary); text-align: center;
+        /* Chatbot UI */
+        #aiso-chat-trigger {
+            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
+            background: var(--primary); border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: #000; font-size: 28px; cursor: pointer; z-index: 9999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        #aiso-chat-window {
+            position: fixed; bottom: 110px; right: 30px; width: 380px; height: 550px;
+            background: #fff; border-radius: 20px; display: none; flex-direction: column;
+            z-index: 9999; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 1px solid #ddd;
+        }
+        .chat-header { background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; }
+        #chat-body { flex: 1; padding: 20px; overflow-y: auto; color: #333; display: flex; flex-direction: column; gap: 12px; background: #f9f9f9; }
+        .chat-input-area { padding: 15px; border-top: 1px solid #eee; background: #fff; }
+        .chat-input-area input { width: 100%; padding: 14px; border: 2px solid #eee; border-radius: 12px; outline: none; }
 
         footer { background: #050811; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-        @keyframes botBounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-12px);} 60% {transform: translateY(-6px);} }
-        .aiso-bounce { animation: botBounce 3s infinite; }
-        @media(max-width: 768px) { h1 { font-size: 32px; } .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 
 <body>
 
 <header>
-    <div class="brand-wrapper">
-        <div class="ai-badge">AI</div>
-        <div class="brand-text">
-            <div class="logo-main">AISOLUTIOS</div>
-            <div class="logo-sub">Enterprise AI & Deep Learning</div>
-        </div>
-    </div>
+    <div class="brand-wrapper"><div class="logo-main">AISOLUTIOS</div></div>
     <nav>
         <a href="#agents">KI-Agenten</a>
         <a href="#llm">LLM Plattform</a>
-        <a href="#industries">Branchen</a>
         <a href="#experience">Projekterfahrung</a>
+        <a href="#contact">Kontakt</a>
     </nav>
 </header>
 
 <main>
     <section class="container hero">
-        <h1>Autonome KI-Agenten & Enterprise LLM Architekturen</h1>
-        <p class="hero-lead">Von Deep Learning bis hin zu On-Premise LLMs: AISOLUTIOS entwickelt hochspezialisierte Systeme für datenintensive Branchen. Sicher, DSGVO-konform und vollständig in Ihre Infrastruktur integriert.</p>
-        
-        <ul class="hero-check-list">
-            <li>On-Premise & Private Cloud (100% Datensouveränität)</li>
-            <li>Spezialisierte Agenten-Crews für komplexe Workflows</li>
-            <li>ESG & Nachhaltigkeits-Reporting Experten</li>
-        </ul>
-
-        <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn-primary">Kostenlose Erstberatung buchen</a>
+        <h1>Autonome KI-Agenten & Enterprise Deep Learning</h1>
+        <p class="hero-lead">Spezialisierte Agenten-Lösungen von ESG-Reporting für Banken bis hin zu On-Premise LLM Architekturen. Sicher, messbar und 100% DSGVO-konform.</p>
+        <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn-primary" onclick="gtag('event', 'conversion', {'send_to': 'G-FBRY11ETSS/contact_click'});">Jetzt Erstberatung buchen</a>
     </section>
 
     <section id="agents" class="container">
-        <h2>Spezialisierte KI-Agenten</h2>
+        <h2>Spezialisierte KI-Agenten & Crews</h2>
         <div class="grid">
-            <div class="card">
-                <h4>Data Engineering & Analyse</h4>
-                <p>Automatisierte Datenpipelines, ETL-Prozesse und Identifikation von Mustern mittels Machine Learning für präzise Vorhersagen.</p>
-            </div>
-            <div class="card">
-                <h4>Banken & ESG-Kern Agenten</h4>
-                <p>Spezialisierte Agenten für Nachhaltigkeitsberichterstattung, ESG-Reporting und regulatorisches Datenmanagement.</p>
-            </div>
-            <div class="card">
-                <h4>Finanz, Controlling & Buchhaltung</h4>
-                <p>KI-gestützte Budgetüberwachung, automatisierte Buchungsläufe und intelligente Abweichungsanalysen.</p>
-            </div>
-            <div class="card">
-                <h4>Transport, Logistik & Vorrat</h4>
-                <p>Umsatz- und Vorrats-Vorhersage-Agenten zur Optimierung von Lieferketten und Lagerbeständen.</p>
-            </div>
-            <div class="card">
-                <h4>Automotive & Industrie 4.0</h4>
-                <p>Deep Learning für Produktionsüberwachung, Qualitätsmanagement und Predictive Maintenance in der Automobilbranche.</p>
-            </div>
-            <div class="card">
-                <h4>Pharma & Medizin</h4>
-                <p>Agenten zur Analyse klinischer Daten, Forschungsunterstützung und Compliance-Monitoring.</p>
-            </div>
-            <div class="card">
-                <h4>Agrar & Lebensmittel</h4>
-                <p>Analyse von Produktionsdaten zur Ertragssteigerung und Qualitätssicherung in der Landwirtschaft.</p>
-            </div>
-            <div class="card">
-                <h4>Marketing & Lead-Gen Crew</h4>
-                <p>Autonome Crews von der Lead-Generierung über Werbekampagnen-Optimierung bis zur Kundengewinnung.</p>
-            </div>
+            <div class="card"><i class="fas fa-database"></i><h4>Data Engineering Agenten</h4><p>Automatisierte Pipelines & ML-basierte Datenaufbereitung.</p></div>
+            <div class="card"><i class="fas fa-university"></i><h4>ESG & Banken Agenten</h4><p>ESG-Reporting & regulatorische Berichte. <strong>Referenz: LBBW</strong></p></div>
+            <div class="card"><i class="fas fa-calculator"></i><h4>Finanz & Controlling</h4><p>Agenten für Buchhaltung, Budget-Forecasting und Cashflow-Vorhersagen.</p></div>
+            <div class="card"><i class="fas fa-truck-loading"></i><h4>Logistik & Vorrat</h4><p>Umsatzprognosen & Vorrats-Agenten für Supply Chain Excellence.</p></div>
+            <div class="card"><i class="fas fa-microchip"></i><h4>Automotive & Industrie</h4><p>Deep Learning für Qualitätsdaten & Predictive Maintenance. <strong>Mercedes/Porsche</strong></p></div>
+            <div class="card"><i class="fas fa-users-gear"></i><h4>Marketing & Lead Crews</h4><p>Autonome Leads-Generierung bis zur Kundengewinnung. <strong>Referenz: Service Plan</strong></p></div>
         </div>
     </section>
 
     <section id="llm" class="container">
-        <h2>Interne LLM Plattform & RAG</h2>
-        <div class="llm-section">
-            <h3>Was sind LLMs & Warum AISOLUTIOS?</h3>
-            <p><strong>Definition:</strong> Large Language Models (LLMs) sind hochentwickelte KI-Modelle, die menschliche Sprache verstehen und generieren können. Kombiniert mit <strong>RAG (Retrieval Augmented Generation)</strong> greifen diese Agenten sicher auf Ihr internes Firmenwissen zu.</p>
-            <p style="margin-top: 15px;"><strong>Motivation:</strong> Öffentliche KI-Tools stellen ein Sicherheitsrisiko dar. AISOLUTIOS bietet den Bau und Betrieb von LLMs in der <strong>On-Premise</strong> Infrastruktur oder <strong>Private Cloud</strong> an – Ihre Daten verlassen niemals das Unternehmen.</p>
-            <ul style="margin-top: 20px; list-style: inside circle;">
-                <li>Vollständige Datensouveränität & DSGVO-Konformität</li>
-                <li>Anbindung an interne Datenbanken via RAG</li>
-                <li>Feingetunte Modelle für spezifische Branchentermiologie</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="industries" class="container">
-        <h2>Branchenlösungen</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Banken, ESG & Finanzen</h3>
-                <p>Nachhaltigkeitsberichte, ESG-Datenmanagement und Forecasting.</p>
-                <strong>Referenz: LBBW (ESG Kern)</strong>
-            </div>
-            <div class="card">
-                <h3>Automobil & Automotive</h3>
-                <p>KI-gestützte Produktion und Lieferketten-Insights.</p>
-                <strong>Referenz: Mercedes-Benz, Porsche</strong>
-            </div>
-            <div class="card">
-                <h3>Transport & Logistik</h3>
-                <p>Prozessoptimierung und automatisierte Verkaufsanalysen.</p>
-                <strong>Referenz: Transdev-Vertrieb</strong>
-            </div>
-            <div class="card">
-                <h3>Solar & Erneuerbare Energien</h3>
-                <p>Datenanalyse für Montagesysteme und Ertragsprognosen.</p>
-                <strong>Referenz: K2-Systems</strong>
-            </div>
-            <div class="card">
-                <h3>Pharma & Medizin</h3>
-                <p>Compliance-gerechte Datenverarbeitung und Forschungs-KI.</p>
-            </div>
-            <div class="card">
-                <h3>Agrar & Lebensmittel</h3>
-                <p>Qualitätsdaten-Analyse und Produktions-Monitoring.</p>
-                <strong>Referenz: KWS, LKV Bayern</strong>
-            </div>
-            <div class="card">
-                <h3>Marketing & Sales</h3>
-                <p>Data-driven Campaigning und Lead-Automatisierung.</p>
-                <strong>Referenz: Service Plan</strong>
-            </div>
+        <h2>Enterprise LLM Plattform</h2>
+        <div style="background: rgba(123, 97, 255, 0.1); padding: 40px; border-radius: 24px; border: 1px solid var(--secondary);">
+            <h3>On-Premise Wissensmanagement</h3>
+            <p>Wir implementieren <strong>RAG (Retrieval Augmented Generation)</strong> Architekturen in Ihrer Private Cloud. Ihre sensiblen Daten bleiben geschützt und werden zur internen Intelligenz.</p>
         </div>
     </section>
 
     <section id="experience" class="container">
-        <h2>Projekterfahrung & Expertise</h2>
+        <h2>Branchen-Expertise</h2>
         <div class="grid">
-            <div class="card">
-                <h3>Landesbank Baden-Württemberg (LBBW)</h3>
-                <strong>Schwerpunkte: ESG Kern & Nachhaltigkeit</strong>
-                <p>Aufbau der Nachhaltigkeitsberichterstattung, Automatisierung von Routine-Berichten, komplexes Datenmanagement und regulatorisches Reporting.</p>
-            </div>
-            <div class="card">
-                <h3>Mercedes-Benz & Porsche</h3>
-                <strong>Schwerpunkte: Automotive Intelligence</strong>
-                <p>Deep Learning Architekturen für Produktions- und Qualitätsdaten sowie globale Supply-Chain Analysen.</p>
-            </div>
-            <div class="card">
-                <h3>Versicherungen (Hallesche, SOKA-BAU)</h3>
-                <strong>Schwerpunkte: Claims & Contracts</strong>
-                <p>Automatisierung der Schadenbearbeitung und intelligente Bestandsdatenanalyse.</p>
-            </div>
-        </div>
-        
-        <div class="compliance-box">
-            <p><strong>Sicherheit & Compliance:</strong> Alle Projekte werden unter strikten Auflagen für On-Premise-Umgebungen und DSGVO realisiert.</p>
+            <div class="card"><strong>Banken / ESG</strong><h3>LBBW</h3><p>Nachhaltigkeitsberichte & ESG Kern-Systeme.</p></div>
+            <div class="card"><strong>Automotive</strong><h3>Mercedes-Benz / Porsche</h3><p>Deep Learning für Qualitätsanalysen & Logistik.</p></div>
+            <div class="card"><strong>Telekom / High-Tech</strong><h3>T2-Systems / Telekom</h3><p>KI-Prozessoptimierung & High-Tech Analytics.</p></div>
+            <div class="card"><strong>Solar</strong><h3>K2-Systems</h3><p>Statistische Analyse für Solar-Montagesysteme.</p></div>
+            <div class="card"><strong>Agrar</strong><h3>KWS / LKV Bayern</h3><p>Predictive Analytics für die Landwirtschaft.</p></div>
         </div>
     </section>
 
     <section id="contact" class="container">
-        <h2>Beratungstermin vereinbaren</h2>
+        <h2>Anfrage für Lead-Analyse</h2>
+        <form id="lead-form" style="max-width: 600px;">
+            <input type="text" id="name" placeholder="Name" required style="width:100%; padding:14px; margin-bottom:15px; border-radius:8px; border:1px solid #444; background:transparent; color:#fff;">
+            <input type="email" id="email" placeholder="E-Mail" required style="width:100%; padding:14px; margin-bottom:15px; border-radius:8px; border:1px solid #444; background:transparent; color:#fff;">
+            <textarea id="msg" placeholder="Beschreiben Sie Ihr Projekt (z.B. ESG-Reporting, Logistik-Agent)" style="width:100%; padding:14px; margin-bottom:15px; border-radius:8px; border:1px solid #444; background:transparent; color:#fff; height:120px;"></textarea>
+            <button type="submit" class="btn-primary" style="width:100%">Anfrage senden</button>
+        </form>
+    </section>
+
+    <section class="container">
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <p><strong>AISOLUTIOS</strong> | Dr. Sidi Weiss<br>
-        Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
-        E-Mail: vertrieb@aisolutios.de | Web: www.aisolutios.de</p>
+        <h3>AISOLUTIOS Team</h3>
+        <p>Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
+        <p>Email: vertrieb@aisolutios.de | Web: www.aisolutios.de</p>
     </div>
 </footer>
 
+<div id="aiso-chat-trigger"><i class="fas fa-robot"></i></div>
+<div id="aiso-chat-window">
+    <div class="chat-header"><span>AISOLUTIOS Agent</span><span onclick="toggleChat()" style="cursor:pointer">&times;</span></div>
+    <div id="chat-body"></div>
+    <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Firmenname für Analyse eingeben...">
+    </div>
+</div>
+
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-    /* Chatbot Logik bleibt wie im Original vorhanden */
-    (function() {
-        const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
-        let step = 0;
-        let leadData = { target_company: "", user_name: "", user_email: "" };
+    const API_BASE = 'https://dissimilar-subconcavely-filomena.ngrok-free.dev';
+    const chatTrigger = document.getElementById('aiso-chat-trigger');
+    const chatWindow = document.getElementById('aiso-chat-window');
+    const chatBody = document.getElementById('chat-body');
+    const chatInput = document.getElementById('chat-input');
 
-        window.aisoToggle = function() {
-            const win = document.getElementById('chat-window');
-            const teaser = document.getElementById('bot-teaser');
-            win.style.display = (win.style.display === 'none' || win.style.display === '') ? 'flex' : 'none';
-            if (teaser) teaser.style.display = 'none';
-        };
+    function toggleChat() { chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex'; }
+    chatTrigger.onclick = toggleChat;
 
-        function addBotMsg(text) {
-            const content = document.getElementById('chat-content');
-            const div = document.createElement('div');
-            div.style.cssText = "margin-bottom: 12px; background: #e9ecef; padding: 12px; border-radius: 14px; align-self: flex-start; max-width: 85%; font-size: 14px;";
-            div.innerHTML = text;
-            content.appendChild(div);
-            content.scrollTop = content.scrollHeight;
-        }
+    function addMsg(text, isBot = true) {
+        const div = document.createElement('div');
+        div.style.cssText = isBot ? "background:#eee; padding:12px; border-radius:12px; align-self:flex-start; font-size:14px; max-width:85%;" : "background:var(--primary); color:#000; padding:12px; border-radius:12px; align-self:flex-end; font-size:14px; max-width:85%;";
+        div.innerHTML = text;
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
 
-        document.getElementById('user-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && this.value.trim() !== '') {
-                const val = this.value.trim();
-                this.value = '';
-                if (step === 0) { leadData.target_company = val; step = 1; addBotMsg("Vielen Dank. Wie ist Ihr Name?"); }
-                else if (step === 1) { leadData.user_name = val; step = 2; addBotMsg("Unter welcher E-Mail erreicht wir Sie?"); }
-                else if (step === 2) { leadData.user_email = val; step = 3; startAnalysis(); }
-            }
-        });
-
-        async function startAnalysis() {
-            addBotMsg("🔍 <b>AISOLUTIOS Deep Analysis läuft...</b>");
+    chatInput.onkeypress = async (e) => {
+        if(e.key === 'Enter' && chatInput.value) {
+            const val = chatInput.value;
+            addMsg(val, false);
+            chatInput.value = '';
+            
             try {
-                const response = await fetch(`${API_BASE}/run-funnel`, {
+                const res = await fetch(`${API_BASE}/run-funnel`, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(leadData)
+                    body: JSON.stringify({ target_company: val, user_email: 'web-lead@aisolutios.de' })
                 });
-                if (response.ok) {
-                    addBotMsg("Analyse abgeschlossen! Report bereit.");
-                    addBotMsg(`<button onclick="window.aisoPay()" style="background:#28a745; color:white; border:none; padding:12px; border-radius:8px; width:100%; cursor:pointer; font-weight:bold; margin-top:10px;">Jetzt per Stripe kaufen (29€)</button>`);
+                if(res.ok) {
+                    addMsg("Analyse gestartet. Möchten Sie den Deep-Intelligence Report für 29€ per Stripe erwerben?");
+                    addMsg(`<button onclick="handleStripe()" style="padding:10px; background:#28a745; color:white; border:none; border-radius:8px; cursor:pointer; width:100%; font-weight:bold;">Jetzt bezahlen</button>`);
                 }
-            } catch (err) { addBotMsg("Verbindungsfehler."); }
+            } catch(err) { addMsg("Verbindung zum Agenten fehlgeschlagen."); }
         }
+    }
 
-        window.aisoPay = async function() {
-            try {
-                const res = await fetch(`${API_BASE}/create-checkout-session`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ email: leadData.user_email, company: leadData.target_company })
-                });
-                const session = await res.json();
-                if (session.url) window.location.href = session.url;
-            } catch (err) { addBotMsg("Stripe Fehler."); }
-        };
+    async function handleStripe() {
+        gtag('event', 'begin_checkout', { 'value': 29.00, 'currency': 'EUR' });
+        try {
+            const res = await fetch(`${API_BASE}/create-checkout-session`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ item: "Deep-Analysis" })
+            });
+            const session = await res.json();
+            if(session.url) window.location.href = session.url;
+        } catch(err) { alert("Fehler beim Aufruf der Stripe Session."); }
+    }
 
-        setTimeout(() => addBotMsg("Willkommen bei AISOLUTIOS! Welches Unternehmen sollen wir heute analysieren?"), 1000);
-    })();
+    // GA4 Lead Tracking
+    document.getElementById('lead-form').onsubmit = () => {
+        gtag('event', 'form_submission', { 'event_category': 'Contact' });
+    };
+
+    setTimeout(() => addMsg("Willkommen! Ich bin Ihr Lead-Agent. Nennen Sie mir ein Unternehmen für eine Analyse?"), 1000);
 </script>
+
 </body>
 </html>
 <!DOCTYPE html>
