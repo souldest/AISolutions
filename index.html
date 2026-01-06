@@ -268,25 +268,6 @@
 </script>
 
 <script>
-    async function handleStripePayment() {
-        try {
-            // WICHTIG: Im Live-Betrieb 'localhost' durch Ihre IP/Domain ersetzen
-            const response = await fetch('http://localhost:8003/create-checkout-session', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const session = await response.json();
-            if (session.url) {
-                window.location.href = session.url;
-            }
-        } catch (error) {
-            console.error("Fehler bei Stripe:", error);
-            alert("Zahlungsservice aktuell nicht erreichbar (Port 8003 prüfen).");
-        }
-    }
-</script>
-
-<script>
   window.embeddedChatbotConfig = {
     chatbotId: "vuer9I3B9_H_m-JqXvY-T",
     domain: "www.aisolutios.de"
@@ -296,6 +277,49 @@
   src="https://www.chatbase.co/embed.min.js" 
   chatbotId="vuer9I3B9_H_m-JqXvY-T" 
   defer>
+</script>
+
+<script>
+    /**
+     * Diese Funktion wird aufgerufen, wenn der Kunde im Lead-Chat 
+     * seine Daten eingegeben hat oder auf "Zahlen" klickt.
+     */
+    async function handleStripePayment(customerData = {}) {
+        try {
+            console.log("Starte Bezahlvorgang für:", customerData.email);
+
+            // Wir senden Name, E-Mail und Firma an Ihr Backend auf 8003
+            const response = await fetch('http://localhost:8003/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: customerData.name || "Interessent",
+                    email: customerData.email || "",
+                    firma: customerData.firma || "",
+                    source: "Homepage-Lead"
+                })
+            });
+
+            const session = await response.json();
+            
+            if (session.url) {
+                // Weiterleitung zu Stripe
+                window.location.href = session.url;
+            } else {
+                throw new Error("Keine Session-URL erhalten");
+            }
+
+        } catch (error) {
+            console.error("Fehler bei Stripe oder Backend 8003:", error);
+            alert("Verbindung zum AISOLUTIOS-Server (Port 8003) fehlgeschlagen. Bitte prüfen Sie, ob das Backend läuft.");
+        }
+    }
+
+    /**
+     * Beispiel-Trigger für Ihren Lead-Agenten
+     * Wenn der Kunde Name/E-Mail eingegeben hat, rufen Sie dies auf:
+     * handleStripePayment({ name: "Hans Muster", email: "hans@firma.de", firma: "Muster GmbH" });
+     */
 </script>
 </body>
 </html>
