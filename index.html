@@ -241,86 +241,95 @@
     <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
 </div>
 </footer>
-
-<div id="aiso-chat-trigger" style="cursor:pointer;">
-    <i class="fas fa-robot"></i>
+<div id="aiso-chat-trigger" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #000; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid #635bff;">
+    <i class="fas fa-robot" style="font-size: 24px;"></i>
 </div>
 
+<div id="aiso-chat-window" style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: #fff; border-radius: 15px; display: none; flex-direction: column; box-shadow: 0 5px 25px rgba(0,0,0,0.2); z-index: 1000; overflow: hidden; border: 1px solid #ddd; font-family: sans-serif; color: #333;">
+    <div style="background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #635bff;">
+        <span>AISOLUTIOS Sales-Agent</span>
+        <span onclick="toggleAisoChat()" style="cursor:pointer; font-size: 20px;">&times;</span>
+    </div>
+    <div id="aiso-chat-body" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9;"></div>
+    <div style="padding: 10px; border-top: 1px solid #eee; background: #fff;">
+        <input type="text" id="aiso-chat-input" placeholder="Antworten..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none;">
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <script>
-    // Funktion für das Impressum/Datenschutz
-    function toggleLegal(id) {
-        document.querySelectorAll('.legal-section').forEach(s => s.style.display = 'none');
-        const target = document.getElementById('legal-' + id);
-        if (target) target.style.display = 'block';
+    // Globale Variablen mit eindeutigen Namen (Vermeidung von SyntaxError)
+    const aisoBody = document.getElementById('aiso-chat-body');
+    const aisoInput = document.getElementById('aiso-chat-input');
+    let aisoStep = 0;
+    let aisoData = { name: '', email: '', firma: '' };
+
+    function toggleAisoChat() {
+        const win = document.getElementById('aiso-chat-window');
+        const isVisible = win.style.display === 'flex';
+        win.style.display = isVisible ? 'none' : 'flex';
+        
+        if(!isVisible && aisoBody.children.length === 0) {
+            addAisoMsg("Willkommen! Ich bin Ihr KI-Analyst. Wie ist Ihr Name?");
+        }
     }
 
-    // Chat-Logik: Wir nutzen den Trigger, um den Chatbase-Bot zu öffnen
-    document.getElementById('aiso-chat-trigger').onclick = function() {
-        if (window.chatbase && typeof window.chatbase === 'function') {
-            window.chatbase("openChatbot");
-        } else {
-            // Falls Chatbase noch lädt, kleiner Hinweis
-            console.log("Chatbot wird geladen...");
+    document.getElementById('aiso-chat-trigger').onclick = toggleAisoChat;
+
+    function addAisoMsg(text, isBot = true) {
+        const div = document.createElement('div');
+        div.style.cssText = isBot 
+            ? "background:#eee; padding:10px 15px; border-radius:15px; align-self:flex-start; max-width:85%; font-size:14px; color:#000;" 
+            : "background:#635bff; color:#fff; padding:10px 15px; border-radius:15px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold;";
+        div.innerText = text;
+        aisoBody.appendChild(div);
+        aisoBody.scrollTop = aisoBody.scrollHeight;
+    }
+
+    aisoInput.onkeypress = async (e) => {
+        if(e.key === 'Enter' && aisoInput.value.trim()) {
+            const val = aisoInput.value.trim();
+            addAisoMsg(val, false);
+            aisoInput.value = '';
+
+            if(aisoStep === 0) {
+                aisoData.name = val; aisoStep++;
+                setTimeout(() => addAisoMsg(`Hallo ${val}, von welcher Firma sind Sie?`), 600);
+            } else if(aisoStep === 1) {
+                aisoData.firma = val; aisoStep++;
+                setTimeout(() => addAisoMsg("Und Ihre E-Mail für die Analyseergebnisse?"), 600);
+            } else if(aisoStep === 2) {
+                aisoData.email = val; aisoStep++;
+                handleFinalProcess();
+            }
         }
     };
-</script>
 
-<script>
-  window.embeddedChatbotConfig = {
-    chatbotId: "vuer9I3B9_H_m-JqXvY-T",
-    domain: "www.aisolutios.de"
-  }
-</script>
-<script 
-  src="https://www.chatbase.co/embed.min.js" 
-  chatbotId="vuer9I3B9_H_m-JqXvY-T" 
-  defer>
-</script>
-
-<script>
-    /**
-     * Diese Funktion wird aufgerufen, wenn der Kunde im Lead-Chat 
-     * seine Daten eingegeben hat oder auf "Zahlen" klickt.
-     */
-    async function handleStripePayment(customerData = {}) {
+    async function handleFinalProcess() {
+        addAisoMsg("Daten werden gespeichert...");
         try {
-            console.log("Starte Bezahlvorgang für:", customerData.email);
-
-            // Wir senden Name, E-Mail und Firma an Ihr Backend auf 8003
             const response = await fetch('http://localhost:8003/create-checkout-session', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: customerData.name || "Interessent",
-                    email: customerData.email || "",
-                    firma: customerData.firma || "",
-                    source: "Homepage-Lead"
-                })
+                body: JSON.stringify(aisoData)
             });
-
             const session = await response.json();
-            
             if (session.url) {
-                // Weiterleitung zu Stripe
-                window.location.href = session.url;
-            } else {
-                throw new Error("Keine Session-URL erhalten");
+                addAisoMsg("Perfekt! Ich leite Sie nun zur sicheren Zahlung weiter.");
+                setTimeout(() => window.location.href = session.url, 1500);
             }
-
         } catch (error) {
-            console.error("Fehler bei Stripe oder Backend 8003:", error);
-            alert("Verbindung zum AISOLUTIOS-Server (Port 8003) fehlgeschlagen. Bitte prüfen Sie, ob das Backend läuft.");
+            addAisoMsg("Fehler: Server auf Port 8003 nicht erreichbar.");
         }
     }
-
-    /**
-     * Beispiel-Trigger für Ihren Lead-Agenten
-     * Wenn der Kunde Name/E-Mail eingegeben hat, rufen Sie dies auf:
-     * handleStripePayment({ name: "Hans Muster", email: "hans@firma.de", firma: "Muster GmbH" });
-     */
 </script>
+
+<script>
+  window.embeddedChatbotConfig = { chatbotId: "vuer9I3B9_H_m-JqXvY-T", domain: "www.aisolutios.de" }
+</script>
+<script src="https://www.chatbase.co/embed.min.js" chatbotId="vuer9I3B9_H_m-JqXvY-T" defer></script>
 </body>
 </html>
 <!DOCTYPE html>
