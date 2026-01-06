@@ -242,73 +242,61 @@
 </div>
 </footer>
 
-<div id="aiso-chat-trigger"><i class="fas fa-robot"></i></div>
-<div id="aiso-chat-window">
-    <div class="chat-header"><span>AISOLUTIOS Agent</span><span onclick="toggleChat()" style="cursor:pointer">&times;</span></div>
-    <div id="chat-body"></div>
-    <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Firmenname für Analyse...">
-    </div>
+<div id="aiso-chat-trigger" style="cursor:pointer;">
+    <i class="fas fa-robot"></i>
 </div>
 
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>
-    function toggleChat() { 
-        const win = document.getElementById('aiso-chat-window');
-        win.style.display = win.style.display === 'flex' ? 'none' : 'flex'; 
-    }
-    document.getElementById('aiso-chat-trigger').onclick = toggleChat;
 
+<script>
+    // Funktion für das Impressum/Datenschutz
     function toggleLegal(id) {
         document.querySelectorAll('.legal-section').forEach(s => s.style.display = 'none');
-        document.getElementById('legal-' + id).style.display = 'block';
+        const target = document.getElementById('legal-' + id);
+        if (target) target.style.display = 'block';
     }
 
-    const chatBody = document.getElementById('chat-body');
-    const chatInput = document.getElementById('chat-input');
-    function addMsg(text, isBot = true) {
-        const div = document.createElement('div');
-        div.style.cssText = isBot ? "background:#eee; padding:15px; border-radius:15px; align-self:flex-start; color:#333; font-size:14px;" : "background:var(--primary); color:#000; padding:15px; border-radius:15px; align-self:flex-end; font-size:14px; font-weight:bold;";
-        div.innerHTML = text;
-        chatBody.appendChild(div);
-        chatBody.scrollTop = chatBody.scrollHeight;
-    }
-    chatInput.onkeypress = (e) => {
-        if(e.key === 'Enter' && chatInput.value) {
-            addMsg(chatInput.value, false); chatInput.value = '';
-            setTimeout(() => addMsg("Analyse läuft... AISOLUTIOS identifiziert gerade die besten KI-Hebel für Sie."), 1000);
+    // Chat-Logik: Wir nutzen den Trigger, um den Chatbase-Bot zu öffnen
+    document.getElementById('aiso-chat-trigger').onclick = function() {
+        if (window.chatbase && typeof window.chatbase === 'function') {
+            window.chatbase("openChatbot");
+        } else {
+            // Falls Chatbase noch lädt, kleiner Hinweis
+            console.log("Chatbot wird geladen...");
+        }
+    };
+</script>
+
+<script>
+    async function handleStripePayment() {
+        try {
+            // WICHTIG: Im Live-Betrieb 'localhost' durch Ihre IP/Domain ersetzen
+            const response = await fetch('http://localhost:8003/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const session = await response.json();
+            if (session.url) {
+                window.location.href = session.url;
+            }
+        } catch (error) {
+            console.error("Fehler bei Stripe:", error);
+            alert("Zahlungsservice aktuell nicht erreichbar (Port 8003 prüfen).");
         }
     }
-    setTimeout(() => addMsg("Willkommen! Ich bin der AISOLUTIOS Sales-Agent. Für welches Unternehmen soll ich eine Potenzial-Analyse starten?"), 1000);
 </script>
-<script>
-      window.embeddedChatbotConfig = {
-        chatbotId: "vuer9I3B9_H_m-JqXvY-T",
-        domain: "www.aisolutios.de"
-      }
-    </script>
-    <script 
-    
-    </script>
 
-    <script>
-      async function handleStripePayment() {
-          try {
-              // Ihr Backend muss auf Port 8003 laufen
-              const response = await fetch('http://localhost:8003/create-checkout-session', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' }
-              });
-              const session = await response.json();
-              if (session.url) {
-                  window.location.href = session.url;
-              }
-          } catch (error) {
-              console.error("Fehler bei Stripe:", error);
-              alert("Zahlungsservice aktuell nicht erreichbar.");
-          }
-      }
-    </script>
+<script>
+  window.embeddedChatbotConfig = {
+    chatbotId: "vuer9I3B9_H_m-JqXvY-T",
+    domain: "www.aisolutios.de"
+  }
+</script>
+<script 
+  src="https://www.chatbase.co/embed.min.js" 
+  chatbotId="vuer9I3B9_H_m-JqXvY-T" 
+  defer>
+</script>
 </body>
 </html>
 <!DOCTYPE html>
