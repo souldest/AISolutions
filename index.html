@@ -11,83 +11,30 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise Deep Learning</title>
+    <title>AISOLUTIOS – Autonome KI-Agenten</title>
+    
+    <link rel="icon" href="data:,">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/" async></script>
 
     <style>
-        :root {
-            --bg: #0b0f1a;
-            --bg2: #0e1426;
-            --primary: #ff6a00;
-            --secondary: #7b61ff;
-            --text: #e8ecf3;
-            --muted: #9aa4b2;
-        }
-
+        :root { --bg: #0b0f1a; --bg2: #0e1426; --primary: #ff6a00; --secondary: #7b61ff; --text: #e8ecf3; --muted: #9aa4b2; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(10, 15, 30, 0.9);
-            backdrop-filter: blur(12px);
-            padding: 15px 28px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); line-height: 1.6; }
+        header { position: sticky; top: 0; z-index: 1000; background: rgba(10, 15, 30, 0.9); backdrop-filter: blur(12px); padding: 15px 28px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .brand-wrapper { display: flex; align-items: center; gap: 12px; }
-        .logo-ai-box { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 900; 
-            font-size: 20px; box-shadow: 0 0 15px rgba(255, 106, 0, 0.3);
-        }
-        .logo-text { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; }
-        
-        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
-
-        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
-        h1 { font-size: 52px; line-height: 1.1; margin-bottom: 25px; color: #fff; }
-        h2 { font-size: 36px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
-        
-        .hero-lead { font-size: 22px; color: var(--muted); max-width: 950px; margin-bottom: 35px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 30px; }
-        
-        .card {
-            background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); background: rgba(20, 28, 58, 0.8); }
-        .card i { color: var(--primary); font-size: 28px; margin-bottom: 20px; display: block; }
-        .card h4 { font-size: 21px; margin-bottom: 12px; color: #fff; }
-        .card p { font-size: 15px; color: var(--muted); margin-bottom: 15px; }
-        .card strong { color: var(--secondary); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #ff8c42);
-            color: #000; padding: 20px 40px; border: none; border-radius: 12px;
-            font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
-            font-size: 18px;
-        }
-
-        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 32px; cursor: pointer; z-index: 9999; box-shadow: 0 4px 20px rgba(255,106,0,0.4); }
-        
-        footer { background: #050811; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .logo-ai-box { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 900; box-shadow: 0 0 15px rgba(255, 106, 0, 0.3); }
+        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), #ff8c42); color: #000; padding: 15px 30px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; }
+        footer { background: #050811; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .legal-section { display: none; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; margin-top: 20px; border: 1px solid var(--secondary); }
         .footer-link { color: var(--muted); text-decoration: none; cursor: pointer; margin-right: 15px; font-size: 13px; }
-        .footer-link:hover { color: var(--primary); }
-        .legal-section { display: none; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; margin-top: 20px; border: 1px solid var(--secondary); color: var(--text); }
+        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 28px; cursor: pointer; z-index: 9999; }
     </style>
 </head>
 
@@ -96,154 +43,102 @@
 <header>
     <div class="brand-wrapper">
         <div class="logo-ai-box">AI</div>
-        <div class="logo-text">AISOLUTIOS</div>
+        <div class="logo-text" style="font-weight:700; color:#fff;">AISOLUTIOS</div>
     </div>
-    <nav>
-        <a href="#agents">KI-Agenten</a>
-        <a href="#contact">Kontakt</a>
-    </nav>
 </header>
 
-<main>
-    <section class="container">
-        <h1>Autonome KI-Agenten & Enterprise Deep Learning</h1>
-        <p class="hero-lead">Wir entwickeln spezialisierte Agenten-Crews und On-Premise LLM Architekturen für Weltmarktführer. Sicher, messbar und 100% DSGVO-konform.</p>
-        <a href="https://calendly.com/vertrieb-aisolutios/new-meeting" class="btn-primary">Strategiegespräch anfordern</a>
-    </section>
+<main class="container">
+    <div class="card">
+        <h1>Enterprise AI Lösungen</h1>
+        <p style="margin-bottom: 20px;">Spezialisierte Agenten für komplexe Workflows.</p>
+        <a href="#contact" class="btn-primary">Termin vereinbaren</a>
+    </div>
 
-    <section id="agents" class="container">
-        <h2>Spezialisierte KI-Agenten & Crews</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-comments-dollar"></i>
-                <h4>Sales Crew: Vertriebs-KI</h4>
-                <p>Automatisierte Lead-Identifikation und Qualifizierung durch autonome Agenten.</p>
-                <strong>B2B-Fokus</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-brain"></i>
-                <h4>Custom Deep Learning</h4>
-                <p>Neuronale Netze für Objekterkennung und komplexe Industrie-Tasks.</p>
-                <strong>Referenz: Porsche / Mercedes</strong>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="container">
-        <h2>Termin vereinbaren</h2>
+    <div id="contact" style="margin-top: 50px;">
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    </section>
+    </div>
 </main>
 
 <footer>
     <div class="container">
-        <div class="brand-wrapper" style="margin-bottom: 20px;">
-            <div class="logo-ai-box">AI</div>
-            <div class="logo-text">AISOLUTIOS</div>
-        </div>
-        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart, Deutschland</p>
-
-        <div id="stripe-payment-section" style="margin: 25px 0; padding: 20px; background: rgba(123, 97, 255, 0.05); border-radius: 12px; border: 1px solid var(--secondary); text-align: left;">
-            <h4 style="color: var(--primary); margin-bottom: 10px;">💳 Sichere Zahlung / Paiement Sécurisé</h4>
-            <p style="font-size: 14px; margin-bottom: 15px; color: var(--muted);">Buchen Sie Ihre Pakete via verschlüsseltem Stripe-Checkout.</p>
-            <button onclick="handleAisoPayment()" style="background: var(--primary); color: #000; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
-                Jetzt bezahlen / Payer maintenant
-            </button>
+        <p><strong>AISOLUTIOS</strong> | Dr. Sidi Weiss | Stuttgart</p>
+        
+        <div style="margin: 20px 0; padding: 20px; border: 1px solid var(--primary); border-radius: 10px;">
+            <h4 style="color: var(--primary);">💳 Zahlung / Paiement</h4>
+            <button onclick="handleAisoPayment()" style="background:var(--primary); border:none; padding:10px 20px; border-radius:5px; font-weight:bold; cursor:pointer; margin-top:10px;">Stripe Checkout</button>
         </div>
 
         <p>
-            <a onclick="toggleAisoLegal('impressum-de')" class="footer-link">Impressum</a>
-            <a onclick="toggleAisoLegal('datenschutz-de')" class="footer-link">Datenschutz</a>
-            <a onclick="toggleAisoLegal('impressum-fr')" class="footer-link">Mentions Légales</a>
-            <a onclick="toggleAisoLegal('datenschutz-fr')" class="footer-link">Protection des Données</a>
+            <a onclick="toggleAisoLegal('im-de')" class="footer-link">Impressum</a>
+            <a onclick="toggleAisoLegal('ds-de')" class="footer-link">Datenschutz</a>
+            <a onclick="toggleAisoLegal('im-fr')" class="footer-link">Mentions Légales</a>
         </p>
 
-        <div id="legal-impressum-de" class="legal-section">
-            <h3>Impressum</h3>
-            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br>vertrieb@aisolutios.de</p>
-        </div>
-        <div id="legal-datenschutz-de" class="legal-section">
-            <h3>Datenschutz</h3>
-            <p>Ihre Daten werden nach DSGVO lokal verarbeitet...</p>
-        </div>
-        <div id="legal-impressum-fr" class="legal-section">
-            <h3>Mentions Légales</h3>
-            <p><strong>Dr. Sidi Weiss</strong><br>Adresse : Obere Waiblinger Strasse 147a, 70374 Stuttgart, Allemagne<br>Mobile : 00 49 176 31591931<br>Email : vertrieb@aisolutios.de</p>
-        </div>
-        <div id="legal-datenschutz-fr" class="legal-section">
-            <h3>Politique de Confidentialité</h3>
-            <p>Informations sur la protection des données selon le RGPD pour nos clients français.</p>
-        </div>
-
-        <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
+        <div id="legal-im-de" class="legal-section"><h3>Impressum</h3><p>Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart</p></div>
+        <div id="legal-ds-de" class="legal-section"><h3>Datenschutz</h3><p>Ihre Daten sind sicher.</p></div>
+        <div id="legal-im-fr" class="legal-section"><h3>Mentions Légales</h3><p>Dr. Sidi Weiss, Stuttgart, Allemagne.</p></div>
     </div>
 </footer>
 
 <div id="aiso-chat-trigger"><i class="fas fa-robot"></i></div>
-<div id="aiso-master-window" style="position: fixed; bottom: 115px; right: 30px; width: 380px; height: 550px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4); border: 1px solid #ddd; font-family: sans-serif;">
-    <div style="background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center;">
-        <span>AISOLUTIOS AI Agent</span>
-        <span onclick="toggleAisoChat()" style="cursor:pointer; font-size: 24px;">&times;</span>
+<div id="aiso-master-window" style="position: fixed; bottom: 110px; right: 30px; width: 350px; height: 500px; background: #fff; border-radius: 15px; display: none; flex-direction: column; z-index: 10001; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; color: #333;">
+    <div style="background: #000; color: #fff; padding: 15px; display: flex; justify-content: space-between;">
+        <span>AISOLUTIOS Chat</span>
+        <span onclick="toggleAisoChat()" style="cursor:pointer;">&times;</span>
     </div>
-    <div id="aiso-chat-content" style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f8f9fc; color: #333;"></div>
-    <div style="padding: 15px; border-top: 1px solid #eee;">
-        <input type="text" id="aiso-chat-input" placeholder="Nachricht schreiben..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; outline: none;">
-    </div>
+    <div id="aiso-chat-content" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;"></div>
+    <input type="text" id="aiso-chat-input" placeholder="Nachricht..." style="padding: 15px; border: none; border-top: 1px solid #eee;">
 </div>
 
 <script>
 (function() {
-    const cContent = document.getElementById('aiso-chat-content');
-    const cInput = document.getElementById('aiso-chat-input');
-    const cWin = document.getElementById('aiso-master-window');
-    let cStep = 0;
-
-    window.toggleAisoChat = function() {
-        const isVisible = cWin.style.display === 'flex';
-        cWin.style.display = isVisible ? 'none' : 'flex';
-        if(!isVisible && cContent.children.length === 0) {
-            addMsg("Guten Tag, Dr. Weiss ist gerade in einem Projekt. Wie ist Ihr Name?");
-        }
-    };
-    document.getElementById('aiso-chat-trigger').onclick = window.toggleAisoChat;
-
+    // 1. Legal & Stripe
     window.toggleAisoLegal = function(id) {
         document.querySelectorAll('.legal-section').forEach(s => s.style.display = 'none');
-        const target = document.getElementById('legal-' + id);
-        if(target) { target.style.display = 'block'; target.scrollIntoView({ behavior: 'smooth' }); }
+        const t = document.getElementById('legal-' + id);
+        if(t) { t.style.display = 'block'; t.scrollIntoView({ behavior: 'smooth' }); }
     };
 
     window.handleAisoPayment = async function() {
         try {
-            const res = await fetch('http://localhost:8003/create-checkout-session', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
-            const s = await res.json();
-            if (s.url) window.location.href = s.url;
-        } catch (e) { alert("Backend offline (Port 8003)"); }
+            const r = await fetch('http://localhost:8003/create-checkout-session', { method: 'POST' });
+            const d = await r.json();
+            if(d.url) window.location.href = d.url;
+        } catch(e) { alert("Backend offline (Port 8003)"); }
     };
 
-    function addMsg(text, isBot = true) {
-        const d = document.createElement('div');
-        d.style.cssText = isBot ? "background:#eee; padding:12px; border-radius:12px; align-self:flex-start; max-width:85%; font-size:14px; color:#333;" : "background:#ff6a00; color:#000; padding:12px; border-radius:12px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold;";
-        d.innerText = text;
-        cContent.appendChild(d);
-        cContent.scrollTop = cContent.scrollHeight;
+    // 2. Chatbot (Kapselung verhindert SyntaxError)
+    const cWin = document.getElementById('aiso-master-window');
+    const cCont = document.getElementById('aiso-chat-content');
+    const cInp = document.getElementById('aiso-chat-input');
+
+    window.toggleAisoChat = function() {
+        const vis = cWin.style.display === 'flex';
+        cWin.style.display = vis ? 'none' : 'flex';
+        if(!vis && cCont.children.length === 0) addMsg("Guten Tag, Dr. Weiss ist im Termin. Wie ist Ihr Name?");
+    };
+
+    document.getElementById('aiso-chat-trigger').onclick = window.toggleAisoChat;
+
+    function addMsg(t, bot = true) {
+        const m = document.createElement('div');
+        m.style.cssText = bot ? "background:#f0f0f0; padding:10px; border-radius:10px; align-self:flex-start;" : "background:#ff6a00; color:#000; padding:10px; border-radius:10px; align-self:flex-end;";
+        m.innerText = t;
+        cCont.appendChild(m);
+        cCont.scrollTop = cCont.scrollHeight;
     }
 
-    cInput.onkeypress = (e) => {
-        if(e.key === 'Enter' && cInput.value.trim()) {
-            const val = cInput.value.trim();
-            addMsg(val, false);
-            cInput.value = '';
-            setTimeout(() => {
-                if(cStep === 0) { addMsg(`Danke ${val}! Für welches Unternehmen arbeiten Sie?`); cStep++; }
-                else { addMsg("Vielen Dank. Ich leite Ihre Daten an Dr. Weiss weiter."); }
-            }, 800);
+    cInp.onkeypress = (e) => {
+        if(e.key === 'Enter' && cInp.value.trim()) {
+            addMsg(cInp.value, false);
+            cInp.value = '';
+            setTimeout(() => addMsg("Vielen Dank! Wir melden uns."), 1000);
         }
     };
 })();
 </script>
 
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script src="https://www.chatbase.co/embed.min.js" chatbotId="vuer9I3B9_H_m-JqXvY-T" defer></script>
 
 </body>
