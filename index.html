@@ -46,7 +46,13 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo-main { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; }
+        .brand-wrapper { display: flex; align-items: center; gap: 10px; }
+        .logo-ai { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; padding: 5px 10px; border-radius: 8px; font-weight: 800; font-size: 18px;
+        }
+        .logo-text { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; }
+        
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
@@ -91,7 +97,10 @@
 <body>
 
 <header>
-    <div class="brand-wrapper"><div class="logo-main">AISOLUTIOS</div></div>
+    <div class="brand-wrapper">
+        <div class="logo-ai">AI</div>
+        <div class="logo-text">AISOLUTIOS</div>
+    </div>
     <nav>
         <a href="#agents">KI-Agenten</a>
         <a href="#llm">LLM Plattform</a>
@@ -148,18 +157,18 @@
         </div>
         <div class="content-box" style="border-color: var(--primary);">
             <h3>Hosting: On-Premise & Private Cloud</h3>
-            <p>Wir implementieren LLM-Lösungen wahlweise als <strong>On-Premise Installation</strong> in Ihrem eigenen Rechenzentrum oder innerhalb Ihrer <strong>Private Cloud</strong>. Damit bleiben alle Daten zu 100% in Ihrem Kontrollbereich – ohne Abfluss an externe Anbieter.</p>
+            <p>Wir implementieren LLM-Lösungen wahlweise als <strong>On-Premise Installation</strong> in Ihrem eigenen Rechenzentrum oder innerhalb Ihrer <strong>Private Cloud</strong>. AISOLUTIOS bietet volle Flexibilität für maximale Datensicherheit.</p>
         </div>
     </section>
 
     <section id="experience" class="container">
-        <h2>Branchen-Expertise & Partner</h2>
+        <h2>Branchen-Expertise & Referenzen</h2>
         <div class="grid">
-            <div class="card"><h3>Banken & ESG</h3><p>Automatisierung von Nachhaltigkeitsberichten und regulatorischem Reporting (Referenz: LBBW).</p></div>
+            <div class="card"><h3>Banken & Finance</h3><p>Automatisierung von Nachhaltigkeitsberichten und regulatorischem Reporting (Referenz: LBBW).</p></div>
             <div class="card"><h3>Automotive & Technik</h3><p>Deep Learning für Produktionsdaten und Supply Chain Intelligence (Referenzen: Mercedes, Porsche, T2-Systems).</p></div>
-            <div class="card"><h3>Versicherung & Bau</h3><p>Automatisierung komplexer Bestandsdaten und Marketing-Agenten (Referenz: Soka-Bau, Hallesche).</p></div>
+            <div class="card"><h3>Versicherung & Bau</h3><p>Automatisierung komplexer Bestandsdaten und Marketing-Agenten (Referenzen: Soka-Bau, Hallesche).</p></div>
             <div class="card"><h3>Marketing & Media</h3><p>KI-gestützte Werbeanalysen und Kampagnen-Management (Referenz: Service Plan).</p></div>
-            <div class="card"><h3>Mobilität & Vertrieb</h3><p>Optimierung von Verkaufsdaten und prädiktive Analysen (Referenz: Transdev Vertrieb).</p></div>
+            <div class="card"><h3>Transport & Mobilität</h3><p>Optimierung von Verkaufsdaten und prädiktive Analysen im Vertrieb (Referenz: Transdev Vertrieb).</p></div>
             <div class="card"><h3>Solar & Energie</h3><p>Statistische Auswertungen und KI-Optimierung für Photovoltaik-Infrastruktur (Referenz: K2-Systems).</p></div>
         </div>
     </section>
