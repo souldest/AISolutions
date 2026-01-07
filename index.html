@@ -15,6 +15,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <script src="https://js.stripe.com/v3/"></script>
 
     <style>
@@ -56,15 +57,14 @@
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 14px; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
 
-        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
-        h1 { font-size: 52px; line-height: 1.1; margin-bottom: 25px; color: #fff; }
-        h2 { font-size: 36px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
+        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+        h1 { font-size: 48px; line-height: 1.1; margin-bottom: 25px; color: #fff; }
+        h2 { font-size: 32px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 30px; }
-        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .card i { color: var(--primary); font-size: 28px; margin-bottom: 15px; display: block; }
-        .card h4 { font-size: 21px; margin-bottom: 12px; color: #fff; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; }
+        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); }
+        .card i { color: var(--primary); font-size: 24px; margin-bottom: 15px; display: block; }
+        .card h4 { font-size: 19px; margin-bottom: 10px; color: #fff; }
         .card strong { color: var(--secondary); display: block; font-size: 12px; text-transform: uppercase; margin-top: 15px; }
 
         .btn-primary {
@@ -74,15 +74,14 @@
         }
 
         /* CHATBOT */
-        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 32px; cursor: pointer; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        #aiso-chat-window { position: fixed; bottom: 115px; right: 30px; width: 380px; height: 600px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10000; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); color: #333; }
-        .chat-header { background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        #chat-content { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f8f9fa; }
-        .chat-input-area { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 10px; }
-        .chat-input-area input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 28px; cursor: pointer; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        #aiso-chat-window { position: fixed; bottom: 105px; right: 30px; width: 360px; height: 550px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10000; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); color: #333; }
+        .chat-header { background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        #chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f8f9fa; }
+        .chat-input-area { padding: 12px; border-top: 1px solid #eee; display: flex; gap: 8px; }
+        .chat-input-area input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
 
-        footer { background: #050811; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
-        .footer-link { color: var(--muted); text-decoration: none; margin: 0 15px; font-size: 14px; cursor: pointer; }
+        footer { background: #050811; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
     </style>
 </head>
 
@@ -102,35 +101,35 @@
 <main>
     <section class="container" style="text-align: center;">
         <h1>KI-Agenten & Deep Learning für Enterprise</h1>
-        <p style="font-size: 20px; color: var(--muted); margin-bottom: 30px;">Automatisierte Sales Crews & DSGVO-konforme LLM-Infrastrukturen durch AISOLUTIOS.</p>
-        <a href="#kontakt" class="btn-primary">Termin bei AISOLUTIOS vereinbaren</a>
+        <p style="font-size: 18px; color: var(--muted); margin-bottom: 30px;">Autonome Sales Crews & DSGVO-konforme LLM-Architekturen.</p>
+        <a href="#kontakt" class="btn-primary">Termin bei AISOLUTIOS buchen</a>
     </section>
 
     <section id="agents" class="container">
-        <h2>KI-Agententeams & Referenzen</h2>
+        <h2>KI-Agententeams & Firmenreferenzen</h2>
         <div class="grid">
             <div class="card">
                 <i class="fas fa-users-cog"></i>
                 <h4>Sales Crew: Automatisierter Vertrieb</h4>
-                <p>KI-Agenten übernehmen die Lead-Gewinnung und Qualifizierung von Ende zu Ende.</p>
+                <p>Vollständige Pipeline-Automatisierung von der Lead-Generierung bis zum Abschluss.</p>
                 <strong>Einsatz: Skalierbarer B2B-Vertrieb</strong>
             </div>
             <div class="card">
                 <i class="fas fa-industry"></i>
-                <h4>Deep Learning & Produktion</h4>
-                <p>Neuronale Netze zur Fehleranalyse und Objekterkennung.</p>
+                <h4>Produktion & Deep Learning</h4>
+                <p>KI-basierte Objekterkennung und Analyse von Produktionsfehlern.</p>
                 <strong>Referenzen: Mercedes-Benz, Porsche</strong>
             </div>
             <div class="card">
-                <i class="fas fa-file-contract"></i>
+                <i class="fas fa-file-invoice-dollar"></i>
                 <h4>Finanz- & ESG-Reporting</h4>
-                <p>Regulatorisches Reporting und Datenanalyse für Finanzinstitute.</p>
+                <p>Automatisierte Berichterstattung und Transaktionsanalyse für Banken.</p>
                 <strong>Referenz: LBBW</strong>
             </div>
             <div class="card">
-                <i class="fas fa-seedling"></i>
-                <h4>Forschung & Analyse</h4>
-                <p>Datenextraktion und Analyse für Weltmarktführer in der Agrarwirtschaft.</p>
+                <i class="fas fa-search-plus"></i>
+                <h4>Analyse & Forschung</h4>
+                <p>KI-Agenten zur Extraktion komplexer Forschungs- und Landwirtschaftsdaten.</p>
                 <strong>Referenzen: KWS, LKV Bayern</strong>
             </div>
         </div>
@@ -145,14 +144,7 @@
 <footer>
     <div class="container">
         <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
-        <p style="margin-top: 15px;">
-            <a onclick="toggleLegal()" class="footer-link">Impressum & Datenschutz</a>
-        </p>
-        <div id="legal-box" style="display:none; text-align: left; background: rgba(255,255,255,0.05); padding: 20px; margin-top: 20px; border-radius: 10px;">
-            <p><strong>Impressum:</strong> AISOLUTIOS Team, Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
-            <p><strong>Datenschutz:</strong> Alle Daten werden DSGVO-konform verarbeitet.</p>
-        </div>
-        <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
+        <p style="margin-top: 10px; font-size: 12px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
     </div>
 </footer>
 
@@ -164,27 +156,31 @@
     </div>
     <div id="chat-content"></div>
     <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Nachricht eingeben...">
-        <button onclick="handleChat()" style="background:var(--primary); border:none; padding:10px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
+        <input type="text" id="chat-input" placeholder="Schreiben Sie uns...">
+        <button onclick="handleChat()" style="background:var(--primary); border:none; padding:8px 12px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
 <script>
-    function toggleChat() {
-        const win = document.getElementById('aiso-chat-window');
-        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
-        if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
-            addBotMsg("Willkommen bei AISOLUTIOS! Gerne qualifizieren wir Ihr Anliegen. Wie ist Ihr vollständiger Name?");
-        }
-    }
-    document.getElementById('aiso-chat-trigger').onclick = toggleChat;
+    // Stripe Initialisierung (Public Key kommt normalerweise via Environment vom Server)
+    // Ersetzen Sie dies durch Ihre Variable oder festen Key falls nötig
+    const stripe = Stripe('IHRE_STRIPE_PUBLIC_KEY_AUS_ENV'); 
 
     let step = 0;
     let leadData = { name: "", company: "", email: "" };
 
+    function toggleChat() {
+        const win = document.getElementById('aiso-chat-window');
+        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+        if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
+            addBotMsg("Guten Tag! Willkommen bei AISOLUTIOS. Wie ist Ihr Name?");
+        }
+    }
+    document.getElementById('aiso-chat-trigger').onclick = toggleChat;
+
     function addBotMsg(txt) {
         const div = document.createElement('div');
-        div.style.cssText = "background:#eee; padding:12px; border-radius:10px; align-self:flex-start; max-width:85%; font-size:14px; line-height:1.4;";
+        div.style.cssText = "background:#eee; padding:10px; border-radius:10px; align-self:flex-start; max-width:85%; font-size:14px;";
         div.innerHTML = txt;
         document.getElementById('chat-content').appendChild(div);
         document.getElementById('chat-content').scrollTop = 10000;
@@ -197,6 +193,22 @@
         document.getElementById('chat-content').appendChild(div);
     }
 
+    async function startStripePayment() {
+        addBotMsg("Zahlung wird vorbereitet...");
+        try {
+            // Ruft Ihr Backend auf, das den Secret Key nutzt
+            const response = await fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: leadData.email, company: leadData.company })
+            });
+            const session = await response.json();
+            await stripe.redirectToCheckout({ sessionId: session.id });
+        } catch (e) {
+            addBotMsg("Fehler bei der Zahlungsinitialisierung.");
+        }
+    }
+
     function handleChat() {
         const inp = document.getElementById('chat-input');
         const val = inp.value.trim();
@@ -207,31 +219,26 @@
         setTimeout(() => {
             if(step === 0) {
                 leadData.name = val;
-                addBotMsg("Vielen Dank, " + val + ". Für welche Firma arbeiten Sie?");
+                addBotMsg("Freut mich, " + val + ". Für welche Firma arbeiten Sie?");
                 step++;
             } else if(step === 1) {
                 leadData.company = val;
-                addBotMsg("Notiert. Unter welcher E-Mail-Adresse können wir Sie für das Projekt bei " + leadData.company + " erreichen?");
+                addBotMsg("Vielen Dank. Wie lautet Ihre geschäftliche E-Mail-Adresse?");
                 step++;
             } else if(step === 2) {
                 leadData.email = val;
-                addBotMsg("Perfekt. Wir haben Ihre Daten erfasst. Sie können nun direkt einen Termin buchen oder Leads für Ihre eigene Sales Crew erwerben (2€ pro Lead).");
+                addBotMsg("Perfekt. Wir haben alles notiert. Möchten Sie direkt einen Termin buchen oder einen Lead für 2,00 € kaufen?");
                 
-                const actionDiv = document.createElement('div');
-                actionDiv.style.marginTop = "10px";
-                actionDiv.innerHTML = `
-                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:12px; border-radius:8px; margin-bottom:8px; cursor:pointer; border:none; font-weight:bold;">📅 Termin bei AISOLUTIOS buchen</button>
-                    <button onclick="alert('Stripe-Zahlung von 2,00 € wird initialisiert...')" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; cursor:pointer; border:none; font-weight:bold;">💳 Lead kaufen (2,00 € via Stripe)</button>
+                const btnBox = document.createElement('div');
+                btnBox.style.marginTop = "10px";
+                btnBox.innerHTML = `
+                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:10px; border-radius:8px; margin-bottom:5px; border:none; cursor:pointer;">📅 Termin buchen</button>
+                    <button onclick="startStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:10px; border-radius:8px; border:none; cursor:pointer;">💳 Lead kaufen (2,00 € via Stripe)</button>
                 `;
-                document.getElementById('chat-content').appendChild(actionDiv);
+                document.getElementById('chat-content').appendChild(btnBox);
                 step++;
             }
         }, 800);
-    }
-
-    function toggleLegal() {
-        const box = document.getElementById('legal-box');
-        box.style.display = box.style.display === 'none' ? 'block' : 'none';
     }
 </script>
 
