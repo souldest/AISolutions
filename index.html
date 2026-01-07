@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise Deep Learning</title>
+    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise LLM Lösungen</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -26,6 +26,7 @@
             --secondary: #7b61ff;
             --text: #e8ecf3;
             --muted: #9aa4b2;
+            --accent: #00d4ff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,23 +59,26 @@
         nav a:hover { color: var(--primary); }
 
         .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
-        h1 { font-size: 48px; line-height: 1.1; margin-bottom: 25px; color: #fff; text-align: center; }
-        h2 { font-size: 32px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
+        h1 { font-size: 52px; line-height: 1.1; margin-bottom: 25px; color: #fff; text-align: center; }
+        h2 { font-size: 34px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
+        h3 { color: var(--primary); margin-bottom: 15px; font-size: 22px; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; }
-        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card i { color: var(--primary); font-size: 24px; margin-bottom: 15px; display: block; }
-        .card h4 { font-size: 19px; margin-bottom: 10px; color: #fff; }
-        .card strong { color: var(--secondary); display: block; font-size: 12px; text-transform: uppercase; margin-top: 15px; }
+        .section-text { font-size: 18px; color: var(--muted); margin-bottom: 40px; max-width: 800px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
+        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255,255,255,0.03); }
+        .card i { color: var(--primary); font-size: 28px; margin-bottom: 15px; display: block; }
+        
+        .llm-box { background: rgba(123, 97, 255, 0.1); border: 1px solid var(--secondary); padding: 40px; border-radius: 20px; margin-bottom: 50px; }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), #ff8c42);
             color: #000; padding: 18px 35px; border: none; border-radius: 12px;
-            font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
+            font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block; font-size: 16px;
         }
 
-        /* AISOLUTIOS CHATBOT UI */
+        /* CHATBOT */
         #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 28px; cursor: pointer; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         #aiso-chat-window { position: fixed; bottom: 105px; right: 30px; width: 360px; height: 550px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10000; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); color: #333; }
         .chat-header { background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
@@ -94,6 +98,7 @@
         <div class="logo-text">AISOLUTIOS</div>
     </div>
     <nav>
+        <a href="#llm">Enterprise LLM</a>
         <a href="#agents">KI-Agenten</a>
         <a href="#kontakt">Termine</a>
     </nav>
@@ -101,39 +106,68 @@
 
 <main>
     <section class="container">
-        <h1>Autonome KI-Agenten & Enterprise Deep Learning</h1>
-        <p style="font-size: 20px; color: var(--muted); text-align: center; margin-bottom: 40px;">Entwickelt von AISOLUTIOS: Skalierbare Sales Crews und sichere On-Premise LLM-Architekturen.</p>
+        <h1>Intelligenz nach Maß für Ihr Unternehmen</h1>
+        <p style="font-size: 20px; color: var(--muted); text-align: center; margin-bottom: 40px;">
+            AISOLUTIOS entwickelt hochspezialisierte LLM-Infrastrukturen und autonome Agenten-Teams für den industriellen Einsatz.
+        </p>
         <div style="text-align: center;">
-            <a href="#kontakt" class="btn-primary">Strategie-Gespräch mit AISOLUTIOS buchen</a>
+            <a href="#kontakt" class="btn-primary">Strategie-Gespräch buchen</a>
+        </div>
+    </section>
+
+    <section id="llm" class="container">
+        <h2>Enterprise Large Language Models (LLM)</h2>
+        <div class="llm-box">
+            <h3>Definition & Motivation</h3>
+            <p class="section-text">
+                Ein <strong>Large Language Model (LLM)</strong> ist ein hochkomplexes neuronales Netzwerk, das darauf trainiert wurde, menschliche Sprache auf einem Expertenniveau zu verstehen und zu generieren. 
+                Die Motivation für Unternehmen liegt in der <strong>Skalierung von Wissen</strong>: Ein LLM verarbeitet Millionen von Dokumenten in Sekunden und stellt dieses Wissen als interaktive Intelligenz bereit.
+            </p>
+            <h3>Warum AISOLUTIOS für Ihr LLM?</h3>
+            <p class="section-text">
+                <strong>AISOLUTIOS baut individuelle LLMs für seine Kunden.</strong> Während Standardlösungen oft Datenschutzrisiken bergen, entwickeln wir für Sie On-Premise oder Private-Cloud-Lösungen.
+            </p>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Datensouveränität</h4>
+                    <p>Ihr Wissen verlässt nie Ihr Unternehmen. Wir trainieren Modelle auf Ihren eigenen Servern.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-bullseye"></i>
+                    <h4>Spezialisierung</h4>
+                    <p>Wir stimmen das Modell exakt auf Ihre Fachterminologie ab – ob Maschinenbau, Recht oder Medizin.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-code-branch"></i>
+                    <h4>RAG-Architekturen</h4>
+                    <p>Durch Retrieval Augmented Generation verknüpfen wir LLMs mit Ihren Live-Datenquellen für maximale Faktenausgabe.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="agents" class="container">
-        <h2>Expertise & Firmenreferenzen</h2>
+        <h2>Autonome KI-Agenten</h2>
+        <p class="section-text">KI-Agenten gehen einen Schritt weiter als einfache Chatbots: Sie denken, planen und handeln eigenständig, um komplexe Geschäftsziele zu erreichen.</p>
         <div class="grid">
             <div class="card">
-                <i class="fas fa-users-cog"></i>
-                <h4>Sales Crew: Automatisierter Vertrieb</h4>
-                <p>AISOLUTIOS Agenten übernehmen die Lead-Qualifizierung und Terminierung autonom.</p>
-                <strong>Einsatz: Skalierbarer B2B-Vertrieb</strong>
+                <i class="fas fa-rocket"></i>
+                <h4>Sales Crew</h4>
+                <p>Identifiziert Leads, schreibt personalisierte Sequenzen und bucht Termine direkt in Ihren Kalender.</p>
+                <strong>Referenz: Automatisierter B2B-Vertrieb</strong>
             </div>
             <div class="card">
                 <i class="fas fa-industry"></i>
-                <h4>Produktion & Deep Learning</h4>
-                <p>Neuronale Netze zur Fehleranalyse und visuellen Qualitätskontrolle.</p>
+                <h4>Deep Learning Vision</h4>
+                <p>KI-Modelle zur Echtzeit-Analyse von Produktionsabläufen und Defekterkennung.</p>
                 <strong>Referenzen: Mercedes-Benz, Porsche</strong>
             </div>
             <div class="card">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h4>Finanz- & ESG-Reporting</h4>
-                <p>Automatisierung von regulatorischen Berichten und Finanz-Datenströmen.</p>
+                <i class="fas fa-balance-scale"></i>
+                <h4>Compliance & Reporting</h4>
+                <p>Überwachung von ESG-Richtlinien und automatisierte Erstellung von Finanzberichten.</p>
                 <strong>Referenz: LBBW</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-seedling"></i>
-                <h4>Agrar- & Forschung</h4>
-                <p>Datenextraktion und Analyse für globale Marktführer der Agrarwirtschaft.</p>
-                <strong>Referenzen: KWS, LKV Bayern</strong>
             </div>
         </div>
     </section>
@@ -146,7 +180,7 @@
 
 <footer>
     <div class="container">
-        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
+        <p><strong>AISOLUTIOS</strong> | Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
         <p style="margin-top: 15px; font-size: 13px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
     </div>
 </footer>
@@ -154,19 +188,19 @@
 <div id="aiso-chat-trigger"><i class="fas fa-robot"></i></div>
 <div id="aiso-chat-window">
     <div class="chat-header">
-        <span>AISOLUTIOS Sales Assistent</span>
+        <span>AISOLUTIOS Support</span>
         <span style="cursor:pointer" onclick="toggleChat()">&times;</span>
     </div>
     <div id="chat-content"></div>
     <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Nachricht...">
+        <input type="text" id="chat-input" placeholder="Ihre Frage an AISOLUTIOS...">
         <button onclick="handleChat()" style="background:var(--primary); border:none; padding:8px 12px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
 <script>
-    // Stripe Initialisierung - Nutzt Ihren Public Key
-    const stripe = Stripe('IHRE_STRIPE_PUBLIC_KEY_AUS_ENV'); 
+    // Stripe & Chat Logik
+    const stripe = Stripe('IHRE_PUBLIC_KEY'); 
 
     let step = 0;
     let lead = { name: "", company: "", email: "" };
@@ -175,7 +209,7 @@
         const win = document.getElementById('aiso-chat-window');
         win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
         if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
-            addBotMsg("Willkommen bei AISOLUTIOS! Ich helfe Ihnen bei der Lead-Qualifizierung. Wie ist Ihr vollständiger Name?");
+            addBotMsg("Willkommen bei AISOLUTIOS! Um Sie optimal zu unterstützen: Wie ist Ihr Name?");
         }
     }
     document.getElementById('aiso-chat-trigger').onclick = toggleChat;
@@ -196,7 +230,7 @@
     }
 
     async function handlePayment() {
-        addBotMsg("Zahlung von 2,00 € für den AISOLUTIOS Lead wird vorbereitet...");
+        addBotMsg("Zahlung von 2,00 € für diesen Lead wird über Stripe vorbereitet...");
         try {
             const response = await fetch('/create-checkout-session', {
                 method: 'POST',
@@ -206,7 +240,7 @@
             const session = await response.json();
             await stripe.redirectToCheckout({ sessionId: session.id });
         } catch (e) {
-            addBotMsg("Fehler bei der Verbindung zu Stripe. Bitte versuchen Sie es später erneut.");
+            addBotMsg("Stripe-Verbindung fehlgeschlagen. Bitte Backend prüfen.");
         }
     }
 
@@ -220,20 +254,20 @@
         setTimeout(() => {
             if(step === 0) {
                 lead.name = val;
-                addBotMsg("Danke. Für welches Unternehmen sind Sie tätig?");
+                addBotMsg("Danke. Für welches Unternehmen benötigen Sie KI-Lösungen?");
                 step++;
             } else if(step === 1) {
                 lead.company = val;
-                addBotMsg("Notiert. Bitte geben Sie Ihre geschäftliche E-Mail-Adresse an.");
+                addBotMsg("Verstanden. Wie lautet Ihre geschäftliche E-Mail-Adresse?");
                 step++;
             } else if(step === 2) {
                 lead.email = val;
-                addBotMsg("Vielen Dank! Ihre Daten wurden bei AISOLUTIOS registriert. Sie können nun einen Termin buchen oder direkt einen Lead für 2,00 € erwerben.");
+                addBotMsg("Vielen Dank! Ihre Daten wurden bei AISOLUTIOS registriert. Sie können nun einen Termin buchen oder direkt eine Lead-Session für 2,00 € kaufen.");
                 
                 const btnBox = document.createElement('div');
                 btnBox.style.marginTop = "10px";
                 btnBox.innerHTML = `
-                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:10px; border-radius:8px; margin-bottom:5px; border:none; cursor:pointer; font-weight:bold;">📅 AISOLUTIOS Termin buchen</button>
+                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:10px; border-radius:8px; margin-bottom:5px; border:none; cursor:pointer; font-weight:bold;">📅 Termin vereinbaren</button>
                     <button onclick="handlePayment()" style="width:100%; background:#6772e5; color:#fff; padding:10px; border-radius:8px; border:none; cursor:pointer; font-weight:bold;">💳 Lead kaufen (2,00 €)</button>
                 `;
                 document.getElementById('chat-content').appendChild(btnBox);
