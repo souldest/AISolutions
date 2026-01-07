@@ -58,11 +58,12 @@
         nav a:hover { color: var(--primary); }
 
         .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
-        h1 { font-size: 48px; line-height: 1.1; margin-bottom: 25px; color: #fff; }
+        h1 { font-size: 48px; line-height: 1.1; margin-bottom: 25px; color: #fff; text-align: center; }
         h2 { font-size: 32px; margin-bottom: 40px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; }
-        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); }
+        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .card i { color: var(--primary); font-size: 24px; margin-bottom: 15px; display: block; }
         .card h4 { font-size: 19px; margin-bottom: 10px; color: #fff; }
         .card strong { color: var(--secondary); display: block; font-size: 12px; text-transform: uppercase; margin-top: 15px; }
@@ -73,7 +74,7 @@
             font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
         }
 
-        /* CHATBOT */
+        /* AISOLUTIOS CHATBOT UI */
         #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 28px; cursor: pointer; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         #aiso-chat-window { position: fixed; bottom: 105px; right: 30px; width: 360px; height: 550px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10000; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); color: #333; }
         .chat-header { background: #000; color: #fff; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
@@ -99,44 +100,46 @@
 </header>
 
 <main>
-    <section class="container" style="text-align: center;">
-        <h1>KI-Agenten & Deep Learning für Enterprise</h1>
-        <p style="font-size: 18px; color: var(--muted); margin-bottom: 30px;">Autonome Sales Crews & DSGVO-konforme LLM-Architekturen.</p>
-        <a href="#kontakt" class="btn-primary">Termin bei AISOLUTIOS buchen</a>
+    <section class="container">
+        <h1>Autonome KI-Agenten & Enterprise Deep Learning</h1>
+        <p style="font-size: 20px; color: var(--muted); text-align: center; margin-bottom: 40px;">Entwickelt von AISOLUTIOS: Skalierbare Sales Crews und sichere On-Premise LLM-Architekturen.</p>
+        <div style="text-align: center;">
+            <a href="#kontakt" class="btn-primary">Strategie-Gespräch mit AISOLUTIOS buchen</a>
+        </div>
     </section>
 
     <section id="agents" class="container">
-        <h2>KI-Agententeams & Firmenreferenzen</h2>
+        <h2>Expertise & Firmenreferenzen</h2>
         <div class="grid">
             <div class="card">
                 <i class="fas fa-users-cog"></i>
                 <h4>Sales Crew: Automatisierter Vertrieb</h4>
-                <p>Vollständige Pipeline-Automatisierung von der Lead-Generierung bis zum Abschluss.</p>
+                <p>AISOLUTIOS Agenten übernehmen die Lead-Qualifizierung und Terminierung autonom.</p>
                 <strong>Einsatz: Skalierbarer B2B-Vertrieb</strong>
             </div>
             <div class="card">
                 <i class="fas fa-industry"></i>
                 <h4>Produktion & Deep Learning</h4>
-                <p>KI-basierte Objekterkennung und Analyse von Produktionsfehlern.</p>
+                <p>Neuronale Netze zur Fehleranalyse und visuellen Qualitätskontrolle.</p>
                 <strong>Referenzen: Mercedes-Benz, Porsche</strong>
             </div>
             <div class="card">
                 <i class="fas fa-file-invoice-dollar"></i>
                 <h4>Finanz- & ESG-Reporting</h4>
-                <p>Automatisierte Berichterstattung und Transaktionsanalyse für Banken.</p>
+                <p>Automatisierung von regulatorischen Berichten und Finanz-Datenströmen.</p>
                 <strong>Referenz: LBBW</strong>
             </div>
             <div class="card">
-                <i class="fas fa-search-plus"></i>
-                <h4>Analyse & Forschung</h4>
-                <p>KI-Agenten zur Extraktion komplexer Forschungs- und Landwirtschaftsdaten.</p>
+                <i class="fas fa-seedling"></i>
+                <h4>Agrar- & Forschung</h4>
+                <p>Datenextraktion und Analyse für globale Marktführer der Agrarwirtschaft.</p>
                 <strong>Referenzen: KWS, LKV Bayern</strong>
             </div>
         </div>
     </section>
 
     <section id="kontakt" class="container">
-        <h2 style="text-align: center;">Terminvereinbarung bei AISOLUTIOS</h2>
+        <h2 style="text-align: center;">Termin bei AISOLUTIOS vereinbaren</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
     </section>
 </main>
@@ -144,7 +147,7 @@
 <footer>
     <div class="container">
         <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
-        <p style="margin-top: 10px; font-size: 12px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
+        <p style="margin-top: 15px; font-size: 13px; color: var(--muted);">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
     </div>
 </footer>
 
@@ -156,24 +159,23 @@
     </div>
     <div id="chat-content"></div>
     <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Schreiben Sie uns...">
+        <input type="text" id="chat-input" placeholder="Nachricht...">
         <button onclick="handleChat()" style="background:var(--primary); border:none; padding:8px 12px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
 <script>
-    // Stripe Initialisierung (Public Key kommt normalerweise via Environment vom Server)
-    // Ersetzen Sie dies durch Ihre Variable oder festen Key falls nötig
+    // Stripe Initialisierung - Nutzt Ihren Public Key
     const stripe = Stripe('IHRE_STRIPE_PUBLIC_KEY_AUS_ENV'); 
 
     let step = 0;
-    let leadData = { name: "", company: "", email: "" };
+    let lead = { name: "", company: "", email: "" };
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
         win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
         if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
-            addBotMsg("Guten Tag! Willkommen bei AISOLUTIOS. Wie ist Ihr Name?");
+            addBotMsg("Willkommen bei AISOLUTIOS! Ich helfe Ihnen bei der Lead-Qualifizierung. Wie ist Ihr vollständiger Name?");
         }
     }
     document.getElementById('aiso-chat-trigger').onclick = toggleChat;
@@ -193,19 +195,18 @@
         document.getElementById('chat-content').appendChild(div);
     }
 
-    async function startStripePayment() {
-        addBotMsg("Zahlung wird vorbereitet...");
+    async function handlePayment() {
+        addBotMsg("Zahlung von 2,00 € für den AISOLUTIOS Lead wird vorbereitet...");
         try {
-            // Ruft Ihr Backend auf, das den Secret Key nutzt
             const response = await fetch('/create-checkout-session', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: leadData.email, company: leadData.company })
+                body: JSON.stringify(lead)
             });
             const session = await response.json();
             await stripe.redirectToCheckout({ sessionId: session.id });
         } catch (e) {
-            addBotMsg("Fehler bei der Zahlungsinitialisierung.");
+            addBotMsg("Fehler bei der Verbindung zu Stripe. Bitte versuchen Sie es später erneut.");
         }
     }
 
@@ -218,22 +219,22 @@
 
         setTimeout(() => {
             if(step === 0) {
-                leadData.name = val;
-                addBotMsg("Freut mich, " + val + ". Für welche Firma arbeiten Sie?");
+                lead.name = val;
+                addBotMsg("Danke. Für welches Unternehmen sind Sie tätig?");
                 step++;
             } else if(step === 1) {
-                leadData.company = val;
-                addBotMsg("Vielen Dank. Wie lautet Ihre geschäftliche E-Mail-Adresse?");
+                lead.company = val;
+                addBotMsg("Notiert. Bitte geben Sie Ihre geschäftliche E-Mail-Adresse an.");
                 step++;
             } else if(step === 2) {
-                leadData.email = val;
-                addBotMsg("Perfekt. Wir haben alles notiert. Möchten Sie direkt einen Termin buchen oder einen Lead für 2,00 € kaufen?");
+                lead.email = val;
+                addBotMsg("Vielen Dank! Ihre Daten wurden bei AISOLUTIOS registriert. Sie können nun einen Termin buchen oder direkt einen Lead für 2,00 € erwerben.");
                 
                 const btnBox = document.createElement('div');
                 btnBox.style.marginTop = "10px";
                 btnBox.innerHTML = `
-                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:10px; border-radius:8px; margin-bottom:5px; border:none; cursor:pointer;">📅 Termin buchen</button>
-                    <button onclick="startStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:10px; border-radius:8px; border:none; cursor:pointer;">💳 Lead kaufen (2,00 € via Stripe)</button>
+                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:10px; border-radius:8px; margin-bottom:5px; border:none; cursor:pointer; font-weight:bold;">📅 AISOLUTIOS Termin buchen</button>
+                    <button onclick="handlePayment()" style="width:100%; background:#6772e5; color:#fff; padding:10px; border-radius:8px; border:none; cursor:pointer; font-weight:bold;">💳 Lead kaufen (2,00 €)</button>
                 `;
                 document.getElementById('chat-content').appendChild(btnBox);
                 step++;
