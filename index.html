@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise LLM Plattform</title>
+    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise LLM</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -34,34 +34,30 @@
         h1 { font-size: 56px; line-height: 1.1; margin-bottom: 25px; font-weight: 900; }
         h2 { font-size: 38px; margin-bottom: 45px; color: #fff; border-left: 5px solid var(--primary); padding-left: 20px; }
         
-        /* Agenten Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; position: relative; overflow: hidden; }
+        .card { background: rgba(20, 28, 58, 0.6); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
         .card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(25, 35, 70, 0.8); }
-        .card i { color: var(--primary); font-size: 32px; margin-bottom: 25px; display: block; }
+        .card i { color: var(--primary); font-size: 32px; margin-bottom: 20px; display: block; }
         .card h4 { font-size: 22px; margin-bottom: 15px; color: #fff; }
-        .card p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
-        .card .ref-badge { display: inline-block; background: rgba(123, 97, 255, 0.2); color: var(--secondary); padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; text-transform: uppercase; border: 1px solid rgba(123, 97, 255, 0.3); }
+        .card p { color: var(--muted); font-size: 15px; }
 
-        /* LLM Plattform Sektion */
-        .llm-section { background: rgba(123, 97, 255, 0.03); border-radius: 30px; padding: 60px; border: 1px solid rgba(123, 97, 255, 0.1); margin-top: 40px; }
-        .llm-feature { margin-bottom: 30px; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 15px; border-left: 4px solid var(--secondary); }
-        .llm-feature h4 { color: var(--secondary); margin-bottom: 10px; font-size: 20px; }
+        .llm-container { background: rgba(123, 97, 255, 0.05); border-radius: 30px; padding: 50px; border: 1px solid rgba(123, 97, 255, 0.2); }
+        .llm-block { margin-bottom: 40px; }
+        .llm-block h3 { color: var(--primary); font-size: 24px; margin-bottom: 15px; }
+        .llm-block p { font-size: 17px; opacity: 0.9; }
 
         .btn-primary { background: linear-gradient(135deg, var(--primary), #ff8c42); color: #000; padding: 20px 40px; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block; font-size: 16px; transition: 0.3s; }
-        .btn-primary:hover { box-shadow: 0 0 25px rgba(255, 106, 0, 0.4); transform: scale(1.02); }
+        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255, 106, 0, 0.3); }
 
-        /* Chatbot Styles */
-        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 30px; cursor: pointer; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        #aiso-master-window { position: fixed; bottom: 115px; right: 30px; width: 370px; height: 580px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; box-shadow: 0 15px 50px rgba(0,0,0,0.3); overflow: hidden; color: #333; }
-        .chat-header { background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        #aiso-chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f9f9f9; }
-        .chat-input-area { padding: 15px; border-top: 1px solid #eee; background: #fff; }
-        .chat-input-area input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; outline: none; }
+        footer { background: #050811; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .footer-link { color: var(--muted); text-decoration: none; cursor: pointer; margin: 0 15px; font-size: 14px; font-weight: 600; }
+        .footer-link:hover { color: var(--primary); }
+        .legal-content { display: none; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; margin-top: 30px; border: 1px solid var(--secondary); text-align: left; max-height: 600px; overflow-y: auto; }
 
-        footer { background: #050811; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .footer-link { color: var(--muted); text-decoration: none; cursor: pointer; margin-right: 20px; font-size: 14px; }
-        .legal-section { display: none; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; margin-top: 20px; border: 1px solid var(--secondary); }
+        /* Chatbot */
+        #aiso-chat-trigger { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 30px; cursor: pointer; z-index: 9999; }
+        #aiso-master-window { position: fixed; bottom: 115px; right: 30px; width: 370px; height: 580px; background: #fff; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; box-shadow: 0 15px 50px rgba(0,0,0,0.3); color: #333; overflow: hidden; }
+        .chat-header { background: #000; color: #fff; padding: 20px; font-weight: bold; display: flex; justify-content: space-between; }
     </style>
 </head>
 
@@ -73,185 +69,145 @@
         <div class="logo-text">AISOLUTIOS</div>
     </div>
     <nav>
-        <a href="#agents">Crews d'Agents</a>
+        <a href="#agenten">KI-Agenten</a>
+        <a href="#vorteile">Vorteile</a>
         <a href="#llm">Enterprise LLM</a>
-        <a href="#contact">Kontakt</a>
+        <a href="#kontakt">Kontakt</a>
     </nav>
 </header>
 
 <main>
     <section class="container" style="text-align: center;">
-        <h1>Autonome KI-Agenten <br><span style="color: var(--primary);">für Enterprise & Deep Learning</span></h1>
-        <p style="font-size: 22px; color: var(--muted); max-width: 850px; margin: 0 auto 40px;">Wir konzipieren und implementieren spezialisierte KI-Agententeams (Crews) und On-Premise LLM-Architekturen für globale Marktführer.</p>
-        <a href="#contact" class="btn-primary">Strategie-Gespräch anfragen</a>
+        <h1>Autonome KI-Agenten für <br><span style="color: var(--primary);">Enterprise Lösungen</span></h1>
+        <p style="font-size: 22px; color: var(--muted); max-width: 850px; margin: 0 auto 40px;">Wir entwickeln spezialisierte KI-Systeme für globale Marktführer. Sicher, souverän und vollständig DSGVO-konform.</p>
+        <a href="#kontakt" class="btn-primary">Strategie-Gespräch buchen</a>
     </section>
 
-    <section id="agents" class="container">
-        <h2>Spezialisierte Agenten-Crews</h2>
+    <section id="agenten" class="container">
+        <h2>KI-Agenten Teams</h2>
         <div class="grid">
-            <div class="card">
-                <i class="fas fa-rocket"></i>
-                <h4>Sales Crew: Autonome Akquise</h4>
-                <p>KI-Agenten, die Leads identifizieren, qualifizieren und personalisierte Outreach-Kampagnen autonom steuern.</p>
-                <span class="ref-badge">Referenz: B2B Vertrieb</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-warehouse"></i>
-                <h4>Logistik- & Bestands-Agenten</h4>
-                <p>Prädiktive Analyse-Crews zur Bestandsoptimierung und automatisierten Lieferkettensteuerung.</p>
-                <span class="ref-badge">Referenzen: K2-Systems, Transdev</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-microchip"></i>
-                <h4>Deep Learning Individuallösungen</h4>
-                <p>Neuronale Netze für industrielle Objekterkennung und komplexe Qualitätskontrollen in der Fertigung.</p>
-                <span class="ref-badge">Referenzen: Mercedes-Benz, Porsche</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-chart-line"></i>
-                <h4>Finance & ESG Reporting Crews</h4>
-                <p>Automatisierte Erstellung von regulatorischen Berichten und ESG-Analysen aus unstrukturierten Datenquellen.</p>
-                <span class="ref-badge">Referenz: LBBW (ESG Tool)</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-seedling"></i>
-                <h4>Agri-Tech Analyse-Agenten</h4>
-                <p>Agenten-gestützte Auswertung von Agrardaten und Ertragsprognosen auf Basis von Deep Learning.</p>
-                <span class="ref-badge">Referenzen: KWS, LKV Bayern</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-halved"></i>
-                <h4>Cyber-Security & Audit Agenten</h4>
-                <p>KI-Crews zur Überwachung von Netzwerk-Anomalien und automatisierten Sicherheits-Audits.</p>
-                <span class="ref-badge">Souveränität: On-Premise</span>
-            </div>
+            <div class="card"><i class="fas fa-user-tie"></i><h4>Vertriebs-Agenten</h4><p>Vollautomatisierte Identifizierung und Ansprache von Leads für messbares Pipeline-Wachstum.</p></div>
+            <div class="card"><i class="fas fa-microchip"></i><h4>Deep Learning</h4><p>Neuronale Netze zur Objekterkennung und Qualitätssicherung. <strong>Referenzen: Mercedes-Benz, Porsche</strong></p></div>
+            <div class="card"><i class="fas fa-file-invoice-dollar"></i><h4>Finanz- & ESG-Crews</h4><p>Automatisierte Erstellung regulatorischer Berichte. <strong>Referenz: LBBW</strong></p></div>
+            <div class="card"><i class="fas fa-truck-ramp-box"></i><h4>Logistik-Agenten</h4><p>Optimierung von Beständen und Lieferketten. <strong>Referenzen: K2-Systems, Transdev</strong></p></div>
+        </div>
+    </section>
+
+    <section id="vorteile" class="container">
+        <h2>Ihre Vorteile</h2>
+        <div class="grid">
+            <div class="card"><h4>Datensouveränität</h4><p>Ihre sensiblen Daten verlassen niemals die Unternehmensinfrastruktur. Wir implementieren lokal.</p></div>
+            <div class="card"><h4>DSGVO-Konformität</h4><p>Alle Systeme entsprechen den höchsten europäischen Sicherheits- und Datenschutzstandards.</p></div>
+            <div class="card"><h4>Direkter ROI</h4><p>Automatisierung, die sofort Kosten senkt und die Effizienz Ihrer Teams massiv steigert.</p></div>
         </div>
     </section>
 
     <section id="llm" class="container">
         <h2>Enterprise LLM Plattform</h2>
-        <div class="llm-section">
-            <div class="llm-feature">
-                <h4>Souveräne KI-Infrastruktur</h4>
-                <p>Wir implementieren Open-Source LLMs (Llama 3, Mistral) lokal via <strong>Ollama</strong>. Ihre Daten bleiben physisch in Ihrem Unternehmen.</p>
+        <div class="llm-container">
+            <div class="llm-block">
+                <h3>Definition</h3>
+                <p>Enterprise LLMs (Sprachmodelle für Unternehmen) sind spezialisierte KI-Systeme, die isoliert innerhalb Ihrer IT-Infrastruktur arbeiten und nur auf Ihre autorisierten Daten zugreifen.</p>
             </div>
-            <div class="llm-feature">
-                <h4>RAG (Retrieval Augmented Generation)</h4>
-                <p>Verknüpfung Ihrer LLMs mit internen Wissensdatenbanken (PDFs, ERP, Wikis) für präzise, faktenbasierte Antworten ohne Halluzinationen.</p>
+            <div class="llm-block">
+                <h3>Motivation</h3>
+                <p>Unternehmen brauchen KI-Intelligenz, ohne Geschäftsgeheimnisse an öffentliche Anbieter zu verlieren. Unsere Lösungen bieten maximale Sicherheit, Verlässlichkeit und volle <strong>DSGVO-Konformität</strong>.</p>
             </div>
-            <div class="llm-feature">
-                <h4>Agenten-Orchestrierung (CrewAI)</h4>
-                <p>Wir nutzen Frameworks wie CrewAI und LangChain, damit Agenten als Team zusammenarbeiten, Aufgaben delegieren und komplexe Ziele erreichen.</p>
+            <div class="llm-block" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+                <h3 style="color: var(--secondary);">AISOLUTIOS baut LLMs für Kunden</h3>
+                <p>Wir entwickeln Ihre maßgeschneiderte KI-Infrastruktur. Von der ersten Analyse bis zur fertigen Plattform – wir schaffen Ihren technologischen Vorsprung.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="container">
-        <h2 style="text-align: center;">Beratungstermin mit Dr. Sidi Weiss</h2>
+    <section id="kontakt" class="container">
+        <h2 style="text-align: center;">Kontaktieren Sie Dr. Sidi Weiss</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <div style="margin-bottom: 30px;">
-            <p><strong>AISOLUTIOS</strong> | Dr. Sidi Weiss | Stuttgart</p>
-            <p>Email: vertrieb@aisolutios.de | Mobil: +49 176 31591931</p>
-        </div>
-        <p>
-            <a onclick="toggleAisoLegal('im-de')" class="footer-link">Impressum</a>
-            <a onclick="toggleAisoLegal('ds-de')" class="footer-link">Datenschutz</a>
-            <a onclick="toggleAisoLegal('im-fr')" class="footer-link">Mentions Légales</a>
+        <p><strong>AISOLUTIOS</strong> | Dr. Sidi Weiss | Stuttgart</p>
+        <p style="margin-top: 15px;">
+            <a onclick="toggleLegal('impressum')" class="footer-link">Impressum</a>
+            <a onclick="toggleLegal('datenschutz')" class="footer-link">Datenschutz</a>
         </p>
-        <div id="legal-im-de" class="legal-section"><h3>Impressum</h3><p>Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart</p></div>
-        <div id="legal-ds-de" class="legal-section"><h3>Datenschutz</h3><p>Wir verarbeiten Ihre Daten nach DSGVO-Standard lokal in Deutschland.</p></div>
-        <div id="legal-im-fr" class="legal-section"><h3>Mentions Légales</h3><p>Dr. Sidi Weiss, Stuttgart, Allemagne.</p></div>
+
+        <div id="impressum" class="legal-content">
+            <h3>Impressum</h3>
+            <p><strong>Verantwortlich gemäß § 5 DDG:</strong></p>
+            <p>Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
+            <p><strong>Kontakt:</strong><br>Telefon: +49 176 31591931<br>E-Mail: vertrieb@aisolutios.de<br>Web: www.aisolutios.de</p>
+        </div>
+
+        <div id="datenschutz" class="legal-content">
+            <h3>Datenschutzerklärung</h3>
+            <h4>1. Datenerfassung</h4>
+            <p>Wir erfassen Daten nur zur Bearbeitung Ihrer Anfragen im Chat oder über das Terminformular.</p>
+            <h4>2. Datensicherheit</h4>
+            <p>Ihre Daten werden nach aktuellem Stand der Technik verschlüsselt und gemäß DSGVO verarbeitet.</p>
+            <h4>3. Stripe & Zahlungen</h4>
+            <p>Bei Nutzung der Zahlungsfunktion werden Daten an Stripe übertragen, um die Transaktion sicher auszuführen.</p>
+        </div>
     </div>
 </footer>
 
 <div id="aiso-chat-trigger"><i class="fas fa-robot"></i></div>
 <div id="aiso-master-window">
-    <div class="chat-header">
-        <span>AISOLUTIOS Assistant</span>
-        <span onclick="toggleAisoChat()" style="cursor:pointer;">&times;</span>
-    </div>
-    <div id="aiso-chat-content"></div>
-    <div class="chat-input-area">
-        <input type="text" id="aiso-chat-input" placeholder="Nachricht schreiben...">
-    </div>
+    <div class="chat-header"><span>KI-Assistent</span><span onclick="toggleAisoChat()" style="cursor:pointer;">&times;</span></div>
+    <div id="aiso-chat-content" style="flex:1; padding:15px; overflow-y:auto; background:#f9f9f9; display:flex; flex-direction:column; gap:10px;"></div>
+    <div style="padding:15px; border-top:1px solid #eee;"><input type="text" id="aiso-chat-input" placeholder="Nachricht..." style="width:100%; padding:10px; border-radius:10px; border:1px solid #ddd;"></div>
 </div>
 
 <script>
 (function() {
+    window.toggleLegal = function(id) {
+        const target = document.getElementById(id);
+        const isVisible = target.style.display === 'block';
+        document.querySelectorAll('.legal-content').forEach(s => s.style.display = 'none');
+        target.style.display = isVisible ? 'none' : 'block';
+    };
+
     let leadStep = 0;
     const cWin = document.getElementById('aiso-master-window');
     const cCont = document.getElementById('aiso-chat-content');
     const cInp = document.getElementById('aiso-chat-input');
 
     window.toggleAisoChat = function() {
-        const vis = cWin.style.display === 'flex';
-        cWin.style.display = vis ? 'none' : 'flex';
-        if(!vis && cCont.children.length === 0) {
-            addMsg("Guten Tag! Ich bin der KI-Assistent von Dr. Weiss. Wie ist Ihr Name?");
+        cWin.style.display = (cWin.style.display === 'flex') ? 'none' : 'flex';
+        if(cWin.style.display === 'flex' && cCont.children.length === 0) {
+            addMsg("Guten Tag! Ich bin der Assistent von Dr. Weiss. Wie ist Ihr Name?");
             leadStep = 1;
         }
     };
-
     document.getElementById('aiso-chat-trigger').onclick = window.toggleAisoChat;
-
-    window.handleAisoPayment = async function() {
-        try {
-            const r = await fetch('http://localhost:8003/create-checkout-session', { method: 'POST' });
-            const d = await r.json();
-            if(d.url) window.location.href = d.url;
-        } catch(e) { alert("Checkout momentan nur im Live-Betrieb verfügbar."); }
-    };
 
     function addMsg(t, bot = true) {
         const m = document.createElement('div');
-        m.style.cssText = bot ? "background:#f1f3f5; padding:12px; border-radius:15px; align-self:flex-start; max-width:85%; font-size:14px;" : "background:var(--primary); color:#000; padding:12px; border-radius:15px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:700;";
+        m.style.cssText = bot ? "background:#eee; padding:10px; border-radius:10px; align-self:flex-start; max-width:85%;" : "background:var(--primary); color:#000; padding:10px; border-radius:10px; align-self:flex-end; font-weight:bold;";
         m.innerText = t;
         cCont.appendChild(m);
         cCont.scrollTop = cCont.scrollHeight;
     }
 
-    function addPayOption(t) {
-        const div = document.createElement('div');
-        div.style.cssText = "background:#fff; padding:15px; border-radius:15px; border:2px solid var(--primary); align-self:flex-start; max-width:90%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);";
-        div.innerHTML = `<p style='font-size:14px; margin-bottom:12px; color:#333;'>${t}</p>
-                         <button onclick="handleAisoPayment()" style="background:#6772e5; color:#fff; border:none; padding:12px; border-radius:8px; width:100%; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
-                         <i class="fab fa-stripe" style="font-size:20px;"></i> Jetzt Analyse buchen</button>`;
-        cCont.appendChild(div);
-        cCont.scrollTop = cCont.scrollHeight;
-    }
-
     cInp.onkeypress = (e) => {
         if(e.key === 'Enter' && cInp.value.trim()) {
-            const val = cInp.value;
-            addMsg(val, false);
-            cInp.value = '';
+            const val = cInp.value; addMsg(val, false); cInp.value = '';
             setTimeout(() => {
-                if(leadStep === 1) {
-                    addMsg(`Freut mich, ${val}! Welches KI-Projekt planen Sie aktuell? (z.B. Sales-Agenten, Logistik oder LLM-Infrastruktur?)`);
-                    leadStep = 2;
-                } else if(leadStep === 2) {
-                    addMsg("Ein spannendes Feld. Um das Ganze zu beschleunigen, können wir direkt eine 60-minütige Strategie-Session vereinbaren.");
-                    addPayOption("Buchen Sie hier Ihren Expert-Checkup und wir analysieren Ihren Case im Detail.");
-                    leadStep = 3;
-                } else {
-                    addMsg("Vielen Dank! Wir melden uns zeitnah bei Ihnen.");
+                if(leadStep === 1) { addMsg("Vielen Dank! Welches KI-Projekt planen Sie aktuell?"); leadStep = 2; }
+                else if(leadStep === 2) {
+                    const div = document.createElement('div');
+                    div.style.cssText = "background:#fff; padding:15px; border-radius:12px; border:2px solid var(--primary);";
+                    div.innerHTML = `<p style='margin-bottom:10px;'>Buchen Sie hier direkt Ihre Strategie-Session:</p>
+                                     <button onclick="window.location.href='#'" style="background:#6772e5; color:#fff; border:none; padding:10px; border-radius:6px; width:100%; cursor:pointer; font-weight:bold;">Zahlen via Stripe</button>`;
+                    cCont.appendChild(div);
                 }
-            }, 1000);
+            }, 800);
         }
-    };
-
-    window.toggleAisoLegal = function(id) {
-        document.querySelectorAll('.legal-section').forEach(s => s.style.display = 'none');
-        document.getElementById('legal-' + id).style.display = 'block';
     };
 })();
 </script>
-
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
