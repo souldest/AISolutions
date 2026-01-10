@@ -236,11 +236,14 @@
 </div>
 
 <script>
-    // Stripe Init
-    const stripe = Stripe('pk_live_IHRE_STRIPE_PUBLIC_KEY'); // Hier Ihren Key einfügen
+    // Stripe Init - Bitte stellen Sie sicher, dass Ihr Public Key hier steht
+    const stripe = Stripe('pk_live_IHRE_STRIPE_PUBLIC_KEY'); 
 
     let step = 0;
     let lead = { name: "", company: "", email: "" };
+
+    // Backend-Konfiguration (Lokal für WSL, später Ihre Domain)
+    const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
@@ -248,15 +251,6 @@
         if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
             addBotMsg("Willkommen bei AISOLUTIOS! Um Sie optimal zu beraten: Wie ist Ihr Name?");
         }
-    }
-
-    function toggleLegal(id) {
-        const sections = ['impressum', 'datenschutz'];
-        sections.forEach(s => {
-            const el = document.getElementById('legal-' + s);
-            if(s === id) el.style.display = (el.style.display === 'block' ? 'none' : 'block');
-            else el.style.display = 'none';
-        });
     }
 
     function addBotMsg(txt) {
@@ -275,23 +269,30 @@
     }
 
     async function processStripePayment() {
-        addBotMsg("⏳ Zahlung von 2,00 € für den Lead wird vorbereitet...");
+        addBotMsg("⏳ Zahlung von 3,00 € für den Lead wird vorbereitet...");
         try {
-            // Hinweis: Dies benötigt einen API-Endpoint in Ihrem Backend (z.B. Node.js/Python)
-            const response = await fetch('/api/create-checkout-session', {
+            const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ lead: lead, amount: 200 }) // 2,00 EUR
+                body: JSON.stringify({ 
+                    target_company: lead.company, 
+                    user_email: lead.email,
+                    amount: 3 // Festpreis 3 Euro
+                })
             });
-            const session = await response.json();
-            if(session.id) {
-                const result = await stripe.redirectToCheckout({ sessionId: session.id });
-                if(result.error) addBotMsg("❌ Fehler bei Stripe: " + result.error.message);
+            
+            const data = await response.json();
+            
+            if(data.url) {
+                // Erfolg: Weiterleitung zur Stripe-Bezahlseite
+                window.location.href = data.url;
             } else {
-                addBotMsg("⚠️ Backend-Sitzung konnte nicht erstellt werden.");
+                console.error("Fehler vom Server:", data.error);
+                addBotMsg("⚠️ Fehler: Die Bezahlsitzung konnte nicht erstellt werden.");
             }
         } catch (e) {
-            addBotMsg("❌ Verbindung fehlgeschlagen. Bitte nutzen Sie das Calendly für Direkt-Termine.");
+            console.error("Verbindungsfehler:", e);
+            addBotMsg("❌ Verbindung zum Server fehlgeschlagen. Bitte nutzen Sie das Calendly für Direkt-Termine.");
         }
     }
 
@@ -314,15 +315,16 @@
             } else if(step === 2) {
                 lead.email = val;
                 addBotMsg("Vielen Dank! Ihre Daten sind sicher bei AISOLUTIOS registriert.");
-                addBotMsg("Möchten Sie jetzt direkt ein Strategiegespräch buchen oder für 2,00 € eine qualifizierte Lead-Anfrage senden?");
+                addBotMsg("Möchten Sie jetzt direkt ein Strategiegespräch buchen oder für 3,00 € eine qualifizierte Lead-Anfrage senden?");
                 
                 const btnBox = document.createElement('div');
                 btnBox.style.marginTop = "10px";
                 btnBox.innerHTML = `
                     <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:12px; border-radius:8px; margin-bottom:8px; border:none; cursor:pointer; font-weight:700;">📅 Termin buchen (Kostenlos)</button>
-                    <button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Lead kaufen (2,00 €)</button>
+                    <button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Lead kaufen (3,00 €)</button>
                 `;
                 document.getElementById('chat-content').appendChild(btnBox);
+                document.getElementById('chat-content').scrollTop = 10000;
                 step++;
             }
         }, 800);
