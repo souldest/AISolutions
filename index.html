@@ -222,35 +222,23 @@
     </div>
 </footer>
 
-<div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
-<div id="aiso-chat-window">
-    <div class="chat-header">
-        <span>AISOLUTIOS Sales Bot</span>
-        <span onclick="toggleChat()" style="cursor:pointer; font-size: 20px;">&times;</span>
-    </div>
-    <div id="chat-content"></div>
-    <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Antworten..." onkeypress="if(event.key==='Enter') handleChat()">
-        <button onclick="handleChat()" style="background:var(--primary); border:none; padding:8px 12px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
-
 <script>
-    // Stripe Init - Live Key eingesetzt
+    // Stripe Init
     const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47'); 
 
     let step = 0;
-    // Erweitertes Lead-Objekt für Ihre KI-Agenten
     let lead = { 
         name: "", 
         user_company: "", 
         email: "", 
-        search_niche: "", // Bereich/Branche
-        target_leads: ""  // Wunsch-Unternehmen
+        search_niche: "",
+        target_leads: ""
     };
 
-    // Backend-Konfiguration (Lokal für WSL, später Ihre Domain)
     const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
+
+    // --- ÄNDERUNG: Ihre feste Ziel-Email ---
+    const ADMIN_EMAIL = "vertrieb@aisolutios.de";
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
@@ -282,26 +270,24 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    target_company: lead.target_leads, // Wonach gesucht wird
-                    user_email: lead.email,
-                    niche: lead.search_niche,           // Branche
-                    user_company: lead.user_company,    // Firma des Kunden
+                    target_company: lead.target_leads, 
+                    // Wir senden hier Ihre Admin-Email mit, damit die Liste bei Ihnen landet
+                    user_email: lead.email || ADMIN_EMAIL, 
+                    admin_copy: ADMIN_EMAIL, 
+                    niche: lead.search_niche,
+                    user_company: lead.user_company,
                     amount: 3
                 })
             });
             
             const data = await response.json();
-            
             if(data.url) {
-                // Erfolg: Weiterleitung zur Stripe-Bezahlseite
                 window.location.href = data.url;
             } else {
-                console.error("Fehler vom Server:", data.error);
                 addBotMsg("⚠️ Fehler: Die Bezahlsitzung konnte nicht erstellt werden.");
             }
         } catch (e) {
-            console.error("Verbindungsfehler:", e);
-            addBotMsg("❌ Verbindung zum Server fehlgeschlagen. Bitte nutzen Sie das Calendly für Direkt-Termine.");
+            addBotMsg("❌ Verbindung zum Server fehlgeschlagen.");
         }
     }
 
@@ -319,26 +305,27 @@
                 step++;
             } else if(step === 1) {
                 lead.user_company = val;
-                addBotMsg("Verstanden. In welchem **Bereich oder welcher Branche** suchen Sie neue Leads? (z.B. IT-Dienstleister, Handwerk, SaaS)");
+                addBotMsg("Verstanden. In welchem **Bereich** suchen Sie neue Leads? (z.B. IT-Dienstleister, SaaS)");
                 step++;
             } else if(step === 2) {
                 lead.search_niche = val;
-                addBotMsg("Gibt es **bestimmte Unternehmen**, die Sie als Leads suchen? Oder eine Art von Firma, die wir für Sie finden sollen?");
+                addBotMsg("Welche **Art von Unternehmen** sollen wir gezielt für Sie finden?");
                 step++;
             } else if(step === 3) {
                 lead.target_leads = val;
-                addBotMsg("Sehr gut. Zuletzt: Wie lautet Ihre geschäftliche E-Mail für die Ergebnisse?");
+                // Vorauszahlung der E-Mail Adresse des Users
+                addBotMsg("Sehr gut. An welche E-Mail senden wir die Liste? (Standard: vertrieb@aisolutios.de)");
                 step++;
             } else if(step === 4) {
-                lead.email = val;
+                // Wenn der User nichts eingibt, wird Ihre Adresse genutzt
+                lead.email = val || ADMIN_EMAIL; 
                 addBotMsg("Vielen Dank! Ich habe alle Informationen.");
-                addBotMsg(`Zusammenfassung: Ich suche Leads für Sie im Bereich **${lead.search_niche}** mit Fokus auf **${lead.target_leads}**.`);
+                addBotMsg(`Zusammenfassung: Suche im Bereich **${lead.search_niche}**.`);
                 
                 const btnBox = document.createElement('div');
                 btnBox.style.marginTop = "10px";
                 btnBox.innerHTML = `
-                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:12px; border-radius:8px; margin-bottom:8px; border:none; cursor:pointer; font-weight:700;">📅 Gratis Strategiegespräch</button>
-                    <button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Lead-Analyse starten (3,00 €)</button>
+                    <button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Analyse für 3,00 € starten</button>
                 `;
                 document.getElementById('chat-content').appendChild(btnBox);
                 document.getElementById('chat-content').scrollTop = 10000;
