@@ -241,7 +241,7 @@
         align-items: center; justify-content: center;
         font-size: 26px; cursor: pointer; 
         box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-        z-index: 999999 !important; /* Stellt sicher, dass er über dem Footer schwebt */
+        z-index: 999999 !important;
         transition: transform 0.3s ease;
     }
     #aiso-chat-trigger:hover { transform: scale(1.1); }
@@ -318,7 +318,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     target_company: lead.target_leads, 
-                    user_email: lead.email || ADMIN_EMAIL, 
+                    user_email: lead.email, // NUR die Kunden-E-Mail senden
                     admin_copy: ADMIN_EMAIL, 
                     niche: lead.search_niche,
                     user_company: lead.user_company,
@@ -345,6 +345,7 @@
             else if(step === 2) { lead.search_niche = val; addBotMsg("Welche **Art von Unternehmen** sollen wir finden?"); step++; }
             else if(step === 3) { lead.target_leads = val; addBotMsg(`An welche E-Mail senden wir die Liste? (Standard: ${ADMIN_EMAIL})`); step++; }
             else if(step === 4) {
+                // Hier wird sichergestellt, dass eine valide E-Mail genutzt wird
                 lead.email = val.includes("@") ? val : ADMIN_EMAIL;
                 addBotMsg("Vielen Dank! Ich habe alle Informationen.");
                 const btnBox = document.createElement('div');
