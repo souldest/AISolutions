@@ -306,7 +306,8 @@
     }
 
     async function processStripePayment() {
-        addBotMsg("⏳ Ihre individuelle Lead-Recherche (3,00 €) wird vorbereitet...");
+        // Hier wurde der Text angepasst
+        addBotMsg("⏳ Ihre Lead-Analyse wird vorbereitet (3,00 € pro Lead)...");
         try {
             const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
@@ -324,7 +325,7 @@
             if(data.url) window.location.href = data.url;
             else addBotMsg("⚠️ Fehler: Bezahlsitzung fehlgeschlagen.");
         } catch (e) {
-            addBotMsg("❌ Server nicht erreichbar. Bitte prüfen Sie, ob das Backend läuft.");
+            addBotMsg("❌ Server nicht erreichbar. Läuft Ihr Backend (WSL) auf Port 8003?");
         }
     }
 
@@ -357,7 +358,8 @@
                 addBotMsg("Vielen Dank! Ich habe alle Informationen.");
                 const btnBox = document.createElement('div');
                 btnBox.style.marginTop = "10px";
-                btnBox.innerHTML = `<button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Analyse für 3,00 € starten</button>`;
+                // Hier wurde der Button-Text angepasst
+                btnBox.innerHTML = `<button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Analyse für 3,00 € pro Lead starten</button>`;
                 document.getElementById('chat-content').appendChild(btnBox);
                 document.getElementById('chat-content').scrollTop = 10000;
                 step++;
