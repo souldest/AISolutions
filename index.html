@@ -236,13 +236,19 @@
 </div>
 
 <script>
-    // Stripe Init - Bitte stellen Sie sicher, dass Ihr Public Key hier steht
+    // Stripe Init
     const stripe = Stripe('pk_live_IHRE_STRIPE_PUBLIC_KEY'); 
 
     let step = 0;
-    let lead = { name: "", company: "", email: "" };
+    // Erweitertes Lead-Objekt für Ihre KI-Agenten
+    let lead = { 
+        name: "", 
+        user_company: "", 
+        email: "", 
+        search_niche: "", // Bereich/Branche
+        target_leads: ""  // Wunsch-Unternehmen
+    };
 
-    // Backend-Konfiguration (Lokal für WSL, später Ihre Domain)
     const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
 
     function toggleChat() {
@@ -269,30 +275,29 @@
     }
 
     async function processStripePayment() {
-        addBotMsg("⏳ Zahlung von 3,00 € für den Lead wird vorbereitet...");
+        addBotMsg("⏳ Ihre individuelle Lead-Recherche (3,00 €) wird vorbereitet...");
         try {
             const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    target_company: lead.company, 
+                    target_company: lead.target_leads, // Wonach gesucht wird
                     user_email: lead.email,
-                    amount: 3 // Festpreis 3 Euro
+                    niche: lead.search_niche,           // Branche
+                    user_company: lead.user_company,    // Firma des Kunden
+                    amount: 3
                 })
             });
             
             const data = await response.json();
             
             if(data.url) {
-                // Erfolg: Weiterleitung zur Stripe-Bezahlseite
                 window.location.href = data.url;
             } else {
-                console.error("Fehler vom Server:", data.error);
-                addBotMsg("⚠️ Fehler: Die Bezahlsitzung konnte nicht erstellt werden.");
+                addBotMsg("⚠️ Fehler: Sitzung konnte nicht erstellt werden.");
             }
         } catch (e) {
-            console.error("Verbindungsfehler:", e);
-            addBotMsg("❌ Verbindung zum Server fehlgeschlagen. Bitte nutzen Sie das Calendly für Direkt-Termine.");
+            addBotMsg("❌ Verbindung fehlgeschlagen. Bitte nutzen Sie das Calendly.");
         }
     }
 
@@ -306,22 +311,30 @@
         setTimeout(() => {
             if(step === 0) {
                 lead.name = val;
-                addBotMsg(`Sehr gut, ${val}. Für welches Unternehmen sind Sie tätig?`);
+                addBotMsg(`Freut mich, ${val}. Für welches Unternehmen sind Sie tätig?`);
                 step++;
             } else if(step === 1) {
-                lead.company = val;
-                addBotMsg("Alles klar. Wie lautet Ihre geschäftliche E-Mail?");
+                lead.user_company = val;
+                addBotMsg("Verstanden. In welchem **Bereich oder welcher Branche** suchen Sie neue Leads? (z.B. IT-Dienstleister, Handwerk, SaaS)");
                 step++;
             } else if(step === 2) {
+                lead.search_niche = val;
+                addBotMsg("Gibt es **bestimmte Unternehmen**, die Sie als Leads suchen? Oder eine Art von Firma, die wir für Sie finden sollen?");
+                step++;
+            } else if(step === 3) {
+                lead.target_leads = val;
+                addBotMsg("Sehr gut. Zuletzt: Wie lautet Ihre geschäftliche E-Mail für die Ergebnisse?");
+                step++;
+            } else if(step === 4) {
                 lead.email = val;
-                addBotMsg("Vielen Dank! Ihre Daten sind sicher bei AISOLUTIOS registriert.");
-                addBotMsg("Möchten Sie jetzt direkt ein Strategiegespräch buchen oder für 3,00 € eine qualifizierte Lead-Anfrage senden?");
+                addBotMsg("Vielen Dank! Ich habe alle Informationen.");
+                addBotMsg(`Zusammenfassung: Ich suche Leads für Sie im Bereich **${lead.search_niche}** mit Fokus auf **${lead.target_leads}**.`);
                 
                 const btnBox = document.createElement('div');
                 btnBox.style.marginTop = "10px";
                 btnBox.innerHTML = `
-                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:12px; border-radius:8px; margin-bottom:8px; border:none; cursor:pointer; font-weight:700;">📅 Termin buchen (Kostenlos)</button>
-                    <button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Lead kaufen (3,00 €)</button>
+                    <button onclick="window.location.href='#kontakt'" style="width:100%; background:#000; color:#fff; padding:12px; border-radius:8px; margin-bottom:8px; border:none; cursor:pointer; font-weight:700;">📅 Gratis Strategiegespräch</button>
+                    <button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Lead-Analyse starten (3,00 €)</button>
                 `;
                 document.getElementById('chat-content').appendChild(btnBox);
                 document.getElementById('chat-content').scrollTop = 10000;
@@ -330,7 +343,6 @@
         }, 800);
     }
 </script>
-
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
