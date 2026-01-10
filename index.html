@@ -222,11 +222,57 @@
     </div>
 </footer>
 
+<style>
+    :root { --primary: #004a99; }
+    #aiso-chat-trigger {
+        position: fixed; bottom: 20px; right: 20px;
+        width: 60px; height: 60px; background: var(--primary);
+        color: white; border-radius: 50%; display: flex;
+        align-items: center; justify-content: center;
+        font-size: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 9999; transition: transform 0.3s ease;
+    }
+    #aiso-chat-trigger:hover { transform: scale(1.1); }
+    #aiso-chat-window {
+        position: fixed; bottom: 90px; right: 20px;
+        width: 350px; height: 500px; background: white;
+        border-radius: 15px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        display: none; flex-direction: column; overflow: hidden; z-index: 9999;
+        font-family: Arial, sans-serif;
+    }
+    .chat-header {
+        background: var(--primary); color: white; padding: 15px;
+        display: flex; justify-content: space-between; align-items: center; font-weight: bold;
+    }
+    #chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; }
+    .chat-input-area { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white; }
+    #chat-input { flex: 1; border: 1px solid #ddd; padding: 8px; border-radius: 5px; outline: none; }
+</style>
+
+<div id="aiso-chat-trigger" onclick="toggleChat()">
+    <i class="fas fa-robot"></i>
+</div>
+
+<div id="aiso-chat-window">
+    <div class="chat-header">
+        <span>AISOLUTIOS Sales Bot</span>
+        <span onclick="toggleChat()" style="cursor:pointer; font-size: 20px;">&times;</span>
+    </div>
+    <div id="chat-content"></div>
+    <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Antworten..." onkeypress="if(event.key==='Enter') handleChat()">
+        <button onclick="handleChat()" style="background:var(--primary); color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
 <script>
-    // Stripe Init
     const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47'); 
 
     let step = 0;
+    const ADMIN_EMAIL = "vertrieb@aisolutios.de";
     let lead = { 
         name: "", 
         user_company: "", 
@@ -236,9 +282,6 @@
     };
 
     const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
-
-    // --- ÄNDERUNG: Ihre feste Ziel-Email ---
-    const ADMIN_EMAIL = "vertrieb@aisolutios.de";
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
@@ -258,7 +301,7 @@
 
     function addUserMsg(txt) {
         const div = document.createElement('div');
-        div.style.cssText = "background:var(--primary); color:#000; padding:10px; border-radius:10px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold; margin-bottom:5px;";
+        div.style.cssText = "background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold; margin-bottom:5px;";
         div.innerText = txt;
         document.getElementById('chat-content').appendChild(div);
     }
@@ -271,7 +314,6 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     target_company: lead.target_leads, 
-                    // Wir senden hier Ihre Admin-Email mit, damit die Liste bei Ihnen landet
                     user_email: lead.email || ADMIN_EMAIL, 
                     admin_copy: ADMIN_EMAIL, 
                     niche: lead.search_niche,
@@ -313,11 +355,9 @@
                 step++;
             } else if(step === 3) {
                 lead.target_leads = val;
-                // Vorauszahlung der E-Mail Adresse des Users
-                addBotMsg("Sehr gut. An welche E-Mail senden wir die Liste? (Standard: vertrieb@aisolutios.de)");
+                addBotMsg(`Sehr gut. An welche E-Mail senden wir die Liste? (Standard: ${ADMIN_EMAIL})`);
                 step++;
             } else if(step === 4) {
-                // Wenn der User nichts eingibt, wird Ihre Adresse genutzt
                 lead.email = val || ADMIN_EMAIL; 
                 addBotMsg("Vielen Dank! Ich habe alle Informationen.");
                 addBotMsg(`Zusammenfassung: Suche im Bereich **${lead.search_niche}**.`);
