@@ -191,194 +191,47 @@
 </main>
 
 <footer>
-<footer style="padding: 40px 20px; background: #f4f4f4; text-align: center; border-top: 1px solid #ddd;">
-    <div class="container">
-        <div class="brand-wrapper" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px; gap: 10px;">
-            <div class="logo-ai-box" style="background: var(--aiso-blue); color: white; padding: 5px 10px; border-radius: 5px; font-weight: bold;">AI</div>
-            <div class="logo-text" style="font-size: 24px; font-weight: bold; color: var(--aiso-blue);">AISOLUTIOS</div>
-        </div>
-        <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
+
+<footer style="padding: 60px 20px; background: #ffffff; text-align: center; border-top: 1px solid #eee; font-family: sans-serif;">
+    <div style="max-width: 800px; margin: 0 auto;">
         
-        <p style="margin-top: 15px;">
-            <a onclick="toggleLegal('impressum')" style="cursor:pointer; color: var(--aiso-blue); text-decoration: underline; margin: 0 10px;">Impressum</a>
-            <a onclick="toggleLegal('datenschutz')" style="cursor:pointer; color: var(--aiso-blue); text-decoration: underline; margin: 0 10px;">Datenschutz</a>
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px; gap: 10px;">
+            <div style="background: #004a99; color: white; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 20px;">AI</div>
+            <div style="font-size: 24px; font-weight: bold; color: #004a99; letter-spacing: 1px;">AISOLUTIOS</div>
+        </div>
+
+        <p style="color: #555; margin-bottom: 40px;">AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; border-top: 1px solid #eee; pt: 30px;">
+            
+            <div id="impressum-box">
+                <h3 style="color: #004a99; border-bottom: 2px solid #004a99; padding-bottom: 5px; margin-bottom: 15px;">Impressum</h3>
+                <p style="line-height: 1.6; color: #333;">
+                    <strong>AISOLUTIOS</strong><br>
+                    Dr. Sidi Weiss<br>
+                    Obere Waiblinger Str. 147a<br>
+                    70374 Stuttgart<br><br>
+                    <strong>Kontakt:</strong><br>
+                    Mobil: 00 49 176 31591931<br>
+                    E-Mail: <a href="mailto:vertrieb@aisolutios.de" style="color: #004a99;">vertrieb@aisolutios.de</a><br>
+                    Web: <a href="https://www.aisolutios.de" style="color: #004a99;">www.aisolutios.de</a>
+                </p>
+            </div>
+
+            <div id="datenschutz-box">
+                <h3 style="color: #004a99; border-bottom: 2px solid #004a99; padding-bottom: 5px; margin-bottom: 15px;">Datenschutz</h3>
+                <p style="line-height: 1.6; color: #333; font-size: 14px;">
+                    Wir verarbeiten personenbezogene Daten streng nach DSGVO. Daten aus dem Kontaktformular oder dem Sales Bot werden ausschließlich zur Kommunikation und Auftragsabwicklung genutzt. <br><br>
+                    Wir setzen <strong>Stripe</strong> für die Zahlungsabwicklung ein; dabei gelten die Datenschutzbestimmungen von Stripe. Es erfolgt keine unerlaubte Weitergabe an Dritte. Sie haben jederzeit das Recht auf Auskunft und Löschung Ihrer Daten.
+                </p>
+            </div>
+        </div>
+
+        <p style="margin-top: 50px; font-size: 13px; color: #999; border-top: 1px solid #eee; padding-top: 20px;">
+            &copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.
         </p>
-
-        <div id="legal-impressum" class="legal-section" style="display:none; text-align: left; max-width: 600px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-            <h3 style="color:var(--aiso-blue); margin-bottom:10px;">Impressum</h3>
-            <p><strong>AISOLUTIOS</strong><br>
-            Vertreten durch: Dr. Sidi Weiss<br>
-            Anschrift: Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
-            E-Mail: vertrieb@aisolutios.de<br>
-            Mobil: 00 49 176 31591931<br>
-            Web: www.aisolutios.de</p>
-            <p style="font-size: 12px;">Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz: [Falls vorhanden, bitte eintragen]</p>
-        </div>
-
-        <div id="legal-datenschutz" class="legal-section" style="display:none; text-align: left; max-width: 600px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-            <h3 style="color:var(--aiso-blue); margin-bottom:10px;">Datenschutz</h3>
-            <p>Wir verarbeiten personenbezogene Daten streng nach DSGVO. Daten aus dem Kontaktformular oder dem Sales Bot werden ausschließlich zur Kommunikation und Auftragsabwicklung genutzt. Wir setzen Stripe für die Zahlungsabwicklung ein; dabei gelten die Datenschutzbestimmungen von Stripe. Es erfolgt keine unerlaubte Weitergabe an Dritte. Sie haben jederzeit das Recht auf Auskunft und Löschung Ihrer Daten.</p>
-        </div>
-
-        <p style="margin-top: 25px; font-size: 12px; color: #777;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
     </div>
 </footer>
-
-<style>
-    :root { --aiso-blue: #004a99; }
-    #aiso-chat-trigger {
-        position: fixed !important; bottom: 20px !important; right: 20px !important;
-        width: 65px; height: 65px; background: var(--aiso-blue);
-        color: white; border-radius: 50%; display: flex !important;
-        align-items: center; justify-content: center;
-        font-size: 26px; cursor: pointer; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-        z-index: 999999 !important;
-        transition: transform 0.3s ease;
-    }
-    #aiso-chat-trigger:hover { transform: scale(1.1); }
-    #aiso-chat-window {
-        position: fixed !important; bottom: 100px !important; right: 20px !important;
-        width: 350px; height: 500px; background: white;
-        border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        display: none; flex-direction: column; overflow: hidden; 
-        z-index: 999999 !important;
-        font-family: 'Segoe UI', Arial, sans-serif;
-    }
-    .chat-header {
-        background: var(--aiso-blue); color: white; padding: 15px;
-        display: flex; justify-content: space-between; align-items: center; font-weight: bold;
-    }
-    #chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; }
-    .chat-input-area { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white; }
-    #chat-input { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px; outline: none; }
-    .bot-msg { background:#eee; padding:10px; border-radius:10px; align-self:flex-start; max-width:85%; font-size:14px; color:#333; }
-    .user-msg { background:var(--aiso-blue); color:white; padding:10px; border-radius:10px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold; }
-</style>
-
-<div id="aiso-chat-trigger" onclick="toggleChat()">
-    <i class="fas fa-robot"></i>
-</div>
-
-<div id="aiso-chat-window">
-    <div class="chat-header">
-        <span>AISOLUTIOS Sales Bot</span>
-        <span onclick="toggleChat()" style="cursor:pointer; font-size: 20px;">&times;</span>
-    </div>
-    <div id="chat-content"></div>
-    <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Antworten..." onkeypress="if(event.key==='Enter') handleChat()">
-        <button onclick="handleChat()" style="background:var(--aiso-blue); color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;">
-            <i class="fas fa-paper-plane"></i>
-        </button>
-    </div>
-</div>
-
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-    const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47'); 
-
-    let step = 0;
-    const ADMIN_EMAIL = "vertrieb@aisolutios.de";
-    let lead = { name: "", user_company: "", email: "", search_niche: "", target_leads: "" };
-    const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
-
-    // Funktion für das Ein-/Ausblenden von Impressum & Datenschutz
-    function toggleLegal(type) {
-        const imp = document.getElementById('legal-impressum');
-        const dat = document.getElementById('legal-datenschutz');
-        if (type === 'impressum') {
-            imp.style.display = imp.style.display === 'block' ? 'none' : 'block';
-            dat.style.display = 'none';
-        } else {
-            dat.style.display = dat.style.display === 'block' ? 'none' : 'block';
-            imp.style.display = 'none';
-        }
-    }
-
-    function toggleChat() {
-        const win = document.getElementById('aiso-chat-window');
-        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
-            addBotMsg("Willkommen bei AISOLUTIOS! Um Sie optimal zu beraten: Wie ist Ihr Name?");
-        }
-    }
-
-    function addBotMsg(txt) {
-        const div = document.createElement('div');
-        div.className = "bot-msg";
-        div.innerHTML = txt;
-        document.getElementById('chat-content').appendChild(div);
-        document.getElementById('chat-content').scrollTop = 10000;
-    }
-
-    function addUserMsg(txt) {
-        const div = document.createElement('div');
-        div.className = "user-msg";
-        div.innerText = txt;
-        document.getElementById('chat-content').appendChild(div);
-    }
-
-    async function processStripePayment() {
-        addBotMsg("⏳ Ihre Lead-Analyse wird vorbereitet (3,00 € pro Lead)...");
-        try {
-            const response = await fetch(API_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    target_company: lead.target_leads, 
-                    user_email: lead.email || ADMIN_EMAIL, 
-                    admin_copy: ADMIN_EMAIL, 
-                    niche: lead.search_niche,
-                    user_company: lead.user_company,
-                    amount: 3
-                })
-            });
-            const data = await response.json();
-            if(data.url) window.location.href = data.url;
-            else addBotMsg("⚠️ Fehler: Bezahlsitzung fehlgeschlagen.");
-        } catch (e) {
-            addBotMsg("❌ Server nicht erreichbar. Bitte prüfen Sie WSL Port 8003.");
-        }
-    }
-
-    function handleChat() {
-        const inp = document.getElementById('chat-input');
-        const val = inp.value.trim();
-        if(!val) return;
-        addUserMsg(val);
-        inp.value = "";
-
-        setTimeout(() => {
-            if(step === 0) {
-                lead.name = val;
-                addBotMsg(`Freut mich, ${val}. Für welches Unternehmen sind Sie tätig?`);
-                step++;
-            } else if(step === 1) {
-                lead.user_company = val;
-                addBotMsg("In welchem **Bereich** suchen Sie neue Leads?");
-                step++;
-            } else if(step === 2) {
-                lead.search_niche = val;
-                addBotMsg("Welche **Art von Unternehmen** sollen wir finden?");
-                step++;
-            } else if(step === 3) {
-                lead.target_leads = val;
-                addBotMsg(`An welche E-Mail senden wir die Liste? (Standard: ${ADMIN_EMAIL})`);
-                step++;
-            } else if(step === 4) {
-                lead.email = val.includes("@") ? val : ADMIN_EMAIL;
-                addBotMsg("Vielen Dank! Ich habe alle Informationen.");
-                const btnBox = document.createElement('div');
-                btnBox.style.marginTop = "10px";
-                btnBox.innerHTML = `<button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Analyse für 3,00 € pro Lead starten</button>`;
-                document.getElementById('chat-content').appendChild(btnBox);
-                document.getElementById('chat-content').scrollTop = 10000;
-                step++;
-            }
-        }, 700);
-    }
-</script>
 </body>
 </html>
 
