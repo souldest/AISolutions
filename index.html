@@ -908,7 +908,8 @@ The contact form transmits data encrypted directly to our internal systems. No t
 </main>
 
 <footer>
-<div class="container">
+
+    <div class="container">
     <div class="brand-wrapper" style="margin-bottom: 20px;">
         <div class="logo-ai-box">AI</div>
         <div class="logo-text">AISOLUTIOS</div>
@@ -916,22 +917,34 @@ The contact form transmits data encrypted directly to our internal systems. No t
     <p>AISOLUTIOS | Obere Waiblinger Str. 147a | 70374 Stuttgart, Allemagne</p>
 
     <p style="margin-top: 10px;">
-        <a onclick="toggleAisoLegal('impressum-fr')" class="footer-link" style="cursor:pointer; margin-right:15px; font-weight: 600;">Mentions Légales</a>
-        <a onclick="toggleAisoLegal('datenschutz-fr')" class="footer-link" style="cursor:pointer; font-weight: 600;">Protection des Données</a>
+        <a onclick="toggleAisoLegal('legal-impressum-fr')" class="footer-link" style="cursor:pointer; margin-right:15px; font-weight: 600;">Mentions Légales</a>
+        <a onclick="toggleAisoLegal('legal-datenschutz-fr')" class="footer-link" style="cursor:pointer; font-weight: 600;">Protection des Données</a>
     </p>
 
     <div id="legal-impressum-fr" class="legal-section" style="text-align: left; display: none; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; margin-top: 20px; border: 1px solid var(--secondary);">
         <h3 style="font-size: 18px; color: var(--primary); margin-bottom: 10px;">Mentions Légales</h3>
-        <p><strong>Dr. Sidi Weiss</strong><br>
-        Responsable : AISOLUTIOS Team<br>
-        Adresse : Obere Waiblinger Strasse 147a, 70374 Stuttgart, Allemagne<br>
+        <p><strong>AISOLUTIOS Team</strong><br>
+        Adresse : Obere Waiblinger Strasse 147a, 70374 Stuttgart, Allemagne</p>
+        
+        <p><strong>Contact :</strong><br>
         Mobile : 00 49 176 31591931<br>
-        E-mail : vertrieb@aisolutios.de</p>
+        E-mail : <a href="mailto:vertrieb@aisolutios.de" style="color: var(--primary); text-decoration: none;">vertrieb@aisolutios.de</a><br>
+        Web : <a href="https://www.aisolutios.de" style="color: var(--primary); text-decoration: none;">www.aisolutios.de</a></p>
+
+        <p><strong>Informations fiscales :</strong><br>
+        Bureau des finances : Stuttgart II<br>
+        Numéro fiscal : 95 408 / 320 96</p>
     </div>
 
-    <div id="legal-datenschutz-fr" class="legal-section" style="text-align: left; display: none; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; margin-top: 20px; border: 1px solid var(--secondary); font-size: 13px;">
+    <div id="legal-datenschutz-fr" class="legal-section" style="text-align: left; display: none; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; margin-top: 20px; border: 1px solid var(--secondary); font-size: 13px; line-height: 1.6;">
         <h3 style="font-size: 18px; color: var(--primary); margin-bottom: 10px;">Politique de Confidentialité</h3>
-        <p>Informations sur la protection des données selon le RGPD pour nos clients français.</p>
+        <p>Nous accordons une grande importance à la protection de vos données. Conformément au RGPD :</p>
+        <ul style="padding-left: 20px; margin-top: 10px;">
+            <li><strong>Responsabilité :</strong> Le traitement des données est assuré par AISOLUTIOS Team.</li>
+            <li><strong>Collecte :</strong> Vos données sont collectées uniquement pour la gestion de vos demandes et l'utilisation de nos services d'IA.</li>
+            <li><strong>Sécurité :</strong> Les données sont stockées de manière sécurisée et ne sont transmises à des tiers que si cela est nécessaire à l'exécution du contrat (ex: Stripe pour les paiements).</li>
+            <li><strong>Vos Droits :</strong> Vous avez le droit d'accéder à vos données, de les corriger ou de demander leur suppression à tout moment via vertrieb@aisolutios.de.</li>
+        </ul>
     </div>
 
     <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">
