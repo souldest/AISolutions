@@ -251,8 +251,12 @@
         </p>
     </div>
 </footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://js.stripe.com/v3/"></script>
+
 <style>
     :root { --aiso-blue: #004a99; }
+    
     #aiso-chat-trigger {
         position: fixed !important; bottom: 20px !important; right: 20px !important;
         width: 65px; height: 65px; background: var(--aiso-blue);
@@ -264,6 +268,17 @@
         transition: transform 0.3s ease;
     }
     #aiso-chat-trigger:hover { transform: scale(1.1); }
+
+    #aiso-promo-bubble {
+        position: fixed !important; bottom: 95px !important; right: 25px !important;
+        background: white; border: 2px solid var(--aiso-blue);
+        padding: 12px; border-radius: 15px 15px 0 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        z-index: 999998 !important;
+        font-size: 12px; line-height: 1.3; width: 220px;
+        animation: aisoBounce 2s infinite;
+    }
+
     #aiso-chat-window {
         position: fixed !important; bottom: 100px !important; right: 20px !important;
         width: 350px; height: 500px; background: white;
@@ -272,13 +287,26 @@
         z-index: 999999 !important;
         font-family: 'Segoe UI', Arial, sans-serif;
     }
+
     .chat-header { background: var(--aiso-blue); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
     #chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; }
     .chat-input-area { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white; }
     #chat-input { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px; outline: none; }
+    
     .bot-msg { background:#eee; padding:10px; border-radius:10px; align-self:flex-start; max-width:85%; font-size:14px; color:#333; }
     .user-msg { background:var(--aiso-blue); color:white; padding:10px; border-radius:10px; align-self:flex-end; max-width:85%; font-size:14px; font-weight:bold; }
+
+    @keyframes aisoBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
 </style>
+
+<div id="aiso-promo-bubble" onclick="toggleChat()" style="cursor:pointer;">
+    <div style="margin-bottom:5px;"><strong>DE:</strong> Beste BTP-Leads generieren! 🚀</div>
+    <div style="margin-bottom:5px; border-top:1px solid #eee; padding-top:3px;"><strong>EN:</strong> Generate best BTP leads! 📈</div>
+    <div style="border-top:1px solid #eee; padding-top:3px;"><strong>FR:</strong> Générer les meilleurs leads ! 💎</div>
+</div>
 
 <div id="aiso-chat-trigger" onclick="toggleChat()">
     <i class="fas fa-robot"></i>
@@ -298,18 +326,23 @@
     </div>
 </div>
 
-<script src="https://js.stripe.com/v3/"></script>
 <script>
     const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47'); 
-    let step = 0;
     const ADMIN_EMAIL = "vertrieb@aisolutios.de";
-    let lead = { name: "", user_company: "", email: "", search_niche: "", target_leads: "" };
     const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
+    
+    let step = 0;
+    let lead = { name: "", user_company: "", email: "", search_niche: "", target_leads: "" };
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
-        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(win.style.display === 'flex' && document.getElementById('chat-content').innerHTML === "") {
+        const bubble = document.getElementById('aiso-promo-bubble');
+        const isVisible = win.style.display === 'flex';
+        
+        win.style.display = isVisible ? 'none' : 'flex';
+        bubble.style.display = isVisible ? 'block' : 'none';
+
+        if(!isVisible && document.getElementById('chat-content').innerHTML === "") {
             addBotMsg("Willkommen bei AISOLUTIOS! Um Sie optimal zu beraten: Wie ist Ihr Name?");
         }
     }
@@ -318,26 +351,56 @@
         const div = document.createElement('div');
         div.className = "bot-msg";
         div.innerHTML = txt;
-        document.getElementById('chat-content').appendChild(div);
-        document.getElementById('chat-content').scrollTop = 10000;
+        const content = document.getElementById('chat-content');
+        content.appendChild(div);
+        content.scrollTop = content.scrollHeight;
     }
 
     function addUserMsg(txt) {
         const div = document.createElement('div');
         div.className = "user-msg";
         div.innerText = txt;
-        document.getElementById('chat-content').appendChild(div);
+        const content = document.getElementById('chat-content');
+        content.appendChild(div);
+        content.scrollTop = content.scrollHeight;
+    }
+
+    function handleChat() {
+        const inp = document.getElementById('chat-input');
+        const val = inp.value.trim();
+        if(!val) return;
+
+        addUserMsg(val);
+        inp.value = "";
+
+        setTimeout(() => {
+            if(step === 0) { lead.name = val; addBotMsg(`Freut mich, ${val}. Für welches Unternehmen sind Sie tätig?`); step++; }
+            else if(step === 1) { lead.user_company = val; addBotMsg("In welchem **Bereich** (Nische) suchen Sie neue Leads?"); step++; }
+            else if(step === 2) { lead.search_niche = val; addBotMsg("Welche **Art von Unternehmen** sollen wir konkret finden?"); step++; }
+            else if(step === 3) { lead.target_leads = val; addBotMsg(`An welche E-Mail senden wir die Liste? (Standard: ${ADMIN_EMAIL})`); step++; }
+            else if(step === 4) {
+                lead.email = val.includes("@") ? val : ADMIN_EMAIL;
+                addBotMsg("Vielen Dank! Ich habe alle Informationen.");
+                
+                const btnBox = document.createElement('div');
+                btnBox.style.marginTop = "10px";
+                btnBox.innerHTML = `<button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Analyse für 3,00 € pro Lead starten</button>`;
+                document.getElementById('chat-content').appendChild(btnBox);
+                document.getElementById('chat-content').scrollTop = 10000;
+                step++;
+            }
+        }, 700);
     }
 
     async function processStripePayment() {
-        addBotMsg("⏳ Ihre Lead-Analyse wird vorbereitet (3,00 € pro Lead)...");
+        addBotMsg("⏳ Ihre Lead-Analyse wird vorbereitet...");
         try {
             const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     target_company: lead.target_leads, 
-                    user_email: lead.email, // NUR die Kunden-E-Mail senden
+                    user_email: lead.email, 
                     admin_copy: ADMIN_EMAIL, 
                     niche: lead.search_niche,
                     user_company: lead.user_company,
@@ -350,31 +413,6 @@
         } catch (e) {
             addBotMsg("❌ Serverfehler. Bitte prüfen Sie, ob das Backend (WSL) läuft.");
         }
-    }
-
-    function handleChat() {
-        const inp = document.getElementById('chat-input');
-        const val = inp.value.trim();
-        if(!val) return;
-        addUserMsg(val);
-        inp.value = "";
-        setTimeout(() => {
-            if(step === 0) { lead.name = val; addBotMsg(`Freut mich, ${val}. Für welches Unternehmen sind Sie tätig?`); step++; }
-            else if(step === 1) { lead.user_company = val; addBotMsg("In welchem **Bereich** suchen Sie neue Leads?"); step++; }
-            else if(step === 2) { lead.search_niche = val; addBotMsg("Welche **Art von Unternehmen** sollen wir finden?"); step++; }
-            else if(step === 3) { lead.target_leads = val; addBotMsg(`An welche E-Mail senden wir die Liste? (Standard: ${ADMIN_EMAIL})`); step++; }
-            else if(step === 4) {
-                // Hier wird sichergestellt, dass eine valide E-Mail genutzt wird
-                lead.email = val.includes("@") ? val : ADMIN_EMAIL;
-                addBotMsg("Vielen Dank! Ich habe alle Informationen.");
-                const btnBox = document.createElement('div');
-                btnBox.style.marginTop = "10px";
-                btnBox.innerHTML = `<button onclick="processStripePayment()" style="width:100%; background:#6772e5; color:#fff; padding:12px; border-radius:8px; border:none; cursor:pointer; font-weight:700;">💳 Analyse für 3,00 € pro Lead starten</button>`;
-                document.getElementById('chat-content').appendChild(btnBox);
-                document.getElementById('chat-content').scrollTop = 10000;
-                step++;
-            }
-        }, 700);
     }
 </script>
 </body>
