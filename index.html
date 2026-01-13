@@ -148,10 +148,10 @@
 <section id="team" class="container">
     <h2>Das AISOLUTIOS Team</h2>
     <div class="team-grid">
-        <div class="team-card"><h5>Dr. Sidi Weiss</h5><span>CEO & Founder</span></div>
-        <div class="team-card"><h5>Ramona Distler</h5><span>Operations Director</span></div>
-        <div class="team-card"><h5>Ing. Aziz Hamoud</h5><span>Data Scientist</span></div>
-        <div class="team-card"><h5>Ahmedou Didi</h5><span>Data Analyst (Dipl. Math.)</span></div>
+        <div class="team-card" style="border-top: 5px solid #004a99 !important;"><h5 style="color: #004a99 !important;">Dr. Sidi Weiss</h5><span>CEO & Founder</span></div>
+        <div class="team-card" style="border-top: 5px solid #004a99 !important;"><h5 style="color: #004a99 !important;">Ramona Distler</h5><span>Operations Director</span></div>
+        <div class="team-card" style="border-top: 5px solid #004a99 !important;"><h5 style="color: #004a99 !important;">Ing. Aziz Hamoud</h5><span>Data Scientist</span></div>
+        <div class="team-card" style="border-top: 5px solid #004a99 !important;"><h5 style="color: #004a99 !important;">Ahmedou Didi</h5><span>Data Analyst (Dipl. Math.)</span></div>
         
         <div class="team-card" onclick="toggleChat()" style="cursor:pointer !important; background: #ffffff !important; border: 1px solid #004a99 !important; border-top: 5px solid #004a99 !important; transition: transform 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 150px;">
             <h5 style="color: #004a99 !important; margin-bottom: 5px;"><i class="fas fa-robot"></i> AISOLUTIOS Bot</h5>
@@ -161,12 +161,29 @@
 </section>
 
 <style>
-    /* Dies stellt sicher, dass kein grüner Hover-Effekt von Ihrem Theme dazwischenfunkt */
+    /* Überschreibt global alle grünen Akzente in der Team-Sektion */
+    .team-card {
+        border-top: 5px solid #004a99 !important;
+    }
+    .team-card h5 {
+        color: #004a99 !important;
+    }
     .team-card:hover {
         border-color: #004a99 !important;
         box-shadow: 0 10px 20px rgba(0, 74, 153, 0.2) !important;
     }
 </style>
+
+<script>
+    // Sprachwechsel für den Bot-Text
+    const botTranslations = ["Hier perfekte Leads generieren 🚀", "Generate perfect leads here 🎯", "Générez des leads parfaits ici 💎"];
+    let currentBotIdx = 0;
+    setInterval(() => {
+        currentBotIdx = (currentBotIdx + 1) % botTranslations.length;
+        const botSpan = document.getElementById('dynamic-bot-text');
+        if(botSpan) botSpan.innerText = botTranslations[currentBotIdx];
+    }, 3500);
+</script>
 
     <section id="kontakt" class="container">
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
