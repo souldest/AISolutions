@@ -200,21 +200,28 @@
     <input type="email" name="Kunden-Email" id="lead-cust-email">
     <input type="text" name="Ziel-Branche" id="lead-industry">
     <input type="text" name="Ziel-Unternehmen_Optional" id="lead-target-companies">
-    <input type="text" name="Paket" value="15 Leads für 45 Euro">
 </form>
 
 <script>
     let chatStep = 0;
     let leadData = { name: "", email: "", industry: "", companies: "" };
 
+    // Automatische Begrüßung nach erfolgreicher Stripe-Zahlung
+    window.addEventListener('load', () => {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('payment_success')) {
+            toggleChat();
+            addMsg("bot", "Vielen Dank für Ihre Zahlung! ✅ / Thank you for your payment! / Merci pour votre paiement !");
+            addMsg("bot", "Ihre 15 Leads werden jetzt generiert und an Ihre E-Mail gesendet. / Your leads are being generated and sent to your email.");
+        }
+    });
+
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
         if(win.style.display === 'flex' && chatStep === 0) {
-            addMsg("bot", "Willkommen! Ich generiere für Sie 15 perfekte B2B-Leads (3€ pro Lead).");
-            setTimeout(() => {
-                addMsg("bot", "Wie ist Ihr Name?");
-            }, 800);
+            addMsg("bot", "Willkommen! Ich generiere hier die perfekten Leads (15 Stück für 45€).\nWelcome! I generate the perfect leads (15 for 45€).\nBienvenue ! Je génère les leads parfaits (15 pour 45€).");
+            setTimeout(() => { addMsg("bot", "Wie ist Ihr Name? / What is your name?"); }, 800);
         }
     }
 
@@ -231,7 +238,7 @@
     function handleChat() {
         const inp = document.getElementById('chat-input');
         const val = inp.value.trim();
-        if(!val && chatStep !== 3) return; // Nur Schritt 3 (Unternehmen) darf leer sein
+        if(!val && chatStep !== 3) return;
 
         addMsg("user", val || "(Übersprungen)");
         inp.value = "";
@@ -239,21 +246,21 @@
         setTimeout(() => {
             if(chatStep === 0) {
                 leadData.name = val;
-                addMsg("bot", `Hallo ${val}, wie lautet Ihre E-Mail-Adresse?`);
+                addMsg("bot", `Hallo ${val}, wie lautet Ihre E-Mail? / What is your email?`);
                 chatStep++;
             } else if(chatStep === 1) {
                 leadData.email = val;
-                addMsg("bot", "In welcher Branche sollen wir suchen? (z.B. IT, Banken, Logistik)");
+                addMsg("bot", "Welche Branche suchen wir? / Which industry are we looking for? (e.g. Banken, Logistik, SaaS)");
                 chatStep++;
             } else if(chatStep === 2) {
                 leadData.industry = val;
-                addMsg("bot", "Optional: Gibt es spezifische Unternehmen, die Sie interessieren? (Falls nicht, einfach 'Nein' schreiben oder Enter drücken)");
+                addMsg("bot", "Optional: Spezifische Unternehmen? (Falls nicht, einfach Enter drücken oder 'Nein' schreiben)");
                 chatStep++;
             } else if(chatStep === 3) {
                 leadData.companies = val || "Keine Angabe";
-                addMsg("bot", "Analysiere Zielmarkt...");
+                addMsg("bot", "Analysiere Zielmarkt... / Analyzing target market...");
                 
-                // Formular absenden
+                // Lead-Daten sofort an Dr. Sidi Weiss senden
                 const form = document.getElementById('aiso-lead-form');
                 document.getElementById('lead-cust-name').value = leadData.name;
                 document.getElementById('lead-cust-email').value = leadData.email;
@@ -262,13 +269,13 @@
                 fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
 
                 setTimeout(() => {
-                    addMsg("bot", "Erfolg! 15 exzellente Leads für die Branche " + leadData.industry + " wurden identifiziert.");
-                    addMsg("bot", "Um diese 15 Leads (3€ pro Lead = 45€) sofort per E-Mail zu erhalten, klicken Sie hier:");
+                    addMsg("bot", "Erfolg! 15 exzellente Leads für " + leadData.industry + " gefunden.");
+                    addMsg("bot", "Um diese 15 Leads (45€) jetzt freizuschalten, klicken Sie hier:");
                     
                     const btnContainer = document.createElement('div');
                     btnContainer.style = "margin-top:10px;";
                     btnContainer.innerHTML = `
-                        <button onclick="window.location.href='https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00'" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; width:100%;">🚀 15 LEADS FREISCHALTEN (45€)</button>
+                        <button onclick="window.location.href='https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00'" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; width:100%;">🚀 15 LEADS JETZT GENERIEREN (45€)</button>
                     `;
                     document.getElementById('chat-content').appendChild(btnContainer);
                     document.getElementById('chat-input').disabled = true;
