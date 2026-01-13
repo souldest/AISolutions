@@ -183,7 +183,8 @@
     </div>
 </footer>
 
-    <div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
+    
+<div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 <div id="aiso-chat-window">
     <div style="background:var(--primary); color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
         <span>AISOLUTIOS Sales Bot</span>
@@ -197,30 +198,31 @@
 </div>
 
 <form id="aiso-lead-form" action="https://formspree.io/f/vertrieb@aisolutios.de" method="POST" style="display:none;">
-    <input type="text" name="Name" id="lead-name">
     <input type="text" name="Firma" id="lead-company">
+    <input type="text" name="Branche" id="lead-industry">
     <input type="email" name="Email" id="lead-email">
+    <input type="text" name="Status" value="Wartet auf Zahlung (30€)">
 </form>
 
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
     let step = 0;
-    let leadData = { name: "", company: "", email: "" };
+    let leadData = { company: "", industry: "", email: "" };
+    // Stripe Public Key von Dr. Sidi Weiss
     const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47');
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
         if(win.style.display === 'flex' && step === 0) {
-            addMsg("bot", "Willkommen bei AISOLUTIOS! Ich erstelle Ihnen ein maßgeschneidertes KI-Konzept. Wie ist Ihr Name?");
+            addMsg("bot", "Willkommen! Ich generiere für Sie hochwertige B2B-Leads. Wie lautet der Name Ihres Unternehmens?");
         }
     }
 
     function addMsg(role, text) {
         const div = document.createElement('div');
         div.style = role === 'bot' 
-            ? "background:#e2e8f0; color:#333; padding:10px; border-radius:15px 15px 15px 0; align-self:flex-start; max-width:85%; font-size:13px;" 
-            : "background:var(--primary); color:white; padding:10px; border-radius:15px 15px 0 15px; align-self:flex-end; max-width:85%; font-size:13px;";
+            ? "background:#e2e8f0; color:#333; padding:10px; border-radius:12px 12px 12px 0; align-self:flex-start; max-width:85%; font-size:13px;" 
+            : "background:var(--primary); color:white; padding:10px; border-radius:12px 12px 0 12px; align-self:flex-end; max-width:85%; font-size:13px;";
         div.innerText = text;
         document.getElementById('chat-content').appendChild(div);
         document.getElementById('chat-content').scrollTop = 9999;
@@ -236,27 +238,27 @@
 
         setTimeout(() => {
             if(step === 0) {
-                leadData.name = val;
-                addMsg("bot", `Sehr erfreut, ${val}. Für welches Unternehmen arbeiten Sie?`);
+                leadData.company = val;
+                addMsg("bot", `Verstanden. In welcher Branche ist ${val} tätig? (z.B. Maschinenbau, SaaS, Logistik)`);
                 step++;
             } else if(step === 1) {
-                leadData.company = val;
-                addMsg("bot", "Vielen Dank. Unter welcher geschäftlichen E-Mail-Adresse können wir Sie erreichen?");
+                leadData.industry = val;
+                addMsg("bot", "Vielen Dank. An welche E-Mail-Adresse soll ich die generierten Leads nach der Analyse senden?");
                 step++;
             } else if(step === 2) {
                 leadData.email = val;
-                addMsg("bot", "Perfekt. Ich habe Ihre Daten erfasst.");
+                addMsg("bot", "Daten erfasst! Unser Algorithmus identifiziert nun passende Entscheider-Kontakte für Sie.");
                 
-                // Automatischer Versand des Leads via Formspree
+                // Vorab-Sicherung des Leads
                 sendLeadToEmail();
 
-                addMsg("bot", "Möchten Sie für 30,00 € direkt eine tiefe KI-Potenzial-Analyse für Ihr Unternehmen buchen (Zahlung via Stripe) oder bevorzugen Sie ein kostenfreies Erstgespräch?");
+                addMsg("bot", "Um die Liste mit 50 qualifizierten Leads direkt via E-Mail zu erhalten, ist eine Bearbeitungsgebühr von 30,00 € fällig.");
                 
                 const btnContainer = document.createElement('div');
                 btnContainer.style = "display:flex; flex-direction:column; gap:8px; margin-top:10px;";
                 btnContainer.innerHTML = `
-                    <button onclick="startStripePayment()" style="background:#6772e5; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer; font-weight:bold;">💳 KI-Analyse buchen (30€)</button>
-                    <button onclick="addMsg('bot', 'Alles klar! Bitte nutzen Sie den Terminplaner auf der Seite für ein Erstgespräch.')" style="background:#ddd; color:#333; border:none; padding:10px; border-radius:5px; cursor:pointer;">📞 Kostenfreier Rückruf</button>
+                    <button onclick="payAndGenerate()" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:14px;">🚀 50 Leads jetzt generieren (30€)</button>
+                    <p style="font-size:10px; color:gray; text-align:center;">Sichere Zahlung via Stripe. Auslieferung erfolgt sofort nach Zahlungseingang an ${leadData.email}.</p>
                 `;
                 document.getElementById('chat-content').appendChild(btnContainer);
                 document.getElementById('chat-input').disabled = true;
@@ -266,8 +268,8 @@
     }
 
     function sendLeadToEmail() {
-        document.getElementById('lead-name').value = leadData.name;
         document.getElementById('lead-company').value = leadData.company;
+        document.getElementById('lead-industry').value = leadData.industry;
         document.getElementById('lead-email').value = leadData.email;
         
         const form = document.getElementById('aiso-lead-form');
@@ -275,18 +277,16 @@
             method: 'POST',
             body: new FormData(form),
             headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            console.log("Lead gesendet.");
         });
     }
 
-    async function startStripePayment() {
-        addMsg("bot", "Ich leite Sie zum sicheren Stripe-Zahlungsmodul weiter...");
-        // Hier muss Ihr Stripe-Checkout-Link oder Ihre Backend-Session aufgerufen werden
-        // Für die Demo (da kein Backend auf Github):
-        window.open('https://buy.stripe.com/test_6oE7tN123456789', '_blank'); // Beispiel-Link
+    function payAndGenerate() {
+        addMsg("bot", "Leite zur sicheren Stripe-Zahlung weiter...");
+        // Hier wird der Stripe Checkout Link aufgerufen. 
+        // WICHTIG: Ersetzen Sie diesen Test-Link durch Ihren echten Stripe-Produkt-Link für 30€.
+        window.location.href = "https://buy.stripe.com/test_dR68xt300000000000"; 
     }
-</script>
+</script>    
 
 </body>
 </html>
