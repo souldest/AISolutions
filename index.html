@@ -183,38 +183,34 @@
     </div>
 </footer>
 
-    
 <div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
-<div id="aiso-chat-window">
-    <div style="background:var(--primary); color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
-        <span>AISOLUTIOS Sales Bot</span>
+<div id="aiso-chat-window" style="display:none; position:fixed; bottom:90px; right:20px; width:350px; height:500px; background:white; border-radius:15px; flex-direction:column; z-index:1001; box-shadow:0 10px 30px rgba(0,0,0,0.5); overflow:hidden; font-family:'Inter', sans-serif;">
+    <div style="background:#004a99; color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
+        <span>AISOLUTIOS Lead-Gen Bot</span>
         <span onclick="toggleChat()" style="cursor:pointer; font-size:20px;">&times;</span>
     </div>
-    <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9;"></div>
+    <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9; color:#333;"></div>
     <div id="chat-footer" style="padding:15px; border-top:1px solid #eee; display:flex; gap:5px; background:white;">
         <input type="text" id="chat-input" placeholder="Ihre Antwort..." style="flex:1; padding:10px; border:1px solid #ddd; border-radius:5px; outline:none;">
-        <button onclick="handleChat()" style="background:var(--primary); color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
+        <button onclick="handleChat()" style="background:#004a99; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
 <form id="aiso-lead-form" action="https://formspree.io/f/vertrieb@aisolutios.de" method="POST" style="display:none;">
-    <input type="text" name="Firma" id="lead-company">
+    <input type="text" name="Unternehmen" id="lead-company">
     <input type="text" name="Branche" id="lead-industry">
     <input type="email" name="Email" id="lead-email">
-    <input type="text" name="Status" value="Wartet auf Zahlung (30€)">
 </form>
 
 <script>
-    let step = 0;
+    let chatStep = 0;
     let leadData = { company: "", industry: "", email: "" };
-    // Stripe Public Key von Dr. Sidi Weiss
-    const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47');
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(win.style.display === 'flex' && step === 0) {
-            addMsg("bot", "Willkommen! Ich generiere für Sie hochwertige B2B-Leads. Wie lautet der Name Ihres Unternehmens?");
+        if(win.style.display === 'flex' && chatStep === 0) {
+            addMsg("bot", "Willkommen! Ich generiere für Sie 50 hochwertige B2B-Leads. Für welches Unternehmen darf ich suchen?");
         }
     }
 
@@ -222,7 +218,7 @@
         const div = document.createElement('div');
         div.style = role === 'bot' 
             ? "background:#e2e8f0; color:#333; padding:10px; border-radius:12px 12px 12px 0; align-self:flex-start; max-width:85%; font-size:13px;" 
-            : "background:var(--primary); color:white; padding:10px; border-radius:12px 12px 0 12px; align-self:flex-end; max-width:85%; font-size:13px;";
+            : "background:#004a99; color:white; padding:10px; border-radius:12px 12px 0 12px; align-self:flex-end; max-width:85%; font-size:13px;";
         div.innerText = text;
         document.getElementById('chat-content').appendChild(div);
         document.getElementById('chat-content').scrollTop = 9999;
@@ -237,59 +233,41 @@
         inp.value = "";
 
         setTimeout(() => {
-            if(step === 0) {
+            if(chatStep === 0) {
                 leadData.company = val;
-                addMsg("bot", `Verstanden. In welcher Branche ist ${val} tätig? (z.B. Maschinenbau, SaaS, Logistik)`);
-                step++;
-            } else if(step === 1) {
+                addMsg("bot", `Hervorragend. In welcher Branche ist ${val} tätig?`);
+                chatStep++;
+            } else if(chatStep === 1) {
                 leadData.industry = val;
-                addMsg("bot", "Vielen Dank. An welche E-Mail-Adresse soll ich die generierten Leads nach der Analyse senden?");
-                step++;
-            } else if(step === 2) {
+                addMsg("bot", "Vielen Dank. An welche E-Mail-Adresse soll ich die Lead-Liste senden?");
+                chatStep++;
+            } else if(chatStep === 2) {
                 leadData.email = val;
-                addMsg("bot", "Daten erfasst! Unser Algorithmus identifiziert nun passende Entscheider-Kontakte für Sie.");
+                addMsg("bot", "Analysiere Zielmarkt... Ich habe 50 Entscheider-Kontakte in der Branche " + leadData.industry + " gefunden.");
                 
-                // Vorab-Sicherung des Leads
-                sendLeadToEmail();
+                // Lead-Daten sofort an Dr. Sidi Weiss senden
+                const form = document.getElementById('aiso-lead-form');
+                document.getElementById('lead-company').value = leadData.company;
+                document.getElementById('lead-industry').value = leadData.industry;
+                document.getElementById('lead-email').value = leadData.email;
+                fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
 
-                addMsg("bot", "Um die Liste mit 50 qualifizierten Leads direkt via E-Mail zu erhalten, ist eine Bearbeitungsgebühr von 30,00 € fällig.");
-                
-                const btnContainer = document.createElement('div');
-                btnContainer.style = "display:flex; flex-direction:column; gap:8px; margin-top:10px;";
-                btnContainer.innerHTML = `
-                    <button onclick="payAndGenerate()" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:14px;">🚀 50 Leads jetzt generieren (30€)</button>
-                    <p style="font-size:10px; color:gray; text-align:center;">Sichere Zahlung via Stripe. Auslieferung erfolgt sofort nach Zahlungseingang an ${leadData.email}.</p>
-                `;
-                document.getElementById('chat-content').appendChild(btnContainer);
-                document.getElementById('chat-input').disabled = true;
-                step++;
+                setTimeout(() => {
+                    addMsg("bot", "Um die Liste sofort freizuschalten und per E-Mail zu erhalten, klicken Sie bitte auf den Button:");
+                    
+                    const btnContainer = document.createElement('div');
+                    btnContainer.style = "margin-top:10px;";
+                    btnContainer.innerHTML = `
+                        <button onclick="window.location.href='https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00'" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; width:100%;">🚀 Leads jetzt freischalten (30€)</button>
+                    `;
+                    document.getElementById('chat-content').appendChild(btnContainer);
+                    document.getElementById('chat-input').disabled = true;
+                }, 1000);
+                chatStep++;
             }
         }, 800);
     }
-
-    function sendLeadToEmail() {
-        document.getElementById('lead-company').value = leadData.company;
-        document.getElementById('lead-industry').value = leadData.industry;
-        document.getElementById('lead-email').value = leadData.email;
-        
-        const form = document.getElementById('aiso-lead-form');
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        });
-    }
-
-    function payAndGenerate() {
-        addMsg("bot", "Leite zur sicheren Stripe-Zahlung weiter...");
-        // Hier wird der Stripe Checkout Link aufgerufen. 
-        // WICHTIG: Ersetzen Sie diesen Test-Link durch Ihren echten Stripe-Produkt-Link für 30€.
-        window.location.href = "https://buy.stripe.com/test_dR68xt300000000000"; 
-    }
-</script>    
-
-</body>
-</html>
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
