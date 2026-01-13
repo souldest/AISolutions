@@ -25,7 +25,7 @@
             --accent: #00aaff;
             --text: #e8ecf3;
             --muted: #9aa4b2;
-            --white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.03);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,16 +51,16 @@
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         h1 { font-size: clamp(32px, 5vw, 52px); text-align: center; font-weight: 900; margin-bottom: 20px; }
         h2 { font-size: 32px; border-left: 6px solid var(--primary); padding-left: 20px; margin-bottom: 40px; text-transform: uppercase; }
 
         .hero-lead { font-size: 20px; color: var(--muted); margin-bottom: 40px; text-align: center; max-width: 900px; margin-inline: auto; }
 
         /* KI-Crews Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card { 
-            background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 35px; 
+            background: var(--card-bg); border-radius: 20px; padding: 35px; 
             border: 1px solid rgba(255,255,255,0.08); transition: 0.4s;
             display: flex; flex-direction: column;
         }
@@ -68,21 +68,21 @@
         .card i { color: var(--accent); font-size: 30px; margin-bottom: 15px; }
         .card h4 { margin-bottom: 12px; color: #fff; font-size: 18px; }
         .card p { font-size: 14px; color: var(--muted); flex-grow: 1; margin-bottom: 15px; }
-        .card strong { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card strong { color: var(--accent); font-size: 11px; text-transform: uppercase; }
 
-        /* LLM Section */
-        .llm-box { background: rgba(0, 74, 153, 0.1); padding: 40px; border-radius: 24px; border: 1px solid rgba(0, 170, 255, 0.2); margin-top: 20px; }
-        .llm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        /* Team Section */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .team-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid rgba(0, 170, 255, 0.1); }
+        .team-card h5 { color: #fff; font-size: 18px; margin-bottom: 5px; }
+        .team-card span { color: var(--accent); font-size: 12px; font-weight: bold; text-transform: uppercase; }
 
-        /* Chatbot & Buttons */
-        .btn-primary { background: linear-gradient(135deg, var(--primary), #00aaff); color: #fff; padding: 18px 35px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block; }
-        #aiso-chat-trigger { position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; z-index: 10000; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-        #aiso-chat-window { position: fixed; bottom: 100px; right: 25px; width: 380px; height: 550px; background: white; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5); color: #333; }
-        
+        /* Chatbot UI */
+        #aiso-chat-trigger { position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; z-index: 10000; }
+        #aiso-chat-window { position: fixed; bottom: 100px; right: 25px; width: 380px; height: 550px; background: white; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; box-shadow: 0 15px 40px rgba(0,0,0,0.5); color: #333; overflow: hidden; }
+
         /* Footer */
-        footer { background: var(--white); color: #333; padding: 80px 20px; border-top: 1px solid #eee; }
+        footer { background: #fff; color: #333; padding: 80px 20px; border-top: 1px solid #eee; }
         .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
-        .legal-box a { color: var(--primary); text-decoration: none; }
     </style>
 </head>
 
@@ -97,6 +97,7 @@
         <a href="#agents">KI-Crews</a>
         <a href="#llm">Enterprise LLMs</a>
         <a href="#vorteile">Vorteile</a>
+        <a href="#team">Team</a>
         <a href="#kontakt">Kontakt</a>
     </nav>
 </header>
@@ -106,87 +107,50 @@
         <h1>Autonome KI-Agenten & Deep Learning Enterprise</h1>
         <p class="hero-lead">Wir entwickeln spezialisierte Agenten-Teams und On-Premise LLM-Architekturen für Weltmarktführer. Sicher, messbar und 100% DSGVO-konform.</p>
         <div style="text-align: center;">
-            <a href="#kontakt" class="btn-primary">Strategiegespräch buchen</a>
+            <a href="#kontakt" style="background: var(--primary); color: #fff; padding: 18px 35px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block;">Strategiegespräch buchen</a>
         </div>
     </section>
 
     <section id="agents" class="container">
         <h2>Spezialisierte KI-Crews</h2>
         <div class="grid">
-            <div class="card">
-                <i class="fas fa-comments-dollar"></i>
-                <h4>Sales Crew: End-to-End Vertrieb</h4>
-                <p>Autonome Pipeline-Steuerung: Von der Lead-Identifikation über die Qualifizierung bis zur Neukundengewinnung durch personalisierte Ansprache.</p>
-                <strong>Einsatz: Skalierbarer B2B-Vertrieb</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-file-shield"></i>
-                <h4>Insurance & Claims Crew</h4>
-                <p>KI-Agenten zur vollautomatisierten Dunkelverarbeitung von Schadensfällen und Dokumentenprüfung in Echtzeit.</p>
-                <strong>Referenz: Hallesche Versicherung</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-boxes-stacked"></i>
-                <h4>Sales & Inventory Agents</h4>
-                <p>Prädiktive Verkaufsprognosen und Bestandsoptimierung zur Reduzierung der Kapitalbindung bei Liefergarantie.</p>
-                <strong>Referenzen: K2-Systems, Transdev</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-magnifying-glass-chart"></i>
-                <h4>Analyse- & Forschungs-Agents</h4>
-                <p>Echtzeit-Extraktion und Analyse komplexer Daten aus Forschung, Qualitätssicherung und Landwirtschaft.</p>
-                <strong>Referenzen: KWS, LKV Bayern</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-bullseye"></i>
-                <h4>Performance Marketing Crews</h4>
-                <p>Autonome Budgetallokation und Optimierung von Werbekampagnen basierend auf Live-Performance-Metriken.</p>
-                <strong>Referenzen: SOKA-BAU, Serviceplan</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h4>Finance & ESG Reporting</h4>
-                <p>Automatisierung regulatorischer Berichte (CSRD) und Anomalie-Erkennung in Finanzdatenströmen.</p>
-                <strong>Referenz: LBBW (ESG-Reporting)</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-brain"></i>
-                <h4>Deep Learning Industrie Crew</h4>
-                <p>Individuelle Agentensysteme für Objekterkennung und Fehleranalyse in hochautomatisierten Fertigungslinien.</p>
-                <strong>Referenzen: Mercedes-Benz, Porsche</strong>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-user-tie"></i>
-                <h4>HR & Recruiting Crew</h4>
-                <p>Agenten zur Identifikation von Top-Talenten, Skill-Matching und automatisierten Vorqualifizierung von Kandidaten.</p>
-                <strong>Fokus: Effizientes Talent-Sourcing</strong>
-            </div>
+            <div class="card"><i class="fas fa-comments-dollar"></i><h4>Sales Crew</h4><p>End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.</p><strong>Fokus: Skalierbarer B2B-Vertrieb</strong></div>
+            <div class="card"><i class="fas fa-boxes-stacked"></i><h4>Inventory Agents</h4><p>Prädiktive Verkaufsprognosen und Bestandsoptimierung.</p><strong>Referenz: K2-Systems, Transdev</strong></div>
+            <div class="card"><i class="fas fa-magnifying-glass-chart"></i><h4>Research Agents</h4><p>Extraktion komplexer Daten aus Forschung und Agrarwirtschaft.</p><strong>Referenz: KWS, LKV Bayern</strong></div>
+            <div class="card"><i class="fas fa-bullseye"></i><h4>Marketing Crew</h4><p>Autonome Budgetallokation und Live-Kampagnen-Optimierung.</p><strong>Referenz: SOKA-BAU, Serviceplan</strong></div>
+            <div class="card"><i class="fas fa-file-invoice-dollar"></i><h4>Finance & ESG</h4><p>Automatisierung von CSRD-Berichten und Finanzanalysen.</p><strong>Referenz: LBBW</strong></div>
+            <div class="card"><i class="fas fa-brain"></i><h4>Deep Learning Crew</h4><p>Objekterkennung und Fehleranalyse in der Produktion.</p><strong>Referenz: Mercedes-Benz, Porsche</strong></div>
+            <div class="card"><i class="fas fa-file-shield"></i><h4>Insurance Crew</h4><p>Dunkelverarbeitung von Schadensfällen und Dokumentencheck.</p><strong>Referenz: Hallesche Versicherung</strong></div>
+            <div class="card"><i class="fas fa-user-tie"></i><h4>HR & Recruiting</h4><p>KI-basiertes Talent-Sourcing und Skill-Matching.</p><strong>Fokus: Prozessbeschleunigung</strong></div>
         </div>
     </section>
 
     <section id="llm" class="container">
         <h2>Enterprise LLMs</h2>
-        <div class="llm-box">
+        <div style="background: rgba(0, 74, 153, 0.1); padding: 40px; border-radius: 24px; border: 1px solid rgba(0, 170, 255, 0.2);">
             <h3>Definition & Motivation</h3>
-            <p>Large Language Models (LLMs) sind das Herzstück moderner KI. Während öffentliche Modelle oft ein Sicherheitsrisiko darstellen, bietet AISOLUTIOS isolierte **Enterprise LLM Lösungen**.</p>
-            <p style="margin-top: 15px;">**Unsere Motivation:** Maximale Produktivität ohne Datenabfluss. Wir schützen Ihr geistiges Eigentum (IP), indem wir Modelle mit Ihrem spezifischen Firmenwissen trainieren, ohne dass diese Informationen jemals Ihre Kontrolle verlassen.</p>
+            <p>Ein Enterprise LLM ist ein isoliertes neuronales Netz (z.B. Llama 3 oder Mistral), das speziell auf Ihre Firmendaten zugreift (RAG). Die Motivation liegt in der <strong>Datensouveränität</strong>: Während öffentliche KIs Ihre Daten zum Training nutzen, bleibt Ihr Wissen bei AISOLUTIOS intern und geschützt.</p>
+            <p style="margin-top: 15px;">Wir bieten diese Lösungen schlüsselfertig für Ihre <strong>On-Premise Server</strong> oder Ihre <strong>Private Cloud</strong> an.</p>
         </div>
-        <div class="llm-grid">
-            <div class="llm-box">
-                <h3>On-Premise & Private Cloud</h3>
-                <p>Wir implementieren LLMs (wie Llama 3, Mistral oder GPT-Modelle) direkt in Ihrem Rechenzentrum oder einer gesicherten Private Cloud in Deutschland.</p>
-            </div>
-            <div class="llm-box">
-                <h3>Vorteile: Sicherheit & Speed</h3>
-                <p>100% DSGVO-konform, keine Nutzung Ihrer Daten für fremdes Training, minimalste Latenzzeiten und volle Integration in Ihre IT-Infrastruktur.</p>
-            </div>
+    </section>
+
+    <section id="vorteile" class="container">
+        <h2>Vorteile & Mehrwert</h2>
+        <div class="grid">
+            <div class="card"><i class="fas fa-shield-check"></i><h4>100% DSGVO</h4><p>Hosting in Deutschland. Keine Datenweitergabe an Drittanbieter.</p></div>
+            <div class="card"><i class="fas fa-rocket"></i><h4>Effizienz +70%</h4><p>Drastische Reduktion manueller Aufgaben durch Agenten-Teams.</p></div>
+            <div class="card"><i class="fas fa-plug"></i><h4>Einfache Integration</h4><p>Nahtlose Anbindung an SAP, Salesforce und Microsoft-Umgebungen.</p></div>
+            <div class="card"><i class="fas fa-microchip"></i><h4>Eigene IP</h4><p>Die trainierten Modelle und Agenten gehören rechtlich Ihnen.</p></div>
+        </div>
+    </section>
+
+    <section id="team" class="container">
+        <h2>Das AISOLUTIOS Team</h2>
+        <div class="team-grid">
+            <div class="team-card"><h5>Dr. Sidi Weiss</h5><span>CEO & Founder</span></div>
+            <div class="team-card"><h5>Ramona Distler</h5><span>Operations Director</span></div>
+            <div class="team-card"><h5>Ing. Aziz Hamoud</h5><span>Data Scientist</span></div>
+            <div class="team-card"><h5>Ahmedou Didi</h5><span>Data Analyst (Dipl. Math.)</span></div>
         </div>
     </section>
 
@@ -209,30 +173,22 @@
             </address>
         </div>
         <div class="legal-box">
-            <h4>Kontakt</h4>
-            <p style="font-size: 13px;">
-                Mobil: +49 176 31591931<br>
-                Email: <a href="mailto:vertrieb@aisolutios.de">vertrieb@aisolutios.de</a><br>
-                Web: <a href="https://www.aisolutios.de">www.aisolutios.de</a>
-            </p>
+            <h4>Rechtliches</h4>
+            <p style="font-size: 13px;">EU-Streitschlichtung: <a href="https://ec.europa.eu/consumers/odr" target="_blank">OS-Plattform</a>. Datenschutz gemäß DSGVO. Wir nutzen Stripe für Zahlungen und Google Analytics für Statistiken.</p>
         </div>
         <div class="legal-box">
-            <h4>Datenschutz & EU-Recht</h4>
-            <p style="font-size: 13px;">Gemäß DSGVO. Plattform der EU zur Online-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank">OS-Plattform</a>. Wir speichern Lead-Daten ausschließlich zur Auftragsanbahnung.</p>
+            <h4>Kontakt</h4>
+            <p style="font-size: 13px;">Mobil: +49 176 31591931<br>Email: vertrieb@aisolutios.de</p>
         </div>
     </div>
-    <p style="text-align: center; margin-top: 40px; font-size: 11px; color: #888;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
 </footer>
 
 <div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 <div id="aiso-chat-window">
-    <div style="background:var(--primary); color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between;">
-        <span>AISOLUTIOS Sales Bot</span>
-        <span onclick="toggleChat()" style="cursor:pointer;">&times;</span>
-    </div>
+    <div style="background:var(--primary); color:white; padding:15px; font-weight:bold;">AISOLUTIOS Sales Bot</div>
     <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9;"></div>
     <div style="padding:15px; border-top:1px solid #eee; display:flex; gap:5px;">
-        <input type="text" id="chat-input" placeholder="Nachricht..." style="flex:1; padding:10px; border:1px solid #ddd; border-radius:5px;">
+        <input type="text" id="chat-input" placeholder="Name..." style="flex:1; padding:10px; border:1px solid #ddd; border-radius:5px;">
         <button onclick="handleChat()" style="background:var(--primary); color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
@@ -240,23 +196,17 @@
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
     let step = 0;
-    let userData = {};
-    const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47');
-
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(win.style.display === 'flex' && step === 0) addMsg("bot", "Willkommen! Ich bin Ihr KI-Experte. Wie ist Ihr Name?");
+        if(win.style.display === 'flex' && step === 0) addMsg("bot", "Guten Tag! Wie ist Ihr Name?");
     }
-
     function addMsg(role, text) {
         const div = document.createElement('div');
         div.style = role === 'bot' ? "background:#e2e8f0; padding:10px; border-radius:15px 15px 15px 0; align-self:flex-start; max-width:85%; font-size:13px;" : "background:var(--primary); color:white; padding:10px; border-radius:15px 15px 0 15px; align-self:flex-end; max-width:85%; font-size:13px;";
         div.innerText = text;
         document.getElementById('chat-content').appendChild(div);
-        document.getElementById('chat-content').scrollTop = 9999;
     }
-
     function handleChat() {
         const inp = document.getElementById('chat-input');
         const val = inp.value.trim();
@@ -264,24 +214,9 @@
         addMsg("user", val);
         inp.value = "";
         setTimeout(() => {
-            if(step === 0) { userData.name = val; addMsg("bot", `Hallo ${val}, für welche Firma arbeiten Sie?`); step++; }
-            else if(step === 1) { userData.company = val; addMsg("bot", "Ihre Email für das Angebot?"); step++; }
-            else if(step === 2) { 
-                userData.email = val; 
-                addMsg("bot", "Danke! Möchten Sie eine KI-Bedarfsanalyse (3€ Schutzgebühr) direkt bezahlen oder einen Rückruf?");
-                const btns = document.createElement('div');
-                btns.innerHTML = `
-                    <button onclick="startPay()" style="width:100%; background:#6772e5; color:white; padding:8px; border:none; border-radius:5px; cursor:pointer; margin-top:5px;">💳 Sofort-Analyse (3€)</button>
-                    <button onclick="addMsg('bot', 'Ok, wir rufen Sie zurück!')" style="width:100%; background:#ddd; padding:8px; border:none; border-radius:5px; cursor:pointer; margin-top:5px;">📞 Rückruf</button>
-                `;
-                document.getElementById('chat-content').appendChild(btns);
-            }
+            if(step === 0) { addMsg("bot", `Freut mich! Für welche Firma arbeiten Sie?`); step++; }
+            else if(step === 1) { addMsg("bot", "Möchten Sie eine Lead-Analyse (3€ via Stripe) oder einen Rückruf?"); step++; }
         }, 700);
-    }
-
-    async function startPay() {
-        addMsg("bot", "Verbindung zu Stripe wird hergestellt...");
-        // API-Logik hier einbinden
     }
 </script>
 </body>
