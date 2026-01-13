@@ -182,11 +182,19 @@
         </div>
     </div>
 </footer>
-<div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
-<div id="aiso-chat-window" style="display:none; position:fixed; bottom:90px; right:20px; width:350px; height:500px; background:white; border-radius:15px; flex-direction:column; z-index:1001; box-shadow:0 10px 30px rgba(0,0,0,0.5); overflow:hidden; font-family:'Inter', sans-serif;">
+<div id="aiso-chat-trigger" onclick="toggleChat()" style="position:fixed; bottom:20px; right:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; gap:12px;">
+    <div id="aiso-label" style="background:#004a99; color:white; padding:10px 18px; border-radius:20px 20px 0 20px; font-family:'Inter', sans-serif; font-size:14px; font-weight:bold; box-shadow:0 6px 20px rgba(0,0,0,0.3); white-space:nowrap; transition: all 0.3s ease;">
+        <span id="trigger-text">Hier perfekte Leads generieren 🚀</span>
+    </div>
+    <div style="background:#004a99; color:white; width:65px; height:65px; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 6px 20px rgba(0,0,0,0.4); font-size:28px;">
+        <i class="fas fa-robot"></i>
+    </div>
+</div>
+
+<div id="aiso-chat-window" style="display:none; position:fixed; bottom:95px; right:20px; width:360px; height:520px; background:white; border-radius:15px; flex-direction:column; z-index:1001; box-shadow:0 15px 40px rgba(0,0,0,0.5); overflow:hidden; font-family:'Inter', sans-serif;">
     <div style="background:#004a99; color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
         <span>AISOLUTIOS Lead-Gen Bot</span>
-        <span onclick="toggleChat()" style="cursor:pointer; font-size:20px;">&times;</span>
+        <span onclick="toggleChat()" style="cursor:pointer; font-size:24px;">&times;</span>
     </div>
     <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9; color:#333;"></div>
     <div id="chat-footer" style="padding:15px; border-top:1px solid #eee; display:flex; gap:5px; background:white;">
@@ -206,6 +214,19 @@
     let chatStep = 0;
     let leadData = { name: "", email: "", industry: "", companies: "" };
 
+    // Wechselnder Text für den Button außen (3 Sprachen)
+    const triggerTexts = [
+        "Hier perfekte Leads generieren 🚀",
+        "Generate perfect leads here 🎯",
+        "Générez des leads parfaits ici 💎"
+    ];
+    let textIdx = 0;
+    setInterval(() => {
+        textIdx = (textIdx + 1) % triggerTexts.length;
+        const label = document.getElementById('trigger-text');
+        if(label) label.innerText = triggerTexts[textIdx];
+    }, 3500);
+
     // Automatische Begrüßung nach erfolgreicher Stripe-Zahlung
     window.addEventListener('load', () => {
         const params = new URLSearchParams(window.location.search);
@@ -218,12 +239,20 @@
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
+        const label = document.getElementById('aiso-label');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(win.style.display === 'flex' && chatStep === 0) {
-            addMsg("bot", "Hier generieren Sie die perfekten Leads!\nGenerate your perfect leads here!\nGénérez vos leads parfaits ici!");
-            setTimeout(() => { 
-                addMsg("bot", "Wie ist Ihr Name? / What is your name? / Quel est votre nom?"); 
-            }, 800);
+        
+        // Verstecke die Sprechblase, wenn der Chat offen ist
+        if(win.style.display === 'flex') {
+            label.style.opacity = "0";
+            if(chatStep === 0) {
+                addMsg("bot", "Hier generieren Sie die perfekten Leads!\nGenerate your perfect leads here!\nGénérez vos leads parfaits ici!");
+                setTimeout(() => { 
+                    addMsg("bot", "Wie ist Ihr Name? / What is your name? / Quel est votre nom?"); 
+                }, 800);
+            }
+        } else {
+            label.style.opacity = "1";
         }
     }
 
@@ -262,7 +291,6 @@
                 leadData.companies = val || "Keine Angabe";
                 addMsg("bot", "KI-Analyse läuft... / AI Analysis in progress... / Analyse IA en cours...");
                 
-                // Formspree senden
                 const form = document.getElementById('aiso-lead-form');
                 document.getElementById('lead-cust-name').value = leadData.name;
                 document.getElementById('lead-cust-email').value = leadData.email;
