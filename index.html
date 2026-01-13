@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Autonome KI-Agenten & Deep Learning Enterprise</title>
+    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise LLM</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -21,11 +21,11 @@
         :root {
             --bg: #0b0f1a;
             --bg2: #0e1426;
-            --primary: #004a99; /* AISOLUTIOS BLAU */
+            --primary: #004a99; 
             --accent: #00aaff;
             --text: #e8ecf3;
             --muted: #9aa4b2;
-            --aiso-blue: #004a99;
+            --white: #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,6 +37,7 @@
             line-height: 1.6;
         }
 
+        /* Header */
         header {
             position: sticky; top: 0; z-index: 1000;
             background: rgba(10, 15, 30, 0.95);
@@ -45,65 +46,69 @@
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-
-        .brand-wrapper { display: flex; align-items: center; gap: 12px; }
-        .logo-ai-box { 
-            background: var(--primary);
-            color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 900; 
-        }
-        .logo-text { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; }
-        
-        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 13px; transition: 0.3s; text-transform: uppercase; }
+        .logo-ai-box { background: var(--primary); color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 900; }
+        .logo-text { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; margin-left: 10px; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
-        h1 { font-size: 52px; line-height: 1.1; margin-bottom: 25px; color: #fff; text-align: center; font-weight: 900; }
-        h2 { font-size: 32px; margin-bottom: 40px; color: #fff; border-left: 6px solid var(--primary); padding-left: 20px; text-transform: uppercase; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
+        h1 { font-size: clamp(32px, 5vw, 52px); text-align: center; font-weight: 900; margin-bottom: 20px; }
+        h2 { font-size: 32px; border-left: 6px solid var(--primary); padding-left: 20px; margin-bottom: 40px; text-transform: uppercase; }
+
+        /* KI-Crews Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .card { 
-            background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 40px; 
+            background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 35px; 
             border: 1px solid rgba(255,255,255,0.08); transition: 0.4s;
-            display: flex; flex-direction: column;
         }
-        .card:hover { border-color: var(--accent); transform: translateY(-10px); background: rgba(255, 255, 255, 0.06); }
-        .card i { color: var(--accent); font-size: 35px; margin-bottom: 20px; }
-        .card h4 { font-size: 19px; margin-bottom: 15px; color: #fff; text-transform: uppercase; }
-        .card p { font-size: 15px; color: var(--muted); flex-grow: 1; }
-        .card strong { color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255, 255, 255, 0.05); }
+        .card i { color: var(--accent); font-size: 30px; margin-bottom: 15px; }
+        .card h4 { margin-bottom: 10px; color: #fff; }
+        .card p { font-size: 14px; color: var(--muted); margin-bottom: 15px; }
+        .card strong { color: var(--accent); font-size: 11px; text-transform: uppercase; }
 
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .team-member { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(0, 170, 255, 0.1); }
-        .team-member h5 { color: #fff; font-size: 18px; margin-bottom: 5px; }
-        .team-member span { color: var(--accent); font-size: 13px; font-weight: bold; text-transform: uppercase; }
+        /* LLM Section */
+        .llm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .llm-box { background: rgba(0, 74, 153, 0.1); padding: 30px; border-radius: 20px; border: 1px solid rgba(0, 170, 255, 0.2); }
+        .llm-box h3 { color: var(--accent); margin-bottom: 15px; }
 
-        /* CHATBOT STYLES */
-        #aiso-chat-trigger { position: fixed; bottom: 20px; right: 20px; width: 65px; height: 65px; background: var(--aiso-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.4); z-index: 999999; transition: transform 0.3s ease; }
-        #aiso-chat-window { position: fixed; bottom: 100px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; flex-direction: column; overflow: hidden; z-index: 999999; font-family: sans-serif; }
-        .chat-header { background: var(--aiso-blue); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
-        #chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f9f9f9; }
-        .chat-input-area { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 5px; background: white; }
-        #chat-input { flex: 1; border: 1px solid #ddd; padding: 10px; border-radius: 5px; outline: none; color: #333; }
-        .bot-msg { background:#eee; padding:10px; border-radius:10px; align-self:flex-start; max-width:85%; font-size:14px; color:#333; }
-        .user-msg { background:var(--aiso-blue); color:white; padding:10px; border-radius:10px; align-self:flex-end; max-width:85%; font-size:14px; }
+        /* Team */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .team-member { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        .team-member h5 { color: #fff; font-size: 18px; }
+        .team-member span { color: var(--accent); font-size: 12px; font-weight: bold; }
 
-        footer { background: #ffffff; padding: 60px 20px; color: #333; text-align: center; border-top: 1px solid #eee; }
-        .footer-logo { color: var(--primary); font-size: 26px; font-weight: 900; margin-bottom: 10px; }
+        /* Chatbot UI */
+        #aiso-chat-trigger { position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; z-index: 10000; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        #aiso-chat-window { position: fixed; bottom: 100px; right: 25px; width: 380px; height: 550px; background: white; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5); color: #333; }
+        .chat-header { background: var(--primary); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; }
+        #chat-content { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #f4f7f9; }
+        .bot-msg { background: #e2e8f0; padding: 12px; border-radius: 15px 15px 15px 0; align-self: flex-start; max-width: 85%; font-size: 14px; }
+        .user-msg { background: var(--primary); color: white; padding: 12px; border-radius: 15px 15px 0 15px; align-self: flex-end; max-width: 85%; font-size: 14px; }
+        .chat-footer { padding: 15px; border-top: 1px solid #eee; display: flex; gap: 8px; }
+        .chat-footer input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+
+        /* Footer & Legal */
+        footer { background: var(--white); color: #333; padding: 80px 20px; border-top: 1px solid #eee; }
+        .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+        .legal-box h4 { color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        .legal-box p, .legal-box address { font-style: normal; font-size: 13px; line-height: 1.6; color: #555; }
+        .legal-box a { color: var(--primary); text-decoration: none; }
     </style>
 </head>
 
 <body>
 
 <header>
-    <div class="brand-wrapper">
+    <div style="display: flex; align-items: center;">
         <div class="logo-ai-box">AI</div>
-        <div class="logo-text">AISOLUTIOS</div>
+        <span class="logo-text">AISOLUTIOS</span>
     </div>
     <nav>
         <a href="#crews">KI-Crews</a>
-        <a href="#llms">LLMs</a>
-        <a href="#team">Team</a>
+        <a href="#llm">LLMs</a>
         <a href="#vorteile">Vorteile</a>
+        <a href="#team">Team</a>
         <a href="#kontakt">Kontakt</a>
     </nav>
 </header>
@@ -111,109 +116,124 @@
 <main>
     <section class="container" style="text-align: center;">
         <h1>Autonome KI-Agenten & Deep Learning</h1>
-        <p style="color: var(--muted); font-size: 20px; margin-bottom: 40px; max-width: 850px; margin-inline: auto;">Spezialisierte Agenten-Teams für Versicherungen, Finanzen und Industrie.</p>
-        <a href="#kontakt" style="background: var(--primary); color: #fff; padding: 18px 36px; border-radius: 10px; text-decoration: none; font-weight: 700; text-transform: uppercase;">Strategiegespräch buchen</a>
+        <p style="color: var(--muted); font-size: 18px; max-width: 800px; margin: 0 auto 30px;">
+            Wir bauen die digitale Belegschaft von morgen. DSGVO-konforme KI-Lösungen für DAX-Konzerne und den gehobenen Mittelstand.
+        </p>
+        <a href="#kontakt" style="background: var(--primary); color: #fff; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; text-transform: uppercase;">Strategiegespräch buchen</a>
     </section>
 
     <section id="crews" class="container">
         <h2>Spezialisierte KI-Crews</h2>
         <div class="grid">
-            <div class="card">
-                <i class="fas fa-file-shield"></i>
-                <h4>Insurance & Claims Crew</h4>
-                <p>KI-Dunkelverarbeitung von Schadensmeldungen und automatisierte Risikoprüfung.</p>
-                <strong>Referenz: Hallesche Versicherung</strong>
+            <div class="card"><i class="fas fa-file-invoice"></i><h4>Insurance Crew</h4><p>Automatisierte Dunkelverarbeitung von Schadensmeldungen.</p><strong>Referenz: Hallesche Versicherung</strong></div>
+            <div class="card"><i class="fas fa-users-gear"></i><h4>Pension & Benefits</h4><p>Autonome Verwaltung von Vorsorgekonten und Support.</p><strong>Referenz: SOKA-BAU</strong></div>
+            <div class="card"><i class="fas fa-search-dollar"></i><h4>Sales & Leads</h4><p>KI-Agenten für Lead-Identifikation und B2B-Ansprache.</p><strong>Fokus: Revenue Growth</strong></div>
+            <div class="card"><i class="fas fa-chart-line"></i><h4>ESG & Reporting</h4><p>CSRD-Berichterstattung und Datenvalidierung.</p><strong>Referenz: LBBW</strong></div>
+            <div class="card"><i class="fas fa-robot"></i><h4>Industrie Crew</h4><p>Deep Learning für Objekterkennung und QA.</p><strong>Referenz: Mercedes-Benz</strong></div>
+            <div class="card"><i class="fas fa-flask"></i><h4>Research Agents</h4><p>Datenextraktion aus komplexen Forschungsberichten.</p><strong>Referenz: KWS</strong></div>
+        </div>
+    </section>
+
+    <section id="llm" class="container">
+        <h2>Enterprise LLMs</h2>
+        <div class="llm-box" style="margin-bottom: 25px;">
+            <h3>Definition & Technologie</h3>
+            <p>Ein Enterprise LLM ist ein isoliertes Sprachmodell, das exklusiv für Ihr Unternehmen arbeitet. Wir nutzen **RAG (Retrieval Augmented Generation)**, um Ihre internen Dokumente sicher nutzbar zu machen, ohne dass Daten in öffentliche Trainings-Sets fließen.</p>
+        </div>
+        <div class="llm-grid">
+            <div class="llm-box">
+                <h3>Motivation</h3>
+                <p>Schutz des geistigen Eigentums. Während ChatGPT Daten speichert, garantieren wir bei AISOLUTIOS die **Datensouveränität** Ihrer strategischen Informationen.</p>
             </div>
-            <div class="card">
-                <i class="fas fa-building-columns"></i>
-                <h4>Pension & Benefit Agents</h4>
-                <p>Automatisierung von Vorsorgeprozessen und effiziente Mitgliederverwaltung.</p>
-                <strong>Referenz: SOKA-BAU</strong>
-            </div>
-            <div class="card">
-                <i class="fas fa-magnifying-glass-chart"></i>
-                <h4>Analyse- & Forschungs-Agents</h4>
-                <p>Echtzeit-Extraktion komplexer Daten aus Qualitätssicherung und Agrar-Forschung.</p>
-                <strong>Referenz: KWS, LKV Bayern</strong>
+            <div class="llm-box">
+                <h3>Hosting & Cloud</h3>
+                <p>Wir implementieren Ihre KI-Lösung wahlweise **On-Premise** auf Ihrer eigenen Hardware oder in einer gesicherten **Private Cloud** in Deutschland.</p>
             </div>
         </div>
     </section>
 
-    <section id="llms" class="container">
-        <h2>Enterprise LLMs</h2>
-        <div style="background: rgba(123, 97, 255, 0.05); padding: 50px; border-radius: 24px; border: 1px solid rgba(123, 97, 255, 0.2);">
-            <h3 style="color: var(--accent); margin-bottom: 20px; text-transform: uppercase;">Private Sprachmodelle (RAG)</h3>
-            <p style="font-size: 18px;">Wir implementieren isolierte LLMs direkt in Ihrer Infrastruktur. Nutzen Sie Ihr Firmenwissen sicher und DSGVO-konform ohne Datenabfluss in öffentliche Clouds.</p>
+    <section id="vorteile" class="container">
+        <h2>Ihre Vorteile</h2>
+        <div class="grid">
+            <div class="card"><h4>DSGVO & EU-Ready</h4><p>100% konform mit europäischem Recht und dem AI Act.</p></div>
+            <div class="card"><h4>ROI Fokus</h4><p>Senkung der Prozesskosten um bis zu 65% durch Automation.</p></div>
+            <div class="card"><h4>Full-Stack</h4><p>Von der Datenstrategie bis zum fertigen KI-Agenten im Betrieb.</p></div>
+            <div class="card"><h4>Deep Learning</h4><p>Keine Standard-Templates, sondern maßgeschneiderte neuronale Netze.</p></div>
         </div>
     </section>
 
     <section id="team" class="container">
         <h2>Das AISOLUTIOS Team</h2>
         <div class="team-grid">
-            <div class="team-member"><h5>Dr. Sidi Weiss</h5><span>Chairman & Geschäftsführer</span></div>
-            <div class="team-member"><h5>Ramona Distler</h5><span>Director Operations</span></div>
-            <div class="team-member"><h5>Ing. Aziz Hamoud</h5><span>Data Scientist</span></div>
-            <div class="team-member"><h5>Ahmedou Didi</h5><span>Data Analyst (Dipl. Math.)</span></div>
-        </div>
-    </section>
-
-    <section id="vorteile" class="container">
-        <h2>Vorteile</h2>
-        <div class="grid">
-            <div class="card"><h4>Deep Learning</h4><p>Eigene neuronale Architekturen statt Standard-Bots.</p></div>
-            <div class="card"><h4>Datensouveränität</h4><p>On-Premise Hosting in Deutschland.</p></div>
-            <div class="card"><h4>Messbarer ROI</h4><p>Effizienzsteigerung durch autonome Prozesse.</p></div>
+            <div class="team-member"><h5>Dr. Sidi Weiss</h5><span>CEO & Founder</span></div>
+            <div class="team-member"><h5>Ramona Distler</h5><span>Operations</span></div>
+            <div class="team-member"><h5>Ing. Aziz Hamoud</h5><span>Data Science</span></div>
+            <div class="team-member"><h5>Ahmedou Didi</h5><span>Data Analysis</span></div>
         </div>
     </section>
 
     <section id="kontakt" class="container">
-        <h2>Kontakt & Termin</h2>
         <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
     </section>
 </main>
 
 <footer>
-    <div class="footer-logo">AISOLUTIOS Team</div>
-    <p>Obere Waiblinger Str. 147a | 70374 Stuttgart</p>
-    <p>Email: vertrieb@aisolutios.de | Mobil: 00 49 176 31591931</p>
-    <p style="margin-top:20px; font-size:12px; color:#999;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
+    <div class="legal-grid">
+        <div class="legal-box">
+            <h4>Impressum</h4>
+            <address>
+                <strong>AISOLUTIOS Team</strong><br>
+                Dr. Sidi Weiss<br>
+                Obere Waiblinger Str. 147a<br>
+                70374 Stuttgart<br><br>
+                E-Mail: <a href="mailto:vertrieb@aisolutios.de">vertrieb@aisolutios.de</a><br>
+                Mobil: +49 176 31591931
+            </address>
+        </div>
+        <div class="legal-box">
+            <h4>Rechtliches</h4>
+            <p>
+                Finanzamt: Stuttgart II<br>
+                Steuernummer: 95 408 / 320 96<br><br>
+                Plattform der EU zur Online-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>
+            </p>
+        </div>
+        <div class="legal-box">
+            <h4>Datenschutz</h4>
+            <p>Wir verarbeiten Ihre Daten nach DSGVO. Diese Webseite nutzt Google Analytics nur mit Ihrer Zustimmung. Daten aus dem Sales-Bot werden verschlüsselt übertragen und nur zur Lead-Qualifizierung genutzt. Zahlungen werden sicher via Stripe abgewickelt.</p>
+        </div>
+    </div>
+    <p style="text-align: center; margin-top: 40px; font-size: 11px; color: #888;">&copy; 2026 AISOLUTIOS. Alle Rechte vorbehalten.</p>
 </footer>
 
-<div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
+<div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
 <div id="aiso-chat-window">
-    <div class="chat-header"><span>AISOLUTIOS Sales Bot</span><span onclick="toggleChat()" style="cursor:pointer; font-size:20px;">&times;</span></div>
+    <div class="chat-header"><span>AISOLUTIOS Sales Bot</span><span onclick="toggleChat()" style="cursor:pointer;">&times;</span></div>
     <div id="chat-content"></div>
-    <div class="chat-input-area">
-        <input type="text" id="chat-input" placeholder="Antworten..." onkeypress="if(event.key==='Enter') handleChat()">
-        <button onclick="handleChat()" style="background:var(--aiso-blue); color:white; border:none; padding:8px 12px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
+    <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Nachricht..." onkeypress="if(event.key==='Enter') handleChat()">
+        <button onclick="handleChat()" style="background:var(--primary); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
 
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-    const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47');
-    const ADMIN_EMAIL = "vertrieb@aisolutios.de";
-    const API_ENDPOINT = "http://localhost:8003/create-checkout-session";
     let step = 0;
-    let lead = { name: "", user_company: "", email: "", search_niche: "", target_leads: "" };
+    let userData = {};
+    const stripe = Stripe('pk_test_51S9pZNF8KsU2u9RLBoB3sAIIunfGt2Od7yhptIfMk9vcwiPWrIjWkxEvfj8atGZNwezWRBM7fakgOjdirnyEmCYf00b0CNuC47');
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
-        const isVisible = win.style.display === 'flex';
-        win.style.display = isVisible ? 'none' : 'flex';
-        if(!isVisible && document.getElementById('chat-content').innerHTML === "") {
-            addBotMsg("Willkommen! Wie ist Ihr Name?");
+        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+        if(win.style.display === 'flex' && step === 0) {
+            addMsg("bot", "Willkommen! Ich bin Ihr KI-Assistent. Wie ist Ihr Name?");
         }
     }
 
-    function addBotMsg(txt) {
-        const div = document.createElement('div'); div.className = "bot-msg"; div.innerHTML = txt;
-        document.getElementById('chat-content').appendChild(div);
-        document.getElementById('chat-content').scrollTop = 9999;
-    }
-
-    function addUserMsg(txt) {
-        const div = document.createElement('div'); div.className = "user-msg"; div.innerText = txt;
+    function addMsg(role, text) {
+        const div = document.createElement('div');
+        div.className = role === 'bot' ? 'bot-msg' : 'user-msg';
+        div.innerText = text;
         document.getElementById('chat-content').appendChild(div);
         document.getElementById('chat-content').scrollTop = 9999;
     }
@@ -222,38 +242,51 @@
         const inp = document.getElementById('chat-input');
         const val = inp.value.trim();
         if(!val) return;
-        addUserMsg(val);
+        addMsg("user", val);
         inp.value = "";
+
         setTimeout(() => {
-            if(step === 0) { lead.name = val; addBotMsg(`Hallo ${val}, für welche Firma arbeiten Sie?`); step++; }
-            else if(step === 1) { lead.user_company = val; addBotMsg("In welcher Nische suchen Sie Leads?"); step++; }
-            else if(step === 2) { lead.search_niche = val; addBotMsg("An welche Email senden wir die Ergebnisse?"); step++; }
-            else if(step === 3) { 
-                lead.email = val; 
-                addBotMsg("Perfekt. Klicken Sie unten, um die Lead-Analyse (3€/Lead) zu starten.");
-                const btn = document.createElement('button');
-                btn.innerHTML = "💳 Jetzt Analyse starten";
-                btn.style = "width:100%; background:#6772e5; color:white; padding:12px; border:none; border-radius:8px; cursor:pointer; margin-top:10px;";
-                btn.onclick = processStripePayment;
-                document.getElementById('chat-content').appendChild(btn);
+            if(step === 0) {
+                userData.name = val;
+                addMsg("bot", `Freut mich, ${val}. Für welches Unternehmen suchen Sie KI-Lösungen?`);
+                step++;
+            } else if(step === 1) {
+                userData.company = val;
+                addMsg("bot", "Vielen Dank. Wie lautet Ihre geschäftliche E-Mail?");
+                step++;
+            } else if(step === 2) {
+                userData.email = val;
+                addMsg("bot", "Perfekt! Möchten Sie direkt eine KI-Lead-Analyse für 3,00 € starten oder lieber einen Rückruf?");
+                
+                const btnBox = document.createElement('div');
+                btnBox.style.marginTop = "10px";
+                btnBox.innerHTML = `
+                    <button onclick="startPayment()" style="width:100%; background:#6772e5; color:white; padding:10px; border:none; border-radius:5px; cursor:pointer; font-weight:bold; margin-bottom:5px;">💳 Lead-Analyse (3€)</button>
+                    <button onclick="addMsg('bot', 'Ein Experte wird Sie unter ${userData.email} kontaktieren.')" style="width:100%; background:#eee; padding:10px; border:none; border-radius:5px; cursor:pointer;">📞 Rückruf anfordern</button>
+                `;
+                document.getElementById('chat-content').appendChild(btnBox);
                 step++;
             }
-        }, 700);
+        }, 800);
     }
 
-    async function processStripePayment() {
-        addBotMsg("⏳ Sitzung wird erstellt...");
+    async function startPayment() {
+        addMsg("bot", "Leite zum sicheren Stripe-Zahlungsmodul weiter...");
+        // Hier folgt der API Call zu Ihrem Backend
         try {
-            const res = await fetch(API_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user_email: lead.email, user_company: lead.user_company, amount: 3 })
+            const response = await fetch("http://localhost:8003/create-checkout-session", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: userData.email, amount: 3, company: userData.company })
             });
-            const data = await res.json();
-            if(data.url) window.location.href = data.url;
-        } catch (e) { addBotMsg("❌ Fehler beim Verbinden zum Payment-Server."); }
+            const session = await response.json();
+            if(session.url) window.location.href = session.url;
+        } catch(e) {
+            addMsg("bot", "Fehler: Payment-Server nicht erreichbar. Bitte nutzen Sie das Kontaktformular.");
+        }
     }
 </script>
+
 </body>
 </html>
 
