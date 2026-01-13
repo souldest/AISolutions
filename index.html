@@ -211,8 +211,8 @@
         const params = new URLSearchParams(window.location.search);
         if (params.has('payment_success')) {
             toggleChat();
-            addMsg("bot", "Vielen Dank für Ihre Zahlung! ✅ / Thank you for your payment! / Merci pour votre paiement !");
-            addMsg("bot", "Ihre 15 Leads werden jetzt generiert und an Ihre E-Mail gesendet. / Your leads are being generated and sent to your email.");
+            addMsg("bot", "Vielen Dank für Ihre Zahlung! ✅\nThank you for your payment!\nMerci pour votre paiement !");
+            addMsg("bot", "Ihre 15 Leads werden jetzt generiert und an Ihre E-Mail gesendet.\nYour 15 leads are being generated and sent to your email.");
         }
     });
 
@@ -220,8 +220,10 @@
         const win = document.getElementById('aiso-chat-window');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
         if(win.style.display === 'flex' && chatStep === 0) {
-            addMsg("bot", "Willkommen! Ich generiere hier die perfekten Leads (15 Stück für 45€).\nWelcome! I generate the perfect leads (15 for 45€).\nBienvenue ! Je génère les leads parfaits (15 pour 45€).");
-            setTimeout(() => { addMsg("bot", "Wie ist Ihr Name? / What is your name?"); }, 800);
+            addMsg("bot", "Hier generieren Sie die perfekten Leads!\nGenerate your perfect leads here!\nGénérez vos leads parfaits ici!");
+            setTimeout(() => { 
+                addMsg("bot", "Wie ist Ihr Name? / What is your name? / Quel est votre nom?"); 
+            }, 800);
         }
     }
 
@@ -240,27 +242,27 @@
         const val = inp.value.trim();
         if(!val && chatStep !== 3) return;
 
-        addMsg("user", val || "(Übersprungen)");
+        addMsg("user", val || "(---)");
         inp.value = "";
 
         setTimeout(() => {
             if(chatStep === 0) {
                 leadData.name = val;
-                addMsg("bot", `Hallo ${val}, wie lautet Ihre E-Mail? / What is your email?`);
+                addMsg("bot", `Hallo ${val}, wie lautet Ihre E-Mail? / What is your email? / Quel est votre e-mail ?`);
                 chatStep++;
             } else if(chatStep === 1) {
                 leadData.email = val;
-                addMsg("bot", "Welche Branche suchen wir? / Which industry are we looking for? (e.g. Banken, Logistik, SaaS)");
+                addMsg("bot", "Welche Branche suchen wir? / Which industry? / Quel secteur ? (e.g. Banken, Logistik)");
                 chatStep++;
             } else if(chatStep === 2) {
                 leadData.industry = val;
-                addMsg("bot", "Optional: Spezifische Unternehmen? (Falls nicht, einfach Enter drücken oder 'Nein' schreiben)");
+                addMsg("bot", "Optional: Spezifische Firmen? / Specific companies? / Entreprises spécifiques? (Enter = Skip)");
                 chatStep++;
             } else if(chatStep === 3) {
                 leadData.companies = val || "Keine Angabe";
-                addMsg("bot", "Analysiere Zielmarkt... / Analyzing target market...");
+                addMsg("bot", "KI-Analyse läuft... / AI Analysis in progress... / Analyse IA en cours...");
                 
-                // Lead-Daten sofort an Dr. Sidi Weiss senden
+                // Formspree senden
                 const form = document.getElementById('aiso-lead-form');
                 document.getElementById('lead-cust-name').value = leadData.name;
                 document.getElementById('lead-cust-email').value = leadData.email;
@@ -269,8 +271,8 @@
                 fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
 
                 setTimeout(() => {
-                    addMsg("bot", "Erfolg! 15 exzellente Leads für " + leadData.industry + " gefunden.");
-                    addMsg("bot", "Um diese 15 Leads (45€) jetzt freizuschalten, klicken Sie hier:");
+                    addMsg("bot", "Erfolg! 15 perfekte Leads identifiziert.\nSuccess! 15 perfect leads identified.\nSuccès ! 15 leads parfaits identifiés.");
+                    addMsg("bot", "Klicken Sie hier zum Freischalten (45€):\nClick here to unlock (45€):\nCliquez ici pour débloquer (45€):");
                     
                     const btnContainer = document.createElement('div');
                     btnContainer.style = "margin-top:10px;";
