@@ -183,6 +183,7 @@
     </div>
 </footer>
 
+
 <div id="aiso-chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
 <div id="aiso-chat-window" style="display:none; position:fixed; bottom:90px; right:20px; width:350px; height:500px; background:white; border-radius:15px; flex-direction:column; z-index:1001; box-shadow:0 10px 30px rgba(0,0,0,0.5); overflow:hidden; font-family:'Inter', sans-serif;">
     <div style="background:#004a99; color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
@@ -191,7 +192,7 @@
     </div>
     <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9; color:#333;"></div>
     <div id="chat-footer" style="padding:15px; border-top:1px solid #eee; display:flex; gap:5px; background:white;">
-        <input type="text" id="chat-input" placeholder="Ihre Antwort..." style="flex:1; padding:10px; border:1px solid #ddd; border-radius:5px; outline:none;">
+        <input type="text" id="chat-input" placeholder="..." style="flex:1; padding:10px; border:1px solid #ddd; border-radius:5px; outline:none;">
         <button onclick="handleChat()" style="background:#004a99; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
@@ -200,6 +201,7 @@
     <input type="text" name="Unternehmen" id="lead-company">
     <input type="text" name="Branche" id="lead-industry">
     <input type="email" name="Email" id="lead-email">
+    <input type="text" name="Preis" value="45 Euro (15 Leads x 3€)">
 </form>
 
 <script>
@@ -210,14 +212,17 @@
         const win = document.getElementById('aiso-chat-window');
         win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
         if(win.style.display === 'flex' && chatStep === 0) {
-            addMsg("bot", "Willkommen! Ich generiere für Sie 50 hochwertige B2B-Leads. Für welches Unternehmen darf ich suchen?");
+            addMsg("bot", "Willkommen! Ich generiere hier 15 perfekte Leads für Sie.\nWelcome! I generate 15 perfect leads for you here.\nBienvenue ! Je génère ici 15 leads parfaits pour vous.");
+            setTimeout(() => {
+                addMsg("bot", "Unternehmensname? / Company name? / Nom de l'entreprise ?");
+            }, 1000);
         }
     }
 
     function addMsg(role, text) {
         const div = document.createElement('div');
         div.style = role === 'bot' 
-            ? "background:#e2e8f0; color:#333; padding:10px; border-radius:12px 12px 12px 0; align-self:flex-start; max-width:85%; font-size:13px;" 
+            ? "background:#e2e8f0; color:#333; padding:10px; border-radius:12px 12px 12px 0; align-self:flex-start; max-width:85%; font-size:13px; white-space: pre-wrap;" 
             : "background:#004a99; color:white; padding:10px; border-radius:12px 12px 0 12px; align-self:flex-end; max-width:85%; font-size:13px;";
         div.innerText = text;
         document.getElementById('chat-content').appendChild(div);
@@ -235,17 +240,17 @@
         setTimeout(() => {
             if(chatStep === 0) {
                 leadData.company = val;
-                addMsg("bot", `Hervorragend. In welcher Branche ist ${val} tätig?`);
+                addMsg("bot", "Branche? / Industry? / Secteur ?");
                 chatStep++;
             } else if(chatStep === 1) {
                 leadData.industry = val;
-                addMsg("bot", "Vielen Dank. An welche E-Mail-Adresse soll ich die Lead-Liste senden?");
+                addMsg("bot", "E-Mail? / Email? / E-mail ?");
                 chatStep++;
             } else if(chatStep === 2) {
                 leadData.email = val;
-                addMsg("bot", "Analysiere Zielmarkt... Ich habe 50 Entscheider-Kontakte in der Branche " + leadData.industry + " gefunden.");
+                addMsg("bot", "Analysiere Zielmarkt... / Analyzing target market... / Analyse du marché...");
                 
-                // Lead-Daten sofort an Dr. Sidi Weiss senden
+                // Lead-Sicherung
                 const form = document.getElementById('aiso-lead-form');
                 document.getElementById('lead-company').value = leadData.company;
                 document.getElementById('lead-industry').value = leadData.industry;
@@ -253,16 +258,16 @@
                 fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
 
                 setTimeout(() => {
-                    addMsg("bot", "Um die Liste sofort freizuschalten und per E-Mail zu erhalten, klicken Sie bitte auf den Button:");
+                    addMsg("bot", "Ich habe 15 exzellente Leads für Sie identifiziert (3€ pro Lead).\nI have identified 15 excellent leads for you (3€ per lead).\nJ'ai identifié 15 excellents leads pour vous (3€ par lead).");
                     
                     const btnContainer = document.createElement('div');
                     btnContainer.style = "margin-top:10px;";
                     btnContainer.innerHTML = `
-                        <button onclick="window.location.href='https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00'" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; width:100%;">🚀 Leads jetzt freischalten (30€)</button>
+                        <button onclick="window.location.href='https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00'" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; width:100%;">🚀 15 LEADS FREISCHALTEN (45€) / UNLOCK 15 LEADS / DÉBLOQUER 15 LEADS</button>
                     `;
                     document.getElementById('chat-content').appendChild(btnContainer);
                     document.getElementById('chat-input').disabled = true;
-                }, 1000);
+                }, 1500);
                 chatStep++;
             }
         }, 800);
