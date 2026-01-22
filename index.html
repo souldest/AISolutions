@@ -255,5 +255,138 @@
     init();
 </script>
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+    // Die Übersetzungen direkt im Script (kein Laden einer externen Datei nötig)
+    const translations = {
+        "de": {
+            "nav_crews": "KI-Crews",
+            "nav_llm": "Enterprise LLMs",
+            "nav_vorteile": "Vorteile",
+            "nav_team": "Team",
+            "nav_kontakt": "Kontakt",
+            "hero_h1": "Autonome KI-Agenten & Deep Learning Enterprise",
+            "hero_p": "Wir entwickeln spezialisierte Agenten-Teams und On-Premise LLM-Architekturen für Weltmarktführer. Sicher, messbar und 100% DSGVO-konform.",
+            "btn_hero": "Strategiegespräch buchen",
+            "sec_crews_h2": "Spezialisierte KI-Crews",
+            "crew_sales_h": "Sales Crew",
+            "crew_sales_p": "End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.",
+            "crew_sales_f": "Fokus: Skalierbarer B2B-Vertrieb",
+            "crew_inv_h": "Inventory Agents",
+            "crew_inv_p": "Prädiktive Verkaufsprognosen und Bestandsoptimierung.",
+            "crew_inv_r": "Referenz: K2-Systems, Transdev",
+            "crew_res_h": "Research Agents",
+            "crew_res_p": "Extraktion komplexer Daten aus Forschung und Agrarwirtschaft.",
+            "crew_res_r": "Referenz: KWS, LKV Bayern",
+            "crew_mark_h": "Marketing Crew",
+            "crew_mark_p": "Autonome Budgetallokation und Live-Kampagnen-Optimierung.",
+            "crew_mark_r": "Referenz: SOKA-BAU, Serviceplan",
+            "crew_fin_h": "Finance & ESG",
+            "crew_fin_p": "Automatisierung von CSRD-Berichten und Finanzanalysen.",
+            "crew_fin_r": "Referenz: LBBW",
+            "crew_deep_h": "Deep Learning Crew",
+            "crew_deep_p": "Objekterkennung und Fehleranalyse in der Produktion.",
+            "crew_deep_r": "Referenz: Mercedes-Benz, Porsche",
+            "crew_ins_h": "Insurance Crew",
+            "crew_ins_p": "Dunkelverarbeitung von Schadensfällen und Dokumentencheck.",
+            "crew_ins_r": "Referenz: Hallesche Versicherung",
+            "crew_hr_h": "HR & Recruiting",
+            "crew_hr_p": "KI-basiertes Talent-Sourcing und Skill-Matching.",
+            "crew_hr_f": "Fokus: Prozessbeschleunigung",
+            "sec_llm_h2": "Enterprise LLM-Plattform",
+            "llm_def_h": "Definition: Enterprise LLM",
+            "llm_def_p": "Ein isoliertes Sprachmodell, das über RAG sicher auf Ihr internes Unternehmenswissen zugreift.",
+            "llm_mot_h": "Sicherheit & Wettbewerbsvorteil",
+            "llm_mot_p": "Schützen Sie Ihr geistiges Eigentum. AISOLUTIOS liefert modernste KI-Technologie.",
+            "llm_inf_h": "On-Premise-Hosting",
+            "llm_inf_p": "Wir installieren Ihre LLM-Lösung direkt auf Ihren eigenen Servern.",
+            "sec_vor_h2": "Vorteile & Mehrwert",
+            "vor_1_h": "100% DSGVO",
+            "vor_1_p": "Hosting in Deutschland. Keine Datenweitergabe.",
+            "vor_2_h": "Effizienz +70%",
+            "vor_2_p": "Drastische Reduktion manueller Aufgaben.",
+            "vor_3_h": "Einfache Integration",
+            "vor_3_p": "Nahtlose Anbindung an SAP und Salesforce.",
+            "vor_4_h": "Eigene IP",
+            "vor_4_p": "Die Modelle gehören rechtlich Ihnen.",
+            "sec_team_h2": "Das AISOLUTIOS Team",
+            "bot_bubble": "Hier perfekte Leads generieren 🚀"
+        },
+        "en": {
+            "nav_crews": "AI Crews",
+            "nav_llm": "Enterprise LLMs",
+            "nav_vorteile": "Benefits",
+            "nav_team": "Team",
+            "nav_kontakt": "Contact",
+            "hero_h1": "Autonomous AI Agents & Deep Learning Enterprise",
+            "hero_p": "We develop specialized agent teams and on-premise LLM architectures. Secure and 100% GDPR-compliant.",
+            "btn_hero": "Book Strategy Call",
+            "sec_crews_h2": "Specialized AI Crews",
+            "crew_sales_h": "Sales Crew",
+            "crew_sales_p": "End-to-End sales: From lead identification to acquisition.",
+            "crew_sales_f": "Focus: Scalable B2B sales",
+            "crew_inv_h": "Inventory Agents",
+            "crew_inv_p": "Predictive sales forecasting and stock optimization.",
+            "crew_inv_r": "Ref: K2-Systems, Transdev",
+            "crew_res_h": "Research Agents",
+            "crew_res_p": "Extraction of data for research and agriculture.",
+            "crew_res_r": "Ref: KWS, LKV Bayern",
+            "crew_mark_h": "Marketing Crew",
+            "crew_mark_p": "Autonomous budget allocation and live optimization.",
+            "crew_mark_r": "Ref: SOKA-BAU, Serviceplan",
+            "crew_fin_h": "Finance & ESG",
+            "crew_fin_p": "Automation of CSRD reports and financial analysis.",
+            "crew_fin_r": "Ref: LBBW",
+            "crew_deep_h": "Deep Learning Crew",
+            "crew_deep_p": "Object recognition and production error analysis.",
+            "crew_deep_r": "Ref: Mercedes-Benz, Porsche",
+            "crew_ins_h": "Insurance Crew",
+            "crew_ins_p": "Automated claims processing and document checks.",
+            "crew_ins_r": "Ref: Hallesche Versicherung",
+            "crew_hr_h": "HR & Recruiting",
+            "crew_hr_p": "AI-based talent sourcing and skill matching.",
+            "crew_hr_f": "Focus: Process acceleration",
+            "sec_llm_h2": "Enterprise LLM Platform",
+            "llm_def_h": "Definition: Enterprise LLM",
+            "llm_def_p": "Isolated language models using RAG to access internal knowledge.",
+            "llm_mot_h": "Security & Advantage",
+            "llm_mot_p": "Protect your IP. Full control over your strategic data.",
+            "llm_inf_h": "On-Premise Hosting",
+            "llm_inf_p": "Deployment on your own servers. No data leak.",
+            "sec_vor_h2": "Benefits & Value",
+            "vor_1_h": "100% GDPR",
+            "vor_1_p": "German hosting. No data sharing.",
+            "vor_2_h": "Efficiency +70%",
+            "vor_2_p": "Significant reduction of manual workload.",
+            "vor_3_h": "Easy Integration",
+            "vor_3_p": "Connects to SAP, Salesforce and MS environments.",
+            "vor_4_h": "Your own IP",
+            "vor_4_p": "You legally own the trained models.",
+            "sec_team_h2": "The AISOLUTIOS Team",
+            "bot_bubble": "Generate perfect leads here 🎯"
+        }
+    };
+
+    function setLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        
+        // Button-Status aktualisieren
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+        });
+        
+        localStorage.setItem('aiso_lang', lang);
+    }
+
+    // Sofort beim Laden ausführen
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('aiso_lang') || 'de';
+        setLanguage(savedLang);
+    });
+</script>
 </body>
 </html>
