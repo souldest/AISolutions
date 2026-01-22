@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISOLUTIOS | Dr. Sidi Weiss - KI-Automatisierung</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">AI<span>SOLUTIOS</span></div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#pricing" data-i18n="nav_pricing">Preise</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Kontakt</a></li>
+                </ul>
+                <div class="lang-selector">
+                    <select onchange="changeLanguage(this.value)" id="langSelect">
+                        <option value="de">🇩🇪 DE</option>
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="fr">🇫🇷 FR</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero container">
+        <h1 data-i18n="hero_title">KI-Lösungen für den Mittelstand</h1>
+        <p data-i18n="hero_subtitle">Effiziente Automatisierung von Vertriebsprozessen und intelligente Lead-Generierung.</p>
+        <div class="hero-btns">
+            <a href="#pricing" class="btn-primary" data-i18n="cta_buy">Paket wählen</a>
+            <a href="#contact" class="btn-secondary" data-i18n="cta_contact">Beratung anfordern</a>
+        </div>
+    </section>
+
+    <section id="pricing" class="container">
+        <h2 class="section-title" data-i18n="pricing_title">Unsere Pakete</h2>
+        <div class="pricing-grid">
+            <div class="price-card featured">
+                <h3 data-i18n="pkg_title">KI-Startpaket</h3>
+                <div class="price">45€</div>
+                <ul data-i18n="pkg_features">
+                    <li><i class="fas fa-check"></i> 15 Qualifizierte Leads</li>
+                    <li><i class="fas fa-check"></i> KI-Potenzialanalyse</li>
+                    <li><i class="fas fa-check"></i> Outreach Vorlagen</li>
+                </ul>
+                <a href="https://buy.stripe.com/IHRE_ID" class="btn-primary" data-i18n="buy_now">Jetzt kaufen</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title" data-i18n="contact_title">Kontakt & Lead-Anfrage</h2>
+        <div class="contact-box">
+            <form id="contact-form">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label data-i18n="label_name">Name</label>
+                    <input type="text" name="name" required placeholder="Ihr Name">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="label_email">E-Mail</label>
+                    <input type="email" name="email" required placeholder="name@firma.de">
+                </div>
+                <div class="form-group">
+                    <label data-i18n="label_message">Nachricht</label>
+                    <textarea name="message" rows="4" required></textarea>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" required> <span data-i18n="dsgvo">Ich akzeptiere die Datenschutzbestimmungen.</span>
+                </div>
+                <button type="submit" class="btn-primary w100" data-i18n="send_btn">Anfrage senden</button>
+            </form>
+            <div id="form-status"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-i18n="footer_text">© 2026 AISOLUTIOS Stuttgart - Dr. Sidi Weiss</p>
+            <small>Obere Waiblinger Str. 147a, 70374 Stuttgart</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
