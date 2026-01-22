@@ -52,8 +52,8 @@
         nav a:hover { color: var(--accent); }
 
         .lang-switch { display: flex; gap: 8px; margin-left: 25px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
-        .lang-btn { background: rgba(255,255,255,0.1); color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 900; transition: 0.3s; }
-        .lang-btn.active { background: var(--primary); color: white; border: 1px solid var(--accent); }
+        .lang-btn { background: rgba(255,255,255,0.1); color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 900; }
+        .lang-btn.active { background: var(--primary); border: 1px solid var(--accent); }
 
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         h1 { font-size: clamp(32px, 5vw, 52px); text-align: center; font-weight: 900; margin-bottom: 20px; }
@@ -61,35 +61,33 @@
 
         .hero-lead { font-size: 20px; color: var(--muted); margin-bottom: 40px; text-align: center; max-width: 900px; margin-inline: auto; }
 
-        /* KI-Crews Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { 
-            background: var(--card-bg); border-radius: 20px; padding: 35px; 
-            border: 1px solid rgba(255,255,255,0.08); transition: 0.4s;
-            display: flex; flex-direction: column;
-        }
+        .card { background: var(--card-bg); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.08); transition: 0.4s; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255, 255, 255, 0.05); }
         .card i { color: var(--accent); font-size: 30px; margin-bottom: 15px; }
         .card h4 { margin-bottom: 12px; color: #fff; font-size: 18px; }
         .card p { font-size: 14px; color: var(--muted); flex-grow: 1; margin-bottom: 15px; }
         .card strong { color: var(--accent); font-size: 11px; text-transform: uppercase; }
 
-        /* Content Box for LLM */
         .content-box { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 15px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
         .content-box h3 { margin-bottom: 10px; color: #fff; }
 
-        /* Team Section */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
         .team-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; text-align: center; border-top: 5px solid var(--primary); }
-        .team-card h5 { color: var(--primary); font-size: 18px; margin-bottom: 5px; }
+        .team-card h5 { color: #004a99; font-size: 18px; margin-bottom: 5px; }
         .team-card span { color: var(--accent); font-size: 12px; font-weight: bold; text-transform: uppercase; }
 
-        /* Chatbot Window */
-        #aiso-chat-window { position: fixed; bottom: 100px; right: 25px; width: 380px; height: 550px; background: white; border-radius: 20px; display: none; flex-direction: column; z-index: 10001; box-shadow: 0 15px 40px rgba(0,0,0,0.5); color: #333; overflow: hidden; }
+        footer { background: #070a13; color: #fff; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+        .legal-box { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .legal-box h3 { margin-bottom: 20px; color: var(--accent); font-size: 20px; text-transform: uppercase; }
+        .legal-box p, .legal-box li { font-size: 14px; color: var(--muted); margin-bottom: 10px; list-style: none; }
 
-        /* Footer */
-        footer { background: #fff; color: #333; padding: 80px 20px; border-top: 1px solid #eee; }
-        .legal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+        #aiso-chat-trigger { position: fixed; bottom: 20px; right: 20px; cursor: pointer; z-index: 1000; display: flex; align-items: center; gap: 12px; }
+        #aiso-chat-window { position: fixed; bottom: 95px; right: 20px; width: 360px; height: 520px; background: white; border-radius: 15px; flex-direction: column; z-index: 1001; box-shadow: 0 15px 40px rgba(0,0,0,0.5); overflow: hidden; display: none; color: #333; }
+        
+        .bot-msg { background:#e9ecef; color:#333; padding:10px; border-radius:10px; align-self:flex-start; font-size:13px; max-width:80%; }
+        .user-msg { background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; font-size:13px; max-width:80%; }
     </style>
 </head>
 
@@ -103,13 +101,12 @@
     <nav>
         <a href="#agents" data-i18n="nav_crews">KI-Crews</a>
         <a href="#llm" data-i18n="nav_llm">Enterprise LLMs</a>
-        <a href="#vorteile" data-i18n="nav_vorteile">Vorteile</a>
         <a href="#team" data-i18n="nav_team">Team</a>
         <a href="#kontakt" data-i18n="nav_kontakt">Kontakt</a>
         <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+            <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">FR</button>
         </div>
     </nav>
 </header>
@@ -126,40 +123,26 @@
     <section id="agents" class="container">
         <h2 data-i18n="sec_crews_h2">Spezialisierte KI-Crews</h2>
         <div class="grid">
-            <div class="card"><i class="fas fa-comments-dollar"></i><h4 data-i18n="crew_sales_h"></h4><p data-i18n="crew_sales_p"></p><strong data-i18n="crew_sales_f"></strong></div>
-            <div class="card"><i class="fas fa-boxes-stacked"></i><h4 data-i18n="crew_inv_h"></h4><p data-i18n="crew_inv_p"></p><strong data-i18n="crew_inv_r"></strong></div>
-            <div class="card"><i class="fas fa-magnifying-glass-chart"></i><h4 data-i18n="crew_res_h"></h4><p data-i18n="crew_res_p"></p><strong data-i18n="crew_res_r"></strong></div>
-            <div class="card"><i class="fas fa-bullseye"></i><h4 data-i18n="crew_mark_h"></h4><p data-i18n="crew_mark_p"></p><strong data-i18n="crew_mark_r"></strong></div>
-            <div class="card"><i class="fas fa-file-invoice-dollar"></i><h4 data-i18n="crew_fin_h"></h4><p data-i18n="crew_fin_p"></p><strong data-i18n="crew_fin_r"></strong></div>
-            <div class="card"><i class="fas fa-brain"></i><h4 data-i18n="crew_deep_h"></h4><p data-i18n="crew_deep_p"></p><strong data-i18n="crew_deep_r"></strong></div>
-            <div class="card"><i class="fas fa-file-shield"></i><h4 data-i18n="crew_ins_h"></h4><p data-i18n="crew_ins_p"></p><strong data-i18n="crew_ins_r"></strong></div>
-            <div class="card"><i class="fas fa-user-tie"></i><h4 data-i18n="crew_hr_h"></h4><p data-i18n="crew_hr_p"></p><strong data-i18n="crew_hr_f"></strong></div>
+            <div class="card"><i class="fas fa-comments-dollar"></i><h4 data-i18n="crew_sales_h">Sales Crew</h4><p data-i18n="crew_sales_p"></p><strong data-i18n="crew_sales_f"></strong></div>
+            <div class="card"><i class="fas fa-boxes-stacked"></i><h4 data-i18n="crew_inv_h">Inventory Agents</h4><p data-i18n="crew_inv_p"></p><strong data-i18n="crew_inv_r"></strong></div>
+            <div class="card"><i class="fas fa-magnifying-glass-chart"></i><h4 data-i18n="crew_res_h">Research Agents</h4><p data-i18n="crew_res_p"></p><strong data-i18n="crew_res_r"></strong></div>
+            <div class="card"><i class="fas fa-bullseye"></i><h4 data-i18n="crew_mark_h">Marketing Crew</h4><p data-i18n="crew_mark_p"></p><strong data-i18n="crew_mark_r"></strong></div>
+            <div class="card"><i class="fas fa-file-invoice-dollar"></i><h4 data-i18n="crew_fin_h">Finance & ESG</h4><p data-i18n="crew_fin_p"></p><strong data-i18n="crew_fin_r"></strong></div>
+            <div class="card"><i class="fas fa-brain"></i><h4 data-i18n="crew_deep_h">Deep Learning Crew</h4><p data-i18n="crew_deep_p"></p><strong data-i18n="crew_deep_r"></strong></div>
+            <div class="card"><i class="fas fa-file-shield"></i><h4 data-i18n="crew_ins_h">Insurance Crew</h4><p data-i18n="crew_ins_p"></p><strong data-i18n="crew_ins_r"></strong></div>
+            <div class="card"><i class="fas fa-user-tie"></i><h4 data-i18n="crew_hr_h">HR & Recruiting</h4><p data-i18n="crew_hr_p"></p><strong data-i18n="crew_hr_f"></strong></div>
         </div>
     </section>
 
     <section id="llm" class="container">
         <h2 data-i18n="sec_llm_h2">Enterprise LLM-Plattform</h2>
         <div class="content-box">
-            <h3 data-i18n="llm_def_h"></h3>
+            <h3 data-i18n="llm_def_h">Definition: Enterprise LLM</h3>
             <p data-i18n="llm_def_p"></p>
         </div>
         <div class="content-box">
-            <h3 data-i18n="llm_mot_h"></h3>
+            <h3 data-i18n="llm_mot_h">Sicherheit & Wettbewerbsvorteil</h3>
             <p data-i18n="llm_mot_p"></p>
-        </div>
-        <div class="content-box">
-            <h3 data-i18n="llm_inf_h"></h3>
-            <p data-i18n="llm_inf_p"></p>
-        </div>
-    </section>
-
-    <section id="vorteile" class="container">
-        <h2 data-i18n="sec_vor_h2">Vorteile & Mehrwert</h2>
-        <div class="grid">
-            <div class="card"><i class="fas fa-shield-check"></i><h4 data-i18n="vor_1_h"></h4><p data-i18n="vor_1_p"></p></div>
-            <div class="card"><i class="fas fa-rocket"></i><h4 data-i18n="vor_2_h"></h4><p data-i18n="vor_2_p"></p></div>
-            <div class="card"><i class="fas fa-plug"></i><h4 data-i18n="vor_3_h"></h4><p data-i18n="vor_3_p"></p></div>
-            <div class="card"><i class="fas fa-microchip"></i><h4 data-i18n="vor_4_h"></h4><p data-i18n="vor_4_p"></p></div>
         </div>
     </section>
 
@@ -170,10 +153,6 @@
             <div class="team-card"><h5>Ramona Distler</h5><span>Operations Director</span></div>
             <div class="team-card"><h5>Ing. Aziz Hamoud</h5><span>Data Scientist</span></div>
             <div class="team-card"><h5>Ahmedou Didi</h5><span>Data Analyst (Dipl. Math.)</span></div>
-            <div class="team-card" onclick="toggleChat()" style="cursor:pointer; background: #fff;">
-                <h5 style="margin-bottom: 5px;"><i class="fas fa-robot"></i> AISOLUTIOS Bot</h5>
-                <span id="dynamic-bot-text" data-i18n="bot_bubble" style="font-weight: bold;">Hier perfekte Leads generieren 🚀</span>
-            </div>
         </div>
     </section>
 
@@ -184,26 +163,32 @@
 
 <footer>
     <div class="legal-grid">
-        <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border-top: 5px solid #1a202c;">
-            <h3 style="color: #1a202c; margin-bottom: 25px;">Impressum</h3>
+        <div class="legal-box">
+            <h3 data-i18n="ft_impressum">Impressum</h3>
             <p><strong>Dr. Sidi Weiss</strong><br>AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
-            <p style="margin-top:15px;">Mobil: 00 49 176 31591931<br>E-Mail: vertrieb@aisolutios.de</p>
+            <p><strong>Kontakt:</strong><br>Mobil: 00 49 176 31591931<br>E-Mail: vertrieb@aisolutios.de</p>
         </div>
-        <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); border-top: 5px solid #3182ce;">
-            <h3 style="color: #1a202c; margin-bottom: 25px;">Datenschutz</h3>
-            <p>Wir verarbeiten Daten streng nach DSGVO. Strategische Daten verbleiben in Ihrem System (On-Premise).</p>
+        <div class="legal-box">
+            <h3 data-i18n="ft_datenschutz">Datenschutz</h3>
+            <p data-i18n="ds_1">Datenverarbeitung erfolgt gemäß DSGVO.</p>
+            <ul>
+                <li data-i18n="ds_2">✓ Hosting in Deutschland</li>
+                <li data-i18n="ds_3">✓ Keine Weitergabe</li>
+            </ul>
         </div>
     </div>
 </footer>
 
-<div id="aiso-chat-trigger" onclick="toggleChat()" style="position:fixed; bottom:20px; right:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; gap:12px;">
-    <div id="aiso-label" style="background:#004a99; color:white; padding:10px 18px; border-radius:20px 20px 0 20px; font-size:14px; font-weight:bold; box-shadow:0 6px 20px rgba(0,0,0,0.3);"><span id="trigger-text">Hier perfekte Leads generieren 🚀</span></div>
+<div id="aiso-chat-trigger" onclick="toggleChat()">
+    <div id="aiso-label" style="background:#004a99; color:white; padding:10px 18px; border-radius:20px 20px 0 20px; font-weight:bold; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
+        <span id="trigger-text" data-i18n="bot_bubble">Hier perfekte Leads generieren 🚀</span>
+    </div>
     <div style="background:#004a99; color:white; width:65px; height:65px; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 6px 20px rgba(0,0,0,0.4); font-size:28px;"><i class="fas fa-robot"></i></div>
 </div>
 
 <div id="aiso-chat-window">
     <div style="background:#004a99; color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
-        <span>Lead-Gen Bot</span>
+        <span data-i18n="bot_title">AISOLUTIOS Assistant</span>
         <span onclick="toggleChat()" style="cursor:pointer; font-size:24px;">&times;</span>
     </div>
     <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9;"></div>
@@ -213,180 +198,124 @@
     </div>
 </div>
 
-<form id="aiso-lead-form" action="https://formspree.io/f/vertrieb@aisolutios.de" method="POST" style="display:none;">
-    <input type="text" name="Name" id="lead-cust-name">
-    <input type="email" name="Email" id="lead-cust-email">
-    <input type="text" name="Branche" id="lead-industry">
-</form>
-
 <script>
-    let translations = {};
-    async function init() {
-        const res = await fetch('lang.json');
-        translations = await res.json();
-        setLanguage(localStorage.getItem('aiso_lang') || 'de');
-    }
+    const translations = {
+        "de": {
+            "nav_crews": "KI-Crews", "nav_llm": "Enterprise LLMs", "nav_team": "Team", "nav_kontakt": "Kontakt",
+            "hero_h1": "Autonome KI-Agenten & Deep Learning Enterprise", "hero_p": "Sicher, messbar und 100% DSGVO-konform.", "btn_hero": "Gespräch buchen",
+            "sec_crews_h2": "KI-Crews", "crew_sales_h": "Sales Crew", "crew_sales_p": "End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.", "crew_sales_f": "Fokus: Skalierbarkeit",
+            "crew_inv_h": "Inventory Agents", "crew_inv_p": "Prädiktive Verkaufsprognosen und Bestandsoptimierung.", "crew_inv_r": "Ref: K2-Systems, Transdev",
+            "crew_res_h": "Research Agents", "crew_res_p": "Extraktion komplexer Daten aus Forschung.", "crew_res_r": "Ref: KWS, LKV Bayern",
+            "crew_mark_h": "Marketing Crew", "crew_mark_p": "Autonome Budgetallokation und Live-Optimierung.", "crew_mark_r": "Ref: SOKA-BAU",
+            "crew_fin_h": "Finance & ESG", "crew_fin_p": "Automatisierung von CSRD-Berichten.", "crew_fin_r": "Ref: LBBW",
+            "crew_deep_h": "Deep Learning Crew", "crew_deep_p": "Objekterkennung in der Produktion.", "crew_deep_r": "Ref: Mercedes-Benz, Porsche",
+            "crew_ins_h": "Insurance Crew", "crew_ins_p": "Dunkelverarbeitung von Schadensfällen.", "crew_ins_r": "Ref: Hallesche",
+            "crew_hr_h": "HR & Recruiting", "crew_hr_p": "KI-basiertes Talent-Sourcing.", "crew_hr_f": "Focus: Recruiting 2.0",
+            "sec_llm_h2": "Enterprise LLM", "llm_def_h": "Private LLM", "llm_def_p": "Isolierte Sprachmodelle für Ihr internes Wissen.",
+            "llm_mot_h": "Sicherheit", "llm_mot_p": "Schützen Sie Ihr geistiges Eigentum.",
+            "bot_bubble": "Hier perfekte Leads generieren 🚀", "bot_title": "AISOLUTIOS Assistent",
+            "bot_greet": "Hallo! Ich bin Ihr KI-Assistent. Wie ist Ihr Name?", "bot_email": "Vielen Dank, {name}! Wie lautet Ihre E-Mail-Adresse?", "bot_thanks": "Danke! Wir melden uns umgehend bei Ihnen.",
+            "ft_impressum": "Impressum", "ft_datenschutz": "Datenschutz", "ds_1": "Datenverarbeitung nach DSGVO.", "ds_2": "✓ Hosting in DE", "ds_3": "✓ Sicher"
+        },
+        "en": {
+            "nav_crews": "AI Crews", "nav_llm": "Enterprise LLMs", "nav_team": "Team", "nav_kontakt": "Contact",
+            "hero_h1": "Autonomous AI Agents & Deep Learning", "hero_p": "Secure, measurable and 100% GDPR-compliant.", "btn_hero": "Book Call",
+            "sec_crews_h2": "AI Crews", "crew_sales_h": "Sales Crew", "crew_sales_p": "End-to-End sales from lead to closing.", "crew_sales_f": "Focus: Scalability",
+            "crew_inv_h": "Inventory Agents", "crew_inv_p": "Predictive forecasting and stock optimization.", "crew_inv_r": "Ref: K2-Systems, Transdev",
+            "crew_res_h": "Research Agents", "crew_res_p": "Data extraction for complex research.", "crew_res_r": "Ref: KWS, LKV Bayern",
+            "crew_mark_h": "Marketing Crew", "crew_mark_p": "Autonomous budget and campaign optimization.", "crew_mark_r": "Ref: SOKA-BAU",
+            "crew_fin_h": "Finance & ESG", "crew_fin_p": "Automation of CSRD reporting.", "crew_fin_r": "Ref: LBBW",
+            "crew_deep_h": "Deep Learning Crew", "crew_deep_p": "Object recognition for production.", "crew_deep_r": "Ref: Mercedes-Benz, Porsche",
+            "crew_ins_h": "Insurance Crew", "crew_ins_p": "Automated claims processing.", "crew_ins_r": "Ref: Hallesche",
+            "crew_hr_h": "HR & Recruiting", "crew_hr_p": "AI-based talent sourcing.", "crew_hr_f": "Focus: Recruiting 2.0",
+            "sec_llm_h2": "Enterprise LLM", "llm_def_h": "Private LLM", "llm_def_p": "Isolated language models for internal data.",
+            "llm_mot_h": "Security", "llm_mot_p": "Protect your Intellectual Property.",
+            "bot_bubble": "Generate perfect leads here 🎯", "bot_title": "AISOLUTIOS Assistant",
+            "bot_greet": "Hello! I am your AI assistant. What is your name?", "bot_email": "Thank you, {name}! What is your email address?", "bot_thanks": "Thanks! We will get in touch with you shortly.",
+            "ft_impressum": "Legal", "ft_datenschutz": "Privacy", "ds_1": "GDPR compliant data processing.", "ds_2": "✓ German Hosting", "ds_3": "✓ Secure"
+        },
+        "fr": {
+            "nav_crews": "Équipes IA", "nav_llm": "LLM Entreprise", "nav_team": "Équipe", "nav_kontakt": "Contact",
+            "hero_h1": "Agents IA Autonomes & Deep Learning", "hero_p": "Sécurisé, mesurable et 100% conforme au RGPD.", "btn_hero": "Réserver un appel",
+            "sec_crews_h2": "Équipes IA", "crew_sales_h": "Équipe Ventes", "crew_sales_p": "Ventes de bout en bout de l'identification au closing.", "crew_sales_f": "Focus : Évolutivité",
+            "crew_inv_h": "Agents d'Inventaire", "crew_inv_p": "Prévisions prédictives et optimisation des stocks.", "crew_inv_r": "Réf : K2-Systems, Transdev",
+            "crew_res_h": "Agents de Recherche", "crew_res_p": "Extraction de données pour la recherche complexe.", "crew_res_r": "Réf : KWS, LKV Bayern",
+            "crew_mark_h": "Équipe Marketing", "crew_mark_p": "Budget autonome et optimisation de campagnes.", "crew_mark_r": "Réf : SOKA-BAU",
+            "crew_fin_h": "Finance & ESG", "crew_fin_p": "Automatisation des rapports CSRD.", "crew_fin_r": "Réf : LBBW",
+            "crew_deep_h": "Deep Learning", "crew_deep_p": "Reconnaissance d'objets pour la production.", "crew_deep_r": "Réf : Mercedes-Benz, Porsche",
+            "crew_ins_h": "Assurance", "crew_ins_p": "Traitement automatisé des sinistres.", "crew_ins_r": "Réf : Hallesche",
+            "crew_hr_h": "RH & Recrutement", "crew_hr_p": "Sourcing de talents basé sur l'IA.", "crew_hr_f": "Focus : Recrutement 2.0",
+            "sec_llm_h2": "LLM Entreprise", "llm_def_h": "LLM Privé", "llm_def_p": "Modèles de langage isolés pour vos données internes.",
+            "llm_mot_h": "Sécurité", "llm_mot_p": "Protégez votre propriété intellectuelle.",
+            "bot_bubble": "Générez des leads ici 💎", "bot_title": "Assistant AISOLUTIOS",
+            "bot_greet": "Bonjour ! Je suis votre assistant IA. Quel est votre nom ?", "bot_email": "Merci, {name} ! Quelle est votre adresse e-mail ?", "bot_thanks": "Merci ! Nous vous contacterons très prochainement.",
+            "ft_impressum": "Mentions", "ft_datenschutz": "Confidentialité", "ds_1": "Conforme au RGPD.", "ds_2": "✓ Hébergement DE", "ds_3": "✓ Sécurisé"
+        }
+    };
+
+    let currentLang = "de";
+    let chatStep = 0;
+    let userData = { name: "", email: "" };
 
     function setLanguage(lang) {
+        currentLang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
         });
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.innerText.toLowerCase() === lang));
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.id === 'btn-' + lang));
         localStorage.setItem('aiso_lang', lang);
+        if (chatStep === 0) resetChat();
     }
 
     function toggleChat() {
         const win = document.getElementById('aiso-chat-window');
-        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        const isHidden = win.style.display !== 'flex';
+        win.style.display = isHidden ? 'flex' : 'none';
+        if (isHidden && chatStep === 0) resetChat();
     }
 
-    // Lead-Gen Logic (verkürzt für Demo)
+    function addMsg(text, type) {
+        const div = document.createElement('div');
+        div.className = type === 'bot' ? 'bot-msg' : 'user-msg';
+        div.innerText = text;
+        const content = document.getElementById('chat-content');
+        content.appendChild(div);
+        content.scrollTop = content.scrollHeight;
+    }
+
+    function resetChat() {
+        document.getElementById('chat-content').innerHTML = "";
+        chatStep = 1;
+        addMsg(translations[currentLang].bot_greet, 'bot');
+    }
+
     function handleChat() {
         const inp = document.getElementById('chat-input');
-        if(!inp.value) return;
-        const msg = document.createElement('div');
-        msg.innerText = inp.value;
-        msg.style = "background:#004a99; color:white; padding:8px; border-radius:10px; align-self:flex-end; font-size:13px;";
-        document.getElementById('chat-content').appendChild(msg);
+        const val = inp.value.trim();
+        if (!val) return;
+
+        addMsg(val, 'user');
         inp.value = "";
-    }
 
-    init();
-</script>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>
-    // Die Übersetzungen direkt im Script (kein Laden einer externen Datei nötig)
-    const translations = {
-        "de": {
-            "nav_crews": "KI-Crews",
-            "nav_llm": "Enterprise LLMs",
-            "nav_vorteile": "Vorteile",
-            "nav_team": "Team",
-            "nav_kontakt": "Kontakt",
-            "hero_h1": "Autonome KI-Agenten & Deep Learning Enterprise",
-            "hero_p": "Wir entwickeln spezialisierte Agenten-Teams und On-Premise LLM-Architekturen für Weltmarktführer. Sicher, messbar und 100% DSGVO-konform.",
-            "btn_hero": "Strategiegespräch buchen",
-            "sec_crews_h2": "Spezialisierte KI-Crews",
-            "crew_sales_h": "Sales Crew",
-            "crew_sales_p": "End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.",
-            "crew_sales_f": "Fokus: Skalierbarer B2B-Vertrieb",
-            "crew_inv_h": "Inventory Agents",
-            "crew_inv_p": "Prädiktive Verkaufsprognosen und Bestandsoptimierung.",
-            "crew_inv_r": "Referenz: K2-Systems, Transdev",
-            "crew_res_h": "Research Agents",
-            "crew_res_p": "Extraktion komplexer Daten aus Forschung und Agrarwirtschaft.",
-            "crew_res_r": "Referenz: KWS, LKV Bayern",
-            "crew_mark_h": "Marketing Crew",
-            "crew_mark_p": "Autonome Budgetallokation und Live-Kampagnen-Optimierung.",
-            "crew_mark_r": "Referenz: SOKA-BAU, Serviceplan",
-            "crew_fin_h": "Finance & ESG",
-            "crew_fin_p": "Automatisierung von CSRD-Berichten und Finanzanalysen.",
-            "crew_fin_r": "Referenz: LBBW",
-            "crew_deep_h": "Deep Learning Crew",
-            "crew_deep_p": "Objekterkennung und Fehleranalyse in der Produktion.",
-            "crew_deep_r": "Referenz: Mercedes-Benz, Porsche",
-            "crew_ins_h": "Insurance Crew",
-            "crew_ins_p": "Dunkelverarbeitung von Schadensfällen und Dokumentencheck.",
-            "crew_ins_r": "Referenz: Hallesche Versicherung",
-            "crew_hr_h": "HR & Recruiting",
-            "crew_hr_p": "KI-basiertes Talent-Sourcing und Skill-Matching.",
-            "crew_hr_f": "Fokus: Prozessbeschleunigung",
-            "sec_llm_h2": "Enterprise LLM-Plattform",
-            "llm_def_h": "Definition: Enterprise LLM",
-            "llm_def_p": "Ein isoliertes Sprachmodell, das über RAG sicher auf Ihr internes Unternehmenswissen zugreift.",
-            "llm_mot_h": "Sicherheit & Wettbewerbsvorteil",
-            "llm_mot_p": "Schützen Sie Ihr geistiges Eigentum. AISOLUTIOS liefert modernste KI-Technologie.",
-            "llm_inf_h": "On-Premise-Hosting",
-            "llm_inf_p": "Wir installieren Ihre LLM-Lösung direkt auf Ihren eigenen Servern.",
-            "sec_vor_h2": "Vorteile & Mehrwert",
-            "vor_1_h": "100% DSGVO",
-            "vor_1_p": "Hosting in Deutschland. Keine Datenweitergabe.",
-            "vor_2_h": "Effizienz +70%",
-            "vor_2_p": "Drastische Reduktion manueller Aufgaben.",
-            "vor_3_h": "Einfache Integration",
-            "vor_3_p": "Nahtlose Anbindung an SAP und Salesforce.",
-            "vor_4_h": "Eigene IP",
-            "vor_4_p": "Die Modelle gehören rechtlich Ihnen.",
-            "sec_team_h2": "Das AISOLUTIOS Team",
-            "bot_bubble": "Hier perfekte Leads generieren 🚀"
-        },
-        "en": {
-            "nav_crews": "AI Crews",
-            "nav_llm": "Enterprise LLMs",
-            "nav_vorteile": "Benefits",
-            "nav_team": "Team",
-            "nav_kontakt": "Contact",
-            "hero_h1": "Autonomous AI Agents & Deep Learning Enterprise",
-            "hero_p": "We develop specialized agent teams and on-premise LLM architectures. Secure and 100% GDPR-compliant.",
-            "btn_hero": "Book Strategy Call",
-            "sec_crews_h2": "Specialized AI Crews",
-            "crew_sales_h": "Sales Crew",
-            "crew_sales_p": "End-to-End sales: From lead identification to acquisition.",
-            "crew_sales_f": "Focus: Scalable B2B sales",
-            "crew_inv_h": "Inventory Agents",
-            "crew_inv_p": "Predictive sales forecasting and stock optimization.",
-            "crew_inv_r": "Ref: K2-Systems, Transdev",
-            "crew_res_h": "Research Agents",
-            "crew_res_p": "Extraction of data for research and agriculture.",
-            "crew_res_r": "Ref: KWS, LKV Bayern",
-            "crew_mark_h": "Marketing Crew",
-            "crew_mark_p": "Autonomous budget allocation and live optimization.",
-            "crew_mark_r": "Ref: SOKA-BAU, Serviceplan",
-            "crew_fin_h": "Finance & ESG",
-            "crew_fin_p": "Automation of CSRD reports and financial analysis.",
-            "crew_fin_r": "Ref: LBBW",
-            "crew_deep_h": "Deep Learning Crew",
-            "crew_deep_p": "Object recognition and production error analysis.",
-            "crew_deep_r": "Ref: Mercedes-Benz, Porsche",
-            "crew_ins_h": "Insurance Crew",
-            "crew_ins_p": "Automated claims processing and document checks.",
-            "crew_ins_r": "Ref: Hallesche Versicherung",
-            "crew_hr_h": "HR & Recruiting",
-            "crew_hr_p": "AI-based talent sourcing and skill matching.",
-            "crew_hr_f": "Focus: Process acceleration",
-            "sec_llm_h2": "Enterprise LLM Platform",
-            "llm_def_h": "Definition: Enterprise LLM",
-            "llm_def_p": "Isolated language models using RAG to access internal knowledge.",
-            "llm_mot_h": "Security & Advantage",
-            "llm_mot_p": "Protect your IP. Full control over your strategic data.",
-            "llm_inf_h": "On-Premise Hosting",
-            "llm_inf_p": "Deployment on your own servers. No data leak.",
-            "sec_vor_h2": "Benefits & Value",
-            "vor_1_h": "100% GDPR",
-            "vor_1_p": "German hosting. No data sharing.",
-            "vor_2_h": "Efficiency +70%",
-            "vor_2_p": "Significant reduction of manual workload.",
-            "vor_3_h": "Easy Integration",
-            "vor_3_p": "Connects to SAP, Salesforce and MS environments.",
-            "vor_4_h": "Your own IP",
-            "vor_4_p": "You legally own the trained models.",
-            "sec_team_h2": "The AISOLUTIOS Team",
-            "bot_bubble": "Generate perfect leads here 🎯"
-        }
-    };
-
-    function setLanguage(lang) {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                el.innerHTML = translations[lang][key];
+        setTimeout(() => {
+            if (chatStep === 1) {
+                userData.name = val;
+                chatStep = 2;
+                addMsg(translations[currentLang].bot_email.replace('{name}', val), 'bot');
+            } else if (chatStep === 2) {
+                userData.email = val;
+                chatStep = 3;
+                addMsg(translations[currentLang].bot_thanks, 'bot');
+                console.log("Lead captured:", userData);
             }
-        });
-        
-        // Button-Status aktualisieren
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-        });
-        
-        localStorage.setItem('aiso_lang', lang);
+        }, 600);
     }
 
-    // Sofort beim Laden ausführen
     document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('aiso_lang') || 'de';
-        setLanguage(savedLang);
+        setLanguage(localStorage.getItem('aiso_lang') || 'de');
     });
 </script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
