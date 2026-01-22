@@ -1,29 +1,35 @@
 {
   "de": {
-    "nav_agents": "KI-Crews",
+    "nav_crews": "KI-Crews",
     "nav_llm": "Enterprise LLMs",
-    "hero_title": "Autonome KI-Agenten & Deep Learning Enterprise",
-    "hero_lead": "Wir entwickeln spezialisierte Agenten-Teams für Weltmarktführer. Sicher und DSGVO-konform.",
+    "nav_team": "Team",
+    "hero_h1": "Autonome KI-Agenten & Deep Learning Enterprise",
+    "hero_p": "Wir entwickeln spezialisierte Agenten-Teams und On-Premise LLM-Architekturen für Weltmarktführer. Sicher, messbar und 100% DSGVO-konform.",
     "btn_strategy": "Strategiegespräch buchen",
-    "team_title": "Das AISOLUTIOS Team",
-    "bot_trigger": "Hier perfekte Leads generieren 🚀"
+    "crew_sales_h": "Sales Crew",
+    "crew_sales_p": "End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.",
+    "bot_label": "Hier perfekte Leads generieren 🚀"
   },
   "en": {
-    "nav_agents": "AI Crews",
-    "nav_llm": "Enterprise LLM",
-    "hero_title": "Autonomous AI Agents & Deep Learning Enterprise",
-    "hero_lead": "We develop specialized agent teams for world market leaders. Secure and GDPR-compliant.",
+    "nav_crews": "AI Crews",
+    "nav_llm": "Enterprise LLMs",
+    "nav_team": "Team",
+    "hero_h1": "Autonomous AI Agents & Deep Learning Enterprise",
+    "hero_p": "We develop specialized agent teams and on-premise LLM architectures for world market leaders. Secure, measurable and 100% GDPR compliant.",
     "btn_strategy": "Book Strategy Call",
-    "team_title": "The AISOLUTIOS Team",
-    "bot_trigger": "Generate perfect leads here 🎯"
+    "crew_sales_h": "Sales Crew",
+    "crew_sales_p": "End-to-end sales: From lead identification to new customer acquisition.",
+    "bot_label": "Generate perfect leads here 🎯"
   },
   "fr": {
-    "nav_agents": "Équipes d'IA",
+    "nav_crews": "Équipes d'IA",
     "nav_llm": "LLM d'Entreprise",
-    "hero_title": "Agents d'IA Autonomes & Deep Learning Enterprise",
-    "hero_lead": "Nous développons des équipes d'agents spécialisés pour les leaders mondiaux. Sécurisé et conforme au RGPD.",
+    "nav_team": "Équipe",
+    "hero_h1": "Agents d'IA Autonomes & Deep Learning Enterprise",
+    "hero_p": "Nous développons des équipes d'agents spécialisés et des architectures LLM sur site pour les leaders mondiaux. Sûr, mesurable et 100% conforme au RGPD.",
     "btn_strategy": "Réserver un entretien",
-    "team_title": "L'Équipe AISOLUTIOS",
-    "bot_trigger": "Générez des leads parfaits ici 💎"
+    "crew_sales_h": "Équipe de Vente",
+    "crew_sales_p": "Ventes de bout en bout : de l'identification des prospects à l'acquisition de nouveaux clients.",
+    "bot_label": "Générez des leads parfaits ici 💎"
   }
 }
