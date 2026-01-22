@@ -1,0 +1,47 @@
+{
+  "de": {
+    "nav_home": "Start", "nav_pricing": "Pakete", "nav_contact": "Kontakt",
+    "hero_title": "KI-Lösungen für den Mittelstand",
+    "hero_subtitle": "Effiziente Automatisierung von Vertriebsprozessen und intelligente Lead-Generierung.",
+    "cta_buy": "Paket wählen", "cta_contact": "Kostenlose Beratung",
+    "pricing_title": "Preise & Pakete",
+    "pkg_title": "KI-Testpaket",
+    "pkg_features": "<li><i class='fas fa-check'></i> 15 Qualifizierte Leads</li><li><i class='fas fa-check'></i> KI-Potenzialanalyse</li><li><i class='fas fa-check'></i> Outreach Support</li>",
+    "buy_now": "Mit Stripe bezahlen",
+    "contact_title": "Interesse? Schreiben Sie uns.",
+    "label_name": "Name", "label_email": "E-Mail", "label_message": "Nachricht",
+    "dsgvo": "Ich akzeptiere die DSGVO-Richtlinien.",
+    "send_btn": "Anfrage senden",
+    "footer_text": "© 2026 AISOLUTIOS Stuttgart - Dr. Sidi Weiss"
+  },
+  "en": {
+    "nav_home": "Home", "nav_pricing": "Pricing", "nav_contact": "Contact",
+    "hero_title": "AI Solutions for Business",
+    "hero_subtitle": "Efficient automation of sales processes and intelligent lead generation.",
+    "cta_buy": "Select Package", "cta_contact": "Free Consultation",
+    "pricing_title": "Pricing & Packages",
+    "pkg_title": "AI Test Package",
+    "pkg_features": "<li><i class='fas fa-check'></i> 15 Qualified Leads</li><li><i class='fas fa-check'></i> AI Potential Analysis</li><li><i class='fas fa-check'></i> Outreach Support</li>",
+    "buy_now": "Pay with Stripe",
+    "contact_title": "Interested? Get in touch.",
+    "label_name": "Name", "label_email": "Email", "label_message": "Message",
+    "dsgvo": "I accept the GDPR terms.",
+    "send_btn": "Send Inquiry",
+    "footer_text": "© 2026 AISOLUTIOS Stuttgart - Dr. Sidi Weiss"
+  },
+  "fr": {
+    "nav_home": "Accueil", "nav_pricing": "Prix", "nav_contact": "Contact",
+    "hero_title": "Solutions d'IA pour les PME",
+    "hero_subtitle": "Automatisation des processus de vente et génération de leads intelligente.",
+    "cta_buy": "Choisir", "cta_contact": "Conseil gratuit",
+    "pricing_title": "Prix et Forfaits",
+    "pkg_title": "Pack Test IA",
+    "pkg_features": "<li><i class='fas fa-check'></i> 15 Leads Qualifiés</li><li><i class='fas fa-check'></i> Analyse de potentiel IA</li><li><i class='fas fa-check'></i> Support Outreach</li>",
+    "buy_now": "Payer avec Stripe",
+    "contact_title": "Intéressé? Écrivez-nous.",
+    "label_name": "Nom", "label_email": "E-mail", "label_message": "Message",
+    "dsgvo": "J'accepte les conditions RGPD.",
+    "send_btn": "Envoyer",
+    "footer_text": "© 2026 AISOLUTIOS Stuttgart - Dr. Sidi Weiss"
+  }
+}
