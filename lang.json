@@ -8,7 +8,16 @@
     "btn_strategy": "Strategiegespräch buchen",
     "crew_sales_h": "Sales Crew",
     "crew_sales_p": "End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.",
-    "bot_label": "Hier perfekte Leads generieren 🚀"
+    "crew_inv_h": "Inventory Agents",
+    "crew_inv_p": "Prädiktive Verkaufsprognosen und Bestandsoptimierung.",
+    "crew_res_h": "Research Agents",
+    "crew_res_p": "Extraktion komplexer Daten aus Forschung und Agrarwirtschaft.",
+    "llm_title": "Enterprise LLM-Plattform",
+    "llm_def_h": "Definition: Enterprise LLM",
+    "llm_def_p": "Ein isoliertes Sprachmodell, das über RAG sicher auf Ihr internes Unternehmenswissen zugreift.",
+    "bot_label": "Hier perfekte Leads generieren 🚀",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz"
   },
   "en": {
     "nav_crews": "AI Crews",
@@ -19,7 +28,16 @@
     "btn_strategy": "Book Strategy Call",
     "crew_sales_h": "Sales Crew",
     "crew_sales_p": "End-to-end sales: From lead identification to new customer acquisition.",
-    "bot_label": "Generate perfect leads here 🎯"
+    "crew_inv_h": "Inventory Agents",
+    "crew_inv_p": "Predictive sales forecasts and inventory optimization.",
+    "crew_res_h": "Research Agents",
+    "crew_res_p": "Extraction of complex data from research and agriculture.",
+    "llm_title": "Enterprise LLM Platform",
+    "llm_def_h": "Definition: Enterprise LLM",
+    "llm_def_p": "An isolated language model that securely accesses your internal company knowledge via RAG.",
+    "bot_label": "Generate perfect leads here 🎯",
+    "impressum": "Legal Notice",
+    "datenschutz": "Privacy Policy"
   },
   "fr": {
     "nav_crews": "Équipes d'IA",
@@ -30,6 +48,15 @@
     "btn_strategy": "Réserver un entretien",
     "crew_sales_h": "Équipe de Vente",
     "crew_sales_p": "Ventes de bout en bout : de l'identification des prospects à l'acquisition de nouveaux clients.",
-    "bot_label": "Générez des leads parfaits ici 💎"
+    "crew_inv_h": "Agents d'Inventaire",
+    "crew_inv_p": "Prévisions de ventes prédictives et optimisation des stocks.",
+    "crew_res_h": "Agents de Recherche",
+    "crew_res_p": "Extraction de données complexes de la recherche et de l'agriculture.",
+    "llm_title": "Plateforme LLM d'Entreprise",
+    "llm_def_h": "Définition : LLM d'Entreprise",
+    "llm_def_p": "Un modèle de langage isolé qui accède en toute sécurité aux connaissances internes de votre entreprise via RAG.",
+    "bot_label": "Générez des leads parfaits ici 💎",
+    "impressum": "Mentions Légales",
+    "datenschutz": "Confidentialité"
   }
 }
