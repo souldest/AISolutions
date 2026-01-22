@@ -1,265 +1,107 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBRY11ETSS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-FBRY11ETSS');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Autonome KI-Agenten & Enterprise LLM</title>
-    
+    <title>AISOLUTIOS – KI-Agenten & Enterprise LLM</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
-        :root {
-            --bg: #0b0f1a;
-            --bg2: #0e1426;
-            --primary: #004a99; 
-            --accent: #00aaff;
-            --text: #e8ecf3;
-            --muted: #9aa4b2;
-            --card-bg: rgba(255, 255, 255, 0.03);
-        }
-
+        :root { --bg: #0b0f1a; --bg2: #0e1426; --primary: #004a99; --accent: #00aaff; --text: #e8ecf3; --muted: #9aa4b2; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, var(--bg), var(--bg2));
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(10, 15, 30, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 15px 28px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .logo-ai-box { background: var(--primary); color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 900; }
-        .logo-text { font-weight: 700; font-size: 24px; color: #fff; letter-spacing: 1px; margin-left: 10px; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); line-height: 1.6; }
+        
+        header { position: sticky; top: 0; z-index: 1000; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(12px); padding: 15px 28px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo-box { display: flex; align-items: center; }
+        .logo-ai { background: var(--primary); color: #fff; padding: 6px 12px; border-radius: 8px; font-weight: 900; }
+        .logo-text { font-weight: 700; font-size: 24px; margin-left: 10px; }
         
         nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--accent); }
+        
+        /* Language Switcher */
+        .lang-switch { display: flex; gap: 8px; margin-left: 20px; }
+        .lang-btn { background: rgba(255,255,255,0.1); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: bold; }
+        .lang-btn.active { background: var(--primary); border: 1px solid var(--accent); }
 
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         h1 { font-size: clamp(32px, 5vw, 52px); text-align: center; font-weight: 900; margin-bottom: 20px; }
-        h2 { font-size: 32px; border-left: 6px solid var(--primary); padding-left: 20px; margin-bottom: 40px; text-transform: uppercase; }
-
-        .hero-lead { font-size: 20px; color: var(--muted); margin-bottom: 40px; text-align: center; max-width: 900px; margin-inline: auto; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { 
-            background: var(--card-bg); border-radius: 20px; padding: 35px; 
-            border: 1px solid rgba(255,255,255,0.08); transition: 0.4s;
-            display: flex; flex-direction: column;
-        }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255, 255, 255, 0.05); }
-        .card i { color: var(--accent); font-size: 30px; margin-bottom: 15px; }
-        .card h4 { margin-bottom: 12px; color: #fff; font-size: 18px; }
-        .card p { font-size: 14px; color: var(--muted); flex-grow: 1; margin-bottom: 15px; }
-        .card strong { color: var(--accent); font-size: 11px; text-transform: uppercase; }
-
-        .content-box { background: rgba(255,255,255,0.02); padding: 30px; border-radius: 15px; margin-bottom: 20px; border-left: 4px solid var(--primary); }
-        .content-box h3 { color: var(--accent); margin-bottom: 10px; }
-
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
-        .team-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; text-align: center; border-top: 5px solid var(--primary) !important; }
-        .team-card h5 { color: var(--primary) !important; font-size: 18px; margin-bottom: 5px; }
-        .team-card span { color: var(--accent); font-size: 12px; font-weight: bold; text-transform: uppercase; }
-
-        footer { background: #fff; color: #333; padding: 60px 20px; border-top: 1px solid #eee; margin-top: 50px; }
-        
-        #aiso-chat-window { position: fixed; bottom: 95px; right: 20px; width: 360px; height: 520px; background: white; border-radius: 15px; display: none; flex-direction: column; z-index: 1001; box-shadow: 0 15px 40px rgba(0,0,0,0.5); overflow: hidden; font-family: 'Inter', sans-serif; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .card { background: rgba(255, 255, 255, 0.03); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.08); text-align: left; }
     </style>
 </head>
-
 <body>
 
 <header>
-    <div style="display: flex; align-items: center;">
-        <div class="logo-ai-box">AI</div>
+    <div class="logo-box">
+        <div class="logo-ai">AI</div>
         <span class="logo-text">AISOLUTIOS</span>
     </div>
-    <nav>
-        <a href="#agents">KI-Crews</a>
-        <a href="#llm">Enterprise LLMs</a>
-        <a href="#vorteile">Vorteile</a>
-        <a href="#team">Team</a>
-        <a href="#kontakt">Kontakt</a>
-    </nav>
+    <div style="display: flex; align-items: center;">
+        <nav>
+            <a href="#agents" data-i18n="nav_crews">KI-Crews</a>
+            <a href="#llm" data-i18n="nav_llm">Enterprise LLMs</a>
+            <a href="#team" data-i18n="nav_team">Team</a>
+        </nav>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+        </div>
+    </div>
 </header>
 
 <main>
     <section class="container">
-        <h1>Autonome KI-Agenten & Deep Learning Enterprise</h1>
-        <p class="hero-lead">Wir entwickeln spezialisierte Agenten-Teams und On-Premise LLM-Architekturen für Weltmarktführer. Sicher, messbar und 100% DSGVO-konform.</p>
+        <h1 data-i18n="hero_h1">Autonome KI-Agenten & Deep Learning Enterprise</h1>
+        <p data-i18n="hero_p" style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 40px auto;">Wir entwickeln spezialisierte Agenten-Teams und On-Premise LLM-Architekturen für Weltmarktführer.</p>
         <div style="text-align: center;">
-            <a href="#kontakt" style="background: var(--primary); color: #fff; padding: 18px 35px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block;">Strategiegespräch buchen</a>
+            <a href="#kontakt" data-i18n="btn_strategy" style="background: var(--primary); color: #fff; padding: 18px 35px; border-radius: 12px; font-weight: 700; text-decoration: none;">Strategiegespräch buchen</a>
         </div>
-    </section>
 
-    <section id="agents" class="container">
-        <h2>Spezialisierte KI-Crews</h2>
         <div class="grid">
-            <div class="card"><i class="fas fa-comments-dollar"></i><h4>Sales Crew</h4><p>B2B-Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.</p><strong>Fokus: Skalierung</strong></div>
-            <div class="card"><i class="fas fa-boxes-stacked"></i><h4>Inventory Agents</h4><p>Prädiktive Bestandsoptimierung für komplexe Logistikketten.</p><strong>Referenz: K2-Systems</strong></div>
-            <div class="card"><i class="fas fa-magnifying-glass-chart"></i><h4>Research Agents</h4><p>Datenextraktion für Forschung und Agrarwirtschaft.</p><strong>Referenz: KWS</strong></div>
-            <div class="card"><i class="fas fa-brain"></i><h4>Deep Learning</h4><p>Objekterkennung und Fehleranalyse in der Produktion.</p><strong>Referenz: Porsche</strong></div>
-        </div>
-    </section>
-
-    <section id="llm" class="container">
-        <h2>Enterprise LL-Plattform</h2>
-        <div class="content-box">
-            <h3>Sicherheit & On-Premise</h3>
-            <p>Wir installieren isolierte LLM-Lösungen direkt auf Ihren Servern. Maximale Performance, kein Datenabfluss nach außen.</p>
-        </div>
-    </section>
-
-    <section id="team" class="container">
-        <h2>Das AISOLUTIOS Team</h2>
-        <div class="team-grid">
-            <div class="team-card"><h5>Dr. Sidi Weiss</h5><span>CEO & Founder</span></div>
-            <div class="team-card"><h5>Ramona Distler</h5><span>Operations Director</span></div>
-            <div class="team-card"><h5>Ing. Aziz Hamoud</h5><span>Data Scientist</span></div>
-            <div class="team-card" onclick="toggleChat()" style="cursor:pointer; background: #fff !important; border: 1px solid #004a99 !important;">
-                <h5><i class="fas fa-robot"></i> AISOLUTIOS Bot</h5>
-                <span id="dynamic-bot-text">Hier Leads generieren 🚀</span>
+            <div class="card">
+                <i class="fas fa-comments-dollar" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                <h4 data-i18n="crew_sales_h">Sales Crew</h4>
+                <p data-i18n="crew_sales_p">End-to-End Vertrieb: Von Lead-Identifikation bis Neukundengewinnung.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-boxes-stacked" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+                <h4 data-i18n="crew_inv_h">Inventory Agents</h4>
+                <p data-i18n="crew_inv_p">Prädiktive Verkaufsprognosen und Bestandsoptimierung.</p>
             </div>
         </div>
     </section>
-
-    <section id="kontakt" class="container">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
-    </section>
 </main>
 
-<footer>
-    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-        <div>
-            <h3>Impressum</h3>
-            <p><strong>Dr. Sidi Weiss | AISOLUTIOS</strong><br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
-            <p>Mobil: 00 49 176 31591931</p>
-        </div>
-        <div>
-            <h3>Datenschutz</h3>
-            <p>Datenverarbeitung streng nach DSGVO. Hosting in Deutschland.</p>
-        </div>
-    </div>
-</footer>
-
-<div id="aiso-chat-trigger" onclick="toggleChat()" style="position:fixed; bottom:20px; right:20px; cursor:pointer; z-index:1000; display:flex; align-items:center; gap:12px;">
-    <div id="aiso-label" style="background:#004a99; color:white; padding:10px 18px; border-radius:20px 20px 0 20px; font-weight:bold; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
-        <span id="trigger-text">Hier perfekte Leads generieren 🚀</span>
-    </div>
-    <div style="background:#004a99; color:white; width:65px; height:65px; border-radius:50%; display:flex; justify-content:center; align-items:center; box-shadow:0 6px 20px rgba(0,0,0,0.4); font-size:28px;"><i class="fas fa-robot"></i></div>
-</div>
-
-<div id="aiso-chat-window">
-    <div style="background:#004a99; color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between; align-items:center;">
-        <span>AISOLUTIOS Lead-Gen Bot</span>
-        <span onclick="toggleChat()" style="cursor:pointer; font-size:24px;">&times;</span>
-    </div>
-    <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9; color:#333;"></div>
-    <div id="chat-footer" style="padding:15px; border-top:1px solid #eee; display:flex; gap:5px; background:white;">
-        <input type="text" id="chat-input" placeholder="..." style="flex:1; padding:10px; border:1px solid #ddd; border-radius:5px;">
-        <button onclick="handleChat()" style="background:#004a99; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;"><i class="fas fa-paper-plane"></i></button>
+<div id="aiso-chat-trigger" style="position:fixed; bottom:20px; right:20px; cursor:pointer;" onclick="alert('Bot öffnet...')">
+    <div style="background:#004a99; color:white; padding:10px 20px; border-radius:20px;">
+        <span data-i18n="bot_label">Hier perfekte Leads generieren 🚀</span>
     </div>
 </div>
-
-<form id="aiso-lead-form" action="https://formspree.io/f/vertrieb@aisolutios.de" method="POST" style="display:none;">
-    <input type="text" name="Name" id="lead-name">
-    <input type="email" name="Email" id="lead-email">
-    <input type="text" name="Branche" id="lead-industry">
-</form>
 
 <script>
-    let chatStep = 0;
-    let leadData = { name: "", email: "", industry: "" };
+    let translations = {};
 
-    // Bot-Texte in 3 Sprachen
-    const botLangs = ["Hier perfekte Leads generieren 🚀", "Generate perfect leads here 🎯", "Générez des leads parfaits ici 💎"];
-    let lIdx = 0;
-    setInterval(() => {
-        lIdx = (lIdx + 1) % botLangs.length;
-        if(document.getElementById('dynamic-bot-text')) document.getElementById('dynamic-bot-text').innerText = botLangs[lIdx];
-        if(document.getElementById('trigger-text')) document.getElementById('trigger-text').innerText = botLangs[lIdx];
-    }, 3500);
-
-    // NEU: Erfolgskontrolle nach Stripe
-    window.onload = () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('payment_success') === 'true') {
-            toggleChat();
-            addMsg("bot", "Vielen Dank für Ihre Zahlung! ✅\nIhre 15 qualifizierten Leads werden nun final aufbereitet und innerhalb der nächsten Stunde an Ihre E-Mail gesendet.");
-            chatStep = 100; // Blockiert weiteren Chat-Verlauf
-        }
-    };
-
-    function toggleChat() {
-        const win = document.getElementById('aiso-chat-window');
-        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(win.style.display === 'flex' && chatStep === 0) {
-            addMsg("bot", "Willkommen! Ich bin die AISOLUTIOS KI. Wie ist Ihr Name?");
-            chatStep = 1;
-        }
+    async function init() {
+        const res = await fetch('lang.json');
+        translations = await res.json();
+        const savedLang = localStorage.getItem('aiso_lang') || 'de';
+        setLanguage(savedLang);
     }
 
-    function addMsg(role, text) {
-        const div = document.createElement('div');
-        div.style = role === 'bot' ? "background:#e2e8f0; padding:10px; border-radius:12px; align-self:flex-start; max-width:85%; font-size:13px;" : "background:#004a99; color:white; padding:10px; border-radius:12px; align-self:flex-end; max-width:85%; font-size:13px;";
-        div.innerText = text;
-        document.getElementById('chat-content').appendChild(div);
-        document.getElementById('chat-content').scrollTop = 9999;
+    function setLanguage(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+        });
+        localStorage.setItem('aiso_lang', lang);
     }
 
-    function handleChat() {
-        const inp = document.getElementById('chat-input');
-        const val = inp.value.trim();
-        if(!val || chatStep >= 100) return;
-        addMsg("user", val);
-        inp.value = "";
-
-        setTimeout(() => {
-            if(chatStep === 1) {
-                leadData.name = val;
-                addMsg("bot", `Freut mich, ${val}! Wie lautet Ihre geschäftliche E-Mail-Adresse?`);
-                chatStep = 2;
-            } else if(chatStep === 2) {
-                leadData.email = val;
-                addMsg("bot", "In welcher Branche suchen wir neue Kunden? (z.B. Automotive oder Maschinenbau)");
-                chatStep = 3;
-            } else if(chatStep === 3) {
-                leadData.industry = val;
-                addMsg("bot", "KI-Analyse läuft... 15 perfekte Leads wurden identifiziert.");
-                
-                // Formspree Absendung
-                const f = document.getElementById('aiso-lead-form');
-                document.getElementById('lead-name').value = leadData.name;
-                document.getElementById('lead-email').value = leadData.email;
-                document.getElementById('lead-industry').value = leadData.industry;
-                fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } });
-
-                setTimeout(() => {
-                    addMsg("bot", "Klicken Sie hier, um die Lead-Liste jetzt freizuschalten (45€):");
-                    const b = document.createElement('div');
-                    // Stripe Link mit Success-Parameter ergänzt
-                    b.innerHTML = `<button onclick="window.location.href='https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00?success_url=https://aisolutios.de?payment_success=true'" style="background:#6772e5; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; width:100%; margin-top:10px;">🚀 JETZT LEADS FREISCHALTEN</button>`;
-                    document.getElementById('chat-content').appendChild(b);
-                }, 1000);
-            }
-        }, 800);
-    }
+    init();
 </script>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
