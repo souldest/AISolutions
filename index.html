@@ -6,6 +6,7 @@
     <title>AISOLUTIOS – Dr. Sidi Weiss | Autonome KI-Agenten & Enterprise LLM</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     
     <style>
         :root {
@@ -46,6 +47,9 @@
 
         .llm-box { background: rgba(0, 74, 153, 0.1); border: 1px solid var(--primary); padding: 40px; border-radius: 20px; }
 
+        /* Calendly Section */
+        #booking { background: rgba(255,255,255,0.02); border-radius: 30px; margin-top: 40px; }
+
         #aiso-chat-window { position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; display: none; flex-direction: column; z-index: 2001; box-shadow: 0 10px 40px rgba(0,0,0,0.5); color: #333; overflow: hidden; }
         .bot-msg { background:#e9ecef; padding:10px; border-radius:10px; align-self:flex-start; font-size:13px; max-width:85%; margin-bottom: 10px; }
         .user-msg { background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; font-size:13px; max-width:85%; margin-bottom: 10px; }
@@ -62,8 +66,9 @@
     
     <div class="nav-scroll-container">
         <a href="#crews" class="nav-link" id="nav-crews">Crews</a>
-        <a href="#llm" class="nav-link" id="nav-llm">Enterprise LLM</a>
+        <a href="#llm" class="nav-link" id="nav-llm">LLM</a>
         <a href="#vorteile" class="nav-link" id="nav-vort">Vorteile</a>
+        <a href="#booking" class="nav-link" id="nav-book">Termin</a>
         <a href="#kontakt" class="nav-link" id="nav-kont">Kontakt</a>
         <div class="lang-switch">
             <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
@@ -77,7 +82,10 @@
     <section class="container" style="text-align: center;">
         <h1 id="hero-title">KI-Souveränität für Ihr Unternehmen</h1>
         <p id="hero-sub" style="color:var(--muted); max-width:800px; margin: 20px auto;">Wir bauen spezialisierte KI-Crews und hochsichere Enterprise-Modelle.</p>
-        <button onclick="toggleChat()" id="hero-btn" style="background:var(--primary); color:white; border:none; padding:15px 35px; border-radius:8px; font-weight:bold; cursor:pointer;">Leads kaufen (3€/Stk)</button>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="toggleChat()" id="hero-btn" style="background:var(--primary); color:white; border:none; padding:15px 35px; border-radius:8px; font-weight:bold; cursor:pointer;">Leads kaufen (3€/Stk)</button>
+            <a href="#booking" id="hero-book" style="background:transparent; border: 1px solid var(--accent); color: white; padding:15px 35px; border-radius:8px; font-weight:bold; text-decoration:none;">Beratung buchen</a>
+        </div>
     </section>
 
     <section id="crews" class="container">
@@ -100,6 +108,11 @@
     <section id="vorteile" class="container">
         <h2 id="title-vort">Vorteile</h2>
         <div class="grid" id="grid-vort"></div>
+    </section>
+
+    <section id="booking" class="container">
+        <h2 id="title-book">Erstberatung vereinbaren</h2>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/30min" style="min-width:320px;height:700px;"></div>
     </section>
 </main>
 
@@ -141,9 +154,9 @@
     
     const translations = {
         de: {
-            nav: ["Crews", "LLM", "Vorteile", "Kontakt"],
-            hero: ["KI-Agenten für Weltmarktführer", "Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.", "Leads kaufen (3€/Stk)"],
-            titles: ["Branchenspezifische KI-Crews", "Enterprise LLM Plattform", "Warum AISOLUTIOS?"],
+            nav: ["Crews", "LLM", "Vorteile", "Termin", "Kontakt"],
+            hero: ["KI-Souveränität für Ihr Unternehmen", "Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.", "Leads kaufen (3€/Stk)", "Beratung buchen"],
+            titles: ["Branchenspezifische KI-Crews", "Enterprise LLM Plattform", "Warum AISOLUTIOS?", "Erstberatung vereinbaren"],
             llm: ["Definition & Motivation", "Enterprise LLMs sind isolierte Sprachmodelle für höchste Datensouveränität. Motivation: Schutz Ihres geistigen Eigentums.", "On-Premise", "Installation direkt in Ihrer eigenen Server-Infrastruktur.", "Private Cloud", "Sicheres Hosting in abgeschirmten EU-Rechenzentren."],
             foot: ["Impressum", "Datenschutz", "Wir verarbeiten Daten gemäß strengster DSGVO-Normen in Deutschland."],
             crews: [
@@ -162,10 +175,10 @@
             chat: ["Ihr Name?", "E-Mail?", "Firma?", "Anzahl Leads (3€/Stk)?", "Vielen Dank! Das macht {price}€. Bitte via Stripe bezahlen:", "Jetzt bezahlen"]
         },
         en: {
-            nav: ["Crews", "LLM", "Benefits", "Contact"],
-            hero: ["AI Sovereignty for Enterprises", "Secure On-Premise solutions & specialized AI crews. Expert guidance by Dr. Sidi Weiss.", "Buy Leads (3€/ea)"],
-            titles: ["Industry-Specific AI Crews", "Enterprise LLM Platform", "Why AISOLUTIOS?"],
-            llm: ["Definition & Motivation", "Enterprise LLMs are private language models for maximum data sovereignty. Motivation: Protecting your intellectual property.", "On-Premise", "Deployment directly within your own server infrastructure.", "Private Cloud", "Secure hosting in isolated EU data centers."],
+            nav: ["Crews", "LLM", "Benefits", "Booking", "Contact"],
+            hero: ["AI Sovereignty for Enterprises", "Secure On-Premise solutions & specialized AI crews. Expert guidance by Dr. Sidi Weiss.", "Buy Leads (3€/ea)", "Book Consultation"],
+            titles: ["Industry-Specific AI Crews", "Enterprise LLM Platform", "Why AISOLUTIOS?", "Schedule a Meeting"],
+            llm: ["Definition & Motivation", "Enterprise LLMs are private language models for maximum data sovereignty.", "On-Premise", "Deployment within your own server infrastructure.", "Private Cloud", "Secure hosting in isolated EU data centers."],
             foot: ["Legal Notice", "Privacy", "We process data according to strict German GDPR standards."],
             crews: [
                 {h: "Solar & Renewables", p: "Revenue forecasting & inventory agents.", r: "Ref: K2-Systems", i: "fa-sun"},
@@ -178,30 +191,30 @@
             vorts: [
                 {h: "Sovereignty", p: "Your data never leaves your company.", i: "fa-lock"},
                 {h: "Full-Service", p: "From strategy to on-site hosting.", i: "fa-gears"},
-                {h: "Compliance", p: "100% GDPR compliant for the EU market.", i: "fa-user-shield"}
+                {h: "Compliance", p: "100% GDPR compliant.", i: "fa-user-shield"}
             ],
-            chat: ["Your Name?", "Your Email?", "Company?", "How many leads (3€/ea)?", "Thank you! Total is {price}€. Please pay via Stripe:", "Pay Now"]
+            chat: ["Name?", "Email?", "Company?", "Quantity (3€/ea)?", "Total: {price}€. Pay via Stripe:", "Pay Now"]
         },
         fr: {
-            nav: ["Équipes", "LLM", "Avantages", "Contact"],
-            hero: ["Souveraineté IA pour Entreprises", "Solutions On-Premise sécurisées & équipes IA spécialisées. Expertise Dr. Sidi Weiss.", "Acheter Leads (3€/p)"],
-            titles: ["Équipes IA par Secteur", "Plateforme LLM Enterprise", "Pourquoi AISOLUTIOS?"],
-            llm: ["Définition & Motivation", "Les LLM Enterprise sont des modèles privés pour une souveraineté totale. Motivation : Protection de votre IP.", "On-Premise", "Installation directe sur votre propre infrastructure serveur.", "Private Cloud", "Hébergement sécurisé dans des centres de données UE isolés."],
-            foot: ["Mentions Légales", "Confidentialité", "Nous traitons les données selon les normes RGPD strictes en Allemagne."],
+            nav: ["Équipes", "LLM", "Avantages", "RDV", "Contact"],
+            hero: ["Souveraineté IA", "Solutions On-Premise & équipes IA. Expertise Dr. Sidi Weiss.", "Acheter Leads (3€/p)", "Prendre RDV"],
+            titles: ["Équipes IA par Secteur", "Plateforme LLM Enterprise", "Pourquoi AISOLUTIOS?", "Réserver une consultation"],
+            llm: ["Définition & Motivation", "Modèles privés pour une souveraineté totale.", "On-Premise", "Installation sur vos propres serveurs.", "Private Cloud", "Hébergement UE sécurisé."],
+            foot: ["Mentions Légales", "Confidentialité", "Conforme au RGPD."],
             crews: [
-                {h: "Solaire & Renouvelable", p: "Prévisions de revenus & gestion de stock.", r: "Ref: K2-Systems", i: "fa-sun"},
-                {h: "Marketing & Pub", p: "IA de campagne & équipes de contenu.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
-                {h: "Agroalimentaire", p: "IA pour l'élevage & l'agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
-                {h: "Industrie & Auto", p: "Détection de défauts & maintenance.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Assurance", p: "Traitement automatisé de documents.", r: "Ref: Hallesche", i: "fa-shield-halved"},
-                {h: "Finance & ESG", p: "Reporting CSRD & IA de risque.", r: "Ref: LBBW", i: "fa-landmark"}
+                {h: "Solaire", p: "Prévisions & gestion de stock.", r: "Ref: K2-Systems", i: "fa-sun"},
+                {h: "Marketing", p: "IA de campagne & contenu.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
+                {h: "Agroalimentaire", p: "IA pour l'agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
+                {h: "Industrie", p: "Maintenance & détection.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
+                {h: "Assurance", p: "Traitement de documents.", r: "Ref: Hallesche", i: "fa-shield-halved"},
+                {h: "Finance", p: "CSRD & Risque.", r: "Ref: LBBW", i: "fa-landmark"}
             ],
             vorts: [
-                {h: "Souveraineté", p: "Vos données ne quittent jamais votre entreprise.", i: "fa-lock"},
-                {h: "Service Complet", p: "De la stratégie à l'hébergement sur site.", i: "fa-gears"},
-                {h: "Conformité", p: "100% conforme au RGPD pour le marché européen.", i: "fa-user-shield"}
+                {h: "Souveraineté", p: "Les données restent chez vous.", i: "fa-lock"},
+                {h: "Service", p: "De la stratégie à l'hébergement.", i: "fa-gears"},
+                {h: "Conformité", p: "100% conforme au RGPD.", i: "fa-user-shield"}
             ],
-            chat: ["Votre Nom ?", "E-mail ?", "Entreprise ?", "Quantité de leads (3€/p) ?", "Merci ! Total : {price}€. Veuillez payer via Stripe :", "Payer maintenant"]
+            chat: ["Nom ?", "Email ?", "Entreprise ?", "Quantité (3€/p) ?", "Total : {price}€. Payer via Stripe :", "Payer"]
         }
     };
 
@@ -210,23 +223,22 @@
         const t = translations[lang];
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === 'btn-'+lang));
         
-        // Header
         document.getElementById('nav-crews').innerText = t.nav[0];
         document.getElementById('nav-llm').innerText = t.nav[1];
         document.getElementById('nav-vort').innerText = t.nav[2];
-        document.getElementById('nav-kont').innerText = t.nav[3];
+        document.getElementById('nav-book').innerText = t.nav[3];
+        document.getElementById('nav-kont').innerText = t.nav[4];
 
-        // Hero
         document.getElementById('hero-title').innerText = t.hero[0];
         document.getElementById('hero-sub').innerText = t.hero[1];
         document.getElementById('hero-btn').innerText = t.hero[2];
+        document.getElementById('hero-book').innerText = t.hero[3];
 
-        // Titles
         document.getElementById('title-crews').innerText = t.titles[0];
         document.getElementById('title-llm').innerText = t.titles[1];
         document.getElementById('title-vort').innerText = t.titles[2];
+        document.getElementById('title-book').innerText = t.titles[3];
 
-        // LLM
         document.getElementById('llm-def-h').innerText = t.llm[0];
         document.getElementById('llm-def-p').innerText = t.llm[1];
         document.getElementById('llm-on-h').innerText = t.llm[2];
@@ -234,12 +246,10 @@
         document.getElementById('llm-priv-h').innerText = t.llm[4];
         document.getElementById('llm-priv-p').innerText = t.llm[5];
 
-        // Footer
         document.getElementById('foot-imp').innerText = t.foot[0];
         document.getElementById('foot-ds').innerText = t.foot[1];
         document.getElementById('foot-ds-p').innerText = t.foot[2];
 
-        // Grids
         document.getElementById('grid-crews').innerHTML = t.crews.map(c => `
             <div class="card"><i class="fas ${c.i}"></i><h4>${c.h}</h4><p>${c.p}</p><span class="ref">${c.r}</span></div>
         `).join('');
@@ -267,8 +277,9 @@
         const div = document.createElement('div');
         div.className = type === 'bot' ? 'bot-msg' : 'user-msg';
         if(isHtml) div.innerHTML = txt; else div.innerText = txt;
-        document.getElementById('chat-content').appendChild(div);
-        document.getElementById('chat-content').scrollTop = 9999;
+        const content = document.getElementById('chat-content');
+        content.appendChild(div);
+        content.scrollTop = 9999;
     }
 
     function handleChat() {
@@ -277,7 +288,6 @@
         addMsg(inp.value, 'user');
         const val = inp.value;
         inp.value = "";
-
         setTimeout(() => {
             if(chatStep < 4) {
                 addMsg(translations[currentLang].chat[chatStep], 'bot');
@@ -285,8 +295,7 @@
             } else if(chatStep === 4) {
                 const price = (parseInt(val) || 1) * 3;
                 const cTxt = translations[currentLang].chat[4].replace('{price}', price);
-                const bTxt = translations[currentLang].chat[5];
-                addMsg(`${cTxt}<br><a href="${stripeLink}" target="_blank" class="stripe-btn">${bTxt}</a>`, 'bot', true);
+                addMsg(`${cTxt}<br><a href="${stripeLink}" target="_blank" class="stripe-btn">${translations[currentLang].chat[5]}</a>`, 'bot', true);
             }
         }, 600);
     }
