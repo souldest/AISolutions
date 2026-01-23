@@ -47,13 +47,12 @@
 
         .llm-box { background: rgba(0, 74, 153, 0.1); border: 1px solid var(--primary); padding: 40px; border-radius: 20px; }
 
-        /* Calendly Section */
-        #booking { background: rgba(255,255,255,0.02); border-radius: 30px; margin-top: 40px; }
-
         #aiso-chat-window { position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; display: none; flex-direction: column; z-index: 2001; box-shadow: 0 10px 40px rgba(0,0,0,0.5); color: #333; overflow: hidden; }
         .bot-msg { background:#e9ecef; padding:10px; border-radius:10px; align-self:flex-start; font-size:13px; max-width:85%; margin-bottom: 10px; }
         .user-msg { background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; font-size:13px; max-width:85%; margin-bottom: 10px; }
         .stripe-btn { background: #6772e5; color: white; padding: 12px; border-radius: 5px; text-decoration: none; display: block; text-align: center; margin-top: 10px; font-weight: bold; }
+        
+        .ds-text { font-size: 12px; color: var(--muted); max-height: 200px; overflow-y: auto; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -80,8 +79,8 @@
 
 <main>
     <section class="container" style="text-align: center;">
-        <h1 id="hero-title">KI-Souveränität für Ihr Unternehmen</h1>
-        <p id="hero-sub" style="color:var(--muted); max-width:800px; margin: 20px auto;">Wir bauen spezialisierte KI-Crews und hochsichere Enterprise-Modelle.</p>
+        <h1 id="hero-title">KI-Souveränität für Weltmarktführer</h1>
+        <p id="hero-sub" style="color:var(--muted); max-width:800px; margin: 20px auto;">Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.</p>
         <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
             <button onclick="toggleChat()" id="hero-btn" style="background:var(--primary); color:white; border:none; padding:15px 35px; border-radius:8px; font-weight:bold; cursor:pointer;">Leads kaufen (3€/Stk)</button>
             <a href="#booking" id="hero-book" style="background:transparent; border: 1px solid var(--accent); color: white; padding:15px 35px; border-radius:8px; font-weight:bold; text-decoration:none;">Beratung buchen</a>
@@ -89,12 +88,12 @@
     </section>
 
     <section id="crews" class="container">
-        <h2 id="title-crews">Spezialisierte KI-Crews</h2>
+        <h2 id="title-crews">Branchenspezifische KI-Crews</h2>
         <div class="grid" id="grid-crews"></div>
     </section>
 
     <section id="llm" class="container">
-        <h2 id="title-llm">Enterprise LLM</h2>
+        <h2 id="title-llm">Enterprise LLM Plattform</h2>
         <div class="llm-box">
             <h3 id="llm-def-h" style="color:var(--accent); margin-bottom:15px;"></h3>
             <p id="llm-def-p" style="margin-bottom:20px;"></p>
@@ -106,7 +105,7 @@
     </section>
 
     <section id="vorteile" class="container">
-        <h2 id="title-vort">Vorteile</h2>
+        <h2 id="title-vort">Ihre Vorteile</h2>
         <div class="grid" id="grid-vort"></div>
     </section>
 
@@ -117,7 +116,7 @@
 </main>
 
 <footer id="kontakt">
-    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
+    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:40px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
         <div>
             <h3 style="color:var(--accent); margin-bottom:15px;" id="foot-imp">Impressum</h3>
             <p><strong>AISOLUTIOS</strong><br>Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
@@ -126,7 +125,7 @@
         </div>
         <div>
             <h3 style="color:var(--accent); margin-bottom:15px;" id="foot-ds">Datenschutz</h3>
-            <p id="foot-ds-p"></p>
+            <div class="ds-text" id="foot-ds-p"></div>
         </div>
     </div>
 </footer>
@@ -155,42 +154,42 @@
     const translations = {
         de: {
             nav: ["Crews", "LLM", "Vorteile", "Termin", "Kontakt"],
-            hero: ["KI-Souveränität für Ihr Unternehmen", "Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.", "Leads kaufen (3€/Stk)", "Beratung buchen"],
+            hero: ["KI-Souveränität für Weltmarktführer", "Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.", "Leads kaufen (3€/Stk)", "Beratung buchen"],
             titles: ["Branchenspezifische KI-Crews", "Enterprise LLM Plattform", "Warum AISOLUTIOS?", "Erstberatung vereinbaren"],
             llm: ["Definition & Motivation", "Enterprise LLMs sind isolierte Sprachmodelle für höchste Datensouveränität. Motivation: Schutz Ihres geistigen Eigentums.", "On-Premise", "Installation direkt in Ihrer eigenen Server-Infrastruktur.", "Private Cloud", "Sicheres Hosting in abgeschirmten EU-Rechenzentren."],
-            foot: ["Impressum", "Datenschutz", "Wir verarbeiten Daten gemäß strengster DSGVO-Normen in Deutschland."],
+            foot: ["Impressum", "Datenschutz", "<strong>Datenschutzerklärung nach DSGVO:</strong><br>1. Verantwortlicher: Dr. Sidi Weiss. <br>2. Datenerhebung: Wir erheben Daten nur bei aktiver Kontaktaufnahme (Chat/Calendly). <br>3. Zweck: Bearbeitung Ihrer Anfrage & Abwicklung von Leads. <br>4. Speicherung: Hosting erfolgt in Deutschland. Keine Weitergabe an Dritte ohne Einwilligung. <br>5. Ihre Rechte: Sie haben jederzeit das Recht auf Auskunft, Berichtigung & Löschung Ihrer Daten."],
             crews: [
+                {h: "Transport & Logistik", p: "Routen-Optimierung & Dispatcher-Agenten.", r: "Ref: Transdev-Vertrieb, Deutsche Bahn", i: "fa-truck-fast"},
                 {h: "Solar & Erneuerbare", p: "Umsatz-Forecasting & Bestands-Agenten.", r: "Ref: K2-Systems", i: "fa-sun"},
                 {h: "Marketing & Werbung", p: "Kampagnen-KI & Content-Crews.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
                 {h: "Agrar & Lebensmittel", p: "KI für Züchtung & Landwirtschaft.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
                 {h: "Industrie & Auto", p: "Fehlererkennung & Wartung.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Versicherung", p: "Dunkelverarbeitung von Belegen.", r: "Ref: Hallesche", i: "fa-shield-halved"},
-                {h: "Finance & ESG", p: "CSRD-Reporting & Risiko-KI.", r: "Ref: LBBW", i: "fa-landmark"}
+                {h: "Versicherung & Finance", p: "Dunkelverarbeitung & CSRD-Reporting.", r: "Ref: Hallesche, LBBW", i: "fa-landmark"}
             ],
             vorts: [
                 {h: "Souveränität", p: "Ihre Daten verlassen niemals Ihr Unternehmen.", i: "fa-lock"},
-                {h: "Full-Service", p: "Von der Strategie bis zum Hosting vor Ort.", i: "fa-gears"},
+                {h: "Referenzen", p: "Erprobte Lösungen für DAX-Konzerne & Mittelstand.", i: "fa-star"},
                 {h: "Compliance", p: "100% DSGVO-konform für die DACH-Region.", i: "fa-user-shield"}
             ],
             chat: ["Ihr Name?", "E-Mail?", "Firma?", "Anzahl Leads (3€/Stk)?", "Vielen Dank! Das macht {price}€. Bitte via Stripe bezahlen:", "Jetzt bezahlen"]
         },
         en: {
             nav: ["Crews", "LLM", "Benefits", "Booking", "Contact"],
-            hero: ["AI Sovereignty for Enterprises", "Secure On-Premise solutions & specialized AI crews. Expert guidance by Dr. Sidi Weiss.", "Buy Leads (3€/ea)", "Book Consultation"],
+            hero: ["AI Sovereignty for Global Leaders", "Secure On-Premise solutions & specialized AI crews. Expert guidance by Dr. Sidi Weiss.", "Buy Leads (3€/ea)", "Book Consultation"],
             titles: ["Industry-Specific AI Crews", "Enterprise LLM Platform", "Why AISOLUTIOS?", "Schedule a Meeting"],
-            llm: ["Definition & Motivation", "Enterprise LLMs are private language models for maximum data sovereignty.", "On-Premise", "Deployment within your own server infrastructure.", "Private Cloud", "Secure hosting in isolated EU data centers."],
-            foot: ["Legal Notice", "Privacy", "We process data according to strict German GDPR standards."],
+            llm: ["Definition & Motivation", "Enterprise LLMs are private models for maximum data sovereignty. Protecting your intellectual property.", "On-Premise", "Deployment within your own server infrastructure.", "Private Cloud", "Secure hosting in isolated EU data centers."],
+            foot: ["Legal Notice", "Privacy", "<strong>Privacy Policy (GDPR):</strong><br>1. Controller: Dr. Sidi Weiss.<br>2. Data collection: Only via chat or booking.<br>3. Purpose: Lead processing & inquiries.<br>4. Storage: Hosted in Germany. No third-party sharing.<br>5. Rights: Access, correction & deletion at any time."],
             crews: [
+                {h: "Transport & Logistics", p: "Route optimization & dispatcher agents.", r: "Ref: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
                 {h: "Solar & Renewables", p: "Revenue forecasting & inventory agents.", r: "Ref: K2-Systems", i: "fa-sun"},
                 {h: "Marketing & Advertising", p: "Campaign AI & content crews.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
                 {h: "Agri & Food", p: "AI for breeding & agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
                 {h: "Industry & Auto", p: "Defect detection & maintenance.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Insurance", p: "Automated document processing.", r: "Ref: Hallesche", i: "fa-shield-halved"},
-                {h: "Finance & ESG", p: "CSRD reporting & risk AI.", r: "Ref: LBBW", i: "fa-landmark"}
+                {h: "Insurance & Finance", p: "Automated processing & CSRD.", r: "Ref: Hallesche, LBBW", i: "fa-landmark"}
             ],
             vorts: [
-                {h: "Sovereignty", p: "Your data never leaves your company.", i: "fa-lock"},
-                {h: "Full-Service", p: "From strategy to on-site hosting.", i: "fa-gears"},
+                {h: "Sovereignty", p: "Your data never leaves your infrastructure.", i: "fa-lock"},
+                {h: "References", p: "Proven solutions for DAX companies.", i: "fa-star"},
                 {h: "Compliance", p: "100% GDPR compliant.", i: "fa-user-shield"}
             ],
             chat: ["Name?", "Email?", "Company?", "Quantity (3€/ea)?", "Total: {price}€. Pay via Stripe:", "Pay Now"]
@@ -200,18 +199,18 @@
             hero: ["Souveraineté IA", "Solutions On-Premise & équipes IA. Expertise Dr. Sidi Weiss.", "Acheter Leads (3€/p)", "Prendre RDV"],
             titles: ["Équipes IA par Secteur", "Plateforme LLM Enterprise", "Pourquoi AISOLUTIOS?", "Réserver une consultation"],
             llm: ["Définition & Motivation", "Modèles privés pour une souveraineté totale.", "On-Premise", "Installation sur vos propres serveurs.", "Private Cloud", "Hébergement UE sécurisé."],
-            foot: ["Mentions Légales", "Confidentialité", "Conforme au RGPD."],
+            foot: ["Mentions Légales", "Confidentialité", "<strong>Confidentialité (RGPD):</strong><br>1. Responsable : Dr. Sidi Weiss.<br>2. Données : Uniquement via chat/RDV.<br>3. But : Traitement des commandes.<br>4. Hébergement : Allemagne. Pas de partage tiers."],
             crews: [
+                {h: "Transport & Logistique", p: "Optimisation de routes & agents.", r: "Ref: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
                 {h: "Solaire", p: "Prévisions & gestion de stock.", r: "Ref: K2-Systems", i: "fa-sun"},
                 {h: "Marketing", p: "IA de campagne & contenu.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
                 {h: "Agroalimentaire", p: "IA pour l'agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
                 {h: "Industrie", p: "Maintenance & détection.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Assurance", p: "Traitement de documents.", r: "Ref: Hallesche", i: "fa-shield-halved"},
-                {h: "Finance", p: "CSRD & Risque.", r: "Ref: LBBW", i: "fa-landmark"}
+                {h: "Finance & Assurance", p: "Reporting CSRD & processus.", r: "Ref: Hallesche, LBBW", i: "fa-landmark"}
             ],
             vorts: [
                 {h: "Souveraineté", p: "Les données restent chez vous.", i: "fa-lock"},
-                {h: "Service", p: "De la stratégie à l'hébergement.", i: "fa-gears"},
+                {h: "Références", p: "Solutions pour groupes DAX.", i: "fa-star"},
                 {h: "Conformité", p: "100% conforme au RGPD.", i: "fa-user-shield"}
             ],
             chat: ["Nom ?", "Email ?", "Entreprise ?", "Quantité (3€/p) ?", "Total : {price}€. Payer via Stripe :", "Payer"]
@@ -248,7 +247,7 @@
 
         document.getElementById('foot-imp').innerText = t.foot[0];
         document.getElementById('foot-ds').innerText = t.foot[1];
-        document.getElementById('foot-ds-p').innerText = t.foot[2];
+        document.getElementById('foot-ds-p').innerHTML = t.foot[2];
 
         document.getElementById('grid-crews').innerHTML = t.crews.map(c => `
             <div class="card"><i class="fas ${c.i}"></i><h4>${c.h}</h4><p>${c.p}</p><span class="ref">${c.r}</span></div>
