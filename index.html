@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS – Dr. Sidi Weiss | Autonome KI-Agenten & Enterprise LLM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>AISOLUTIOS – Dr. Sidi Weiss | Enterprise KI-Systeme & Agenten-Crews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     
@@ -13,64 +13,70 @@
             --bg: #0b0f1a; --bg2: #0e1426; --primary: #004a99; 
             --accent: #00aaff; --text: #e8ecf3; --muted: #9aa4b2;
             --card-bg: rgba(255, 255, 255, 0.03);
+            --gradient: linear-gradient(135deg, #004a99 0%, #00aaff 100%);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
 
         header {
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(12px);
+            background: rgba(10, 15, 30, 0.9); backdrop-filter: blur(15px);
             padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .nav-scroll-container { display: flex; align-items: center; gap: 15px; overflow-x: auto; scrollbar-width: none; }
-        .nav-scroll-container::-webkit-scrollbar { display: none; }
-        .nav-link { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.8; white-space: nowrap; }
+        .nav-link { color: var(--text); text-decoration: none; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; white-space: nowrap; }
         .nav-link:hover { opacity: 1; color: var(--accent); }
 
-        .lang-switch { display: flex; gap: 5px; margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px; }
-        .lang-btn { background: rgba(255,255,255,0.1); color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 900; }
-        .lang-btn.active { background: var(--primary); border: 1px solid var(--accent); }
+        .lang-switch { display: flex; gap: 4px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
+        .lang-btn { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 700; }
+        .lang-btn.active { background: var(--primary); border-color: var(--accent); }
 
-        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
-        h2 { font-size: 26px; border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 35px; text-transform: uppercase; }
+        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; border-left: 4px solid var(--primary); padding-left: 15px; }
+        h2 span { color: var(--accent); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--card-bg); border-radius: 15px; padding: 25px; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
-        .card:hover { border-color: var(--accent); transform: translateY(-3px); }
-        .card i { color: var(--accent); font-size: 24px; margin-bottom: 15px; }
-        .card h4 { margin-bottom: 10px; color: #fff; }
-        .card .ref { font-size: 11px; color: var(--accent); font-weight: 900; text-transform: uppercase; display: block; margin-top: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; position: relative; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255,255,255,0.05); }
+        .card i { font-size: 28px; margin-bottom: 20px; color: var(--accent); }
+        .card h4 { font-size: 19px; margin-bottom: 12px; color: #fff; }
+        .card p { color: var(--muted); font-size: 14px; }
 
-        .llm-box { background: rgba(0, 74, 153, 0.1); border: 1px solid var(--primary); padding: 40px; border-radius: 20px; }
-        
-        .team-card { display: flex; align-items: center; gap: 30px; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); }
-        .team-img { width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 35px; border: 2px solid var(--accent); }
+        .ref-tag { font-size: 10px; font-weight: 900; color: var(--accent); text-transform: uppercase; border: 1px solid var(--accent); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-top: 15px; }
 
-        #aiso-chat-window { position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; display: none; flex-direction: column; z-index: 2001; box-shadow: 0 10px 40px rgba(0,0,0,0.5); color: #333; overflow: hidden; }
-        .bot-msg { background:#e9ecef; padding:10px; border-radius:10px; align-self:flex-start; font-size:13px; max-width:85%; margin-bottom: 10px; }
-        .user-msg { background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; font-size:13px; max-width:85%; margin-bottom: 10px; }
-        .stripe-btn { background: #6772e5; color: white; padding: 12px; border-radius: 5px; text-decoration: none; display: block; text-align: center; margin-top: 10px; font-weight: bold; }
-        
-        .ds-text { font-size: 11px; color: var(--muted); line-height: 1.4; max-height: 200px; overflow-y: auto; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+        .llm-box { background: linear-gradient(135deg, rgba(0,74,153,0.1), rgba(0,170,255,0.05)); border: 1px solid rgba(0,74,153,0.3); padding: 50px; border-radius: 25px; }
+        .feature-list { list-style: none; margin: 20px 0; }
+        .feature-list li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text); }
+        .feature-list li i { color: var(--accent); margin-top: 5px; }
+
+        .team-card { display: flex; gap: 40px; background: var(--card-bg); padding: 50px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); align-items: center; flex-wrap: wrap; }
+        .team-img { width: 120px; height: 120px; background: var(--gradient); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 3px solid var(--accent); }
+
+        .btn-primary { background: var(--gradient); color: white; border: none; padding: 18px 40px; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn-primary:hover { transform: scale(1.05); }
+
+        footer { background: #05070a; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; max-width: 1200px; margin: auto; }
+        .ds-box { font-size: 11px; color: var(--muted); background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; max-height: 150px; overflow-y: auto; }
     </style>
 </head>
 <body>
 
 <header>
     <div style="display: flex; align-items: center;">
-        <div style="background:var(--primary); color:#fff; padding:4px 8px; border-radius:4px; font-weight:900;">AI</div>
-        <span style="margin-left:8px; font-weight:700;">AISOLUTIOS</span>
+        <div style="background:var(--primary); color:#fff; padding:5px 10px; border-radius:6px; font-weight:900;">AI</div>
+        <span style="margin-left:12px; font-weight:800; font-size:18px;">AISOLUTIOS</span>
     </div>
     <div class="nav-scroll-container">
         <a href="#crews" class="nav-link" id="nav-crews">Crews</a>
-        <a href="#llm" class="nav-link" id="nav-llm">LLM</a>
-        <a href="#team" class="nav-link" id="nav-team">Team</a>
-        <a href="#vorteile" class="nav-link" id="nav-vort">Vorteile</a>
-        <a href="#booking" class="nav-link" id="nav-book">Termin</a>
+        <a href="#llm" class="nav-link" id="nav-llm">LLM Platform</a>
+        <a href="#team" class="nav-link" id="nav-team">Expertise</a>
+        <a href="#vorteile" class="nav-link" id="nav-vort">Benefits</a>
+        <a href="#booking" class="nav-link" id="nav-book">Booking</a>
         <div class="lang-switch">
             <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
             <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
@@ -80,12 +86,12 @@
 </header>
 
 <main>
-    <section class="container" style="text-align: center;">
-        <h1 id="hero-title"></h1>
-        <p id="hero-sub" style="color:var(--muted); max-width:800px; margin: 20px auto;"></p>
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <button onclick="toggleChat()" id="hero-btn" style="background:var(--primary); color:white; border:none; padding:15px 35px; border-radius:8px; font-weight:bold; cursor:pointer;"></button>
-            <a href="#booking" id="hero-book" style="background:transparent; border: 1px solid var(--accent); color: white; padding:15px 35px; border-radius:8px; font-weight:bold; text-decoration:none;"></a>
+    <section class="container" style="text-align: center; padding: 100px 20px;">
+        <h1 id="hero-title" style="font-size: clamp(32px, 5vw, 60px); font-weight: 900; line-height: 1.1; margin-bottom: 25px;"></h1>
+        <p id="hero-sub" style="color:var(--muted); font-size: clamp(16px, 1.5vw, 19px); max-width: 800px; margin: 0 auto 40px auto;"></p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="#booking" class="btn-primary" id="hero-btn-1"></a>
+            <a href="#llm" class="btn-primary" style="background: transparent; border: 2px solid var(--primary);" id="hero-btn-2"></a>
         </div>
     </section>
 
@@ -95,13 +101,17 @@
     </section>
 
     <section id="llm" class="container">
-        <h2 id="title-llm"></h2>
         <div class="llm-box">
-            <h3 id="llm-def-h" style="color:var(--accent); margin-bottom:15px;"></h3>
-            <p id="llm-def-p" style="margin-bottom:20px;"></p>
-            <div class="grid">
-                <div class="card"><h4 id="llm-on-h"></h4><p id="llm-on-p"></p></div>
-                <div class="card"><h4 id="llm-priv-h"></h4><p id="llm-priv-p"></p></div>
+            <h2 id="title-llm" style="border:none; padding:0;"></h2>
+            <p id="llm-intro" style="font-size: 18px; margin-bottom: 30px;"></p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div>
+                    <ul class="feature-list" id="llm-list"></ul>
+                </div>
+                <div class="grid" style="grid-template-columns: 1fr;">
+                    <div class="card"><i class="fas fa-server"></i><h4 id="llm-c1-h"></h4><p id="llm-c1-p"></p></div>
+                    <div class="card"><i class="fas fa-lock"></i><h4 id="llm-c2-h"></h4><p id="llm-c2-p"></p></div>
+                </div>
             </div>
         </div>
     </section>
@@ -110,10 +120,10 @@
         <h2 id="title-team"></h2>
         <div class="team-card">
             <div class="team-img"><i class="fas fa-user-tie"></i></div>
-            <div>
-                <h3 style="color:var(--accent); margin-bottom:5px;">Dr. Sidi Weiss</h3>
-                <p style="color:var(--muted); font-weight:bold; margin-bottom:10px;" id="team-pos"></p>
-                <p id="team-desc"></p>
+            <div style="flex: 1; min-width: 300px;">
+                <h3 style="font-size: 28px; margin-bottom: 5px;">Dr. Sidi Weiss</h3>
+                <p id="team-pos" style="color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;"></p>
+                <div id="team-desc" style="color: var(--muted); font-size: 16px;"></div>
             </div>
         </div>
     </section>
@@ -123,212 +133,156 @@
         <div class="grid" id="grid-vort"></div>
     </section>
 
-    <section id="booking" class="container">
+    <section id="booking" class="container" style="text-align: center;">
         <h2 id="title-book"></h2>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
+        <p id="book-sub" style="margin-bottom: 40px; color: var(--muted);"></p>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:750px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden;"></div>
     </section>
 </main>
 
-<footer id="kontakt">
-    <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:40px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
+<footer>
+    <div class="footer-grid">
         <div>
-            <h3 style="color:var(--accent); margin-bottom:15px;" id="foot-imp-title"></h3>
-            <p><strong>AISOLUTIOS</strong><br>Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
-            <p style="margin-top:10px;">Email: vertrieb@aisolutios.de<br>Tel: 00 49 176 31591931<br>Steuernummer: 95408/32096</p>
+            <h3 style="color:var(--accent); margin-bottom:20px;">AISOLUTIOS</h3>
+            <p><strong>Dr. Sidi Weiss</strong><br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
+            <p style="margin-top:20px;">
+                Email: vertrieb@aisolutios.de<br>
+                Mobil: 00 49 176 31591931<br>
+                Web: www.aisolutios.de
+            </p>
         </div>
         <div>
-            <h3 style="color:var(--accent); margin-bottom:15px;" id="foot-ds-title"></h3>
-            <div class="ds-text" id="foot-ds-p"></div>
+            <h3 id="foot-legal-h" style="margin-bottom:20px;"></h3>
+            <div class="ds-box" id="foot-legal-p"></div>
         </div>
     </div>
 </footer>
 
-<div id="aiso-chat-trigger" onclick="toggleChat()" style="position:fixed; bottom:20px; right:20px; cursor:pointer; display:flex; align-items:center; gap:10px; z-index:2000;">
-    <div style="background:var(--primary); color:white; padding:10px 20px; border-radius:20px 20px 0 20px; font-weight:bold;" id="chat-trigger-text">Lead-Order 🚀</div>
-    <div style="background:var(--primary); color:white; width:55px; height:55px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:24px;"><i class="fas fa-robot"></i></div>
-</div>
-
-<div id="aiso-chat-window">
-    <div style="background:var(--primary); color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between;">
-        <span id="chat-window-title">AI Assistant</span>
-        <span onclick="toggleChat()" style="cursor:pointer;">&times;</span>
-    </div>
-    <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; background:#f4f7f9;"></div>
-    <div id="chat-footer" style="padding:10px; border-top:1px solid #ddd; display:flex; background:white;">
-        <input type="text" id="chat-input" placeholder="..." style="flex:1; border:1px solid #ccc; padding:8px; border-radius:5px;">
-        <button onclick="handleChat()" style="background:var(--primary); color:white; border:none; padding:8px 15px; margin-left:5px; border-radius:5px;"><i class="fas fa-paper-plane"></i></button>
-    </div>
-</div>
-
 <script>
-    const stripeLink = "https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00";
-    let currentLang = 'de';
-    
     const translations = {
         de: {
-            nav: ["Crews", "LLM", "Team", "Vorteile", "Termin"],
-            hero: ["KI-Souveränität für Weltmarktführer", "Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.", "Leads kaufen (3€/Stk)", "Beratung buchen"],
-            titles: ["KI-Crews & Referenzen", "Enterprise LLM Plattform", "Team & Expertise", "Warum AISOLUTIOS?", "Erstberatung vereinbaren"],
-            llm: ["Datensouveränität", "Schutz Ihres geistigen Eigentums durch isolierte Sprachmodelle.", "On-Premise", "Installation direkt in Ihrer eigenen Server-Infrastruktur.", "Private Cloud", "Sicheres Hosting in abgeschirmten EU-Rechenzentren."],
-            team: ["Gründer & Lead Architect", "Experte für autonome KI-Agenten und Enterprise-LLM. Dr. Weiss implementiert Lösungen für Konzerne (DB, Transdev), die höchste Datensicherheit erfordern."],
-            vorts: [
-                {h: "Souveränität", p: "Ihre Daten verlassen niemals Ihr Unternehmen durch On-Premise Hosting.", i: "fa-lock"},
-                {h: "Erfahrung", p: "Referenzen bei DAX-Konzernen und führenden Mittelständlern.", i: "fa-award"},
-                {h: "Full-Service", p: "Von der Strategie über die Entwicklung bis zum Betrieb.", i: "fa-gears"}
-            ],
-            foot: ["Impressum", "Datenschutz", "<strong>DSGVO Konformität:</strong> Wir verarbeiten Daten ausschließlich zur Anfragebearbeitung. Speicherung auf sicheren Servern in der EU. Keine Weitergabe ohne Einwilligung. Sie haben das Recht auf Auskunft & Löschung."],
+            nav: ["Crews", "LLM Plattform", "Expertise", "Vorteile", "Beratung"],
+            hero: ["KI-Souveränität für das nächste Zeitalter", "Wir entwickeln hochsichere Enterprise-LLMs und autonome Agenten-Crews für Marktführer. Skalierbar, privat und maßgeschneidert.", "Projekt anfragen", "LLM entdecken"],
+            titles: { crews: "Spezialisierte <span>KI-Crews</span>", llm: "Enterprise <span>LLM Plattform</span>", team: "Vision & <span>Expertise</span>", vort: "Ihre <span>Vorteile</span>", book: "KI-Strategie <span>besprechen</span>" },
             crews: [
-                {h: "Transport & Logistik", p: "Dispatcher-KI & Routenoptimierung.", r: "Ref: Transdev-Vertrieb, Deutsche Bahn", i: "fa-truck-fast"},
-                {h: "Solar & Erneuerbare", p: "Umsatz-Forecasting & Bestands-Agenten.", r: "Ref: K2-Systems", i: "fa-sun"},
-                {h: "Marketing & Werbung", p: "Kampagnen-KI & Content-Crews.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
-                {h: "Agrar & Lebensmittel", p: "KI für Züchtung & Landwirtschaft.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
-                {h: "Industrie & Auto", p: "Fehlererkennung & Wartung.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Versicherung & Finance", p: "Dunkelverarbeitung & Reporting.", r: "Ref: Hallesche, LBBW", i: "fa-landmark"}
+                {h: "Insurance Agents", p: "Automatisierung von Schadensmeldungen, Policen-Analyse und Kundenkommunikation unter Einhaltung strengster Datenschutzauflagen.", r: "Ref: Hallesche Versicherung, SOKA-BAU", i: "fa-shield-halved"},
+                {h: "Banking & Finanzen", p: "Sichere KI-Agenten für Portfolio-Analyse, Risk-Assessment und KYC-Prozesse in hochregulierten Umgebungen.", r: "Ref: LBBW", i: "fa-building-columns"},
+                {h: "Transport & Logistik", p: "KI-Dispatcher für automatisierte Routen- und Kapazitätsplanung. Reduktion von Leerfahrten und Echtzeit-Logistik.", r: "Ref: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
+                {h: "Renewable Energy", p: "Predictive Analytics für Solarerträge und Bestandsmanagement. Automatisierte Forecaster für Handelsentscheidungen.", r: "Ref: K2-Systems", i: "fa-sun"},
+                {h: "Marketing & Media", p: "Multi-Agenten-Systeme für die Content-Produktion. Automatisierte Kampagnensteuerung und technisches SEO.", r: "Ref: Springer Verlag, Serviceplan", i: "fa-bullhorn"},
+                {h: "Industry & Auto", p: "Computer Vision Agenten zur Qualitätskontrolle und prädiktiven Wartung in der Produktion.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"}
             ],
-            chat: ["Ihr Name?", "E-Mail?", "Firma?", "Anzahl Leads (3€/Stk)?", "Vielen Dank! Das macht {price}€. Bitte via Stripe bezahlen:", "Jetzt bezahlen"]
+            llm: {
+                intro: "Schützen Sie Ihr IP. Wir implementieren isolierte Sprachmodelle (LLMs), die exklusiv auf Ihrer Infrastruktur laufen.",
+                list: ["RAG-Architekturen für internes Firmenwissen", "Fine-Tuning auf spezifische Fachsprachen", "Vollständige DSGVO-Konformität", "State-of-the-Art Modelle (Llama 3, Mistral)"],
+                c1: {h: "On-Premise", p: "Keine Daten verlassen Ihr Unternehmen. Installation direkt auf Ihren Servern."},
+                c2: {h: "Private Cloud", p: "Sicheres Hosting in abgeschirmten EU-Rechenzentren mit höchster Performance."}
+            },
+            team: {
+                pos: "Gründer & Lead Architect",
+                desc: "<p>Dr. Sidi Weiss ist Experte für autonome KI-Agenten und Enterprise-Sprachmodelle. Er transformiert komplexe Unternehmensprozesse in skalierbare KI-Systeme.</p><p style='margin-top:10px;'>Mit Projekterfahrung bei Marktführern wie der LBBW, Hallesche und Deutschen Bahn garantiert er Lösungen, die höchste Anforderungen an Sicherheit erfüllen.</p>"
+            },
+            vorts: [
+                {h: "Souveränität", p: "100% Kontrolle über Ihre Daten. Kein Training durch Drittanbieter.", i: "fa-user-lock"},
+                {h: "Compliance", p: "Speziell für regulierte Branchen wie Finanzen und Versicherungen entwickelt.", i: "fa-file-signature"},
+                {h: "ROI", p: "Messbare Produktivitätssteigerung ab dem ersten Tag durch maßgeschneiderte Crews.", i: "fa-chart-line"}
+            ],
+            book: "Wählen Sie einen Termin für eine Analyse Ihrer Potenziale.",
+            foot: ["Rechtliches", "DSGVO-konforme KI-Lösungen. Alle Datenverarbeitungen finden in isolierten Umgebungen statt. © 2026 AISOLUTIOS - Dr. Sidi Weiss."]
         },
         en: {
-            nav: ["Crews", "LLM", "Team", "Benefits", "Booking"],
-            hero: ["AI Sovereignty for Leaders", "Secure On-Premise AI crews & Enterprise models by Dr. Sidi Weiss.", "Buy Leads (3€/ea)", "Book Consultation"],
-            titles: ["AI Crews & References", "Enterprise LLM Platform", "Team & Expertise", "Why AISOLUTIOS?", "Schedule Meeting"],
-            llm: ["Data Sovereignty", "Protection of your IP through isolated language models.", "On-Premise", "Direct installation within your server infrastructure.", "Private Cloud", "Secure hosting in isolated EU data centers."],
-            team: ["Founder & Lead Architect", "Expert in autonomous AI agents and enterprise LLM. Dr. Weiss implements solutions for major corporations (DB, Transdev)."],
-            vorts: [
-                {h: "Sovereignty", p: "Your data never leaves your company thanks to On-Premise hosting.", i: "fa-lock"},
-                {h: "Experience", p: "Proven track record with DAX companies and market leaders.", i: "fa-award"},
-                {h: "Full-Service", p: "From strategy and development to operations.", i: "fa-gears"}
-            ],
-            foot: ["Legal Notice", "Privacy", "<strong>GDPR Compliance:</strong> Data is processed exclusively for inquiries on secure EU servers. No sharing without consent."],
+            nav: ["Crews", "LLM Platform", "Expertise", "Benefits", "Booking"],
+            hero: ["AI Sovereignty for Global Leaders", "Custom high-security Enterprise LLMs and autonomous agent crews. Scalable, private, and tailored to your needs.", "Request Project", "Explore LLMs"],
+            titles: { crews: "Specialized <span>AI Crews</span>", llm: "Enterprise <span>LLM Platform</span>", team: "Vision & <span>Expertise</span>", vort: "Your <span>Benefits</span>", book: "Discuss <span>AI Strategy</span>" },
             crews: [
-                {h: "Transport & Logistics", p: "Dispatcher AI & route optimization.", r: "Ref: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
-                {h: "Solar & Renewables", p: "Forecasting & inventory agents.", r: "Ref: K2-Systems", i: "fa-sun"},
-                {h: "Marketing & Ads", p: "Campaign AI & content crews.", r: "Ref: Serviceplan, Springer", i: "fa-ad"},
-                {h: "Agri & Food", p: "AI for breeding & agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
-                {h: "Industry & Auto", p: "Defect detection & maintenance.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Finance & Insurance", p: "Dark processing & reporting.", r: "Ref: Hallesche, LBBW", i: "fa-landmark"}
+                {h: "Insurance Agents", p: "Automation of claims reporting, policy analysis, and customer communication under strict data privacy regulations.", r: "Ref: Hallesche Insurance, SOKA-BAU", i: "fa-shield-halved"},
+                {h: "Banking & Finance", p: "Secure AI agents for portfolio analysis, risk assessment, and KYC processes in highly regulated environments.", r: "Ref: LBBW", i: "fa-building-columns"},
+                {h: "Logistics & Transport", p: "AI dispatchers for automated route and capacity planning. Real-time fleet communication.", r: "Ref: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
+                {h: "Renewable Energy", p: "Predictive analytics for solar yields and inventory management. Automated forecasting.", r: "Ref: K2-Systems", i: "fa-sun"},
+                {h: "Marketing & Media", p: "Multi-agent systems for content production and automated campaign management.", r: "Ref: Springer, Serviceplan", i: "fa-bullhorn"},
+                {h: "Industry & Auto", p: "Computer vision agents for quality control and predictive maintenance.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"}
             ],
-            chat: ["Your Name?", "Email?", "Company?", "Number of leads (3€/ea)?", "Total: {price}€. Please pay via Stripe:", "Pay Now"]
+            llm: {
+                intro: "Protect your IP. We implement isolated LLMs running exclusively on your infrastructure.",
+                list: ["RAG architectures for internal knowledge", "Fine-tuning on specific domains", "Full GDPR compliance", "State-of-the-art models (Llama 3, Mistral)"],
+                c1: {h: "On-Premise", p: "No data leaves your company. Direct installation on your local servers."},
+                c2: {h: "Private Cloud", p: "Secure hosting in isolated EU data centers with maximum performance."}
+            },
+            team: {
+                pos: "Founder & Lead Architect",
+                desc: "<p>Dr. Sidi Weiss is an expert in autonomous AI agents and enterprise language models. He transforms complex processes into scalable AI systems.</p><p style='margin-top:10px;'>With experience at leaders like LBBW, Hallesche, and Deutsche Bahn, he guarantees security and efficiency.</p>"
+            },
+            vorts: [
+                {h: "Sovereignty", p: "100% data control. No 3rd party training with your data.", i: "fa-user-lock"},
+                {h: "Compliance", p: "Specifically designed for regulated sectors like finance and insurance.", i: "fa-file-signature"},
+                {h: "Future-Proof", p: "Scalable architectures that grow with your company.", i: "fa-chart-line"}
+            ],
+            book: "Select a slot to analyze your potential for AI-driven automation.",
+            foot: ["Legal", "GDPR-compliant AI solutions. Data processing in isolated environments. © 2026 AISOLUTIOS."]
         },
         fr: {
-            nav: ["Équipes", "LLM", "Équipe", "Avantages", "RDV"],
-            hero: ["Souveraineté IA", "Solutions On-Premise & équipes IA spécialisées. Expertise Dr. Sidi Weiss.", "Acheter Leads (3€/p)", "Réserver RDV"],
-            titles: ["Équipes IA & Réf.", "Plateforme LLM Enterprise", "Expertise & Équipe", "Pourquoi AISOLUTIOS?", "Prendre rendez-vous"],
-            llm: ["Souveraineté des données", "Protection de votre propriété intellectuelle via modèles isolés.", "On-Premise", "Installation directe sur votre infrastructure serveur.", "Private Cloud", "Hébergement sécurisé en centres de données UE."],
-            team: ["Fondateur & Lead Architect", "Expert en agents IA autonomes. Dr. Weiss déploie des solutions pour grands groupes (DB, Transdev)."],
-            vorts: [
-                {h: "Souveraineté", p: "Vos données ne quittent jamais votre entreprise.", i: "fa-lock"},
-                {h: "Expérience", p: "Références auprès des groupes du DAX et leaders du marché.", i: "fa-award"},
-                {h: "Service complet", p: "De la stratégie au déploiement et à l'exploitation.", i: "fa-gears"}
-            ],
-            foot: ["Mentions Légales", "Confidentialité", "<strong>Conformité RGPD :</strong> Traitement exclusif pour vos demandes sur serveurs sécurisés en UE."],
+            nav: ["Équipes", "Plateforme LLM", "Expertise", "Avantages", "RDV"],
+            hero: ["Souveraineté IA pour Leaders", "Modèles LLM sécurisés et équipes d'agents autonomes. Privé et sur mesure.", "Démarrer Projet", "Découvrir LLM"],
+            titles: { crews: "Équipes <span>IA Spécialisées</span>", llm: "Plateforme <span>LLM Enterprise</span>", team: "Vision & <span>Expertise</span>", vort: "Vos <span>Avantages</span>", book: "Réserver <span>Consultation</span>" },
             crews: [
-                {h: "Transport & Logistique", p: "IA Dispatcher & optimisation.", r: "Ref: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
-                {h: "Solaire & Énergie", p: "Prévisions & agents d'inventaire.", r: "Ref: K2-Systems", i: "fa-sun"},
-                {h: "Marketing & Pub", p: "IA de campagne & contenu.", r: "Ref: Serviceplan, Springer", i: "fa-ad"},
-                {h: "Agroalimentaire", p: "IA pour l'agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
-                {h: "Industrie & Auto", p: "Détection de défauts.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
-                {h: "Finance & Assurance", p: "Traitement automatisé.", r: "Ref: Hallesche, LBBW", i: "fa-landmark"}
+                {h: "Agents d'Assurance", p: "Automatisation des sinistres et analyse des polices sous haute protection des données.", r: "Réf: Assurance Hallesche, SOKA-BAU", i: "fa-shield-halved"},
+                {h: "Banque & Finance", p: "Agents IA sécurisés pour l'analyse de portefeuille et les processus KYC en milieu régulé.", r: "Réf: LBBW", i: "fa-building-columns"},
+                {h: "Logistique & Transport", p: "Optimisation automatisée des routes et des capacités en temps réel.", r: "Réf: Transdev, Deutsche Bahn", i: "fa-truck-fast"},
+                {h: "Énergie Solaire", p: "Analyses prédictives pour les rendements solaires et gestion automatisée.", r: "Réf: K2-Systems", i: "fa-sun"},
+                {h: "Marketing & Médias", p: "Systèmes multi-agents pour la production de contenu et gestion de campagnes.", r: "Réf: Springer, Serviceplan", i: "fa-bullhorn"},
+                {h: "Industrie & Auto", p: "IA pour le contrôle qualité et la maintenance prédictive en production.", r: "Réf: Mercedes-Benz, Porsche", i: "fa-industry"}
             ],
-            chat: ["Votre nom ?", "Email ?", "Entreprise ?", "Nombre de leads (3€/p) ?", "Total : {price}€. Payez via Stripe :", "Payer"]
+            llm: {
+                intro: "Protégez votre IP. Nous déployons des LLM isolés tournant exclusivement sur votre infrastructure.",
+                list: ["Architectures RAG pour savoir interne", "Fine-tuning spécialisé", "Conformité RGPD totale", "Modèles de pointe (Llama 3, Mistral)"],
+                c1: {h: "On-Premise", p: "Aucune donnée ne quitte votre entreprise. Installation locale."},
+                c2: {h: "Private Cloud", p: "Hébergement sécurisé dans des centres de données isolés en Europe."}
+            },
+            team: {
+                pos: "Fondateur & Architecte Principal",
+                desc: "<p>Le Dr Sidi Weiss est un expert en agents IA autonomes. Il transforme les processus complexes en systèmes IA évolutifs.</p><p style='margin-top:10px;'>Expérience confirmée auprès de leaders comme la LBBW, Hallesche et Deutsche Bahn.</p>"
+            },
+            vorts: [
+                {h: "Souveraineté", p: "Contrôle total des données. Aucun entraînement tiers.", i: "fa-user-lock"},
+                {h: "Conformité", p: "Conçu pour les secteurs réglementés (finance, assurance).", i: "fa-file-signature"},
+                {h: "ROI", p: "Gains de productivité mesurables dès le premier jour.", i: "fa-chart-line"}
+            ],
+            book: "Choisissez un créneau pour analyser votre potentiel d'automatisation.",
+            foot: ["Légal", "IA conforme au RGPD. Traitement des données en environnement isolé. © 2026 AISOLUTIOS."]
         }
     };
 
     function setLanguage(lang) {
-        currentLang = lang;
         const t = translations[lang];
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === 'btn-'+lang));
         
-        // Update Nav
+        // Nav & Hero & Titles
         document.getElementById('nav-crews').innerText = t.nav[0];
         document.getElementById('nav-llm').innerText = t.nav[1];
         document.getElementById('nav-team').innerText = t.nav[2];
         document.getElementById('nav-vort').innerText = t.nav[3];
         document.getElementById('nav-book').innerText = t.nav[4];
-
-        // Update Hero
         document.getElementById('hero-title').innerText = t.hero[0];
         document.getElementById('hero-sub').innerText = t.hero[1];
-        document.getElementById('hero-btn').innerText = t.hero[2];
-        document.getElementById('hero-book').innerText = t.hero[3];
+        document.getElementById('hero-btn-1').innerText = t.hero[2];
+        document.getElementById('hero-btn-2').innerText = t.hero[3];
+        Object.keys(t.titles).forEach(k => document.getElementById('title-'+k).innerHTML = t.titles[k]);
 
-        // Update Titles
-        document.getElementById('title-crews').innerText = t.titles[0];
-        document.getElementById('title-llm').innerText = t.titles[1];
-        document.getElementById('title-team').innerText = t.titles[2];
-        document.getElementById('title-vort').innerText = t.titles[3];
-        document.getElementById('title-book').innerText = t.titles[4];
-
-        // Update LLM Section
-        document.getElementById('llm-def-h').innerText = t.llm[0];
-        document.getElementById('llm-def-p').innerText = t.llm[1];
-        document.getElementById('llm-on-h').innerText = t.llm[2];
-        document.getElementById('llm-on-p').innerText = t.llm[3];
-        document.getElementById('llm-priv-h').innerText = t.llm[4];
-        document.getElementById('llm-priv-p').innerText = t.llm[5];
-
-        // Update Team
-        document.getElementById('team-pos').innerText = t.team[0];
-        document.getElementById('team-desc').innerText = t.team[1];
-
-        // Update Footer
-        document.getElementById('foot-imp-title').innerText = t.foot[0];
-        document.getElementById('foot-ds-title').innerText = t.foot[1];
-        document.getElementById('foot-ds-p').innerHTML = t.foot[2];
-
-        // Update Chat Trigger
-        document.getElementById('chat-trigger-text').innerText = (lang === 'de' ? 'Lead-Order 🚀' : (lang === 'fr' ? 'Commande Leads 🚀' : 'Order Leads 🚀'));
-
-        // Re-render Grids
+        // Content Sections
         document.getElementById('grid-crews').innerHTML = t.crews.map(c => `
-            <div class="card"><i class="fas ${c.i}"></i><h4>${c.h}</h4><p>${c.p}</p><span class="ref">${c.r}</span></div>
+            <div class="card"><i class="fas ${c.i}"></i><h4>${c.h}</h4><p>${c.p}</p><span class="ref-tag">${c.r}</span></div>
         `).join('');
+        document.getElementById('llm-intro').innerText = t.llm.intro;
+        document.getElementById('llm-list').innerHTML = t.llm.list.map(l => `<li><i class="fas fa-check-circle"></i> ${l}</li>`).join('');
+        document.getElementById('llm-c1-h').innerText = t.llm.c1.h; document.getElementById('llm-c1-p').innerText = t.llm.c1.p;
+        document.getElementById('llm-c2-h').innerText = t.llm.c2.h; document.getElementById('llm-c2-p').innerText = t.llm.c2.p;
+        document.getElementById('team-pos').innerText = t.team.pos; document.getElementById('team-desc').innerHTML = t.team.desc;
         document.getElementById('grid-vort').innerHTML = t.vorts.map(v => `
             <div class="card"><i class="fas ${v.i}"></i><h4>${v.h}</h4><p>${v.p}</p></div>
         `).join('');
-        
-        if(chatStep > 0) resetChat();
+        document.getElementById('book-sub').innerText = t.book;
+        document.getElementById('foot-legal-h').innerText = t.foot[0]; document.getElementById('foot-legal-p').innerText = t.foot[1];
     }
-
-    let chatStep = 0;
-    function toggleChat() {
-        const win = document.getElementById('aiso-chat-window');
-        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
-        if(chatStep === 0) resetChat();
-    }
-
-    function resetChat() {
-        document.getElementById('chat-content').innerHTML = "";
-        chatStep = 1;
-        addMsg(translations[currentLang].chat[0], 'bot');
-    }
-
-    function addMsg(txt, type, isHtml=false) {
-        const div = document.createElement('div');
-        div.className = type === 'bot' ? 'bot-msg' : 'user-msg';
-        if(isHtml) div.innerHTML = txt; else div.innerText = txt;
-        const content = document.getElementById('chat-content');
-        content.appendChild(div);
-        content.scrollTop = 9999;
-    }
-
-    function handleChat() {
-        const inp = document.getElementById('chat-input');
-        if(!inp.value) return;
-        addMsg(inp.value, 'user');
-        const val = inp.value;
-        inp.value = "";
-        setTimeout(() => {
-            if(chatStep < 4) {
-                addMsg(translations[currentLang].chat[chatStep], 'bot');
-                chatStep++;
-            } else if(chatStep === 4) {
-                const price = (parseInt(val) || 1) * 3;
-                const cTxt = translations[currentLang].chat[4].replace('{price}', price);
-                addMsg(`${cTxt}<br><a href="${stripeLink}" target="_blank" class="stripe-btn">${translations[currentLang].chat[5]}</a>`, 'bot', true);
-            }
-        }, 600);
-    }
-
     setLanguage('de');
 </script>
 </body>
