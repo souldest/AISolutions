@@ -18,7 +18,6 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); line-height: 1.6; }
 
-        /* HEADER & SCROLLABLE NAV */
         header {
             position: sticky; top: 0; z-index: 1000;
             background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(12px);
@@ -26,51 +25,46 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .nav-scroll-container {
-            display: flex; align-items: center; gap: 15px; overflow-x: auto;
-            scrollbar-width: none; white-space: nowrap; padding-left: 10px;
-        }
+        .nav-scroll-container { display: flex; align-items: center; gap: 15px; overflow-x: auto; scrollbar-width: none; }
         .nav-scroll-container::-webkit-scrollbar { display: none; }
-        
-        .nav-link { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; }
+        .nav-link { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.8; white-space: nowrap; }
         .nav-link:hover { opacity: 1; color: var(--accent); }
 
         .lang-switch { display: flex; gap: 5px; margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px; }
         .lang-btn { background: rgba(255,255,255,0.1); color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 900; }
-        .lang-btn.active { background: var(--primary); color: white; border: 1px solid var(--accent); }
+        .lang-btn.active { background: var(--primary); border: 1px solid var(--accent); }
 
         .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
         h2 { font-size: 26px; border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 35px; text-transform: uppercase; }
 
-        /* GRID & CARDS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card { background: var(--card-bg); border-radius: 15px; padding: 25px; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
         .card:hover { border-color: var(--accent); transform: translateY(-3px); }
         .card i { color: var(--accent); font-size: 24px; margin-bottom: 15px; }
         .card h4 { margin-bottom: 10px; color: #fff; }
-        .card p { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
-        .card .ref { font-size: 11px; color: var(--accent); font-weight: 900; text-transform: uppercase; }
+        .card .ref { font-size: 11px; color: var(--accent); font-weight: 900; text-transform: uppercase; display: block; margin-top: 10px; }
 
-        /* CHATBOT */
+        .llm-box { background: rgba(0, 74, 153, 0.1); border: 1px solid var(--primary); padding: 40px; border-radius: 20px; }
+
         #aiso-chat-window { position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; display: none; flex-direction: column; z-index: 2001; box-shadow: 0 10px 40px rgba(0,0,0,0.5); color: #333; overflow: hidden; }
-        .bot-msg { background:#e9ecef; padding:10px; border-radius:10px; align-self:flex-start; font-size:13px; max-width:85%; }
-        .user-msg { background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; font-size:13px; max-width:85%; }
+        .bot-msg { background:#e9ecef; padding:10px; border-radius:10px; align-self:flex-start; font-size:13px; max-width:85%; margin-bottom: 10px; }
+        .user-msg { background:var(--primary); color:white; padding:10px; border-radius:10px; align-self:flex-end; font-size:13px; max-width:85%; margin-bottom: 10px; }
         .stripe-btn { background: #6772e5; color: white; padding: 12px; border-radius: 5px; text-decoration: none; display: block; text-align: center; margin-top: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
-    <div style="display: flex; align-items: center; flex-shrink: 0;">
-        <div style="background:var(--primary); color:#fff; padding:4px 8px; border-radius:4px; font-weight:900; font-size:14px;">AI</div>
-        <span style="margin-left:8px; font-weight:700; font-size:16px;">AISOLUTIOS</span>
+    <div style="display: flex; align-items: center;">
+        <div style="background:var(--primary); color:#fff; padding:4px 8px; border-radius:4px; font-weight:900;">AI</div>
+        <span style="margin-left:8px; font-weight:700;">AISOLUTIOS</span>
     </div>
     
     <div class="nav-scroll-container">
-        <a href="#crews" class="nav-link">Crews</a>
-        <a href="#llm" class="nav-link">Enterprise LLM</a>
-        <a href="#vorteile" class="nav-link">Vorteile</a>
-        <a href="#kontakt" class="nav-link">Kontakt</a>
+        <a href="#crews" class="nav-link" id="nav-crews">Crews</a>
+        <a href="#llm" class="nav-link" id="nav-llm">Enterprise LLM</a>
+        <a href="#vorteile" class="nav-link" id="nav-vort">Vorteile</a>
+        <a href="#kontakt" class="nav-link" id="nav-kont">Kontakt</a>
         <div class="lang-switch">
             <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
             <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
@@ -81,99 +75,62 @@
 
 <main>
     <section class="container" style="text-align: center;">
-        <h1 style="font-size: clamp(30px, 5vw, 48px); font-weight: 900;">KI-Agenten für den Mittelstand</h1>
-        <p style="color:var(--muted); max-width:700px; margin: 20px auto;">Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.</p>
-        <button onclick="toggleChat()" style="background:var(--primary); color:white; border:none; padding:15px 35px; border-radius:8px; font-weight:bold; cursor:pointer; margin-top:20px;">Leads kaufen (3€/Stk)</button>
+        <h1 id="hero-title">KI-Souveränität für Ihr Unternehmen</h1>
+        <p id="hero-sub" style="color:var(--muted); max-width:800px; margin: 20px auto;">Wir bauen spezialisierte KI-Crews und hochsichere Enterprise-Modelle.</p>
+        <button onclick="toggleChat()" id="hero-btn" style="background:var(--primary); color:white; border:none; padding:15px 35px; border-radius:8px; font-weight:bold; cursor:pointer;">Leads kaufen (3€/Stk)</button>
     </section>
 
     <section id="crews" class="container">
-        <h2>Branchenspezifische KI-Crews</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-sun"></i>
-                <h4>Solar & Erneuerbare</h4>
-                <p>KI-Agenten für Umsatz-Forecasting und Bestandsmanagement (Vorrat).</p>
-                <span class="ref">Referenz: K2-Systems</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-ad"></i>
-                <h4>Marketing & Werbung</h4>
-                <p>Automatisierte Kampagnen-Steuerung und Content-Crews für Verlage.</p>
-                <span class="ref">Referenz: Serviceplan, Springer Verlag</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-seedling"></i>
-                <h4>Agrar & Lebensmittel</h4>
-                <p>Datenextraktion und Analyse für Züchtung und Landwirtschaft.</p>
-                <span class="ref">Referenz: KWS, LKV Bayern</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-industry"></i>
-                <h4>Industrie & Automotive</h4>
-                <p>Deep Learning zur Fehlererkennung und vorausschauende Wartung.</p>
-                <span class="ref">Referenz: Mercedes-Benz, Porsche</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Versicherung</h4>
-                <p>KI-Crews zur Dunkelverarbeitung von Dokumenten.</p>
-                <span class="ref">Referenz: Hallesche</span>
-            </div>
-            <div class="card">
-                <i class="fas fa-landmark"></i>
-                <h4>Finance & ESG</h4>
-                <p>Automatisierung von CSRD-Reporting und Risikoanalyse.</p>
-                <span class="ref">Referenz: LBBW</span>
-            </div>
-        </div>
+        <h2 id="title-crews">Spezialisierte KI-Crews</h2>
+        <div class="grid" id="grid-crews"></div>
     </section>
 
     <section id="llm" class="container">
-        <h2>Enterprise LLM Plattform</h2>
-        <div style="background:rgba(0,170,255,0.05); padding:30px; border-radius:20px; border:1px solid var(--primary);">
-            <h4 style="color:var(--accent); margin-bottom:10px;">Definition & Motivation</h4>
-            <p>Ein Enterprise LLM ist ein privates Sprachmodell. Die Motivation: Volle Datensouveränität. AISOLUTIOS bietet sichere **On-Premise** Installationen oder Hosting in der **Private Cloud** an. Ihre Daten verlassen niemals das Unternehmen.</p>
+        <h2 id="title-llm">Enterprise LLM</h2>
+        <div class="llm-box">
+            <h3 id="llm-def-h" style="color:var(--accent); margin-bottom:15px;"></h3>
+            <p id="llm-def-p" style="margin-bottom:20px;"></p>
+            <div class="grid">
+                <div class="card"><h4 id="llm-on-h"></h4><p id="llm-on-p"></p></div>
+                <div class="card"><h4 id="llm-priv-h"></h4><p id="llm-priv-p"></p></div>
+            </div>
         </div>
     </section>
 
     <section id="vorteile" class="container">
-        <h2>Warum AISOLUTIOS?</h2>
-        <div class="grid">
-            <div class="card"><h4>Sicherheit</h4><p>Kein Datentransfer in Drittstaaten. 100% DSGVO-konform.</p></div>
-            <div class="card"><h4>Expertise</h4><p>Dr. Sidi Weiss verbindet Wissenschaft mit Enterprise-Praxis.</p></div>
-            <div class="card"><h4>Autonomie</h4><p>Agenten-Crews, die Aufgaben wirklich zu Ende führen.</p></div>
-        </div>
+        <h2 id="title-vort">Vorteile</h2>
+        <div class="grid" id="grid-vort"></div>
     </section>
 </main>
 
 <footer id="kontakt">
     <div class="container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px; border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;">
         <div>
-            <h3 style="color:var(--accent); margin-bottom:15px;">Impressum</h3>
+            <h3 style="color:var(--accent); margin-bottom:15px;" id="foot-imp">Impressum</h3>
             <p><strong>AISOLUTIOS</strong><br>Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
             <p style="margin-top:10px;"><strong>Steuernummer:</strong> 93451/01801<br><strong>Finanzamt:</strong> Stuttgart II</p>
             <p style="margin-top:10px;">Email: vertrieb@aisolutios.de<br>Tel: 00 49 176 31591931</p>
         </div>
         <div>
-            <h3 style="color:var(--accent); margin-bottom:15px;">Datenschutz</h3>
-            <p>Wir arbeiten nach strengen DSGVO-Normen. Daten werden nur zur Abwicklung Ihrer Anfragen genutzt. Hosting erfolgt in Deutschland.</p>
+            <h3 style="color:var(--accent); margin-bottom:15px;" id="foot-ds">Datenschutz</h3>
+            <p id="foot-ds-p"></p>
         </div>
     </div>
 </footer>
 
 <div id="aiso-chat-trigger" onclick="toggleChat()" style="position:fixed; bottom:20px; right:20px; cursor:pointer; display:flex; align-items:center; gap:10px; z-index:2000;">
-    <div style="background:var(--primary); color:white; padding:10px 20px; border-radius:20px 20px 0 20px; font-weight:bold;">Leads 🚀</div>
+    <div style="background:var(--primary); color:white; padding:10px 20px; border-radius:20px 20px 0 20px; font-weight:bold;">Lead-Order 🚀</div>
     <div style="background:var(--primary); color:white; width:55px; height:55px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:24px;"><i class="fas fa-robot"></i></div>
 </div>
 
 <div id="aiso-chat-window">
     <div style="background:var(--primary); color:white; padding:15px; font-weight:bold; display:flex; justify-content:space-between;">
-        <span>Sales Assistant</span>
+        <span id="chat-title">AI Assistant</span>
         <span onclick="toggleChat()" style="cursor:pointer;">&times;</span>
     </div>
-    <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; background:#f4f7f9;"></div>
+    <div id="chat-content" style="flex:1; padding:15px; overflow-y:auto; display:flex; flex-direction:column; background:#f4f7f9;"></div>
     <div id="chat-footer" style="padding:10px; border-top:1px solid #ddd; display:flex; background:white;">
-        <input type="text" id="chat-input" placeholder="Antwort..." style="flex:1; border:1px solid #ccc; padding:8px; border-radius:5px; outline:none;">
+        <input type="text" id="chat-input" placeholder="..." style="flex:1; border:1px solid #ccc; padding:8px; border-radius:5px;">
         <button onclick="handleChat()" style="background:var(--primary); color:white; border:none; padding:8px 15px; margin-left:5px; border-radius:5px;"><i class="fas fa-paper-plane"></i></button>
     </div>
 </div>
@@ -181,37 +138,129 @@
 <script>
     const stripeLink = "https://buy.stripe.com/dRm14n7Rk6Vy1Pm7DO5Vu00";
     let currentLang = 'de';
-    let chatStep = 0;
-    let userData = { email: "" };
-
-    const texts = {
+    
+    const translations = {
         de: {
-            steps: ["Ihr Name?", "Ihre E-Mail?", "Firma?", "Branche?", "Ziel-Leads?", "Wieviele Leads? (3€ pro Stück)"],
-            confirm: "Vielen Dank! Das macht {price}€. Wir senden die Leads an {email}.",
-            payBtn: "Jetzt {price}€ bezahlen"
+            nav: ["Crews", "LLM", "Vorteile", "Kontakt"],
+            hero: ["KI-Agenten für Weltmarktführer", "Sichere On-Premise Lösungen & spezialisierte KI-Crews. Expertise durch Dr. Sidi Weiss.", "Leads kaufen (3€/Stk)"],
+            titles: ["Branchenspezifische KI-Crews", "Enterprise LLM Plattform", "Warum AISOLUTIOS?"],
+            llm: ["Definition & Motivation", "Enterprise LLMs sind isolierte Sprachmodelle für höchste Datensouveränität. Motivation: Schutz Ihres geistigen Eigentums.", "On-Premise", "Installation direkt in Ihrer eigenen Server-Infrastruktur.", "Private Cloud", "Sicheres Hosting in abgeschirmten EU-Rechenzentren."],
+            foot: ["Impressum", "Datenschutz", "Wir verarbeiten Daten gemäß strengster DSGVO-Normen in Deutschland."],
+            crews: [
+                {h: "Solar & Erneuerbare", p: "Umsatz-Forecasting & Bestands-Agenten.", r: "Ref: K2-Systems", i: "fa-sun"},
+                {h: "Marketing & Werbung", p: "Kampagnen-KI & Content-Crews.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
+                {h: "Agrar & Lebensmittel", p: "KI für Züchtung & Landwirtschaft.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
+                {h: "Industrie & Auto", p: "Fehlererkennung & Wartung.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
+                {h: "Versicherung", p: "Dunkelverarbeitung von Belegen.", r: "Ref: Hallesche", i: "fa-shield-halved"},
+                {h: "Finance & ESG", p: "CSRD-Reporting & Risiko-KI.", r: "Ref: LBBW", i: "fa-landmark"}
+            ],
+            vorts: [
+                {h: "Souveränität", p: "Ihre Daten verlassen niemals Ihr Unternehmen.", i: "fa-lock"},
+                {h: "Full-Service", p: "Von der Strategie bis zum Hosting vor Ort.", i: "fa-gears"},
+                {h: "Compliance", p: "100% DSGVO-konform für die DACH-Region.", i: "fa-user-shield"}
+            ],
+            chat: ["Ihr Name?", "E-Mail?", "Firma?", "Anzahl Leads (3€/Stk)?", "Vielen Dank! Das macht {price}€. Bitte via Stripe bezahlen:", "Jetzt bezahlen"]
         },
         en: {
-            steps: ["Name?", "Email?", "Company?", "Industry?", "Target Leads?", "How many leads? (3€ each)"],
-            confirm: "Thank you! Total: {price}€. Leads will be sent to {email}.",
-            payBtn: "Pay {price}€ now"
+            nav: ["Crews", "LLM", "Benefits", "Contact"],
+            hero: ["AI Sovereignty for Enterprises", "Secure On-Premise solutions & specialized AI crews. Expert guidance by Dr. Sidi Weiss.", "Buy Leads (3€/ea)"],
+            titles: ["Industry-Specific AI Crews", "Enterprise LLM Platform", "Why AISOLUTIOS?"],
+            llm: ["Definition & Motivation", "Enterprise LLMs are private language models for maximum data sovereignty. Motivation: Protecting your intellectual property.", "On-Premise", "Deployment directly within your own server infrastructure.", "Private Cloud", "Secure hosting in isolated EU data centers."],
+            foot: ["Legal Notice", "Privacy", "We process data according to strict German GDPR standards."],
+            crews: [
+                {h: "Solar & Renewables", p: "Revenue forecasting & inventory agents.", r: "Ref: K2-Systems", i: "fa-sun"},
+                {h: "Marketing & Advertising", p: "Campaign AI & content crews.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
+                {h: "Agri & Food", p: "AI for breeding & agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
+                {h: "Industry & Auto", p: "Defect detection & maintenance.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
+                {h: "Insurance", p: "Automated document processing.", r: "Ref: Hallesche", i: "fa-shield-halved"},
+                {h: "Finance & ESG", p: "CSRD reporting & risk AI.", r: "Ref: LBBW", i: "fa-landmark"}
+            ],
+            vorts: [
+                {h: "Sovereignty", p: "Your data never leaves your company.", i: "fa-lock"},
+                {h: "Full-Service", p: "From strategy to on-site hosting.", i: "fa-gears"},
+                {h: "Compliance", p: "100% GDPR compliant for the EU market.", i: "fa-user-shield"}
+            ],
+            chat: ["Your Name?", "Your Email?", "Company?", "How many leads (3€/ea)?", "Thank you! Total is {price}€. Please pay via Stripe:", "Pay Now"]
         },
         fr: {
-            steps: ["Nom ?", "Email ?", "Entreprise ?", "Secteur ?", "Leads cibles ?", "Combien de leads ? (3€ l'unité)"],
-            confirm: "Merci ! Total : {price}€. Les leads seront envoyés à {email}.",
-            payBtn: "Payer {price}€"
+            nav: ["Équipes", "LLM", "Avantages", "Contact"],
+            hero: ["Souveraineté IA pour Entreprises", "Solutions On-Premise sécurisées & équipes IA spécialisées. Expertise Dr. Sidi Weiss.", "Acheter Leads (3€/p)"],
+            titles: ["Équipes IA par Secteur", "Plateforme LLM Enterprise", "Pourquoi AISOLUTIOS?"],
+            llm: ["Définition & Motivation", "Les LLM Enterprise sont des modèles privés pour une souveraineté totale. Motivation : Protection de votre IP.", "On-Premise", "Installation directe sur votre propre infrastructure serveur.", "Private Cloud", "Hébergement sécurisé dans des centres de données UE isolés."],
+            foot: ["Mentions Légales", "Confidentialité", "Nous traitons les données selon les normes RGPD strictes en Allemagne."],
+            crews: [
+                {h: "Solaire & Renouvelable", p: "Prévisions de revenus & gestion de stock.", r: "Ref: K2-Systems", i: "fa-sun"},
+                {h: "Marketing & Pub", p: "IA de campagne & équipes de contenu.", r: "Ref: Serviceplan, Springer Verlag", i: "fa-ad"},
+                {h: "Agroalimentaire", p: "IA pour l'élevage & l'agriculture.", r: "Ref: KWS, LKV Bayern", i: "fa-seedling"},
+                {h: "Industrie & Auto", p: "Détection de défauts & maintenance.", r: "Ref: Mercedes-Benz, Porsche", i: "fa-industry"},
+                {h: "Assurance", p: "Traitement automatisé de documents.", r: "Ref: Hallesche", i: "fa-shield-halved"},
+                {h: "Finance & ESG", p: "Reporting CSRD & IA de risque.", r: "Ref: LBBW", i: "fa-landmark"}
+            ],
+            vorts: [
+                {h: "Souveraineté", p: "Vos données ne quittent jamais votre entreprise.", i: "fa-lock"},
+                {h: "Service Complet", p: "De la stratégie à l'hébergement sur site.", i: "fa-gears"},
+                {h: "Conformité", p: "100% conforme au RGPD pour le marché européen.", i: "fa-user-shield"}
+            ],
+            chat: ["Votre Nom ?", "E-mail ?", "Entreprise ?", "Quantité de leads (3€/p) ?", "Merci ! Total : {price}€. Veuillez payer via Stripe :", "Payer maintenant"]
         }
     };
 
     function setLanguage(lang) {
         currentLang = lang;
+        const t = translations[lang];
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === 'btn-'+lang));
+        
+        // Header
+        document.getElementById('nav-crews').innerText = t.nav[0];
+        document.getElementById('nav-llm').innerText = t.nav[1];
+        document.getElementById('nav-vort').innerText = t.nav[2];
+        document.getElementById('nav-kont').innerText = t.nav[3];
+
+        // Hero
+        document.getElementById('hero-title').innerText = t.hero[0];
+        document.getElementById('hero-sub').innerText = t.hero[1];
+        document.getElementById('hero-btn').innerText = t.hero[2];
+
+        // Titles
+        document.getElementById('title-crews').innerText = t.titles[0];
+        document.getElementById('title-llm').innerText = t.titles[1];
+        document.getElementById('title-vort').innerText = t.titles[2];
+
+        // LLM
+        document.getElementById('llm-def-h').innerText = t.llm[0];
+        document.getElementById('llm-def-p').innerText = t.llm[1];
+        document.getElementById('llm-on-h').innerText = t.llm[2];
+        document.getElementById('llm-on-p').innerText = t.llm[3];
+        document.getElementById('llm-priv-h').innerText = t.llm[4];
+        document.getElementById('llm-priv-p').innerText = t.llm[5];
+
+        // Footer
+        document.getElementById('foot-imp').innerText = t.foot[0];
+        document.getElementById('foot-ds').innerText = t.foot[1];
+        document.getElementById('foot-ds-p').innerText = t.foot[2];
+
+        // Grids
+        document.getElementById('grid-crews').innerHTML = t.crews.map(c => `
+            <div class="card"><i class="fas ${c.i}"></i><h4>${c.h}</h4><p>${c.p}</p><span class="ref">${c.r}</span></div>
+        `).join('');
+        document.getElementById('grid-vort').innerHTML = t.vorts.map(v => `
+            <div class="card"><i class="fas ${v.i}"></i><h4>${v.h}</h4><p>${v.p}</p></div>
+        `).join('');
+        
+        if(chatStep > 0) resetChat();
+    }
+
+    let chatStep = 0;
+    function toggleChat() {
+        const win = document.getElementById('aiso-chat-window');
+        win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
         if(chatStep === 0) resetChat();
     }
 
-    function toggleChat() {
-        const win = document.getElementById('aiso-chat-window');
-        win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        if(chatStep === 0) resetChat();
+    function resetChat() {
+        document.getElementById('chat-content').innerHTML = "";
+        chatStep = 1;
+        addMsg(translations[currentLang].chat[0], 'bot');
     }
 
     function addMsg(txt, type, isHtml=false) {
@@ -222,34 +271,27 @@
         document.getElementById('chat-content').scrollTop = 9999;
     }
 
-    function resetChat() {
-        document.getElementById('chat-content').innerHTML = "";
-        chatStep = 1;
-        addMsg(texts[currentLang].steps[0], 'bot');
-    }
-
     function handleChat() {
         const inp = document.getElementById('chat-input');
-        const val = inp.value.trim();
-        if(!val) return;
-        addMsg(val, 'user');
-        if(chatStep === 2) userData.email = val;
+        if(!inp.value) return;
+        addMsg(inp.value, 'user');
+        const val = inp.value;
         inp.value = "";
 
         setTimeout(() => {
-            if(chatStep < 6) {
-                addMsg(texts[currentLang].steps[chatStep], 'bot');
+            if(chatStep < 4) {
+                addMsg(translations[currentLang].chat[chatStep], 'bot');
                 chatStep++;
-            } else if(chatStep === 6) {
-                const count = parseInt(val) || 1;
-                const price = count * 3;
-                let cTxt = texts[currentLang].confirm.replace('{price}', price).replace('{email}', userData.email);
-                let bTxt = texts[currentLang].payBtn.replace('{price}', price);
+            } else if(chatStep === 4) {
+                const price = (parseInt(val) || 1) * 3;
+                const cTxt = translations[currentLang].chat[4].replace('{price}', price);
+                const bTxt = translations[currentLang].chat[5];
                 addMsg(`${cTxt}<br><a href="${stripeLink}" target="_blank" class="stripe-btn">${bTxt}</a>`, 'bot', true);
-                document.getElementById('chat-footer').style.display = 'none';
             }
         }, 600);
     }
+
+    setLanguage('de');
 </script>
 </body>
 </html>
