@@ -36,6 +36,17 @@
         .lang-btn.active { background: var(--primary); border-color: var(--accent); }
 
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        
+        /* Hero Styling */
+        .hero-section { text-align: center; padding: 120px 20px 60px 20px; background: radial-gradient(circle at center, rgba(0,74,153,0.15) 0%, transparent 70%); }
+        .hero-badge { background: rgba(0, 170, 255, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; display: inline-block; border: 1px solid rgba(0, 170, 255, 0.2); }
+        
+        /* Trusted By Section */
+        .trusted-by { padding: 20px 0 60px 0; text-align: center; }
+        .trusted-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 30px; font-weight: 700; }
+        .logo-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(1); }
+        .logo-item { font-size: 18px; font-weight: 900; color: var(--text); display: flex; align-items: center; gap: 8px; }
+
         h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; border-left: 4px solid var(--primary); padding-left: 15px; }
         h2 span { color: var(--accent); }
 
@@ -57,11 +68,14 @@
         .team-img { width: 120px; height: 120px; background: var(--gradient); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 50px; border: 3px solid var(--accent); }
 
         .btn-primary { background: var(--gradient); color: white; border: none; padding: 18px 40px; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn-primary:hover { transform: scale(1.05); }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2); }
 
         footer { background: #05070a; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; max-width: 1200px; margin: auto; }
         .ds-box { font-size: 11px; color: var(--muted); background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; max-height: 150px; overflow-y: auto; }
+        
+        /* Floating Chatbot Mockup - Optischer Hinweis */
+        .chat-hint { position: fixed; bottom: 30px; right: 30px; background: var(--gradient); padding: 15px 25px; border-radius: 50px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; gap: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -86,12 +100,26 @@
 </header>
 
 <main>
-    <section class="container" style="text-align: center; padding: 100px 20px;">
-        <h1 id="hero-title" style="font-size: clamp(32px, 5vw, 60px); font-weight: 900; line-height: 1.1; margin-bottom: 25px;"></h1>
-        <p id="hero-sub" style="color:var(--muted); font-size: clamp(16px, 1.5vw, 19px); max-width: 800px; margin: 0 auto 40px auto;"></p>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="#booking" class="btn-primary" id="hero-btn-1"></a>
-            <a href="#llm" class="btn-primary" style="background: transparent; border: 2px solid var(--primary);" id="hero-btn-2"></a>
+    <section class="hero-section">
+        <div class="container" style="padding: 0;">
+            <div class="hero-badge" id="hero-badge-text">Next-Gen Autonomous AI</div>
+            <h1 id="hero-title" style="font-size: clamp(32px, 6vw, 72px); font-weight: 900; line-height: 1.05; margin-bottom: 25px; letter-spacing: -2px;"></h1>
+            <p id="hero-sub" style="color:var(--muted); font-size: clamp(18px, 1.8vw, 22px); max-width: 900px; margin: 0 auto 40px auto; font-weight: 400;"></p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px;">
+                <a href="#booking" class="btn-primary" id="hero-btn-1"></a>
+                <a href="#llm" class="btn-primary" style="background: transparent; border: 2px solid var(--primary);" id="hero-btn-2"></a>
+            </div>
+            
+            <div class="trusted-by">
+                <p class="trusted-label" id="trusted-text">Vertrauen von Branchenführern</p>
+                <div class="logo-grid">
+                    <div class="logo-item"><i class="fas fa-university"></i> LBBW</div>
+                    <div class="logo-item"><i class="fas fa-shield-alt"></i> Hallesche</div>
+                    <div class="logo-item"><i class="fas fa-train"></i> Deutsche Bahn</div>
+                    <div class="logo-item"><i class="fas fa-hard-hat"></i> SOKA-BAU</div>
+                    <div class="logo-item"><i class="fas fa-bolt"></i> K2-Systems</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -158,11 +186,23 @@
     </div>
 </footer>
 
+<div class="chat-hint" onclick="window.location.hash='booking'">
+    <i class="fas fa-robot"></i> <span id="chat-hint-text">Potenzial-Analyse starten</span>
+</div>
+
 <script>
     const translations = {
         de: {
             nav: ["Crews", "LLM Plattform", "Expertise", "Vorteile", "Beratung"],
-            hero: ["KI-Souveränität für das nächste Zeitalter", "Wir entwickeln hochsichere Enterprise-LLMs und autonome Agenten-Crews für Marktführer. Skalierbar, privat und maßgeschneidert.", "Projekt anfragen", "LLM entdecken"],
+            hero_badge: "Enterprise KI-Architektur",
+            hero: [
+                "Ihre eigene KI-Crew. Autonom. Sicher. On-Premise.", 
+                "Wir bauen nicht nur Bots. Wir implementieren ganze Agenten-Crews, die Ihre Geschäftsprozesse autonom steuern – direkt auf Ihrer Infrastruktur. Maximale Souveränität für Marktführer.", 
+                "KI-Strategie planen", 
+                "Technologie-Stack"
+            ],
+            trusted: "Vertrauen von Marktführern & Konzernen",
+            chat_hint: "KI-Potenzial berechnen",
             titles: { crews: "Spezialisierte <span>KI-Crews</span>", llm: "Enterprise <span>LLM Plattform</span>", team: "Vision & <span>Expertise</span>", vort: "Ihre <span>Vorteile</span>", book: "KI-Strategie <span>besprechen</span>" },
             crews: [
                 {h: "Insurance Agents", p: "Automatisierung von Schadensmeldungen, Policen-Analyse und Kundenkommunikation unter Einhaltung strengster Datenschutzauflagen.", r: "Ref: Hallesche Versicherung, SOKA-BAU", i: "fa-shield-halved"},
@@ -185,14 +225,22 @@
             vorts: [
                 {h: "Souveränität", p: "100% Kontrolle über Ihre Daten. Kein Training durch Drittanbieter.", i: "fa-user-lock"},
                 {h: "Compliance", p: "Speziell für regulierte Branchen wie Finanzen und Versicherungen entwickelt.", i: "fa-file-signature"},
-                {h: "ROI", p: "Messbare Produktivitätssteigerung ab dem ersten Tag durch maßgeschneiderte Crews.", i: "fa-chart-line"}
+                {h: "Skalierbarkeit", p: "Wachsen Sie mit Ihren eigenen KI-Agenten ohne prozentuale API-Kosten-Explosion.", i: "fa-rocket"}
             ],
             book: "Wählen Sie einen Termin für eine Analyse Ihrer Potenziale.",
             foot: ["Rechtliches", "DSGVO-konforme KI-Lösungen. Alle Datenverarbeitungen finden in isolierten Umgebungen statt. © 2026 AISOLUTIOS - Dr. Sidi Weiss."]
         },
         en: {
             nav: ["Crews", "LLM Platform", "Expertise", "Benefits", "Booking"],
-            hero: ["AI Sovereignty for Global Leaders", "Custom high-security Enterprise LLMs and autonomous agent crews. Scalable, private, and tailored to your needs.", "Request Project", "Explore LLMs"],
+            hero_badge: "Enterprise AI Architecture",
+            hero: [
+                "Your Own AI Crew. Autonomous. Secure. On-Premise.", 
+                "We don't just build bots. We implement entire agentic crews that govern business processes autonomously – directly on your infrastructure. Maximum sovereignty for global leaders.", 
+                "Plan AI Strategy", 
+                "Tech Stack"
+            ],
+            trusted: "Trusted by Industry Leaders & Corporations",
+            chat_hint: "Calculate AI Potential",
             titles: { crews: "Specialized <span>AI Crews</span>", llm: "Enterprise <span>LLM Platform</span>", team: "Vision & <span>Expertise</span>", vort: "Your <span>Benefits</span>", book: "Discuss <span>AI Strategy</span>" },
             crews: [
                 {h: "Insurance Agents", p: "Automation of claims reporting, policy analysis, and customer communication under strict data privacy regulations.", r: "Ref: Hallesche Insurance, SOKA-BAU", i: "fa-shield-halved"},
@@ -215,14 +263,22 @@
             vorts: [
                 {h: "Sovereignty", p: "100% data control. No 3rd party training with your data.", i: "fa-user-lock"},
                 {h: "Compliance", p: "Specifically designed for regulated sectors like finance and insurance.", i: "fa-file-signature"},
-                {h: "Future-Proof", p: "Scalable architectures that grow with your company.", i: "fa-chart-line"}
+                {h: "ROI", p: "Scalable architectures that drastically reduce manual operational costs.", i: "fa-rocket"}
             ],
             book: "Select a slot to analyze your potential for AI-driven automation.",
             foot: ["Legal", "GDPR-compliant AI solutions. Data processing in isolated environments. © 2026 AISOLUTIOS."]
         },
         fr: {
             nav: ["Équipes", "Plateforme LLM", "Expertise", "Avantages", "RDV"],
-            hero: ["Souveraineté IA pour Leaders", "Modèles LLM sécurisés et équipes d'agents autonomes. Privé et sur mesure.", "Démarrer Projet", "Découvrir LLM"],
+            hero_badge: "Architecture IA Enterprise",
+            hero: [
+                "Votre Propre Équipe IA. Autonome. Sécurisée.", 
+                "Nous implémentons des équipes d'agents autonomes qui gèrent vos processus directement sur votre infrastructure. Souveraineté maximale pour les leaders du marché.", 
+                "Planifier Stratégie", 
+                "Stack Technique"
+            ],
+            trusted: "Approuvé par les leaders du marché",
+            chat_hint: "Calculer le potentiel IA",
             titles: { crews: "Équipes <span>IA Spécialisées</span>", llm: "Plateforme <span>LLM Enterprise</span>", team: "Vision & <span>Expertise</span>", vort: "Vos <span>Avantages</span>", book: "Réserver <span>Consultation</span>" },
             crews: [
                 {h: "Agents d'Assurance", p: "Automatisation des sinistres et analyse des polices sous haute protection des données.", r: "Réf: Assurance Hallesche, SOKA-BAU", i: "fa-shield-halved"},
@@ -245,7 +301,7 @@
             vorts: [
                 {h: "Souveraineté", p: "Contrôle total des données. Aucun entraînement tiers.", i: "fa-user-lock"},
                 {h: "Conformité", p: "Conçu pour les secteurs réglementés (finance, assurance).", i: "fa-file-signature"},
-                {h: "ROI", p: "Gains de productivité mesurables dès le premier jour.", i: "fa-chart-line"}
+                {h: "Performance", p: "Une architecture évolutive qui réduit les coûts opérationnels manuels.", i: "fa-rocket"}
             ],
             book: "Choisissez un créneau pour analyser votre potentiel d'automatisation.",
             foot: ["Légal", "IA conforme au RGPD. Traitement des données en environnement isolé. © 2026 AISOLUTIOS."]
@@ -262,10 +318,15 @@
         document.getElementById('nav-team').innerText = t.nav[2];
         document.getElementById('nav-vort').innerText = t.nav[3];
         document.getElementById('nav-book').innerText = t.nav[4];
+        
+        document.getElementById('hero-badge-text').innerText = t.hero_badge;
         document.getElementById('hero-title').innerText = t.hero[0];
         document.getElementById('hero-sub').innerText = t.hero[1];
         document.getElementById('hero-btn-1').innerText = t.hero[2];
         document.getElementById('hero-btn-2').innerText = t.hero[3];
+        document.getElementById('trusted-text').innerText = t.trusted;
+        document.getElementById('chat-hint-text').innerText = t.chat_hint;
+        
         Object.keys(t.titles).forEach(k => document.getElementById('title-'+k).innerHTML = t.titles[k]);
 
         // Content Sections
