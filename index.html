@@ -143,29 +143,87 @@
             </div>
         </div>
     </section>
-
-    <section id="team" class="container">
-        <h2 id="title-team"></h2>
-        <div class="team-card">
-            <div class="team-img"><i class="fas fa-user-tie"></i></div>
-            <div style="flex: 1; min-width: 300px;">
-                <h3 style="font-size: 28px; margin-bottom: 5px;">Dr. Sidi Weiss</h3>
-                <p id="team-pos" style="color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;"></p>
-                <div id="team-desc" style="color: var(--muted); font-size: 16px;"></div>
-            </div>
-        </div>
-    </section>
-
+    
     <section id="vorteile" class="container">
         <h2 id="title-vort"></h2>
         <div class="grid" id="grid-vort"></div>
     </section>
+    
+    <section id="team" class="container" style="padding: 80px 20px;">
+    <h2 id="title-team" style="text-align: center; margin-bottom: 50px;">Unsere Experten</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        
+        <div class="team-card" style="display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+            <div class="team-img" style="font-size: 40px; color: var(--accent);"><i class="fas fa-user-md"></i></div>
+            <div style="flex: 1;">
+                <h3 style="font-size: 24px; margin-bottom: 5px;">Dr. Sidi Weiss</h3>
+                <p style="color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; margin-bottom: 10px;">CEO & Erfinder</p>
+                <div style="color: var(--muted); font-size: 14px;">KI Experte für Agentic AI und automatisierte Vertriebsprozesse.</div>
+            </div>
+        </div>
 
-    <section id="booking" class="container" style="text-align: center;">
-        <h2 id="title-book"></h2>
-        <p id="book-sub" style="margin-bottom: 40px; color: var(--muted);"></p>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:750px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden;"></div>
-    </section>
+        <div class="team-card" style="display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+            <div class="team-img" style="font-size: 40px; color: var(--accent);"><i class="fas fa-cogs"></i></div>
+            <div style="flex: 1;">
+                <h3 style="font-size: 24px; margin-bottom: 5px;">Mona Distler</h3>
+                <p style="color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; margin-bottom: 10px;">Operation Direktor</p>
+                <div style="color: var(--muted); font-size: 14px;">Expertin für operative Exzellenz und Prozess-Skalierung.</div>
+            </div>
+        </div>
+
+        <div class="team-card" style="display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+            <div class="team-img" style="font-size: 40px; color: var(--accent);"><i class="fas fa-microchip"></i></div>
+            <div style="flex: 1;">
+                <h3 style="font-size: 24px; margin-bottom: 5px;">Aziz Hamoud</h3>
+                <p style="color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; margin-bottom: 10px;">KI-Engineer & Ing.</p>
+                <div style="color: var(--muted); font-size: 14px;">Spezialist für neuronale Architekturen und System-Integration.</div>
+            </div>
+        </div>
+
+        <div class="team-card" style="display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+            <div class="team-img" style="font-size: 40px; color: var(--accent);"><i class="fas fa-chart-line"></i></div>
+            <div style="flex: 1;">
+                <h3 style="font-size: 24px; margin-bottom: 5px;">Ahmedou Didi</h3>
+                <p style="color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; margin-bottom: 10px;">Data Analyst & Dipl. Math.</p>
+                <div style="color: var(--muted); font-size: 14px;">Mathematische Analyse und Optimierung der Lead-Datenströme.</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="lead-order" class="container" style="padding: 80px 20px; text-align: center;">
+    <div style="max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; border: 1px solid var(--accent);">
+        <h2 style="margin-bottom: 15px;">Lead-Crew beauftragen</h2>
+        <p style="color: var(--muted); margin-bottom: 30px;">Präzise Leads für Ihren Erfolg. Ein Lead = 10€.</p>
+
+        <div style="margin-bottom: 25px;">
+            <label for="lead-count" style="display: block; margin-bottom: 10px; font-weight: bold; color: var(--accent);">Gewünschte Anzahl der Leads:</label>
+            <input type="number" id="lead-count" value="15" min="5" step="5" 
+                   style="width: 120px; padding: 15px; background: #222; border: 2px solid var(--accent); color: white; border-radius: 10px; text-align: center; font-size: 24px; font-weight: bold;">
+        </div>
+        
+        <div style="font-size: 28px; font-weight: 800; margin-bottom: 35px;">
+            Gesamtinvestition: <span id="total-price" style="color: var(--accent);">150</span> €
+        </div>
+
+        <button id="stripe-checkout-btn" 
+                style="width: 100%; background: var(--accent); color: white; border: none; padding: 20px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">
+            <i class="fab fa-stripe-s" style="margin-right: 10px;"></i> Sicher bezahlen & Starten
+        </button>
+        
+        <p style="margin-top: 20px; font-size: 12px; color: var(--muted);">
+            Nach der Zahlung startet die AISOLUTIOS Crew sofort mit der Recherche & Qualifizierung.
+        </p>
+    </div>
+</section>
+
+
+<section id="booking" class="container" style="text-align: center;">
+    <h2 id="title-book"></h2>
+    <p id="book-sub" style="margin-bottom: 40px; color: var(--muted);"></p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:750px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden;"></div>
+</section>
 </main>
 
 <footer>
@@ -193,7 +251,7 @@
 <script>
     const translations = {
         de: {
-            nav: ["Crews", "LLM Plattform", "Expertise", "Vorteile", "Beratung"],
+            nav: ["Crews", "LLM Plattform", "Expertise", "Team", "Vorteile", "Beratung"],
             hero_badge: "Enterprise KI-Architektur",
             hero: [
                 "Ihre eigene KI-Crew. Autonom. Sicher. On-Premise.", 
@@ -231,7 +289,7 @@
             foot: ["Rechtliches", "DSGVO-konforme KI-Lösungen. Alle Datenverarbeitungen finden in isolierten Umgebungen statt. © 2026 AISOLUTIOS - Dr. Sidi Weiss."]
         },
         en: {
-            nav: ["Crews", "LLM Platform", "Expertise", "Benefits", "Booking"],
+            nav: ["Crews", "LLM Platform", "Expertise", "Team", "Benefits", "Booking"],
             hero_badge: "Enterprise AI Architecture",
             hero: [
                 "Your Own AI Crew. Autonomous. Secure. On-Premise.", 
@@ -269,7 +327,7 @@
             foot: ["Legal", "GDPR-compliant AI solutions. Data processing in isolated environments. © 2026 AISOLUTIOS."]
         },
         fr: {
-            nav: ["Équipes", "Plateforme LLM", "Expertise", "Avantages", "RDV"],
+            nav: ["Équipes", "Plateforme LLM", "Expertise", "Team", "Avantages", "RDV"],
             hero_badge: "Architecture IA Enterprise",
             hero: [
                 "Votre Propre Équipe IA. Autonome. Sécurisée.", 
@@ -345,6 +403,55 @@
         document.getElementById('foot-legal-h').innerText = t.foot[0]; document.getElementById('foot-legal-p').innerText = t.foot[1];
     }
     setLanguage('de');
+</script>
+<script>
+        const leadInput = document.getElementById('lead-count');
+        const priceDisplay = document.getElementById('total-price');
+        const checkoutBtn = document.getElementById('stripe-checkout-btn');
+        const pricePerLead = 10;
+
+        leadInput.addEventListener('input', () => {
+            const count = parseInt(leadInput.value) || 0;
+            priceDisplay.innerText = count * pricePerLead;
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            const count = leadInput.value;
+            // Ihr Stripe Link
+            const stripeLink = "https://buy.stripe.com/IHR_LINK?quantity=" + count;
+            window.location.href = stripeLink;
+        });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const leadInput = document.getElementById('lead-count');
+        const priceDisplay = document.getElementById('total-price');
+        const checkoutBtn = document.getElementById('stripe-checkout-btn');
+        const pricePerLead = 10;
+
+        // Live-Preis Update
+        leadInput.addEventListener('input', () => {
+            let count = parseInt(leadInput.value) || 0;
+            if (count < 0) count = 0;
+            priceDisplay.innerText = count * pricePerLead;
+        });
+
+        // Stripe Checkout Trigger
+        checkoutBtn.addEventListener('click', function() {
+            const count = leadInput.value;
+            // Ihr Zahlungslink mit dynamischer Mengenangabe
+            const stripeBaseLink = "https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03";
+            
+            // Stripe erlaubt die Übergabe der Menge via URL-Parameter ?quantity=X
+            const finalLink = stripeBaseLink + "?quantity=" + count;
+            
+            window.location.href = finalLink;
+        });
+        
+        // Button Hover Effekt
+        checkoutBtn.onmouseover = () => checkoutBtn.style.transform = "scale(1.02)";
+        checkoutBtn.onmouseout = () => checkoutBtn.style.transform = "scale(1)";
+    });
 </script>
 </body>
 </html>
