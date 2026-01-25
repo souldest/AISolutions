@@ -374,13 +374,13 @@ const trans = {
         hTitle: "Équipes IA pour Leaders", hSub: "Agents IA d'entreprise autonomes. Propulsez les leaders du marché de la génération de leads à l'acquisition client.",
         hBtn: "Configurer Leads", evTitle: "L'évolution : de la GenAI à l'<span>IA Agentique</span>",
         evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs. Ils attendent des ordres puis s'arrêtent. Ce sont des consultants sans mains.",
-        evH2: "Aujourd'hui : IA Agentique", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive, utilisent des outils et travaillent en autonomie.",
+        evH2: "Heute: Agentic AI", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive, utilisent des outils et travaillent en autonomie.",
         evBadge: "LE NOUVEAU STANDARD CHEZ AISOLUTIOS",
         agTitle: "Agents <span>& Équipes</span> IA", llmTitle: "Plateforme <span>LLM</span> Entreprise",
         lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "L'<span>Histoire</span> de Dr. Sidi Weiss",
         tmTitle: "L'<span>Équipe</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
         llmP: "Nous hébergeons vos modèles sur site. 100% de souveraineté des données pour les exigences de l'entreprise.",
-        lInfo: "10€ par Lead (HT)", stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, er crée la prochaine génération d'équipes d'agents.",
+        lInfo: "10€ par Lead (HT)", stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, er crée la prochaine generation d'équipes d'agents.",
         t1r: "CEO & Inventeur", t2r: "Directrice Opérations", t3r: "Assistante", t4r: "Expert en IA", t5r: "Analyste de Données"
     }
 };
@@ -440,11 +440,24 @@ function setLanguage(l) {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
     
-    // Speichere Wahl für "beim Scrollen" / Refresh
+    // Calendly Re-Initialisierung für die neue Sprache
+    if (window.Calendly) {
+        // Altes Badge entfernen, falls vorhanden, um Duplikate zu vermeiden
+        const oldBadge = document.querySelector('.calendly-badge-widget');
+        if (oldBadge) oldBadge.remove();
+
+        Calendly.initBadgeWidget({
+            url: 'https://calendly.com/vertrieb-aisolutios/strategie-termin',
+            text: s.fChat, // Dynamischer Text aus dem trans-Objekt
+            color: '#004a99',
+            textColor: '#ffffff',
+            branding: false
+        });
+    }
+
     localStorage.setItem('selectedLang', l);
 }
 
-// Hilfsfunktionen für Lead-Rechner
 function upd(v) { 
     const count = document.getElementById('l-count');
     const price = document.getElementById('l-price');
@@ -457,7 +470,6 @@ function pay() {
     window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
 }
 
-// Initialisierung
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
