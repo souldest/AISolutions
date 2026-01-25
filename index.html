@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS | Dr. Sidi Weiss – Enterprise AI Agents & LLM</title>
+    <title>AISOLUTIOS – Dr. Sidi Weiss | Enterprise KI-Systeme & Agenten-Crews</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -15,253 +15,264 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --gradient: linear-gradient(135deg, #004a99 0%, #00aaff 100%);
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
 
         header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(11, 15, 26, 0.85); backdrop-filter: blur(15px);
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(10, 15, 30, 0.9); backdrop-filter: blur(15px);
+            padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .nav-links { display: flex; gap: 18px; align-items: center; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.7; transition: 0.3s; }
-        
-        .lang-switch { display: flex; gap: 5px; margin-left: 15px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px; }
-        .lang-btn { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 800; }
+
+        .nav-scroll-container { display: flex; align-items: center; gap: 15px; overflow-x: auto; scrollbar-width: none; }
+        .nav-link { color: var(--text); text-decoration: none; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; white-space: nowrap; }
+        .nav-link:hover { opacity: 1; color: var(--accent); }
+
+        .lang-switch { display: flex; gap: 4px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
+        .lang-btn { background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: 700; }
         .lang-btn.active { background: var(--primary); border-color: var(--accent); }
 
-        .container { max-width: 1200px; margin: auto; padding: 100px 20px; }
-        h2 { font-size: 36px; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 20px; letter-spacing: -1px; }
+        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        
+        .hero-section { text-align: center; padding: 120px 20px 60px 20px; background: radial-gradient(circle at center, rgba(0,74,153,0.15) 0%, transparent 70%); }
+        .hero-badge { background: rgba(0, 170, 255, 0.1); color: var(--accent); padding: 8px 16px; border-radius: 50px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; display: inline-block; border: 1px solid rgba(0, 170, 255, 0.2); }
+        
+        .trusted-by { padding: 20px 0 60px 0; text-align: center; }
+        .trusted-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 30px; font-weight: 700; }
+        .logo-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(1); }
+        .logo-item { font-size: 18px; font-weight: 900; color: var(--text); display: flex; align-items: center; gap: 8px; }
+
+        h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 900; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; border-left: 4px solid var(--primary); padding-left: 15px; }
         h2 span { color: var(--accent); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .hero { text-align: center; padding: 180px 20px 100px 20px; background: radial-gradient(circle at center, rgba(0,74,153,0.2) 0%, transparent 70%); }
-        .btn-main { background: var(--gradient); color: white; padding: 18px 40px; border-radius: 12px; font-weight: 800; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-align: center; }
-        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,170,255,0.4); }
 
-        .card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; height: 100%; }
-        .card:hover { border-color: var(--accent); background: rgba(255,255,255,0.06); transform: translateY(-5px); }
-        .card i { font-size: 40px; color: var(--accent); margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; position: relative; height: 100%; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255,255,255,0.05); }
+        .card i { font-size: 28px; margin-bottom: 20px; color: var(--accent); }
+        .card h4 { font-size: 19px; margin-bottom: 12px; color: #fff; }
+        .card p { color: var(--muted); font-size: 14px; }
 
-        .story-box { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; background: var(--bg2); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.03); }
-        .team-member { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
-        .avatar { width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; font-size: 20px; }
+        .ref-tag { font-size: 10px; font-weight: 900; color: var(--accent); text-transform: uppercase; border: 1px solid var(--accent); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-top: 15px; }
 
-        .pricing-card { background: linear-gradient(135deg, #0e1426 0%, #05070a 100%); border: 2px solid var(--primary); padding: 50px; border-radius: 30px; text-align: center; max-width: 600px; margin: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        input[type=range] { width: 100%; margin: 25px 0; accent-color: var(--accent); cursor: pointer; }
+        .llm-box { background: linear-gradient(135deg, rgba(0,74,153,0.1), rgba(0,170,255,0.05)); border: 1px solid rgba(0,74,153,0.3); padding: 50px; border-radius: 25px; }
+        .feature-list { list-style: none; margin: 20px 0; }
+        .feature-list li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text); }
+        .feature-list li i { color: var(--accent); margin-top: 5px; }
 
-        footer { background: #05070a; padding: 60px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-        .chat-hint { position: fixed; bottom: 30px; right: 30px; background: var(--gradient); padding: 15px 25px; border-radius: 50px; font-weight: 800; color: white; text-decoration: none; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-        
-        @media (max-width: 768px) { .nav-links { display: none; } header { justify-content: center; } }
+        .btn-primary { background: var(--gradient); color: white; border: none; padding: 18px 40px; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2); }
+
+        footer { background: #05070a; padding: 80px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); }
+        .chat-hint { position: fixed; bottom: 30px; right: 30px; background: var(--gradient); padding: 15px 25px; border-radius: 50px; font-weight: 700; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; gap: 10px; cursor: pointer; color: white; text-decoration: none; }
     </style>
 </head>
 <body>
 
 <header>
-    <div style="font-weight:900; font-size:22px; color:white; letter-spacing: -1px;">AISOLUTIOS</div>
-    <nav class="nav-links">
-        <a href="#crews" id="n-crews">KI-Crews</a>
-        <a href="#llm" id="n-llm">LLM Plattform</a>
-        <a href="#expertise" id="n-exp">Expertise</a>
-        <a href="#vorteile" id="n-vort">Vorteile</a>
-        <a href="#geschichte" id="n-story">Geschichte</a>
-        <a href="#beratung" id="n-berat">Beratung</a>
+    <div style="display: flex; align-items: center;">
+        <div style="background:var(--primary); color:#fff; padding:5px 10px; border-radius:6px; font-weight:900;">AI</div>
+        <span style="margin-left:12px; font-weight:800; font-size:18px;">AISOLUTIOS</span>
+    </div>
+    <div class="nav-scroll-container">
+        <a href="#crews" class="nav-link" id="nav-crews">Crews</a>
+        <a href="#branchen" class="nav-link" id="nav-branchen">Branchen</a>
+        <a href="#llm" class="nav-link" id="nav-llm">LLM Platform</a>
+        <a href="#founder-story" class="nav-link" id="nav-story">Geschichte</a>
+        <a href="#vorteile" class="nav-link" id="nav-vort">Benefits</a>
+        <a href="#booking" class="nav-link" id="nav-book">Booking</a>
         <div class="lang-switch">
-            <button class="lang-btn" onclick="setLanguage('de')">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+            <button class="lang-btn active" id="btn-de" onclick="setLanguage('de')">DE</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">FR</button>
         </div>
-    </nav>
+    </div>
 </header>
 
-<section class="hero" id="home">
-    <h1 id="h-title">KI-Agenten für Ihren Vertrieb</h1>
-    <p id="h-sub">Agentic AI übernimmt Ihre Lead-Generierung. Mathematisch präzise, rund um die Uhr.</p>
-    <a href="#beratung" class="btn-main" id="h-btn">Jetzt Analyse starten</a>
-</section>
-
-<section id="crews" class="container">
-    <div class="pricing-card">
-        <h2 id="c-title" style="border:none; padding:0; margin-bottom:10px;">KI-Lead-Crew</h2>
-        <p id="c-sub">Skalieren Sie auf Knopfdruck. Ein Lead = 10€.</p>
-        <input type="range" id="lead-range" min="10" max="250" value="50" oninput="updatePrice()">
-        <div style="font-size: 42px; font-weight: 900; margin-bottom: 30px;"><span id="lead-label">50</span> Leads = <span id="price-label" style="color:var(--accent);">500</span>€</div>
-        <button class="btn-main" style="width:100%;" id="c-btn">Crew beauftragen</button>
-    </div>
-</section>
-
-<section id="llm" class="container">
-    <h2 id="l-title">LLM <span>Plattform</span></h2>
-    <div class="grid">
-        <div class="card">
-            <i class="fas fa-shield-halved"></i>
-            <h4 id="l1-h">Datensouveränität</h4>
-            <p id="l1-p">On-Premise oder Private Cloud. Maximale Sicherheit für Enterprise-Daten.</p>
+<main>
+    <section class="hero-section">
+        <div class="container" style="padding: 0;">
+            <div class="hero-badge" id="hero-badge-text">Next-Gen Autonomous AI</div>
+            <h1 id="hero-title" style="font-size: clamp(32px, 6vw, 72px); font-weight: 900; line-height: 1.05; margin-bottom: 25px; letter-spacing: -2px;">KI-Agenten für Ihren Vertrieb</h1>
+            <p id="hero-sub" style="color:var(--muted); font-size: clamp(18px, 1.8vw, 22px); max-width: 900px; margin: 0 auto 40px auto; font-weight: 400;">Wir bauen autonome Agenten-Crews, die Ihre Lead-Generierung und Prozesse skalieren.</p>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px;">
+                <a href="#booking" class="btn-primary" id="hero-btn-1">Analyse anfordern</a>
+                <a href="#llm" class="btn-primary" style="background: transparent; border: 2px solid var(--primary);" id="hero-btn-2">LLM Lösungen</a>
+            </div>
+            
+            <div class="trusted-by">
+                <p class="trusted-label" id="trusted-text">Vertrauen von Branchenführern & Partnern</p>
+                <div class="logo-grid">
+                    <div class="logo-item"><i class="fas fa-car-side"></i> Mercedes-Benz</div>
+                    <div class="logo-item"><i class="fas fa-car"></i> Porsche</div>
+                    <div class="logo-item"><i class="fas fa-piggy-bank"></i> LBBW</div>
+                    <div class="logo-item"><i class="fas fa-shield-alt"></i> Hallesche</div>
+                    <div class="logo-item"><i class="fas fa-broadcast-tower"></i> Telekom</div>
+                    <div class="logo-item"><i class="fas fa-train"></i> Deutsche Bahn</div>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <i class="fas fa-brain"></i>
-            <h4 id="l2-h">Custom Intelligence</h4>
-            <p id="l2-p">Spezialisierte LLMs, die Ihre internen Prozesse und Dokumente verstehen.</p>
+    </section>
+
+    <section id="crews" class="container">
+        <h2 id="title-crews">KI-Agenten <span>Crews</span></h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-users-gear"></i>
+                <h4 id="crew-1-h">Autonomous Lead Crew</h4>
+                <p id="crew-1-p">Ein Team aus KI-Agenten recherchiert, qualifiziert und kontaktiert Leads autonom über alle Kanäle.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microchip"></i>
+                <h4 id="crew-2-h">Process Optimization Crew</h4>
+                <p id="crew-2-p">Agenten, die komplexe ERP- und CRM-Workflows verstehen und eigenständig Aufgaben abarbeiten.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="expertise" class="container">
-    <h2 id="e-title">Unsere <span>Expertise</span></h2>
-    <div class="grid">
-        <div class="card"><i class="fas fa-car"></i><h3>Automotive</h3><p>Referenzen: Mercedes-Benz, Porsche.</p></div>
-        <div class="card"><i class="fas fa-landmark"></i><h3>Finance</h3><p>Referenzen: LBBW, Hallesche.</p></div>
-        <div class="card"><i class="fas fa-train"></i><h3>Logistik</h3><p>Referenzen: Deutsche Bahn, Transdev.</p></div>
-    </div>
-</section>
-
-<section id="vorteile" class="container">
-    <h2 id="v-title">Ihre <span>Vorteile</span></h2>
-    <div class="grid">
-        <div class="card"><i class="fas fa-bolt"></i><h4 id="v1-h">Speed</h4><p id="v1-p">Qualifizierte Leads in Echtzeit.</p></div>
-        <div class="card"><i class="fas fa-chart-pie"></i><h4 id="v2-h">Effizienz</h4><p id="v2-p">90% geringere Kosten pro Lead.</p></div>
-        <div class="card"><i class="fas fa-check-double"></i><h4 id="v3-h">Qualität</h4><p id="v3-p">Mathematisch validierte Kontakte.</p></div>
-    </div>
-</section>
-
-<section id="geschichte" class="container">
-    <div class="story-box">
-        <div style="flex:1; min-width: 300px;">
-            <h2 id="s-title" style="border:none; padding:0;">Meine Geschichte</h2>
-            <p id="s-p" style="font-size:18px; color:var(--muted); margin-bottom: 20px;">Vom Hirtenjungen zum promovierten Data Scientist. Dr. Sidi Weiss kombiniert Resilienz mit technologischer Exzellenz.</p>
-            <div style="padding: 15px; border-left: 3px solid var(--accent); background: rgba(0,170,255,0.05);" id="s-extra">2010: Empfang durch Kanzlerin Angela Merkel für herausragende Leistungen.</div>
+    <section id="branchen" class="container">
+        <h2 id="title-branchen">Branchen <span>Agenten</span></h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-car-side"></i>
+                <h4 id="b-auto-h">Automotive Agent</h4>
+                <p id="b-auto-p">Spezialisiert auf komplexe B2B-Vertriebszyklen in der Automobilindustrie. Versteht Lieferketten und OEM-Strukturen.</p>
+                <span class="ref-tag">Ref: Mercedes-Benz, Porsche</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line"></i>
+                <h4 id="b-fin-h">Finance & Insurance Agent</h4>
+                <p id="b-fin-p">Konform mit höchsten Sicherheitsstandards. Agenten für Lead-Validierung und automatisierte Beratungsprotokolle.</p>
+                <span class="ref-tag">Ref: LBBW, Hallesche</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-truck-fast"></i>
+                <h4 id="b-log-h">Logistik & Mobility Agent</h4>
+                <p id="b-log-p">Optimiert Routen-Kommunikation und Kundenanfragen im Transportwesen. Echtzeit-Interaktion mit Flottendaten.</p>
+                <span class="ref-tag">Ref: Deutsche Bahn, Transdev</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-industry"></i>
+                <h4 id="b-ind-h">Industrial & Energy Agent</h4>
+                <p id="b-ind-p">Unterstützt den technischen Vertrieb für Industrieanlagen und erneuerbare Energien (Solar/PV).</p>
+                <span class="ref-tag">Ref: K2 Systems</span>
+            </div>
         </div>
-        <div style="flex:1; background:var(--primary); padding:40px; border-radius:20px; text-align:center; min-width: 300px;">
-            <p id="s-quote" style="font-style:italic; font-size:24px; font-weight: 700;">"Disziplin ist der beste Algorithmus."</p>
-            <p style="margin-top:20px; opacity:0.8;">- Dr. Sidi Weiss</p>
+    </section>
+
+    <section id="llm" class="container">
+        <div class="llm-box">
+            <h2 id="title-llm" style="border:none; padding:0; margin-bottom: 20px; color: white;">LLM Plattform & Souveränität</h2>
+            <p id="llm-intro" style="font-size: 18px; margin-bottom: 40px; color: var(--muted); line-height: 1.6;">
+                <strong>Large Language Models (LLMs)</strong> sind das kognitive Rückgrat. Wir machen diese Kraft nutzbar – ohne Kompromisse bei der Datensicherheit.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div>
+                    <h3 style="color: var(--accent); font-size: 20px; margin-bottom: 20px;">Warum AISOLUTIOS?</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Kontext:</strong> Logische Analyse in Millisekunden.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>Zero Leak:</strong> Schutz vor Datenabfluss an Dritte.</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span><strong>On-Premise:</strong> Installation in Ihrem Rechenzentrum.</span></li>
+                    </ul>
+                </div>
+                <div class="grid" style="grid-template-columns: 1fr;">
+                    <div class="card" style="background: rgba(255,255,255,0.03); border-left: 4px solid var(--accent);">
+                        <h4>Private Cloud Deployment</h4>
+                        <p>Höchste Sicherheit in einer isolierten Umgebung. Flexibilität kombiniert mit strikter Abschottung.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="team" class="container">
-    <h2 id="t-title">Das <span>Team</span></h2>
-    <div class="grid">
-        <div class="team-member"><div class="avatar">SW</div><div><h4>Dr. Sidi Weiss</h4><p>CEO & Founder</p></div></div>
-        <div class="team-member"><div class="avatar">AD</div><div><h4>Ahmedou Didi</h4><p>Data Science</p></div></div>
-        <div class="team-member"><div class="avatar">AH</div><div><h4>Aziz Hamoud</h4><p>AI Engineer</p></div></div>
-    </div>
-</section>
+    <section id="founder-story" class="container" style="background: rgba(255,255,255,0.02); border-radius: 30px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+            <div style="flex: 1; min-width: 300px;">
+                <div style="border: 2px solid var(--accent); padding: 10px; border-radius: 20px;">
+                    <div style="background: #111; height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div style="text-align: center; padding: 30px;">
+                            <span style="color: var(--accent); font-size: 20px; font-style: italic;">"Vom Hirtenjungen zum KI-Experten – Resilienz ist der stärkste Algorithmus."</span>
+                            <p style="color: white; font-weight: bold; margin-top:20px;">Dr. Sidi Weiss</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 1.5; min-width: 300px;">
+                <h2 id="s-title">Meine Geschichte</h2>
+                <p id="s-p">Vom Hirten in Mauretanien über die Ausbildung zum Marineoffizier bis zur Promotion in Data Science in Deutschland. Dr. Sidi Weiss verbindet Disziplin mit technologischer Exzellenz.</p>
+                <div style="border-left: 4px solid var(--accent); padding: 15px; margin: 20px 0; background: rgba(0,170,255,0.05);">
+                    <strong>Highlights:</strong> DAAD-Preis 2009, Einladung ins Kanzleramt zu Angela Merkel 2010.
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="beratung" class="container">
-    <h2 id="b-title" style="text-align:center; border:none;">Beratung & Analyse</h2>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
-</section>
+    <section id="booking" class="container">
+        <h2 style="text-align:center; border:none;">Strategie-Gespräch buchen</h2>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:700px;"></div>
+    </section>
+</main>
 
 <footer>
-    <p><strong>AISOLUTIOS – Dr. Sidi Weiss</strong><br>vertrieb@aisolutios.de | +49 176 31591931</p>
-    <p style="margin-top:30px; font-size:11px; opacity:0.4;">&copy; 2026 Stuttgart, Germany. AISOLUTIOS.</p>
+    <div class="footer-grid">
+        <div>
+            <h3 style="color:white; margin-bottom:20px;">AISOLUTIOS</h3>
+            <p>Dr. Sidi Weiss<br>Obere Waiblinger Str.147a<br>70374 Stuttgart</p>
+        </div>
+        <div>
+            <h3 style="color:white; margin-bottom:20px;">Kontakt</h3>
+            <p>Email: vertrieb@aisolutios.de<br>Mobile: +49 176 31591931</p>
+        </div>
+    </div>
 </footer>
 
-<a href="#beratung" class="chat-hint"><i class="fas fa-calendar-check"></i> <span id="f-hint">Analyse starten</span></a>
+<a href="#booking" class="chat-hint" id="floating-btn">
+    <i class="fas fa-calendar-alt"></i> Analyse anfordern
+</a>
 
 <script>
-    // Konfiguration
-    const STRIPE_LINK = "https://buy.stripe.com/IHR_LINK_HIER"; // HIER LINK EINSETZEN
-
     const translations = {
         de: {
-            nCrews: "KI-Crews", nLlm: "LLM Plattform", nExp: "Expertise", nVort: "Vorteile", nStory: "Geschichte", nBerat: "Beratung",
-            hTitle: "KI-Agenten für Ihren Vertrieb", hSub: "Agentic AI übernimmt Ihre Lead-Generierung. Rund um die Uhr.", hBtn: "Analyse starten",
-            cTitle: "KI-Lead-Crew", cSub: "Ein Lead = 10€.", cBtn: "Crew beauftragen",
-            lTitle: "LLM <span>Plattform</span>", l1H: "Datensouveränität", l1P: "On-Premise oder Private Cloud.",
-            eTitle: "Unsere <span>Expertise</span>", vTitle: "Ihre <span>Vorteile</span>",
-            sTitle: "Meine Geschichte", tTitle: "Das <span>Team</span>", bTitle: "Beratung & Analyse", fHint: "Analyse starten"
+            navCrews: "Crews", navBranchen: "Branchen", navLlm: "LLM", navStory: "Geschichte", navVort: "Vorteile", navBook: "Booking",
+            hTitle: "KI-Agenten für Ihren Vertrieb", hSub: "Wir bauen autonome Agenten-Crews, die Ihre Lead-Generierung und Prozesse skalieren.",
+            bAutoH: "Automotive Agent", bFinH: "Finance Agent", bLogH: "Logistik Agent", bIndH: "Industrial Agent",
+            fHint: "Analyse anfordern"
         },
         en: {
-            nCrews: "AI Crews", nLlm: "LLM Platform", nExp: "Expertise", nVort: "Benefits", nStory: "Our Story", nBerat: "Booking",
-            hTitle: "AI Agents for Your Sales", hSub: "Agentic AI automates your lead generation. 24/7.", hBtn: "Start Analysis",
-            cTitle: "AI Lead Crew", cSub: "One Lead = 10€.", cBtn: "Order Crew",
-            lTitle: "LLM <span>Platform</span>", l1H: "Data Sovereignty", l1P: "On-premise or cloud.",
-            eTitle: "Our <span>Expertise</span>", vTitle: "Your <span>Benefits</span>",
-            sTitle: "Our Story", tTitle: "The <span>Team</span>", bTitle: "Consultation & Analysis", fHint: "Start Analysis"
+            navCrews: "Crews", navBranchen: "Industries", navLlm: "LLM", navStory: "Story", navVort: "Benefits", navBook: "Booking",
+            hTitle: "AI Agents for Your Sales", hSub: "We build autonomous agent crews to scale your lead generation and processes.",
+            bAutoH: "Automotive Agent", bFinH: "Finance Agent", bLogH: "Logistics Agent", bIndH: "Industrial Agent",
+            fHint: "Request Analysis"
         },
         fr: {
-            nCrews: "Équipes IA", nLlm: "Plateforme LLM", nExp: "Expertise", nVort: "Avantages", nStory: "Histoire", nBerat: "Réservation",
-            hTitle: "Agents IA pour vos ventes", hSub: "L'IA agente automatise votre génération de leads. 24/7.", hBtn: "Lancer l'analyse",
-            cTitle: "Équipe de Leads IA", cSub: "Un lead = 10€.", cBtn: "Commander l'équipe",
-            lTitle: "Plateforme <span>LLM</span>", l1H: "Souveraineté des données", l1P: "Sur site ou cloud.",
-            eTitle: "Notre <span>Expertise</span>", vTitle: "Vos <span>Avantages</span>",
-            sTitle: "Mon Histoire", tTitle: "L'<span>Équipe</span>", bTitle: "Conseil & Analyse", fHint: "Lancer l'analyse"
+            navCrews: "Équipes", navBranchen: "Secteurs", navLlm: "LLM", navStory: "Histoire", navVort: "Avantages", navBook: "Réservation",
+            hTitle: "Agents IA pour vos Ventes", hSub: "Nous créons des équipes d'agents autonomes pour scaler vos leads et processus.",
+            bAutoH: "Agent Automobile", bFinH: "Agent Finance", bLogH: "Agent Logistique", bIndH: "Agent Industriel",
+            fHint: "Demander Analyse"
         }
     };
 
     function setLanguage(lang) {
         const t = translations[lang];
-        document.getElementById('n-crews').innerText = t.nCrews;
-        document.getElementById('n-llm').innerText = t.nLlm;
-        document.getElementById('n-exp').innerText = t.nExp;
-        document.getElementById('n-vort').innerText = t.nVort;
-        document.getElementById('n-story').innerText = t.nStory;
-        document.getElementById('n-berat').innerText = t.nBerat;
-        document.getElementById('h-title').innerText = t.hTitle;
-        document.getElementById('h-sub').innerText = t.hSub;
-        document.getElementById('h-btn').innerText = t.hBtn;
-        document.getElementById('c-title').innerText = t.cTitle;
-        document.getElementById('c-sub').innerText = t.cSub;
-        document.getElementById('c-btn').innerText = t.cBtn;
-        document.getElementById('l-title').innerHTML = t.lTitle;
-        document.getElementById('e-title').innerHTML = t.eTitle;
-        document.getElementById('v-title').innerHTML = t.vTitle;
-        document.getElementById('s-title').innerText = t.sTitle;
-        document.getElementById('t-title').innerHTML = t.tTitle;
-        document.getElementById('b-title').innerText = t.bTitle;
-        document.getElementById('f-hint').innerText = t.fHint;
+        document.getElementById('nav-crews').innerText = t.navCrews;
+        document.getElementById('nav-branchen').innerText = t.navBranchen;
+        document.getElementById('nav-llm').innerText = t.navLlm;
+        document.getElementById('nav-story').innerText = t.navStory;
+        document.getElementById('hero-title').innerText = t.hTitle;
+        document.getElementById('hero-sub').innerText = t.hSub;
+        document.getElementById('b-auto-h').innerText = t.bAutoH;
+        document.getElementById('b-fin-h').innerText = t.bFinH;
+        document.getElementById('b-log-h').innerText = t.bLogH;
+        document.getElementById('b-ind-h').innerText = t.bIndH;
+        document.getElementById('floating-btn').innerHTML = `<i class="fas fa-calendar-alt"></i> ${t.fHint}`;
         
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.innerText.toLowerCase() === lang));
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === `btn-${lang}`));
     }
-
-    function updatePrice() {
-        const val = document.getElementById('lead-range').value;
-        const leadLabel = document.getElementById('lead-label');
-        const priceLabel = document.getElementById('price-label');
-        
-        animateValue(leadLabel, parseInt(leadLabel.innerText) || 0, val, 300);
-        animateValue(priceLabel, parseInt(priceLabel.innerText) || 0, val * 10, 300);
-
-        document.getElementById('c-btn').onclick = () => {
-            window.location.href = STRIPE_LINK + "?quantity=" + val;
-        };
-    }
-
-    function animateValue(obj, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) window.requestAnimationFrame(step);
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    // Auto-Detect Language
-    document.addEventListener('DOMContentLoaded', () => {
-        const userLang = (navigator.language || navigator.userLanguage).split('-')[0];
-        setLanguage(['en', 'fr', 'de'].includes(userLang) ? userLang : 'de');
-        updatePrice();
-    });
-
-    // Scroll Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    const active = link.getAttribute('href').substring(1) === entry.target.id;
-                    link.style.color = active ? 'var(--accent)' : 'var(--text)';
-                    link.style.opacity = active ? '1' : '0.7';
-                });
-            }
-        });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
 </script>
+
 </body>
 </html>
