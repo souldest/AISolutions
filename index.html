@@ -144,20 +144,47 @@
     </section>
 
     <section id="llm" class="container">
-        <div class="llm-box">
-            <h2 id="title-llm" style="border:none; padding:0;"></h2>
-            <p id="llm-intro" style="font-size: 18px; margin-bottom: 30px;"></p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                <div>
-                    <ul class="feature-list" id="llm-list"></ul>
+    <div class="llm-box" style="background: rgba(255,255,255,0.02); padding: 50px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05);">
+        <h2 id="title-llm" style="border:none; padding:0; margin-bottom: 20px; color: white;">LLM Plattform & Souveränität</h2>
+        <p id="llm-intro" style="font-size: 18px; margin-bottom: 40px; color: var(--muted); line-height: 1.6;">
+            <strong>Large Language Models (LLMs)</strong> sind das kognitive Rückgrat moderner KI. Unsere Motivation: Wir machen diese gigantische Rechenpower für Unternehmen nutzbar – und zwar <strong>ohne Kompromisse bei der Datensicherheit</strong>.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <div>
+                <h3 style="color: var(--accent); font-size: 20px; margin-bottom: 20px;">Warum LLMs mit AISOLUTIOS?</h3>
+                <ul class="feature-list" id="llm-list" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 5px;"></i>
+                        <span><strong>Kontext-Verständnis:</strong> Logische Analyse komplexer Geschäftsprozesse in Millisekunden.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 5px;"></i>
+                        <span><strong>Zero Data Leak:</strong> Garantierter Schutz vor Abfluss sensibler Firmendaten an Drittanbieter.</span>
+                    </li>
+                    <li style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check-circle" style="color: var(--accent); margin-top: 5px;"></i>
+                        <span><strong>Skalierbarkeit:</strong> Nahtlose Integration in bestehende IT-Infrastrukturen (ERP, CRM).</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid" style="grid-template-columns: 1fr; gap: 20px;">
+                <div class="card" style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 15px; border-left: 4px solid var(--accent);">
+                    <i class="fas fa-server" style="font-size: 24px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4 id="llm-c1-h" style="color: white; margin-bottom: 10px;">On-Premise Deployment</h4>
+                    <p id="llm-c1-p" style="font-size: 14px; color: var(--muted);">Volle Souveränität: Die KI wird direkt in Ihrem Rechenzentrum installiert. Ihre Daten bleiben physisch in Ihrem Haus.</p>
                 </div>
-                <div class="grid" style="grid-template-columns: 1fr;">
-                    <div class="card"><i class="fas fa-server"></i><h4 id="llm-c1-h"></h4><p id="llm-c1-p"></p></div>
-                    <div class="card"><i class="fas fa-lock"></i><h4 id="llm-c2-h"></h4><p id="llm-c2-p"></p></div>
+
+                <div class="card" style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 15px; border-left: 4px solid var(--accent);">
+                    <i class="fas fa-lock" style="font-size: 24px; color: var(--accent); margin-bottom: 15px;"></i>
+                    <h4 id="llm-c2-h" style="color: white; margin-bottom: 10px;">Private Cloud</h4>
+                    <p id="llm-c2-p" style="font-size: 14px; color: var(--muted);">Höchste Sicherheit in einer isolierten Cloud-Umgebung. Flexibilität kombiniert mit strikter Abschottung nach außen.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="founder-story" class="container" style="padding: 100px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; margin: 40px auto;">
     <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
