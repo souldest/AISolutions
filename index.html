@@ -352,35 +352,35 @@ const trans = {
         lTitle: "Lead Konfigurator", lBtn: "Jetzt Leads sichern", stTitle: "Die <span>Geschichte</span> von Dr. Sidi Weiss",
         tmTitle: "Das <span>Team</span>", bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
         llmP: "Wir hosten Ihre Sprachmodelle On-Premise. 100% Datensouveränität.",
-        lInfo: "10€ pro Lead (zzgl. MwSt.)", stP: "Vom Hirtenjungen zum promovierten Data Scientist...",
+        lInfo: "10€ pro Lead (zzgl. MwSt.)", stP: "Vom Hirtenjungen in der mauretanischen Wüste über den Dienst als Marineoffizier bis hin zum promovierten Data Scientist – der Weg von Dr. Sidi Weiss ist geprägt von Disziplin und Exzellenz. 2010 wurde er persönlich von Bundeskanzlerin Angela Merkel geehrt. Heute baut er mit AISOLUTIOS die nächste Generation autonomer Agenten-Crews für europäische Marktführer.",
         t1r: "CEO & Erfinder", t2r: "Operation Direktor", t3r: "Assistentin", t4r: "KI-Experte", t5r: "Data Analyst"
     },
     en: {
         mAgents: "AI Agents & Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "AI Crews for Market Leaders", hSub: "Autonomous Enterprise AI Agents. Scaling industry leaders.",
+        hTitle: "AI Crews for Market Leaders", hSub: "Autonomous Enterprise AI Agents. Scaling industry leaders from lead generation to customer acquisition.",
         hBtn: "Configure Leads", evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
-        evH1: "Yesterday: Static GenAI", evP1: "ChatGPT & Co. are passive. They wait for commands and then stop.",
-        evH2: "Today: Agentic AI", evP2: "The birth of autonomous agents. They act proactively and complete work autonomously.",
+        evH1: "Yesterday: Static GenAI", evP1: "ChatGPT & Co. are passive. They wait for commands and then stop. They are consultants without hands.",
+        evH2: "Today: Agentic AI", evP2: "The birth of autonomous agents. They act proactively, use tools, and complete work autonomously.",
         evBadge: "THE NEW STANDARD AT AISOLUTIOS",
         agTitle: "AI Agents <span>& Crews</span>", llmTitle: "Enterprise <span>LLM Platform</span>",
         lTitle: "Lead Configurator", lBtn: "Secure Leads Now", stTitle: "The <span>Story</span> of Dr. Sidi Weiss",
         tmTitle: "The <span>Team</span>", bkTitle: "Book Strategy Session", fChat: "Book Session",
-        llmP: "We host your language models on-premise. 100% data sovereignty.",
-        lInfo: "10€ per Lead (excl. VAT)", stP: "From shepherd boy to PhD Data Scientist...",
+        llmP: "We host your language models on-premise. 100% data sovereignty for enterprise requirements.",
+        lInfo: "10€ per Lead (excl. VAT)", stP: "From shepherd boy in the Mauritanian desert to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by discipline and excellence. Today, with AISOLUTIOS, he builds the next generation of autonomous agent crews.",
         t1r: "CEO & Inventor", t2r: "Operations Director", t3r: "Assistant", t4r: "AI Expert", t5r: "Data Analyst"
     },
     fr: {
         mAgents: "Agents & Équipes IA", mLlm: "Plateforme LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
-        hTitle: "Équipes IA pour Leaders", hSub: "Agents IA d'entreprise autonomes. Propulsez les leaders du marché.",
+        hTitle: "Équipes IA pour Leaders", hSub: "Agents IA d'entreprise autonomes. Propulsez les leaders du marché de la génération de leads à l'acquisition client.",
         hBtn: "Configurer Leads", evTitle: "L'évolution : de la GenAI à l'<span>IA Agentique</span>",
-        evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs. Ils attendent des ordres puis s'arrêtent.",
-        evH2: "Aujourd'hui : IA Agentique", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive et travaillent en autonomie.",
+        evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs. Ils attendent des ordres puis s'arrêtent. Ce sont des consultants sans mains.",
+        evH2: "Aujourd'hui : IA Agentique", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive, utilisent des outils et travaillent en autonomie.",
         evBadge: "LE NOUVEAU STANDARD CHEZ AISOLUTIOS",
         agTitle: "Agents <span>& Équipes</span> IA", llmTitle: "Plateforme <span>LLM</span> Entreprise",
         lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "L'<span>Histoire</span> de Dr. Sidi Weiss",
         tmTitle: "L'<span>Équipe</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
-        llmP: "Nous hébergeons vos modèles sur site. 100% de souveraineté.",
-        lInfo: "10€ par Lead (HT)", stP: "D'enfant berger à docteur en Data Science...",
+        llmP: "Nous hébergeons vos modèles sur site. 100% de souveraineté des données pour les exigences de l'entreprise.",
+        lInfo: "10€ par Lead (HT)", stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, er crée la prochaine génération d'équipes d'agents.",
         t1r: "CEO & Inventeur", t2r: "Directrice Opérations", t3r: "Assistante", t4r: "Expert en IA", t5r: "Analyste de Données"
     }
 };
@@ -397,22 +397,71 @@ function setLanguage(l) {
         }
     };
 
-    // Update alles sicher
-    safeUpdate('m-agents', s.mAgents); safeUpdate('m-llm', s.mLlm);
-    safeUpdate('m-story', s.mStory); safeUpdate('m-team', s.mTeam);
-    safeUpdate('m-book', s.mBook); safeUpdate('h-title', s.hTitle);
-    safeUpdate('h-sub', s.hSub); safeUpdate('h-btn', s.hBtn);
-    safeUpdate('ev-title', s.evTitle, true); safeUpdate('ev-h1', s.evH1);
-    safeUpdate('ev-p1', s.evP1); safeUpdate('ev-h2', s.evH2);
-    safeUpdate('ev-p2', s.evP2); safeUpdate('ev-badge', s.evBadge);
-    
-    // Buttons Active-Class
+    // 1. Navigation & Hero
+    safeUpdate('m-agents', s.mAgents);
+    safeUpdate('m-llm', s.mLlm);
+    safeUpdate('m-story', s.mStory);
+    safeUpdate('m-team', s.mTeam);
+    safeUpdate('m-book', s.mBook);
+    safeUpdate('h-title', s.hTitle);
+    safeUpdate('h-sub', s.hSub);
+    safeUpdate('h-btn', s.hBtn);
+
+    // 2. Evolution Section
+    safeUpdate('ev-title', s.evTitle, true);
+    safeUpdate('ev-h1', s.evH1);
+    safeUpdate('ev-p1', s.evP1);
+    safeUpdate('ev-h2', s.evH2);
+    safeUpdate('ev-p2', s.evP2);
+    safeUpdate('ev-badge', s.evBadge);
+
+    // 3. Main Titles
+    safeUpdate('ag-title', s.agTitle, true);
+    safeUpdate('llm-title', s.llmTitle, true);
+    safeUpdate('llm-p', s.llmP);
+    safeUpdate('l-title', s.lTitle);
+    safeUpdate('l-btn', s.lBtn);
+    safeUpdate('l-info', s.lInfo);
+    safeUpdate('st-title', s.stTitle, true);
+    safeUpdate('st-p', s.stP);
+    safeUpdate('tm-title', s.tmTitle, true);
+    safeUpdate('bk-title', s.bkTitle);
+    safeUpdate('f-chat', s.fChat);
+
+    // 4. Team Roles
+    safeUpdate('t1-r', s.t1r);
+    safeUpdate('t2-r', s.t2r);
+    safeUpdate('t3-r', s.t3r);
+    safeUpdate('t4-r', s.t4r);
+    safeUpdate('t5-r', s.t5r);
+
+    // Update Button UI
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
+    
+    // Speichere Wahl für "beim Scrollen" / Refresh
+    localStorage.setItem('selectedLang', l);
 }
 
-document.addEventListener('DOMContentLoaded', () => setLanguage('de'));
+// Hilfsfunktionen für Lead-Rechner
+function upd(v) { 
+    const count = document.getElementById('l-count');
+    const price = document.getElementById('l-price');
+    if(count) count.innerText = v; 
+    if(price) price.innerText = v * 10; 
+}
+
+function pay() { 
+    const qty = document.getElementById('l-slide') ? document.getElementById('l-slide').value : 10;
+    window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
+}
+
+// Initialisierung
+document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('selectedLang') || 'de';
+    setLanguage(saved);
+});
 </script>
 
 </body>
