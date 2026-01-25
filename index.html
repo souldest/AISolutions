@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISOLUTIOS | Enterprise AI Crews</title>
+    <title>AISOLUTIOS | Dr. Sidi Weiss – Enterprise AI Crews</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
@@ -44,37 +44,29 @@
         .card { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
         .card:hover { border-color: var(--accent); transform: translateY(-5px); }
         .card i { font-size: 28px; color: var(--accent); margin-bottom: 15px; }
+        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 3px 8px; border-radius: 4px; display: inline-block; margin-top: 10px; font-weight: 800; }
 
-        /* LEAD CALCULATOR */
         .lead-calc { background: var(--bg2); padding: 50px; border-radius: 20px; border: 2px solid var(--accent); text-align: center; }
         input[type=range] { width: 100%; max-width: 500px; margin: 25px 0; cursor: pointer; accent-color: var(--accent); }
         .price-tag { font-size: 60px; font-weight: 900; }
 
-        /* TEAM SECTION */
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; }
-        .team-card { text-align: center; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
-        .team-img { width: 80px; height: 80px; background: var(--bg); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary); color: var(--accent); font-size: 24px; font-weight: 900; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+        .team-card { text-align: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        .team-img { width: 60px; height: 60px; background: var(--bg); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary); color: var(--accent); font-weight: 900; }
 
-        #chatbot-ui { position: fixed; bottom: 90px; right: 20px; width: 320px; height: 400px; background: #0e1426; border: 1px solid var(--accent); border-radius: 15px; display: none; flex-direction: column; z-index: 2000; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
-        #chat-msgs { flex: 1; padding: 15px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; }
-        .msg { padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; max-width: 85%; }
-        .msg.bot { background: rgba(255,255,255,0.05); align-self: flex-start; }
-        .msg.user { background: var(--primary); align-self: flex-end; }
-        
-        footer { background: #05070a; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
-        .legal-box { background: #000; padding: 20px; border-radius: 10px; margin-top: 15px; display: none; }
-        .floating-btn { position: fixed; bottom: 25px; right: 25px; background: var(--gradient); padding: 12px 20px; border-radius: 30px; color: white; border: none; font-weight: 700; cursor: pointer; z-index: 1001; }
+        footer { background: #05070a; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--muted); }
+        .legal-box { background: #000; padding: 30px; border-radius: 10px; margin-top: 15px; display: none; text-align: left; line-height: 1.7; border: 1px solid rgba(255,255,255,0.1); }
+        .floating-btn { position: fixed; bottom: 25px; right: 25px; background: var(--gradient); padding: 12px 25px; border-radius: 30px; color: white; border: none; font-weight: 800; cursor: pointer; z-index: 1001; }
     </style>
 </head>
 <body>
 
 <header>
-    <div style="font-weight:900; color:white; letter-spacing: 1px;">AISOLUTIOS</div>
+    <div style="font-weight:900; color:white;">AISOLUTIOS</div>
     <nav class="nav-links">
-        <a href="#agents" id="m-agents">Agents</a>
+        <a href="#agents" id="m-agents">Agenten</a>
         <a href="#crews" id="m-crews">Crews</a>
-        <a href="#llm" id="m-llm">LLM</a>
-        <a href="#benefits" id="m-ben">Benefits</a>
+        <a href="#llm" id="m-llm">LLM Platform</a>
         <a href="#story" id="m-story">Story</a>
         <a href="#team" id="m-team">Team</a>
         <a href="#booking" id="m-book">Booking</a>
@@ -87,11 +79,11 @@
 </header>
 
 <section class="hero">
-    <h1 id="h-title" style="font-size: clamp(32px, 5vw, 60px); font-weight:900;">KI-Crews für Marktführer</h1>
-    <p id="h-sub" style="color:var(--muted); max-width:750px; margin:20px auto; font-size: 18px;">Autonome Enterprise KI-Agenten für komplexe B2B-Prozesse. Sicher, souverän und skalierbar.</p>
+    <h1 id="h-title">KI-Crews für Marktführer</h1>
+    <p id="h-sub">Autonome Enterprise KI-Agenten. Wir skalieren Ihren Erfolg.</p>
     <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
         <a href="#leads" class="btn-main" id="h-btn">Leads konfigurieren</a>
-        <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);" id="h-btn2">Termin buchen</a>
+        <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);" id="h-btn2">Strategie-Termin</a>
     </div>
 </section>
 
@@ -101,50 +93,44 @@
         <div class="card">
             <i class="fas fa-robot"></i>
             <h4 id="ag1-h">Autonomous Sales Agent</h4>
-            <p id="ag1-p">Findet, qualifiziert und kontaktiert Leads autonom über alle Kanäle.</p>
+            <p id="ag1-p">Identifiziert, qualifiziert und kontaktiert Leads autonom.</p>
         </div>
         <div class="card">
-            <i class="fas fa-microchip"></i>
-            <h4 id="ag2-h">Process Agent</h4>
-            <p id="ag2-p">Vollautomatisiert komplexe Back-Office Workflows rund um die Uhr.</p>
+            <i class="fas fa-brain"></i>
+            <h4 id="ag2-h">Research Agent</h4>
+            <p id="ag2-p">Analysiert Märkte und liefert Echtzeit-Insights für Entscheider.</p>
         </div>
     </div>
 </section>
 
 <section id="crews" class="container">
-    <h2 id="cr-title">Agentic <span>Crews</span></h2>
+    <h2 id="cr-title">Spezialisierte <span>KI-Crews</span></h2>
     <div class="grid">
         <div class="card">
             <i class="fas fa-landmark"></i>
-            <h4 id="cr1-h">Finance & Banking</h4>
-            <p id="cr1-p">Spezialisierte Crews für LBBW, Hallesche und Soka-Bau.</p>
+            <h4 id="cr1-h">Finance Crew</h4>
+            <p id="cr1-p">Referenzen: LBBW, Hallesche, Soka-Bau.</p>
+            <div class="badge" id="b1">Finanzen</div>
         </div>
         <div class="card">
             <i class="fas fa-car"></i>
-            <h4 id="cr2-h">Automotive</h4>
-            <p id="cr2-p">KI-Vertriebsunterstützung für Mercedes und Porsche.</p>
+            <h4 id="cr2-h">Auto & Energy Crew</h4>
+            <p id="cr2-p">Referenzen: Mercedes-Benz, Porsche, K2-Systems.</p>
+            <div class="badge" id="b2">Industrie</div>
         </div>
         <div class="card">
             <i class="fas fa-train"></i>
-            <h4 id="cr3-h">Logistics</h4>
-            <p id="cr3-p">Autonome Workflows für Deutsche Bahn und Transdev.</p>
+            <h4 id="cr3-h">Logistics Crew</h4>
+            <p id="cr3-p">Referenzen: Deutsche Bahn, Transdev.</p>
+            <div class="badge" id="b3">Logistik</div>
         </div>
     </div>
 </section>
 
 <section id="llm" class="container">
-    <h2 id="llm-title">LLM <span>Plattform</span></h2>
+    <h2 id="llm-title">Enterprise <span>LLM Platform</span></h2>
     <div class="card" style="background:var(--bg2); border: 1px solid var(--accent);">
-        <p id="llm-p" style="font-size: 18px;">Wir hosten Ihre Large Language Models On-Premise. 100% Datensouveränität. Keine Cloud-Abhängigkeit. DSGVO-konform für höchste Enterprise-Ansprüche.</p>
-    </div>
-</section>
-
-<section id="benefits" class="container">
-    <h2 id="ben-title">Ihre <span>Benefits</span></h2>
-    <div class="grid">
-        <div class="card"><i class="fas fa-bolt"></i><h4 id="ben1-h">Speed</h4><p id="ben1-p">Skalierung auf Knopfdruck ohne Personalengpässe.</p></div>
-        <div class="card"><i class="fas fa-shield-alt"></i><h4 id="ben2-h">Security</h4><p id="ben2-p">Eigene KI-Infrastruktur ohne Datenverlust.</p></div>
-        <div class="card"><i class="fas fa-chart-line"></i><h4 id="ben3-h">ROI</h4><p id="ben3-p">Signifikante Senkung der Lead-Kosten.</p></div>
+        <p id="llm-p">Maximale Datensouveränität durch On-Premise LLMs. Sicher und DSGVO-konform.</p>
     </div>
 </section>
 
@@ -154,31 +140,31 @@
         <input type="range" id="l-slide" min="10" max="2000" value="100" step="10" oninput="upd(this.value)">
         <div style="font-size:24px; font-weight: 700;"><span id="l-count">100</span> Leads</div>
         <div class="price-tag"><span id="l-price">1000</span>€</div>
-        <p id="l-info" style="color:var(--muted); margin-bottom: 25px;">10€ pro Lead (zzgl. MwSt.)</p>
+        <p id="l-info">10€ pro Lead (zzgl. MwSt.)</p>
         <button onclick="pay()" class="btn-main" id="l-btn">Jetzt Leads sichern</button>
     </div>
 </section>
 
 <section id="story" class="container">
-    <h2 id="st-title">Unsere <span>Story</span></h2>
+    <h2 id="st-title">Die <span>Geschichte</span></h2>
     <div class="card">
-        <p id="st-p" style="font-size: 18px; line-height: 1.8;">Vom Hirtenjungen in Mauretanien zum Marineoffizier zum promovierten Data Scientist. Dr. Sidi Weiss verbindet Resilienz mit technologischer Exzellenz. 2010 persönlich geehrt durch Bundeskanzlerin Angela Merkel.</p>
+        <p id="st-p" style="line-height: 1.8;"></p>
     </div>
 </section>
 
 <section id="team" class="container">
     <h2 id="tm-title">Das <span>Team</span></h2>
     <div class="team-grid">
-        <div class="team-card"><div class="team-img"><i class="fas fa-user-tie"></i></div><h4>Dr. Sidi Weiss</h4><p id="t1-r">CEO & Erfinder</p></div>
-        <div class="team-card"><div class="team-img"><i class="fas fa-user-gear"></i></div><h4>Mona Distler</h4><p id="t2-r">Operation Direktor</p></div>
-        <div class="team-card"><div class="team-img"><i class="fas fa-user-check"></i></div><h4>Eva Lenz</h4><p id="t3-r">Assistentin</p></div>
-        <div class="team-card"><div class="team-img"><i class="fas fa-laptop-code"></i></div><h4>Ing. Aziz Hamoud</h4><p id="t4-r">KI-Experte</p></div>
-        <div class="team-card"><div class="team-img"><i class="fas fa-square-root-variable"></i></div><h4>Ahmedou Didi</h4><p id="t5-r">Data Analyst</p></div>
+        <div class="team-card"><div class="team-img">SW</div><h4>Dr. Sidi Weiss</h4><p id="t1-r">CEO & Erfinder</p></div>
+        <div class="team-card"><div class="team-img">MD</div><h4>Mona Distler</h4><p id="t2-r">Operation Direktor</p></div>
+        <div class="team-card"><div class="team-img">EL</div><h4>Eva Lenz</h4><p id="t3-r">Assistentin</p></div>
+        <div class="team-card"><div class="team-img">AH</div><h4>Aziz Hamoud</h4><p id="t4-r">KI-Experte</p></div>
+        <div class="team-card"><div class="team-img">AD</div><h4>Ahmedou Didi</h4><p id="t5-r">Data Analyst</p></div>
     </div>
 </section>
 
 <section id="booking" class="container">
-    <h2 id="bk-title" style="border:none; text-align:center;">Strategie-Gespräch</h2>
+    <h2 id="bk-title" style="border:none; text-align:center;">Termin</h2>
     <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px;height:600px;"></div>
 </section>
 
@@ -191,64 +177,90 @@
             <a onclick="tog('da')" style="cursor:pointer; color:var(--accent);">Datenschutz</a>
         </div>
     </div>
-    <div id="im" class="legal-box">Impressum: Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart. Tel: 0176 31591931. Email: vertrieb@aisolutios.de.</div>
-    <div id="da" class="legal-box">Datenschutz: Diese Website nutzt Stripe für Zahlungen und Calendly für Termine. Es werden keine Daten an unbefugte Dritte weitergegeben.</div>
+    <div id="im" class="legal-box">
+        <strong>Impressum</strong><br>
+        Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart<br>
+        Steuernummer: 95408/32096 | Finanzamt Stuttgart II
+    </div>
+    <div id="da" class="legal-box">
+        <strong>Datenschutz</strong><br>
+        Wir nutzen Stripe & Calendly. Daten werden DSGVO-konform verarbeitet.
+    </div>
 </footer>
 
-<div id="chatbot-ui">
-    <div id="chat-header">AISOLUTIOS AI Agent <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i></div>
-    <div id="chat-msgs"><div class="msg bot">Willkommen! Wie kann ich Ihnen bei Ihren KI-Crews helfen?</div></div>
-</div>
-<button class="floating-btn" onclick="toggleChat()" id="f-chat">Chat</button>
+<button class="floating-btn" onclick="window.location.href='#booking'" id="f-chat">Termin buchen</button>
 
 <script>
-const t = {
+const trans = {
     de: {
-        mAgents: "Agenten", mCrews: "Crews", mLlm: "LLM", mBen: "Benefits", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "KI-Crews für Marktführer", hSub: "Autonome Enterprise KI-Agenten für komplexe B2B-Prozesse. Sicher, souverän und skalierbar.", hBtn: "Leads konfigurieren",
-        agTitle: "KI <span>Agenten</span>", ag1H: "Autonomous Sales Agent", ag1P: "Findet, qualifiziert und kontaktiert Leads autonom über alle Kanäle.",
-        crTitle: "Agentic <span>Crews</span>", cr1H: "Finance & Banking", llmTitle: "LLM <span>Plattform</span>",
-        lTitle: "Lead Konfigurator", lBtn: "Jetzt Leads sichern", benTitle: "Ihre <span>Benefits</span>",
-        stTitle: "Unsere <span>Story</span>", stP: "Vom Hirtenjungen zum promovierten Data Scientist. 2010 persönlich geehrt durch Angela Merkel.",
-        tmTitle: "Das <span>Team</span>", bkTitle: "Strategie-Termin", fChat: "Chat",
+        mAgents: "Agenten", mCrews: "Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
+        hTitle: "KI-Crews für Marktführer", hSub: "Autonome Enterprise KI-Agenten. Wir skalieren Ihren Erfolg.", hBtn: "Leads konfigurieren",
+        agTitle: "KI <span>Agenten</span>", crTitle: "Spezialisierte <span>KI-Crews</span>", llmTitle: "Enterprise <span>LLM Platform</span>",
+        lTitle: "Lead Konfigurator", lBtn: "Jetzt Leads sichern", stTitle: "Die <span>Geschichte</span> von Dr. Sidi Weiss",
+        tmTitle: "Das <span>Team</span>", bkTitle: "Strategie-Gespräch", fChat: "Termin buchen",
+        ag1H: "Autonomous Sales Agent", ag1P: "Identifiziert, qualifiziert und kontaktiert Leads autonom.",
+        ag2H: "Research Agent", ag2P: "Analysiert Märkte und liefert Echtzeit-Insights für Entscheider.",
+        cr1H: "Finance Crew", cr1P: "Referenzen: LBBW, Hallesche, Soka-Bau.", b1: "Finanzen",
+        cr2H: "Auto & Energy Crew", cr2P: "Referenzen: Mercedes-Benz, Porsche, K2-Systems.", b2: "Industrie",
+        cr3H: "Logistics Crew", cr3P: "Referenzen: Deutsche Bahn, Transdev.", b3: "Logistik",
+        llmP: "Maximale Datensouveränität durch On-Premise LLMs. Sicher und DSGVO-konform.",
+        lInfo: "10€ pro Lead (zzgl. MwSt.)",
+        stP: "Vom Hirtenjungen in der mauretanischen Wüste über den Dienst als Marineoffizier bis hin zum promovierten Data Scientist – der Weg von Dr. Sidi Weiss ist geprägt von Disziplin und Exzellenz. 2010 wurde er persönlich von Bundeskanzlerin Angela Merkel geehrt. Heute baut er mit AISOLUTIOS die nächste Generation autonomer Agenten-Crews.",
         t1r: "CEO & Erfinder", t2r: "Operation Direktor", t3r: "Assistentin", t4r: "KI-Experte", t5r: "Data Analyst"
     },
     en: {
-        mAgents: "Agents", mCrews: "Crews", mLlm: "LLM", mBen: "Benefits", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "AI Crews for Market Leaders", hSub: "Autonomous Enterprise AI Agents for complex B2B processes. Secure, sovereign and scalable.", hBtn: "Configure Leads",
-        agTitle: "AI <span>Agents</span>", ag1H: "Autonomous Sales Agent", ag1P: "Autonomously finds, qualifies and contacts leads across all channels.",
-        crTitle: "Agentic <span>Crews</span>", cr1H: "Finance & Banking", llmTitle: "LLM <span>Platform</span>",
-        lTitle: "Lead Configurator", lBtn: "Secure Leads Now", benTitle: "Your <span>Benefits</span>",
-        stTitle: "Our <span>Story</span>", stP: "From shepherd boy to PhD Data Scientist. Personally honored by Angela Merkel in 2010.",
-        tmTitle: "The <span>Team</span>", bkTitle: "Strategy Session", fChat: "Chat",
-        t1r: "CEO & Inventor", t2r: "Operation Director", t3r: "Assistant", t4r: "AI Expert", t5r: "Data Analyst"
+        mAgents: "Agents", mCrews: "Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
+        hTitle: "AI Crews for Leaders", hSub: "Autonomous Enterprise AI Agents. We scale your success.", hBtn: "Configure Leads",
+        agTitle: "AI <span>Agents</span>", crTitle: "Specialized <span>AI Crews</span>", llmTitle: "Enterprise <span>LLM Platform</span>",
+        lTitle: "Lead Configurator", lBtn: "Secure Leads Now", stTitle: "The <span>Story</span> of Dr. Sidi Weiss",
+        tmTitle: "The <span>Team</span>", bkTitle: "Strategy Session", fChat: "Book Meeting",
+        ag1H: "Autonomous Sales Agent", ag1P: "Identifies, qualifies and contacts leads autonomously.",
+        ag2H: "Research Agent", ag2P: "Analyzes markets and provides real-time insights for decision-makers.",
+        cr1H: "Finance Crew", cr1P: "References: LBBW, Hallesche, Soka-Bau.", b1: "Finance",
+        cr2H: "Auto & Energy Crew", cr2P: "References: Mercedes-Benz, Porsche, K2-Systems.", b2: "Industry",
+        cr3H: "Logistics Crew", cr3P: "References: Deutsche Bahn, Transdev.", b3: "Logistics",
+        llmP: "Maximum data sovereignty through On-Premise LLMs. Secure and GDPR-compliant.",
+        lInfo: "10€ per Lead (excl. VAT)",
+        stP: "From shepherd boy in the Mauritanian desert to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by discipline and excellence. In 2010, he was personally honored by Chancellor Angela Merkel. Today, with AISOLUTIOS, he builds the next generation of autonomous agent crews.",
+        t1r: "CEO & Inventor", t2r: "Operations Director", t3r: "Assistant", t4r: "AI Expert", t5r: "Data Analyst"
     },
     fr: {
-        mAgents: "Agents", mCrews: "Équipes", mLlm: "LLM", mBen: "Atouts", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
-        hTitle: "Équipes IA pour Leaders", hSub: "Agents IA autonomes pour processus B2B complexes. Sécurisés, souverains et évolutifs.", hBtn: "Configurer Leads",
-        agTitle: "<span>Agents</span> IA", ag1H: "Agent de Vente Autonome", ag1P: "Trouve, qualifie et contacte les prospects de manière autonome.",
-        crTitle: "Équipes <span>Agentiques</span>", cr1H: "Finance & Banque", llmTitle: "Plateforme <span>LLM</span>",
-        lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", benTitle: "Vos <span>Avantages</span>",
-        stTitle: "Notre <span>Histoire</span>", stP: "De berger à docteur en Data Science. Honoré par Angela Merkel en 2010.",
-        tmTitle: "L'<span>Équipe</span>", bkTitle: "Session Stratégie", fChat: "Chat",
-        t1r: "CEO & Inventeur", t2r: "Directrice des Opérations", t3r: "Assistante", t4r: "Expert en IA", t5r: "Analyste de Données"
+        mAgents: "Agents", mCrews: "Équipes", mLlm: "Plateforme LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
+        hTitle: "Équipes IA pour Leaders", hSub: "Agents IA d'entreprise autonomes. Nous propulsons votre succès.", hBtn: "Configurer Leads",
+        agTitle: "<span>Agents</span> IA", crTitle: "Équipes <span>IA Spécialisées</span>", llmTitle: "Plateforme <span>LLM</span> Entreprise",
+        lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "L'<span>Histoire</span> de Dr. Sidi Weiss",
+        tmTitle: "L'<span>Équipe</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
+        ag1H: "Agent de Vente Autonome", ag1P: "Identifie, qualifie et contacte les prospects de manière autonome.",
+        ag2H: "Agent de Recherche", ag2P: "Analyse les marchés et fournit des informations en temps réel.",
+        cr1H: "Équipe Finance", cr1P: "Références: LBBW, Hallesche, Soka-Bau.", b1: "Finance",
+        cr2H: "Équipe Auto & Énergie", cr2P: "Références: Mercedes-Benz, Porsche, K2-Systems.", b2: "Industrie",
+        cr3H: "Équipe Logistique", cr3P: "Références: Deutsche Bahn, Transdev.", b3: "Logistique",
+        llmP: "Souveraineté maximale des données via LLM On-Premise. Sécurisé et conforme au RGPD.",
+        lInfo: "10€ par Lead (HT)",
+        stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par la discipline et l'excellence. En 2010, il a été personnellement honoré par la chancelière Angela Merkel. Aujourd'hui, avec AISOLUTIOS, il crée la prochaine génération d'équipes d'agents autonomes.",
+        t1r: "CEO & Inventeur", t2r: "Directrice Opérations", t3r: "Assistante", t4r: "Expert en IA", t5r: "Analyste de Données"
     }
 };
 
 function setLanguage(l) {
-    const s = t[l];
+    const s = trans[l];
     document.getElementById('m-agents').innerText = s.mAgents; document.getElementById('m-crews').innerText = s.mCrews;
-    document.getElementById('m-llm').innerText = s.mLlm; document.getElementById('m-ben').innerText = s.mBen;
-    document.getElementById('m-story').innerText = s.mStory; document.getElementById('m-team').innerText = s.mTeam;
-    document.getElementById('m-book').innerText = s.mBook; document.getElementById('h-title').innerText = s.hTitle;
-    document.getElementById('h-sub').innerText = s.hSub; document.getElementById('h-btn').innerText = s.hBtn;
-    document.getElementById('ag-title').innerHTML = s.agTitle; document.getElementById('ag1-h').innerText = s.ag1H;
-    document.getElementById('ag1-p').innerText = s.ag1P; document.getElementById('cr-title').innerHTML = s.crTitle;
-    document.getElementById('llm-title').innerHTML = s.llmTitle; document.getElementById('l-title').innerText = s.lTitle;
-    document.getElementById('l-btn').innerText = s.lBtn; document.getElementById('ben-title').innerHTML = s.benTitle;
-    document.getElementById('st-title').innerHTML = s.stTitle; document.getElementById('st-p').innerText = s.stP;
-    document.getElementById('tm-title').innerHTML = s.tmTitle; document.getElementById('bk-title').innerText = s.bkTitle;
-    document.getElementById('f-chat').innerText = s.fChat;
+    document.getElementById('m-llm').innerText = s.mLlm; document.getElementById('m-story').innerText = s.mStory;
+    document.getElementById('m-team').innerText = s.mTeam; document.getElementById('m-book').innerText = s.mBook;
+    document.getElementById('h-title').innerText = s.hTitle; document.getElementById('h-sub').innerText = s.hSub;
+    document.getElementById('h-btn').innerText = s.hBtn; document.getElementById('ag-title').innerHTML = s.agTitle;
+    document.getElementById('cr-title').innerHTML = s.crTitle; document.getElementById('llm-title').innerHTML = s.llmTitle;
+    document.getElementById('l-title').innerText = s.lTitle; document.getElementById('l-btn').innerText = s.lBtn;
+    document.getElementById('st-title').innerHTML = s.stTitle; document.getElementById('tm-title').innerHTML = s.tmTitle;
+    document.getElementById('bk-title').innerText = s.bkTitle; document.getElementById('f-chat').innerText = s.fChat;
+    document.getElementById('ag1-h').innerText = s.ag1H; document.getElementById('ag1-p').innerText = s.ag1P;
+    document.getElementById('ag2-h').innerText = s.ag2H; document.getElementById('ag2-p').innerText = s.ag2P;
+    document.getElementById('cr1-h').innerText = s.cr1H; document.getElementById('cr1-p').innerText = s.cr1P;
+    document.getElementById('cr2-h').innerText = s.cr2H; document.getElementById('cr2-p').innerText = s.cr2P;
+    document.getElementById('cr3-h').innerText = s.cr3H; document.getElementById('cr3-p').innerText = s.cr3P;
+    document.getElementById('b1').innerText = s.b1; document.getElementById('b2').innerText = s.b2; document.getElementById('b3').innerText = s.b3;
+    document.getElementById('llm-p').innerText = s.llmP; document.getElementById('l-info').innerText = s.lInfo;
+    document.getElementById('st-p').innerText = s.stP;
     document.getElementById('t1-r').innerText = s.t1r; document.getElementById('t2-r').innerText = s.t2r;
     document.getElementById('t3-r').innerText = s.t3r; document.getElementById('t4-r').innerText = s.t4r;
     document.getElementById('t5-r').innerText = s.t5r;
@@ -257,8 +269,7 @@ function setLanguage(l) {
 
 function upd(v) { document.getElementById('l-count').innerText = v; document.getElementById('l-price').innerText = v * 10; }
 function pay() { window.location.href = `https://buy.stripe.com/7sI7sE1r60O65O06oo?quantity=${document.getElementById('l-slide').value}`; }
-function toggleChat() { const c = document.getElementById('chatbot-ui'); c.style.display = (c.style.display === 'flex') ? 'none' : 'flex'; }
-function tog(id) { document.getElementById(id).style.display = (document.getElementById(id).style.display === 'block') ? 'none' : 'block'; }
+function tog(id) { const el = document.getElementById(id); el.style.display = (el.style.display === 'block') ? 'none' : 'block'; el.scrollIntoView(); }
 document.addEventListener('DOMContentLoaded', () => setLanguage('de'));
 </script>
 </body>
