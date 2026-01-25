@@ -271,10 +271,27 @@ function setLanguage(l) {
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.innerText.toLowerCase() === l));
 }
 
-function upd(v) { document.getElementById('l-count').innerText = v; document.getElementById('l-price').innerText = v * 10; }
-function pay() { window.location.href = `https://buy.stripe.com/7sI7sE1r60O65O06oo?quantity=${document.getElementById('l-slide').value}`; }
-function tog(id) { const el = document.getElementById(id); el.style.display = (el.style.display === 'block') ? 'none' : 'block'; el.scrollIntoView(); }
+function upd(v) { 
+    document.getElementById('l-count').innerText = v; 
+    document.getElementById('l-price').innerText = v * 10; 
+}
+
+function pay() { 
+    // Holt die aktuelle Anzahl vom Schieberegler
+    const qty = document.getElementById('l-slide').value;
+    // Ihr neuer Stripe-Link mit dynamischer Mengen-Übergabe
+    const stripeUrl = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`;
+    window.location.href = stripeUrl; 
+}
+
+function tog(id) { 
+    const el = document.getElementById(id); 
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block'; 
+    el.scrollIntoView(); 
+}
+
 document.addEventListener('DOMContentLoaded', () => setLanguage('de'));
+
 </script>
 </body>
 </html>
