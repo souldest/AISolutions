@@ -456,12 +456,14 @@ function setLanguage(l) {
         }
     };
 
-    // UI Elements
+    // UI & Navigation
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
     safeUpdate('m-team', s.mTeam);
     safeUpdate('m-book', s.mBook);
+    
+    // Hero & Evolution
     safeUpdate('h-title', s.hTitle);
     safeUpdate('h-sub', s.hSub);
     safeUpdate('h-btn', s.hBtn);
@@ -471,6 +473,8 @@ function setLanguage(l) {
     safeUpdate('ev-h2', s.evH2);
     safeUpdate('ev-p2', s.evP2);
     safeUpdate('ev-badge', s.evBadge, true);
+
+    // Crews & LLM
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('c1-h', s.c1h); safeUpdate('c1-p', s.c1p);
     safeUpdate('c2-h', s.c2h); safeUpdate('c2-p', s.c2p);
@@ -481,22 +485,23 @@ function setLanguage(l) {
     safeUpdate('llm-mot-h', s.llmMotH);
     safeUpdate('llm-mot', s.llmMotP);
     safeUpdate('llm-exp-h', s.llmExpH);
+
+    // Configurator & Story
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
     safeUpdate('l-info', s.lInfo);
     safeUpdate('st-title', s.stTitle, true);
     safeUpdate('st-p', s.stP);
-    safeUpdate('tm-title', s.tmTitle, true);
-    safeUpdate('bk-title', s.bkTitle);
-    safeUpdate('f-chat', s.fChat);
 
-    // Team Descriptions & Roles
+    // --- TEAM SECTION FIX ---
+    safeUpdate('tm-title', s.tmTitle, true); // Team Überschrift
     safeUpdate('t1-p', s.t1p); 
     safeUpdate('t2-p', s.t2p);
     safeUpdate('t3-p', s.t3p); 
     safeUpdate('t4-p', s.t4p);
     safeUpdate('t5-p', s.t5p);
 
+    // Team Rollen (Uppercase Texte in den Cards)
     const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     if(teamRoles.length >= 5) {
         teamRoles[0].innerText = s.t1r;
@@ -506,22 +511,24 @@ function setLanguage(l) {
         teamRoles[4].innerText = s.t5r;
     }
 
-    // Legal
-    const imBox = document.getElementById('im');
-    if(imBox) {
-        imBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.imH}</h4><div>${s.imContent}</div>`;
-    }
-    const daBox = document.getElementById('da');
-    if(daBox) {
-        daBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.daH}</h4><div>${s.daContent}</div>`;
-    }
+    // Booking & Footer
+    safeUpdate('bk-title', s.bkTitle);
+    safeUpdate('f-chat', s.fChat);
 
+    // Legal Boxes
+    const imBox = document.getElementById('im');
+    if(imBox) imBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.imH}</h4><div>${s.imContent}</div>`;
+    const daBox = document.getElementById('da');
+    if(daBox) daBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.daH}</h4><div>${s.daContent}</div>`;
+
+    // UI Feedback (Active Language)
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
     localStorage.setItem('selectedLang', l);
 }
 
+// Hilfsfunktionen
 function tog(id) {
     const el = document.getElementById(id);
     if(!el) return;
