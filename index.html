@@ -456,7 +456,7 @@ function setLanguage(l) {
         }
     };
 
-    // UI Elements
+    // UI Elements (Navigation, Hero, Evolution)
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
@@ -471,16 +471,21 @@ function setLanguage(l) {
     safeUpdate('ev-h2', s.evH2);
     safeUpdate('ev-p2', s.evP2);
     safeUpdate('ev-badge', s.evBadge, true);
+
+    // Crew Cards & LLM Section
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('c1-h', s.c1h); safeUpdate('c1-p', s.c1p);
     safeUpdate('c2-h', s.c2h); safeUpdate('c2-p', s.c2p);
     safeUpdate('c3-h', s.c3h); safeUpdate('c3-p', s.c3p);
+    
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-def-h', s.llmDefH); 
     safeUpdate('llm-def', s.llmDefP);
     safeUpdate('llm-mot-h', s.llmMotH);
     safeUpdate('llm-mot', s.llmMotP);
     safeUpdate('llm-exp-h', s.llmExpH);
+
+    // Configurator & Story
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
     safeUpdate('l-info', s.lInfo);
@@ -490,9 +495,11 @@ function setLanguage(l) {
     safeUpdate('bk-title', s.bkTitle);
     safeUpdate('f-chat', s.fChat);
 
-    // Team Descriptions (IDs aus HTML)
-    safeUpdate('t1-p', s.t1p); safeUpdate('t2-p', s.t2p);
-    safeUpdate('t3-p', s.t3p); safeUpdate('t4-p', s.t4p);
+    // Team Descriptions (IDs im HTML müssen t1-p etc. sein)
+    safeUpdate('t1-p', s.t1p); 
+    safeUpdate('t2-p', s.t2p);
+    safeUpdate('t3-p', s.t3p); 
+    safeUpdate('t4-p', s.t4p);
     safeUpdate('t5-p', s.t5p);
 
     // Team Roles
@@ -505,26 +512,37 @@ function setLanguage(l) {
         teamRoles[4].innerText = s.t5r;
     }
 
-    // Legal Boxes
-    const imBox = document.querySelector('#im');
+    // --- RECHTLICHES (KORRIGIERTE LOGIK) ---
+    // Impressum
+    const imBox = document.getElementById('im');
     if(imBox) {
-        imBox.querySelector('h4').innerText = s.imH;
-        imBox.querySelector('p').innerHTML = s.imContent;
-    }
-    const daBox = document.querySelector('#da');
-    if(daBox) {
-        daBox.querySelector('h4').innerText = s.daH;
-        daBox.querySelector('p').innerHTML = s.daContent;
+        // Wir bauen den gesamten Inhalt neu auf, damit die deutschen Reste verschwinden
+        imBox.innerHTML = `
+            <h4 style="color:var(--accent); margin-bottom:10px;">${s.imH}</h4>
+            <div>${s.imContent}</div>
+        `;
     }
 
+    // Datenschutz
+    const daBox = document.getElementById('da');
+    if(daBox) {
+        daBox.innerHTML = `
+            <h4 style="color:var(--accent); margin-bottom:10px;">${s.daH}</h4>
+            <div>${s.daContent}</div>
+        `;
+    }
+
+    // Sprach-Buttons UI
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
     localStorage.setItem('selectedLang', l);
 }
 
+// Restliche Funktionen bleiben gleich
 function tog(id) {
     const el = document.getElementById(id);
+    if(!el) return;
     el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
     if(el.style.display === 'block') el.scrollIntoView({behavior: 'smooth'});
 }
