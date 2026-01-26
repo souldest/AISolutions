@@ -67,11 +67,38 @@
 </header>
 
 <section class="hero">
-    <h1 id="h-title" style="font-size: clamp(30px, 5vw, 60px); font-weight:900;">KI-Crews für Marktführer</h1>
-    <p id="h-sub" style="color:var(--muted); max-width:800px; margin:20px auto; font-size: 18px;">Autonome Enterprise KI-Agenten. Wir skalieren Branchenprimusse von der Lead-Generierung bis zur Kundengewinnung.</p>
-    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
+    <h1 id="h-title" style="font-size: clamp(30px, 5vw, 60px); font-weight:900;">KI-Exzellenz für Marktführer</h1>
+    <p id="h-sub" style="color:var(--muted); max-width:800px; margin:20px auto; font-size: 18px;">
+        Souveräne Enterprise KI-Lösungen. Von autonomen Agenten-Crews bis zu hochsicheren On-Premise LLM-Plattformen – wir skalieren Ihr Business ohne Datenabfluss.
+    </p>
+    <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
         <a href="#leads" class="btn-main" id="h-btn">Leads konfigurieren</a>
         <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);" id="h-btn2">Strategie-Termin</a>
+    </div>
+</section>
+
+<section id="mission" class="container" style="padding: 80px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; margin: 40px auto; border: 1px solid rgba(255,255,255,0.05);">
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+        <h2 id="ms-title" style="margin-bottom: 30px; font-size: 32px; color: var(--accent);">AISOLUTIOS: Wo Datensouveränität auf autonome Exzellenz trifft</h2>
+        
+        <p id="ms-p" style="font-size: 18px; line-height: 1.8; color: #eee; margin-bottom: 40px;">
+            Wird geladen...
+        </p>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; border-bottom: 2px solid var(--accent);">
+                <i class="fas fa-shield-alt" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
+                <h4 id="ms-f1">100% On-Premise</h4>
+            </div>
+            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; border-bottom: 2px solid var(--accent);">
+                <i class="fas fa-users-cog" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
+                <h4 id="ms-f2">Individuelle Crews</h4>
+            </div>
+            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; border-bottom: 2px solid var(--accent);">
+                <i class="fas fa-lock" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
+                <h4 id="ms-f3">Kein Datenabfluss</h4>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -368,12 +395,20 @@
 Hier ist der vollständig angepasste <script>-Block. Ich habe die fehlenden Übersetzungen für die Team-Beschreibungen, das Impressum und den Datenschutz integriert und die setLanguage-Funktion so erweitert, dass alle IDs (inklusive der neuen t1-p bis t5-p) korrekt angesprochen werden.
 
 JavaScript
+Hier ist das vollständig angepasste Skript. Ich habe die neuen, ausführlichen Texte für alle Unternehmen, die Agenten-Crews und die sicheren LLM-Plattformen sowie die Steuerung für die neue Mission-Section integriert.
+
+JavaScript
 <script>
 const trans = {
     de: {
         mAgents: "KI Agenten & Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "KI-Crews für Marktführer", hSub: "Autonome Enterprise KI-Agenten. Wir skalieren Branchenprimusse von der Lead-Generierung bis zur Kundengewinnung.",
-        hBtn: "Leads konfigurieren", evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
+        hTitle: "KI-Exzellenz für Marktführer", 
+        hSub: "Souveräne Enterprise KI-Lösungen. Von autonomen Agenten-Crews bis zu hochsicheren On-Premise LLM-Plattformen – wir skalieren Ihr Business ohne Datenabfluss.",
+        hBtn: "Leads konfigurieren", hBtn2: "Strategie-Termin",
+        msTitle: "AISOLUTIOS: Wo Datensouveränität auf autonome Exzellenz trifft",
+        msP: "In einer Ära technologischer Umbrüche bietet AISOLUTIOS die Antwort für Unternehmen, die keine Kompromisse eingehen. Wir bauen nicht nur spezialisierte Crews zur Lead-Generierung, sondern entwickeln ganzheitliche, autonome Agenten-Strukturen und hochsichere LLM-Plattformen für Kunden aller Branchen. Ob Banken, Versicherer oder globale Vertriebsorganisationen – wir integrieren Agentic AI direkt in Ihre Infrastruktur. Unser Versprechen: Maximale Automatisierung und intelligente Kundenbindung bei 0% Datenabfluss durch strikte On-Premise-Implementierung.",
+        msF1: "100% On-Premise", msF2: "Individuelle Crews", msF3: "Kein Datenabfluss",
+        evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
         evH1: "Gestern: Statische GenAI", evP1: "ChatGPT & Co. sind passiv. Sie warten auf Befehle und stoppen dann.",
         evH2: "Heute: Agentic AI", evP2: "Die Geburtsstunde autonomer Agenten. Sie handeln proaktiv.",
         evBadge: "DER NEUE STANDARD BEI AISOLUTIOS",
@@ -398,8 +433,13 @@ const trans = {
     },
     en: {
         mAgents: "AI Agents & Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "AI Crews for Market Leaders", hSub: "Autonomous Enterprise AI Agents. Scaling industry leaders from lead generation to customer acquisition.",
-        hBtn: "Configure Leads", evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
+        hTitle: "AI Excellence for Market Leaders",
+        hSub: "Sovereign Enterprise AI Solutions. From autonomous agent crews to highly secure on-premise LLM platforms – we scale your business without data leakage.",
+        hBtn: "Configure Leads", hBtn2: "Strategy Session",
+        msTitle: "AISOLUTIOS: Where Data Sovereignty Meets Autonomous Excellence",
+        msP: "In an era of technological disruption, AISOLUTIOS provides the answer for companies that refuse to compromise. We don't just build specialized lead generation crews; we develop holistic, autonomous agent structures and highly secure LLM platforms for clients across all industries. Whether for banks, insurers, or global sales organizations – we integrate Agentic AI directly into your infrastructure. Our promise: Maximum automation and intelligent customer retention with 0% data leakage through strict on-premise implementation.",
+        msF1: "100% On-Premise", msF2: "Custom Crews", msF3: "No Data Leakage",
+        evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
         evH1: "Yesterday: Static GenAI", evP1: "ChatGPT & Co. are passive. They wait for commands and then stop.",
         evH2: "Today: Agentic AI", evP2: "The birth of autonomous agents. They act proactively and complete work autonomously.",
         evBadge: "THE NEW STANDARD AT AISOLUTIOS",
@@ -424,8 +464,13 @@ const trans = {
     },
     fr: {
         mAgents: "Agents & Équipes IA", mLlm: "Plateforme LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
-        hTitle: "Équipes IA pour Leaders", hSub: "Agents IA d'entreprise autonomes. Propulsez les leaders du marché.",
-        hBtn: "Configurer Leads", evTitle: "L'évolution : de la GenAI à l'<span>IA Agentique</span>",
+        hTitle: "L'Excellence IA pour les Leaders",
+        hSub: "Solutions IA d'entreprise souveraines. Des équipages d'agents autonomes aux plateformes LLM on-premise ultra-sécurisées – nous propulsons votre activité sans fuite de données.",
+        hBtn: "Configurer Leads", hBtn2: "Session Stratégie",
+        msTitle: "AISOLUTIOS : Là où la souveraineté des données rencontre l'excellence autonome",
+        msP: "À une époque de bouleversements technologiques, AISOLUTIOS apporte la réponse aux entreprises qui refusent les compromis. Nous ne nous contentons pas de bâtir des équipages de génération de leads ; nous développons des structures d'agents autonomes holistiques et des plateformes LLM hautement sécurisées pour nos clients de tous secteurs. Qu'il s'agisse de banques, d'assureurs ou d'organisations commerciales mondiales, nous intégrons l'IA agentique directement dans votre infrastructure. Notre promesse : une automatisation maximale et une fidélisation client intelligente avec 0 % de fuite de données grâce à une implémentation on-premise stricte.",
+        msF1: "100% On-Premise", msF2: "Équipages Sur Mesure", msF3: "Zéro Fuite de Données",
+        evTitle: "L'évolution : de la GenAI à l'<span>IA Agentique</span>",
         evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs. Ils attendent des ordres.",
         evH2: "Aujourd'hui: IA Agentique", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive.",
         evBadge: "LE NOUVEAU STANDARD CHEZ AISOLUTIOS",
@@ -471,6 +516,14 @@ function setLanguage(l) {
     safeUpdate('h-title', s.hTitle);
     safeUpdate('h-sub', s.hSub);
     safeUpdate('h-btn', s.hBtn);
+    safeUpdate('h-btn2', s.hBtn2);
+
+    // Mission Section
+    safeUpdate('ms-title', s.msTitle);
+    safeUpdate('ms-p', s.msP);
+    safeUpdate('ms-f1', s.msF1);
+    safeUpdate('ms-f2', s.msF2);
+    safeUpdate('ms-f3', s.msF3);
 
     // Sektionen & Leads
     safeUpdate('ev-title', s.evTitle, true);
@@ -498,7 +551,7 @@ function setLanguage(l) {
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
 
-    // Footer & Rechtliches (Nur Überschriften anpassen, damit HTML Text bleibt)
+    // Footer & Rechtliches
     safeUpdate('bk-title', s.bkTitle);
     safeUpdate('f-chat', s.fChat);
     const imTitle = document.querySelector('#im h4');
@@ -512,7 +565,6 @@ function setLanguage(l) {
     localStorage.setItem('selectedLang', l);
 }
 
-// Lead Konfigurator Funktionen
 function upd(v) { 
     const count = document.getElementById('l-count');
     const price = document.getElementById('l-price');
@@ -526,7 +578,6 @@ function pay() {
     window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
 }
 
-// Auf-/Zuklappen von Impressum & Datenschutz
 function tog(id) {
     const el = document.getElementById(id);
     if(!el) return;
@@ -542,7 +593,6 @@ function tog(id) {
     }
 }
 
-// Initialisierung
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
