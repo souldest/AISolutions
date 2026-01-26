@@ -254,40 +254,39 @@
             <div style="font-size: 50px; color: var(--accent); margin-bottom: 20px;"><i class="fas fa-microchip"></i></div>
             <h3 style="margin-bottom: 5px;">Dr. Sidi Weiss</h3>
             <p style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">CEO & Erfinder</p>
-            <p style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.</p>
+            <p id="t1-p" style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.</p>
         </div>
 
         <div class="card" style="text-align: center; border-bottom: 4px solid var(--primary);">
             <div style="font-size: 50px; color: var(--primary); margin-bottom: 20px;"><i class="fas fa-cogs"></i></div>
             <h3 style="margin-bottom: 5px;">Mona Distler</h3>
             <p style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Operation Director</p>
-            <p style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Das organisatorische Rückgrat. Sie transformiert komplexe KI-Strategien in reibungslose operative Prozesse.</p>
+            <p id="t2-p" style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Das organisatorische Rückgrat. Sie transformiert komplexe KI-Strategien in reibungslose operative Prozesse.</p>
         </div>
 
         <div class="card" style="text-align: center; border-bottom: 4px solid #fff;">
             <div style="font-size: 50px; color: #fff; margin-bottom: 20px;"><i class="fas fa-user-tie"></i></div>
             <h3 style="margin-bottom: 5px;">Eva Lenz</h3>
             <p style="color: #ccc; font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Assistentin</p>
-            <p style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business von AISOLUTIOS.</p>
+            <p id="t3-p" style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business von AISOLUTIOS.</p>
         </div>
 
         <div class="card" style="text-align: center; border-bottom: 4px solid var(--accent);">
             <div style="font-size: 50px; color: var(--accent); margin-bottom: 20px;"><i class="fas fa-brain"></i></div>
             <h3 style="margin-bottom: 5px;">Aziz Hamoud</h3>
             <p style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">KI-Experte</p>
-            <p style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze, die unsere Agenten-Crews antreiben.</p>
+            <p id="t4-p" style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze, die unsere Agenten-Crews antreiben.</p>
         </div>
 
         <div class="card" style="text-align: center; border-bottom: 4px solid var(--primary);">
             <div style="font-size: 50px; color: var(--primary); margin-bottom: 20px;"><i class="fas fa-chart-line"></i></div>
             <h3 style="margin-bottom: 5px;">Ahmedou Didi</h3>
             <p style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Data Analyst</p>
-            <p style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Übersetzt Daten in Wissen. Er findet die entscheidenden Muster, die Unternehmen einen echten Wettbewerbsvorteil verschaffen.</p>
+            <p id="t5-p" style="font-size: 14px; margin-top: 15px; line-height: 1.6;">Übersetzt Daten in Wissen. Er findet die entscheidenden Muster, die Unternehmen einen echten Wettbewerbsvorteil verschaffen.</p>
         </div>
 
     </div>
 </section>
-
 <section id="booking" class="container">
     <h2 id="bk-title" style="border:none; text-align:center;">Termin buchen</h2>
     
@@ -357,6 +356,9 @@
 
 <button class="floating-btn" onclick="window.location.href='#booking'" id="f-chat">Strategie-Termin buchen</button>
 
+Hier ist der vollständig angepasste <script>-Block. Ich habe die fehlenden Übersetzungen für die Team-Beschreibungen, das Impressum und den Datenschutz integriert und die setLanguage-Funktion so erweitert, dass alle IDs (inklusive der neuen t1-p bis t5-p) korrekt angesprochen werden.
+
+JavaScript
 <script>
 const trans = {
     de: {
@@ -378,7 +380,13 @@ const trans = {
         tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>", bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
         lInfo: "10€ pro Lead (zzgl. MwSt.)", 
         stP: "Vom Hirtenjungen in der mauretanischen Wüste über den Dienst als Marineoffizier bis hin zum promovierten Data Scientist – der Weg von Dr. Sidi Weiss ist geprägt von Disziplin und Exzellenz. 2010 wurde er persönlich von Bundeskanzlerin Angela Merkel geehrt. Heute baut er mit AISOLUTIOS die nächste Generation autonomer Agenten-Crews für europäische Marktführer.",
-        t1r: "CEO & Erfinder", t2r: "Operation Director", t3r: "Assistentin", t4r: "KI-Experte", t5r: "Data Analyst"
+        t1r: "CEO & Erfinder", t1p: "Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.",
+        t2r: "Operation Director", t2p: "Das organisatorische Rückgrat. Sie transformiert komplexe KI-Strategien in reibungslose operative Prozesse.",
+        t3r: "Assistentin", t3p: "Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business von AISOLUTIOS.",
+        t4r: "KI-Experte", t4p: "Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze, die unsere Agenten-Crews antreiben.",
+        t5r: "Data Analyst", t5p: "Übersetzt Daten in Wissen. Er findet die entscheidenden Muster, die Unternehmen einen Wettbewerbsvorteil verschaffen.",
+        imH: "Impressum", imContent: "<strong>Angaben gemäß § 5 DDG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br>E-Mail: vertrieb@aisolutios.de",
+        daH: "Datenschutz", daContent: "Wir verarbeiten Daten gemäß DSGVO. Hosting erfolgt auf sicheren Servern in Deutschland/EU."
     },
     en: {
         mAgents: "AI Agents & Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
@@ -398,8 +406,14 @@ const trans = {
         lTitle: "Lead Configurator", lBtn: "Secure Leads Now", stTitle: "From Shepherd to AI Visionary – <span>The Odyssey of Dr. Sidi Weiss</span>",
         tmTitle: "The Minds Behind <span>The Revolution</span>", bkTitle: "Book Strategy Session", fChat: "Book Session",
         lInfo: "10€ per Lead (excl. VAT)", 
-        stP: "From shepherd boy in the Mauritanian desert to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by discipline and excellence. In 2010, he was personally honored by Chancellor Angela Merkel. Today, with AISOLUTIOS, he builds the next generation of autonomous agent crews.",
-        t1r: "CEO & Inventor", t2r: "Operations Director", t3r: "Assistant", t4r: "AI Expert", t5r: "Data Analyst"
+        stP: "From shepherd boy in the Mauritanian desert to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by excellence. Honored by Chancellor Merkel in 2010, he now builds the next generation of AI.",
+        t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous agent crews. Combining scientific excellence with strategic foresight.",
+        t2r: "Operations Director", t2p: "The organizational backbone. Transforming complex AI strategies into smooth operational processes.",
+        t3r: "Assistant", t3p: "Interface between management and partners. Ensuring maximum efficiency in daily operations.",
+        t4r: "AI Expert", t4p: "Master of algorithms. Developing and optimizing the neural networks driving our crews.",
+        t5r: "Data Analyst", t5p: "Translating data into knowledge. Finding the patterns that provide a real competitive edge.",
+        imH: "Legal Notice", imContent: "<strong>Information according to § 5 DDG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Germany",
+        daH: "Privacy Policy", daContent: "Data processing according to GDPR. Hosting on secure servers in Germany/EU."
     },
     fr: {
         mAgents: "Agents & Équipes IA", mLlm: "Plateforme LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
@@ -417,10 +431,16 @@ const trans = {
         llmMotH: "Pourquoi On-Premise ?", llmMotP: "Les leaders ont besoin d'un contrôle à 100%. Nous éliminons les risques liés au cloud.",
         llmExpH: "Expertise AISOLUTIOS :",
         lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "Du berger au visionnaire de l'IA – <span>L'Odyssée du Dr Sidi Weiss</span>",
-        tmTitle: "L'<span>Équipe</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
+        tmTitle: "Les Esprits derrière <span>la Révolution</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
         lInfo: "10€ par Lead (HT)", 
-        stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, il crée la prochaine génération d'équipes d'agents.",
-        t1r: "CEO & Inventeur", t2r: "Directrice Opérations", t3r: "Assistante", t4r: "Expert en IA", t5r: "Analyste de Données"
+        stP: "D'enfant berger dans le désert mauritanien à docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, il crée l'IA de demain.",
+        t1r: "CEO & Inventeur", t1p: "Visionnaire et architecte des équipages d'agents autonomes. Il allie excellence scientifique et vision stratégique.",
+        t2r: "Directrice Opérations", t2p: "Le pilier organisationnel. Elle transforme les stratégies IA complexes en processus opérationnels fluides.",
+        t3r: "Assistante", t3p: "Interface entre la direction et les partenaires. Elle garantit une efficacité maximale au quotidien.",
+        t4r: "Expert en IA", t4p: "Maître des algorithmes. Il développe et optimise les réseaux neuronaux qui propulsent nos équipages.",
+        t5r: "Analyste de Données", t5p: "Traduit les données en connaissances. Il identifie les modèles décisifs pour votre avantage concurrentiel.",
+        imH: "Mentions Légales", imContent: "<strong>Conformément au § 5 DDG :</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Allemagne",
+        daH: "Confidentialité", daContent: "Traitement des données selon le RGPD. Hébergement sécurisé en Allemagne/UE."
     }
 };
 
@@ -436,7 +456,7 @@ function setLanguage(l) {
         }
     };
 
-    // Mapping Navigation & Hero
+    // UI Elements
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
@@ -445,42 +465,37 @@ function setLanguage(l) {
     safeUpdate('h-title', s.hTitle);
     safeUpdate('h-sub', s.hSub);
     safeUpdate('h-btn', s.hBtn);
-
-    // Evolution Section
     safeUpdate('ev-title', s.evTitle, true);
     safeUpdate('ev-h1', s.evH1);
     safeUpdate('ev-p1', s.evP1);
     safeUpdate('ev-h2', s.evH2);
     safeUpdate('ev-p2', s.evP2);
     safeUpdate('ev-badge', s.evBadge, true);
-
-    // Crew Cards
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('c1-h', s.c1h); safeUpdate('c1-p', s.c1p);
     safeUpdate('c2-h', s.c2h); safeUpdate('c2-p', s.c2p);
     safeUpdate('c3-h', s.c3h); safeUpdate('c3-p', s.c3p);
-
-    // LLM Section (Definition, Motivation, Expertise)
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-def-h', s.llmDefH); 
     safeUpdate('llm-def', s.llmDefP);
     safeUpdate('llm-mot-h', s.llmMotH);
     safeUpdate('llm-mot', s.llmMotP);
     safeUpdate('llm-exp-h', s.llmExpH);
-
-    // Leads & Story
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
     safeUpdate('l-info', s.lInfo);
     safeUpdate('st-title', s.stTitle, true);
     safeUpdate('st-p', s.stP);
-
-    // Team & Booking
     safeUpdate('tm-title', s.tmTitle, true);
     safeUpdate('bk-title', s.bkTitle);
     safeUpdate('f-chat', s.fChat);
 
-    // Team Roles (Korrigierte Logik für alle Sprachen)
+    // Team Descriptions (IDs aus HTML)
+    safeUpdate('t1-p', s.t1p); safeUpdate('t2-p', s.t2p);
+    safeUpdate('t3-p', s.t3p); safeUpdate('t4-p', s.t4p);
+    safeUpdate('t5-p', s.t5p);
+
+    // Team Roles
     const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     if(teamRoles.length >= 5) {
         teamRoles[0].innerText = s.t1r;
@@ -490,11 +505,21 @@ function setLanguage(l) {
         teamRoles[4].innerText = s.t5r;
     }
 
-    // UI Buttons Update
+    // Legal Boxes
+    const imBox = document.querySelector('#im');
+    if(imBox) {
+        imBox.querySelector('h4').innerText = s.imH;
+        imBox.querySelector('p').innerHTML = s.imContent;
+    }
+    const daBox = document.querySelector('#da');
+    if(daBox) {
+        daBox.querySelector('h4').innerText = s.daH;
+        daBox.querySelector('p').innerHTML = s.daContent;
+    }
+
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
-    
     localStorage.setItem('selectedLang', l);
 }
 
@@ -504,7 +529,6 @@ function tog(id) {
     if(el.style.display === 'block') el.scrollIntoView({behavior: 'smooth'});
 }
 
-// Initialer Aufruf
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
