@@ -180,13 +180,22 @@
 </section>
 
 <section id="leads" class="container">
-    <div class="lead-calc">
-        <h2 id="l-title" style="border:none; text-align:center;">Lead Konfigurator</h2>
-        <input type="range" id="l-slide" min="10" max="2000" value="100" step="10" oninput="upd(this.value)">
-        <div style="font-size:24px; font-weight: 700;"><span id="l-count">100</span> Leads</div>
-        <div class="price-tag"><span id="l-price">1000</span>€</div>
-        <p id="l-info">10€ pro Lead (zzgl. MwSt.)</p>
-        <button onclick="pay()" class="btn-main" id="l-btn">Jetzt Leads sichern</button>
+    <div class="lead-calc" style="max-width: 600px; margin: 40px auto; text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid var(--accent);">
+        <h2 id="l-title" style="border:none; text-align:center; margin-bottom: 30px;">Lead Konfigurator</h2>
+        
+        <input type="range" id="l-slide" min="10" max="2000" value="100" step="10" oninput="upd(this.value)" style="width: 100%; margin-bottom: 30px; cursor: pointer;">
+        
+        <div style="font-size:24px; font-weight: 700; margin-bottom: 10px;">
+            <span id="l-count">100</span> Leads
+        </div>
+        
+        <div class="price-tag" style="font-size: 48px; color: var(--accent); font-weight: 800; margin-bottom: 10px;">
+            <span id="l-price">1000</span>€
+        </div>
+        
+        <p id="l-info" style="color: #ccc; margin-bottom: 30px;">10€ pro Lead (zzgl. MwSt.)</p>
+        
+        <button onclick="pay()" class="btn-main" id="l-btn" style="width: 100%; padding: 15px; font-size: 18px; font-weight: bold; cursor: pointer;">Jetzt Leads sichern</button>
     </div>
 </section>
 
@@ -434,7 +443,7 @@ const trans = {
         tmTitle: "Les Esprits derrière <span>la Révolution</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
         lInfo: "10€ par Lead (HT)", 
         stP: "D'enfant berger à docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Honoré par la chancelière Merkel en 2010.",
-        t1r: "CEO & Inventeur", t1p: "Visionnaire et architecte des équipages d'agents autonomes.",
+        t1r: "CEO & Inventeur", t1p: "Vision visionary et architecte des équipages d'agents autonomes.",
         t2r: "Directrice Opérations", t2p: "Le pilier organisationnel.",
         t3r: "Assistante", t3p: "Interface entre la direction et les partenaires.",
         t4r: "Expert en IA", t4p: "Maître des algorithmes.",
@@ -456,7 +465,7 @@ function setLanguage(l) {
         }
     };
 
-    // Navigation & UI
+    // Navigation, Header & Buttons
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
@@ -488,7 +497,6 @@ function setLanguage(l) {
     safeUpdate('t3-p', s.t3p); safeUpdate('t4-p', s.t4p);
     safeUpdate('t5-p', s.t5p);
 
-    // Rollen (CEO etc.) - Sucht alle <p> Tags in den Karten mit uppercase Style
     const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
@@ -501,7 +509,6 @@ function setLanguage(l) {
     const daBox = document.getElementById('da');
     if(daBox) daBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.daH}</h4><div>${s.daContent}</div>`;
 
-    // Flaggen-Status
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
@@ -518,14 +525,19 @@ function upd(v) {
 
 function pay() { 
     const slider = document.getElementById('l-slide');
-    const qty = slider ? slider.value : 10;
+    const qty = slider ? slider.value : 100;
+    // Leitet zu Stripe weiter
     window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
 }
 
-// Initialisierung & Smooth Scroll
+// Initialisierung & Event Listener
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
+
+    // Initialisierung Lead-Konfigurator bei Start
+    const slider = document.getElementById('l-slide');
+    if(slider) upd(slider.value);
 
     // Smooth Scroll Fix für alle Links (Team, etc.)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
