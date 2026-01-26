@@ -394,8 +394,7 @@ const trans = {
         t3r: "Assistentin", t3p: "Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business von AISOLUTIOS.",
         t4r: "KI-Experte", t4p: "Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze, die unsere Agenten-Crews antreiben.",
         t5r: "Data Analyst", t5p: "Übersetzt Daten in Wissen. Er findet die entscheidenden Muster, die Unternehmen einen echten Wettbewerbsvorteil verschaffen.",
-        imH: "Impressum", imContent: "Dr. Sidi Weiss | AISOLUTIOS",
-        daH: "Datenschutz", daContent: "DSGVO konform."
+        imH: "Impressum", daH: "Datenschutzerklärung"
     },
     en: {
         mAgents: "AI Agents & Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
@@ -421,8 +420,7 @@ const trans = {
         t3r: "Assistant", t3p: "Interface between management and partners. Ensuring maximum efficiency in daily operations.",
         t4r: "AI Expert", t4p: "Master of algorithms. Developing and optimizing the neural networks driving our crews.",
         t5r: "Data Analyst", t5p: "Translating data into knowledge. Finding the patterns that provide a real competitive edge.",
-        imH: "Legal Notice", imContent: "Dr. Sidi Weiss | AISOLUTIOS",
-        daH: "Privacy Policy", daContent: "GDPR compliant."
+        imH: "Legal Notice", daH: "Privacy Policy"
     },
     fr: {
         mAgents: "Agents & Équipes IA", mLlm: "Plateforme LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
@@ -448,8 +446,7 @@ const trans = {
         t3r: "Assistante", t3p: "Interface entre la direction et les partenaires.",
         t4r: "Expert en IA", t4p: "Maître des algorithmes.",
         t5r: "Analyste", t5p: "Traduit les données en connaissances.",
-        imH: "Mentions Légales", imContent: "Dr. Sidi Weiss | AISOLUTIOS",
-        daH: "Confidentialité", daContent: "RGPD conforme."
+        imH: "Mentions Légales", daH: "Confidentialité"
     }
 };
 
@@ -475,7 +472,7 @@ function setLanguage(l) {
     safeUpdate('h-sub', s.hSub);
     safeUpdate('h-btn', s.hBtn);
 
-    // Sektionen
+    // Sektionen & Leads
     safeUpdate('ev-title', s.evTitle, true);
     safeUpdate('ev-h1', s.evH1); safeUpdate('ev-p1', s.evP1);
     safeUpdate('ev-h2', s.evH2); safeUpdate('ev-p2', s.evP2);
@@ -491,7 +488,7 @@ function setLanguage(l) {
     safeUpdate('l-title', s.lTitle); safeUpdate('l-btn', s.lBtn); safeUpdate('l-info', s.lInfo);
     safeUpdate('st-title', s.stTitle, true); safeUpdate('st-p', s.stP);
 
-    // --- TEAM UPDATE ---
+    // Team
     safeUpdate('tm-title', s.tmTitle, true);
     safeUpdate('t1-p', s.t1p); safeUpdate('t2-p', s.t2p);
     safeUpdate('t3-p', s.t3p); safeUpdate('t4-p', s.t4p);
@@ -501,13 +498,13 @@ function setLanguage(l) {
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
 
-    // Footer & Legal
+    // Footer & Rechtliches (Nur Überschriften anpassen, damit HTML Text bleibt)
     safeUpdate('bk-title', s.bkTitle);
     safeUpdate('f-chat', s.fChat);
-    const imBox = document.getElementById('im');
-    if(imBox) imBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.imH}</h4><div>${s.imContent}</div>`;
-    const daBox = document.getElementById('da');
-    if(daBox) daBox.innerHTML = `<h4 style="color:var(--accent); margin-bottom:10px;">${s.daH}</h4><div>${s.daContent}</div>`;
+    const imTitle = document.querySelector('#im h4');
+    if(imTitle) imTitle.innerText = s.imH;
+    const daTitle = document.querySelector('#da h4');
+    if(daTitle) daTitle.innerText = s.daH;
 
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
@@ -520,34 +517,44 @@ function upd(v) {
     const count = document.getElementById('l-count');
     const price = document.getElementById('l-price');
     if(count) count.innerText = v; 
-    if(price) price.innerText = v * 10; 
+    if(price) price.innerText = (v * 10).toLocaleString('de-DE'); 
 }
 
 function pay() { 
     const slider = document.getElementById('l-slide');
     const qty = slider ? slider.value : 100;
-    // Leitet zu Stripe weiter
     window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
 }
 
-// Initialisierung & Event Listener
+// Auf-/Zuklappen von Impressum & Datenschutz
+function tog(id) {
+    const el = document.getElementById(id);
+    if(!el) return;
+    const otherId = id === 'im' ? 'da' : 'im';
+    const otherEl = document.getElementById(otherId);
+    if(otherEl) otherEl.style.display = 'none';
+
+    if(el.style.display === 'none' || el.style.display === '') {
+        el.style.display = 'block';
+        el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    } else {
+        el.style.display = 'none';
+    }
+}
+
+// Initialisierung
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
 
-    // Initialisierung Lead-Konfigurator bei Start
     const slider = document.getElementById('l-slide');
     if(slider) upd(slider.value);
 
-    // Smooth Scroll Fix für alle Links (Team, etc.)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 });
