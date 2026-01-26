@@ -82,7 +82,7 @@
         <h2 id="ms-title" style="margin-bottom: 30px; font-size: 32px; color: var(--accent);">AISOLUTIOS: Wo Datensouveränität auf autonome Exzellenz trifft</h2>
         
         <p id="ms-p" style="font-size: 18px; line-height: 1.8; color: #eee; margin-bottom: 40px;">
-            Wird geladen...
+        
         </p>
         
         <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
@@ -390,14 +390,10 @@
     </div>
 </footer>
 
-<button class="floating-btn" onclick="window.location.href='#booking'" id="f-chat">Strategie-Termin buchen</button>
-
-Hier ist der vollständig angepasste <script>-Block. Ich habe die fehlenden Übersetzungen für die Team-Beschreibungen, das Impressum und den Datenschutz integriert und die setLanguage-Funktion so erweitert, dass alle IDs (inklusive der neuen t1-p bis t5-p) korrekt angesprochen werden.
-
-JavaScript
-Hier ist das vollständig angepasste Skript. Ich habe die neuen, ausführlichen Texte für alle Unternehmen, die Agenten-Crews und die sicheren LLM-Plattformen sowie die Steuerung für die neue Mission-Section integriert.
-
-JavaScript
+<button class="floating-btn" id="f-chat" onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
+    Strategie-Termin buchen
+</button>
+    
 <script>
 const trans = {
     de: {
@@ -437,7 +433,7 @@ const trans = {
         hSub: "Sovereign Enterprise AI Solutions. From autonomous agent crews to highly secure on-premise LLM platforms – we scale your business without data leakage.",
         hBtn: "Configure Leads", hBtn2: "Strategy Session",
         msTitle: "AISOLUTIOS: Where Data Sovereignty Meets Autonomous Excellence",
-        msP: "In an era of technological disruption, AISOLUTIOS provides the answer for companies that refuse to compromise. We don't just build specialized lead generation crews; we develop holistic, autonomous agent structures and highly secure LLM platforms for clients across all industries. Whether for banks, insurers, or global sales organizations – we integrate Agentic AI directly into your infrastructure. Our promise: Maximum automation and intelligent customer retention with 0% data leakage through strict on-premise implementation.",
+        msP: "In an era of technological disruption, AISOLUTIOS provides the answer for companies that refuse to compromise. We don't just build specialized lead generation crews; we develop holistic, autonomous agent structures and highly secure LLM platforms for clients across all industries. With AISOLUTIOS, your sensitive business data never leaves your own infrastructure.",
         msF1: "100% On-Premise", msF2: "Custom Crews", msF3: "No Data Leakage",
         evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
         evH1: "Yesterday: Static GenAI", evP1: "ChatGPT & Co. are passive. They wait for commands and then stop.",
@@ -455,23 +451,23 @@ const trans = {
         tmTitle: "The Minds Behind <span>The Revolution</span>", bkTitle: "Book Strategy Session", fChat: "Book Session",
         lInfo: "10€ per Lead (excl. VAT)", 
         stP: "From shepherd boy to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by excellence. Honored by Chancellor Merkel in 2010.",
-        t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous agent crews. Combining scientific excellence with strategic foresight.",
-        t2r: "Operations Director", t2p: "The organizational backbone. Transforming complex AI strategies into smooth operational processes.",
-        t3r: "Assistant", t3p: "Interface between management and partners. Ensuring maximum efficiency in daily operations.",
-        t4r: "AI Expert", t4p: "Master of algorithms. Developing and optimizing the neural networks driving our crews.",
-        t5r: "Data Analyst", t5p: "Translating data into knowledge. Finding the patterns that provide a real competitive edge.",
+        t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous agent crews.",
+        t2r: "Operations Director", t2p: "The organizational backbone.",
+        t3r: "Assistant", t3p: "Interface between management and partners.",
+        t4r: "AI Expert", t4p: "Master of algorithms.",
+        t5r: "Data Analyst", t5p: "Translating data into knowledge.",
         imH: "Legal Notice", daH: "Privacy Policy"
     },
     fr: {
         mAgents: "Agents & Équipes IA", mLlm: "Plateforme LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "RDV",
         hTitle: "L'Excellence IA pour les Leaders",
-        hSub: "Solutions IA d'entreprise souveraines. Des équipages d'agents autonomes aux plateformes LLM on-premise ultra-sécurisées – nous propulsons votre activité sans fuite de données.",
+        hSub: "Solutions IA d'entreprise souveraines. Des équipages d'agents autonomes aux plateformes LLM on-premise ultra-sécurisées.",
         hBtn: "Configurer Leads", hBtn2: "Session Stratégie",
         msTitle: "AISOLUTIOS : Là où la souveraineté des données rencontre l'excellence autonome",
-        msP: "À une époque de bouleversements technologiques, AISOLUTIOS apporte la réponse aux entreprises qui refusent les compromis. Nous ne nous contentons pas de bâtir des équipages de génération de leads ; nous développons des structures d'agents autonomes holistiques et des plateformes LLM hautement sécurisées pour nos clients de tous secteurs. Qu'il s'agisse de banques, d'assureurs ou d'organisations commerciales mondiales, nous intégrons l'IA agentique directement dans votre infrastructure. Notre promesse : une automatisation maximale et une fidélisation client intelligente avec 0 % de fuite de données grâce à une implémentation on-premise stricte.",
+        msP: "À une époque de bouleversements technologiques, AISOLUTIOS apporte la réponse aux entreprises qui refusent les compromis. Nous développons des structures d'agents autonomes holistiques et des plateformes LLM hautement sécurisées. Vos données sensibles ne quittent jamais votre propre infrastructure.",
         msF1: "100% On-Premise", msF2: "Équipages Sur Mesure", msF3: "Zéro Fuite de Données",
         evTitle: "L'évolution : de la GenAI à l'<span>IA Agentique</span>",
-        evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs. Ils attendent des ordres.",
+        evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs.",
         evH2: "Aujourd'hui: IA Agentique", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive.",
         evBadge: "LE NOUVEAU STANDARD CHEZ AISOLUTIOS",
         agTitle: "Agents <span>& Équipes</span> IA",
@@ -480,17 +476,17 @@ const trans = {
         c3h: "Équipe Auto", c3p: "IA pour les cycles de vente techniques.",
         llmTitle: "Plateforme <span>LLM</span> Entreprise",
         llmDefH: "Définition & Focus", llmDefP: "Infrastructure hautement sécurisée.",
-        llmMotH: "Pourquoi On-Premise ?", llmMotP: "Les leaders ont besoin d'un contrôle à 100%.",
+        llmMotH: "Pourquoi On-Premise ?", llmMotP: "Contrôle à 100%.",
         llmExpH: "Expertise AISOLUTIOS :",
         lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "Du berger au visionnaire – <span>Dr Sidi Weiss</span>",
         tmTitle: "Les Esprits derrière <span>la Révolution</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
         lInfo: "10€ par Lead (HT)", 
         stP: "D'enfant berger à docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Honoré par la chancelière Merkel en 2010.",
-        t1r: "CEO & Inventeur", t1p: "Vision visionary et architecte des équipages d'agents autonomes.",
+        t1r: "CEO & Inventeur", t1p: "Visionnaire et architecte.",
         t2r: "Directrice Opérations", t2p: "Le pilier organisationnel.",
-        t3r: "Assistante", t3p: "Interface entre la direction et les partenaires.",
+        t3r: "Assistante", t3p: "Interface management.",
         t4r: "Expert en IA", t4p: "Maître des algorithmes.",
-        t5r: "Analyste", t5p: "Traduit les données en connaissances.",
+        t5r: "Analyste", t5p: "Analyse de données stratégiques.",
         imH: "Mentions Légales", daH: "Confidentialité"
     }
 };
@@ -517,6 +513,7 @@ function setLanguage(l) {
     safeUpdate('h-sub', s.hSub);
     safeUpdate('h-btn', s.hBtn);
     safeUpdate('h-btn2', s.hBtn2);
+    safeUpdate('f-chat', s.fChat); // Wichtig für Ihren Floating-Button
 
     // Mission Section
     safeUpdate('ms-title', s.msTitle);
@@ -525,7 +522,7 @@ function setLanguage(l) {
     safeUpdate('ms-f2', s.msF2);
     safeUpdate('ms-f3', s.msF3);
 
-    // Sektionen & Leads
+    // Evolution & Crews
     safeUpdate('ev-title', s.evTitle, true);
     safeUpdate('ev-h1', s.evH1); safeUpdate('ev-p1', s.evP1);
     safeUpdate('ev-h2', s.evH2); safeUpdate('ev-p2', s.evP2);
@@ -534,6 +531,8 @@ function setLanguage(l) {
     safeUpdate('c1-h', s.c1h); safeUpdate('c1-p', s.c1p);
     safeUpdate('c2-h', s.c2h); safeUpdate('c2-p', s.c2p);
     safeUpdate('c3-h', s.c3h); safeUpdate('c3-p', s.c3p);
+
+    // LLM & Leads
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-def-h', s.llmDefH); safeUpdate('llm-def', s.llmDefP);
     safeUpdate('llm-mot-h', s.llmMotH); safeUpdate('llm-mot', s.llmMotP);
@@ -541,7 +540,7 @@ function setLanguage(l) {
     safeUpdate('l-title', s.lTitle); safeUpdate('l-btn', s.lBtn); safeUpdate('l-info', s.lInfo);
     safeUpdate('st-title', s.stTitle, true); safeUpdate('st-p', s.stP);
 
-    // Team
+    // Team & Roles
     safeUpdate('tm-title', s.tmTitle, true);
     safeUpdate('t1-p', s.t1p); safeUpdate('t2-p', s.t2p);
     safeUpdate('t3-p', s.t3p); safeUpdate('t4-p', s.t4p);
@@ -551,9 +550,8 @@ function setLanguage(l) {
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
 
-    // Footer & Rechtliches
+    // Footer
     safeUpdate('bk-title', s.bkTitle);
-    safeUpdate('f-chat', s.fChat);
     const imTitle = document.querySelector('#im h4');
     if(imTitle) imTitle.innerText = s.imH;
     const daTitle = document.querySelector('#da h4');
