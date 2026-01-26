@@ -152,14 +152,14 @@
         <div class="card" style="background: var(--bg2); border: 2px solid var(--accent);">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <div>
-                    <h3 style="color: var(--accent); margin-bottom: 15px;">Definition & Fokus</h3>
+                    <h3 id="llm-def-h" style="color: var(--accent); margin-bottom: 15px;">Definition & Fokus</h3>
                     <p id="llm-def" style="font-size: 15px; line-height: 1.7;">
                         Unsere Plattform ist eine hochsichere Infrastruktur für Sprachmodelle, die exklusiv für Ihr Unternehmen arbeitet. 
                         Kein Datenaustausch mit Dritten, kein Training auf öffentlichen Servern.
                     </p>
                 </div>
                 <div>
-                    <h3 style="color: var(--accent); margin-bottom: 15px;">Warum On-Premise?</h3>
+                    <h3 id="llm-mot-h" style="color: var(--accent); margin-bottom: 15px;">Warum On-Premise?</h3>
                     <p id="llm-mot" style="font-size: 15px; line-height: 1.7;">
                         Marktführer benötigen 100% Kontrolle. Wir eliminieren die Risiken von Cloud-KI und garantieren 
                         volle DSGVO-Konformität durch Installation in Ihrem eigenen Rechenzentrum oder Ihrer Private Cloud.
@@ -167,7 +167,7 @@
                 </div>
             </div>
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="margin-bottom: 10px;">AISOLUTIOS Expertise:</h4>
+                <h4 style="margin-bottom: 10px;" id="llm-exp-h">AISOLUTIOS Expertise:</h4>
                 <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 20px; font-weight: 600; color: var(--accent);">
                     <li><i class="fas fa-check-circle"></i> On-Premise Hosting</li>
                     <li><i class="fas fa-check-circle"></i> Private Cloud Isolation</li>
@@ -366,12 +366,19 @@ const trans = {
         evH1: "Gestern: Statische GenAI", evP1: "ChatGPT & Co. sind passiv. Sie warten auf Befehle und stoppen dann. Es sind Berater ohne Hände.",
         evH2: "Heute: Agentic AI", evP2: "Die Geburtsstunde autonomer Agenten. Sie handeln proaktiv, nutzen Tools und erledigen die Arbeit autonom.",
         evBadge: "DER NEUE STANDARD BEI AISOLUTIOS",
-        agTitle: "KI Agenten <span>& Crews</span>", llmTitle: "Enterprise <span>LLM Platform</span>",
-        lTitle: "Lead Konfigurator", lBtn: "Jetzt Leads sichern", stTitle: "Die <span>Geschichte</span> von Dr. Sidi Weiss",
-        tmTitle: "Das <span>Team</span>", bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
-        llmP: "Wir hosten Ihre Sprachmodelle On-Premise. 100% Datensouveränität.",
-        lInfo: "10€ pro Lead (zzgl. MwSt.)", stP: "Vom Hirtenjungen in der mauretanischen Wüste über den Dienst als Marineoffizier bis hin zum promovierten Data Scientist – der Weg von Dr. Sidi Weiss ist geprägt von Disziplin und Exzellenz. 2010 wurde er persönlich von Bundeskanzlerin Angela Merkel geehrt. Heute baut er mit AISOLUTIOS die nächste Generation autonomer Agenten-Crews für europäische Marktführer.",
-        t1r: "CEO & Erfinder", t2r: "Operation Direktor", t3r: "Assistentin", t4r: "KI-Experte", t5r: "Data Analyst"
+        agTitle: "KI Agenten <span>& Crews</span>", 
+        c1h: "Sales & Marketing Crew", c1p: "Vollautonome Lösung: Lead-Gen & Prospecting.",
+        c2h: "Finance & Insurance Crew", c2p: "Agenten für Validierung & Risikoprüfung.",
+        c3h: "Automotive & Solar Crew", c3p: "KI für technische Vertriebszyklen.",
+        llmTitle: "Enterprise <span>LLM Platform</span>",
+        llmDefH: "Definition & Fokus", llmDefP: "Hochsichere Infrastruktur, exklusiv für Ihr Unternehmen. Kein Datentraining auf öffentlichen Servern.",
+        llmMotH: "Warum On-Premise?", llmMotP: "100% Kontrolle. Wir eliminieren Cloud-Risiken durch Installation in Ihrem Rechenzentrum.",
+        llmExpH: "AISOLUTIOS Expertise:",
+        lTitle: "Lead Konfigurator", lBtn: "Jetzt Leads sichern", stTitle: "Vom Hirtenjungen zum KI-Visionär – <span>Die Odyssee von Dr. Sidi Weiss</span>",
+        tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>", bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
+        lInfo: "10€ pro Lead (zzgl. MwSt.)", 
+        stP: "Vom Hirtenjungen in der mauretanischen Wüste über den Dienst als Marineoffizier bis hin zum promovierten Data Scientist – der Weg von Dr. Sidi Weiss ist geprägt von Disziplin und Exzellenz. 2010 wurde er persönlich von Bundeskanzlerin Angela Merkel geehrt. Heute baut er mit AISOLUTIOS die nächste Generation autonomer Agenten-Crews für europäische Marktführer.",
+        t1r: "CEO & Erfinder", t2r: "Operation Director", t3r: "Assistentin", t4r: "KI-Experte", t5r: "Data Analyst"
     },
     en: {
         mAgents: "AI Agents & Crews", mLlm: "LLM Platform", mStory: "Story", mTeam: "Team", mBook: "Booking",
@@ -380,11 +387,18 @@ const trans = {
         evH1: "Yesterday: Static GenAI", evP1: "ChatGPT & Co. are passive. They wait for commands and then stop. They are consultants without hands.",
         evH2: "Today: Agentic AI", evP2: "The birth of autonomous agents. They act proactively, use tools, and complete work autonomously.",
         evBadge: "THE NEW STANDARD AT AISOLUTIOS",
-        agTitle: "AI Agents <span>& Crews</span>", llmTitle: "Enterprise <span>LLM Platform</span>",
-        lTitle: "Lead Configurator", lBtn: "Secure Leads Now", stTitle: "The <span>Story</span> of Dr. Sidi Weiss",
-        tmTitle: "The <span>Team</span>", bkTitle: "Book Strategy Session", fChat: "Book Session",
-        llmP: "We host your language models on-premise. 100% data sovereignty for enterprise requirements.",
-        lInfo: "10€ per Lead (excl. VAT)", stP: "From shepherd boy in the Mauritanian desert to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by discipline and excellence. Today, with AISOLUTIOS, he builds the next generation of autonomous agent crews.",
+        agTitle: "AI Agents <span>& Crews</span>",
+        c1h: "Sales & Marketing Crew", c1p: "Fully autonomous end-to-end: Lead Gen & Prospecting.",
+        c2h: "Finance & Insurance Crew", c2p: "Agents for validation and risk assessment.",
+        c3h: "Automotive & Solar Crew", c3p: "AI for complex technical sales cycles.",
+        llmTitle: "Enterprise <span>LLM Platform</span>",
+        llmDefH: "Definition & Focus", llmDefP: "Highly secure infrastructure, working exclusively for your company. No data sharing with third parties.",
+        llmMotH: "Why On-Premise?", llmMotP: "Market leaders need 100% control. We eliminate cloud risks by installing in your own data center.",
+        llmExpH: "AISOLUTIOS Expertise:",
+        lTitle: "Lead Configurator", lBtn: "Secure Leads Now", stTitle: "From Shepherd to AI Visionary – <span>The Odyssey of Dr. Sidi Weiss</span>",
+        tmTitle: "The Minds Behind <span>The Revolution</span>", bkTitle: "Book Strategy Session", fChat: "Book Session",
+        lInfo: "10€ per Lead (excl. VAT)", 
+        stP: "From shepherd boy in the Mauritanian desert to naval officer and PhD Data Scientist – Dr. Sidi Weiss's journey is defined by discipline and excellence. In 2010, he was personally honored by Chancellor Angela Merkel. Today, with AISOLUTIOS, he builds the next generation of autonomous agent crews.",
         t1r: "CEO & Inventor", t2r: "Operations Director", t3r: "Assistant", t4r: "AI Expert", t5r: "Data Analyst"
     },
     fr: {
@@ -392,13 +406,20 @@ const trans = {
         hTitle: "Équipes IA pour Leaders", hSub: "Agents IA d'entreprise autonomes. Propulsez les leaders du marché de la génération de leads à l'acquisition client.",
         hBtn: "Configurer Leads", evTitle: "L'évolution : de la GenAI à l'<span>IA Agentique</span>",
         evH1: "Hier : GenAI statique", evP1: "ChatGPT & Co. sont passifs. Ils attendent des ordres puis s'arrêtent. Ce sont des consultants sans mains.",
-        evH2: "Heute: Agentic AI", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive, utilisent des outils et travaillent en autonomie.",
+        evH2: "Aujourd'hui: IA Agentique", evP2: "La naissance des agents autonomes. Ils agissent de manière proactive et travaillent en autonomie.",
         evBadge: "LE NOUVEAU STANDARD CHEZ AISOLUTIOS",
-        agTitle: "Agents <span>& Équipes</span> IA", llmTitle: "Plateforme <span>LLM</span> Entreprise",
-        lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "L'<span>Histoire</span> de Dr. Sidi Weiss",
+        agTitle: "Agents <span>& Équipes</span> IA",
+        c1h: "Équipe Ventes & Marketing", c1p: "Solution autonome : génération de leads et prospection.",
+        c2h: "Équipe Finance & Assurance", c2p: "Agents pour la validation et l'audit des risques.",
+        c3h: "Équipe Auto & Solaire", c3p: "IA pour les cycles de vente techniques complexes.",
+        llmTitle: "Plateforme <span>LLM</span> Entreprise",
+        llmDefH: "Définition & Focus", llmDefP: "Infrastructure hautement sécurisée, travaillant exclusivement pour votre entreprise.",
+        llmMotH: "Pourquoi On-Premise ?", llmMotP: "Les leaders ont besoin d'un contrôle à 100%. Nous éliminons les risques liés au cloud.",
+        llmExpH: "Expertise AISOLUTIOS :",
+        lTitle: "Configurateur Leads", lBtn: "Saisir les Leads", stTitle: "Du berger au visionnaire de l'IA – <span>L'Odyssée du Dr Sidi Weiss</span>",
         tmTitle: "L'<span>Équipe</span>", bkTitle: "Session Stratégie", fChat: "Prendre RDV",
-        llmP: "Nous hébergeons vos modèles sur site. 100% de souveraineté des données pour les exigences de l'entreprise.",
-        lInfo: "10€ par Lead (HT)", stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, er crée la prochaine generation d'équipes d'agents.",
+        lInfo: "10€ par Lead (HT)", 
+        stP: "D'enfant berger dans le désert mauritanien à officier de marine et docteur en Data Science – le parcours du Dr Sidi Weiss est marqué par l'excellence. Aujourd'hui, il crée la prochaine génération d'équipes d'agents.",
         t1r: "CEO & Inventeur", t2r: "Directrice Opérations", t3r: "Assistante", t4r: "Expert en IA", t5r: "Analyste de Données"
     }
 };
@@ -415,7 +436,7 @@ function setLanguage(l) {
         }
     };
 
-    // 1. Navigation & Hero
+    // Mapping Navigation & Hero
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
@@ -425,56 +446,69 @@ function setLanguage(l) {
     safeUpdate('h-sub', s.hSub);
     safeUpdate('h-btn', s.hBtn);
 
-    // 2. Evolution Section
+    // Evolution Section
     safeUpdate('ev-title', s.evTitle, true);
     safeUpdate('ev-h1', s.evH1);
     safeUpdate('ev-p1', s.evP1);
     safeUpdate('ev-h2', s.evH2);
     safeUpdate('ev-p2', s.evP2);
-    safeUpdate('ev-badge', s.evBadge);
+    safeUpdate('ev-badge', s.evBadge, true);
 
-    // 3. Main Titles
+    // Crew Cards
     safeUpdate('ag-title', s.agTitle, true);
+    safeUpdate('c1-h', s.c1h); safeUpdate('c1-p', s.c1p);
+    safeUpdate('c2-h', s.c2h); safeUpdate('c2-p', s.c2p);
+    safeUpdate('c3-h', s.c3h); safeUpdate('c3-p', s.c3p);
+
+    // LLM Section (Definition, Motivation, Expertise)
     safeUpdate('llm-title', s.llmTitle, true);
-    safeUpdate('llm-p', s.llmP);
+    safeUpdate('llm-def-h', s.llmDefH); 
+    safeUpdate('llm-def', s.llmDefP);
+    safeUpdate('llm-mot-h', s.llmMotH);
+    safeUpdate('llm-mot', s.llmMotP);
+    safeUpdate('llm-exp-h', s.llmExpH);
+
+    // Leads & Story
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
     safeUpdate('l-info', s.lInfo);
     safeUpdate('st-title', s.stTitle, true);
     safeUpdate('st-p', s.stP);
+
+    // Team & Booking
     safeUpdate('tm-title', s.tmTitle, true);
     safeUpdate('bk-title', s.bkTitle);
     safeUpdate('f-chat', s.fChat);
 
-    // 4. Team Roles
-    safeUpdate('t1-r', s.t1r);
-    safeUpdate('t2-r', s.t2r);
-    safeUpdate('t3-r', s.t3r);
-    safeUpdate('t4-r', s.t4r);
-    safeUpdate('t5-r', s.t5r);
+    // Team Roles (Korrigierte Logik für alle Sprachen)
+    const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
+    if(teamRoles.length >= 5) {
+        teamRoles[0].innerText = s.t1r;
+        teamRoles[1].innerText = s.t2r;
+        teamRoles[2].innerText = s.t3r;
+        teamRoles[3].innerText = s.t4r;
+        teamRoles[4].innerText = s.t5r;
+    }
 
-    // Update Button UI
+    // UI Buttons Update
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase() === l);
     });
     
-    // Calendly Re-Initialisierung für die neue Sprache
-    if (window.Calendly) {
-        // Altes Badge entfernen, falls vorhanden, um Duplikate zu vermeiden
-        const oldBadge = document.querySelector('.calendly-badge-widget');
-        if (oldBadge) oldBadge.remove();
-
-        Calendly.initBadgeWidget({
-            url: 'https://calendly.com/vertrieb-aisolutios/strategie-termin',
-            text: s.fChat, // Dynamischer Text aus dem trans-Objekt
-            color: '#004a99',
-            textColor: '#ffffff',
-            branding: false
-        });
-    }
-
     localStorage.setItem('selectedLang', l);
 }
+
+function tog(id) {
+    const el = document.getElementById(id);
+    el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+    if(el.style.display === 'block') el.scrollIntoView({behavior: 'smooth'});
+}
+
+// Initialer Aufruf
+document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('selectedLang') || 'de';
+    setLanguage(saved);
+});
 
 function upd(v) { 
     const count = document.getElementById('l-count');
@@ -487,11 +521,6 @@ function pay() {
     const qty = document.getElementById('l-slide') ? document.getElementById('l-slide').value : 10;
     window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('selectedLang') || 'de';
-    setLanguage(saved);
-});
 </script>
 
 </body>
