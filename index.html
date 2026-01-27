@@ -516,6 +516,9 @@ const trans = {
     }
 };
 
+<script>
+// (Stellen Sie sicher, dass Ihre 'trans' Konstante oberhalb steht)
+
 function setLanguage(l) {
     const s = trans[l] || trans['de'];
     const safeUpdate = (id, val, isHtml = false) => {
@@ -544,7 +547,9 @@ function setLanguage(l) {
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-exp-h', s.llmExpH);
-    if(document.getElementById('llm-exp-p')) document.getElementById('llm-exp-p').innerText = s.llmExpP;
+    
+    const expP = document.getElementById('llm-exp-p');
+    if(expP) expP.innerText = s.llmExpP;
 
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
@@ -594,17 +599,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const lBtn = document.getElementById('l-btn');
     if(lBtn) lBtn.addEventListener('click', (e) => { e.preventDefault(); pay(); });
 
-    // TEAM SCROLL FIX: Punktlandung auf section id="team"
+    // TEAM SCROLL FIX: Präzise Landung auf der Sektion
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href').substring(1);
-            if (targetId === 'team') {
+            
+            if (targetId === 'team' || targetId === 'tm-title') {
                 e.preventDefault();
-                const target = document.getElementById('team');
-                if (target) {
-                    const headerOffset = 100; // Puffer für das fixierte Menü
-                    const pos = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                // Wir suchen die Sektion, nicht nur den Titel
+                const targetElement = document.getElementById('team');
+                
+                if (targetElement) {
+                    // Header messen + 40px Puffer für visuelle Balance
+                    const headerHeight = document.querySelector('nav')?.offsetHeight || 80;
+                    const buffer = 40; 
+                    
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - (headerHeight + buffer);
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             }
         });
