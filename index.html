@@ -546,9 +546,7 @@ function setLanguage(l) {
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-exp-h', s.llmExpH);
-    
-    const expP = document.getElementById('llm-exp-p');
-    if(expP) expP.innerText = s.llmExpP;
+    if(document.getElementById('llm-exp-p')) document.getElementById('llm-exp-p').innerText = s.llmExpP;
 
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
@@ -557,7 +555,7 @@ function setLanguage(l) {
     safeUpdate('st-p', s.stP);
     safeUpdate('tm-title', s.tmTitle, true);
 
-    // Rollen & Beschreibungen (Team)
+    // Team Rollen & Beschreibungen
     const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
@@ -565,13 +563,13 @@ function setLanguage(l) {
     const teamPs = [s.t1p, s.t2p, s.t3p, s.t4p, s.t5p];
     teamPs.forEach((val, i) => { safeUpdate(`t${i+1}-p`, val); });
 
+    // Aktiven Button markieren
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase().trim() === l);
     });
     localStorage.setItem('selectedLang', l);
 }
 
-// Konfigurator Logik
 function upd(v) { 
     const count = document.getElementById('l-count');
     const price = document.getElementById('l-price');
@@ -586,43 +584,41 @@ function pay() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialisierung
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
 
-    // Konfigurator reaktivieren
+    // 2. Sprach-Buttons aktivieren
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.onclick = (e) => {
+            const lang = e.target.innerText.toLowerCase().trim();
+            setLanguage(lang);
+        };
+    });
+
+    // 3. Konfigurator aktivieren
     const slider = document.getElementById('l-slide');
     if(slider) {
         slider.addEventListener('input', (e) => upd(e.target.value));
         upd(slider.value);
     }
     const lBtn = document.getElementById('l-btn');
-    if(lBtn) lBtn.addEventListener('click', (e) => { e.preventDefault(); pay(); });
+    if(lBtn) lBtn.onclick = (e) => { e.preventDefault(); pay(); };
 
-    // TEAM SCROLL FIX: Präzise Landung auf der Sektion
+    // 4. PRÄZISER TEAM-SCROLL FIX
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.onclick = function (e) {
             const targetId = this.getAttribute('href').substring(1);
-            
-            if (targetId === 'team' || targetId === 'tm-title') {
+            if (targetId === 'team') {
                 e.preventDefault();
-                // Wir suchen die Sektion, nicht nur den Titel
-                const targetElement = document.getElementById('team');
-                
-                if (targetElement) {
-                    // Header messen + 40px Puffer für visuelle Balance
-                    const headerHeight = document.querySelector('nav')?.offsetHeight || 80;
-                    const buffer = 40; 
-                    
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - (headerHeight + buffer);
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                const target = document.getElementById('team');
+                if (target) {
+                    const headerHeight = document.querySelector('nav')?.offsetHeight || 100;
+                    const pos = target.getBoundingClientRect().top + window.pageYOffset - (headerHeight + 20);
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
                 }
             }
-        });
+        };
     });
 });
 </script>
