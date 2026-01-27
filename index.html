@@ -484,7 +484,7 @@ const trans = {
     },
     fr: {
         mAgents: "Agents IA & Crews", mLlm: "Enterprise LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "Booking",
-        hTitle: "Excellence IA pour les Leaders",
+        hTitle: "L'Excellence IA pour les Leaders",
         hSub: "Solutions d'IA d'entreprise souveraines. Transformant des leaders comme Mercedes-Benz et Porsche en pionniers numériques.",
         hBtn: "Calculer le ROI", hBtn2: "Session Stratégique",
         msTitle: "Dominance par les processus IA",
@@ -516,6 +516,7 @@ const trans = {
     }
 };
 
+// Aktualisiert Texte und Button-Zustände
 function setLanguage(l) {
     const s = trans[l] || trans['de'];
     const safeUpdate = (id, val, isHtml = false) => {
@@ -523,7 +524,7 @@ function setLanguage(l) {
         if (el) isHtml ? el.innerHTML = val : el.innerText = val;
     };
 
-    // UI Updates
+    // Nav & Header
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
@@ -534,6 +535,8 @@ function setLanguage(l) {
     safeUpdate('h-btn', s.hBtn);
     safeUpdate('h-btn2', s.hBtn2);
     safeUpdate('f-chat', s.fChat);
+
+    // Strategie & Evolution
     safeUpdate('ms-title', s.msTitle);
     safeUpdate('ms-p', s.msP);
     safeUpdate('ms-f1', s.msF1);
@@ -544,10 +547,10 @@ function setLanguage(l) {
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-exp-h', s.llmExpH);
-    
     const expP = document.getElementById('llm-exp-p');
     if(expP) expP.innerText = s.llmExpP;
 
+    // Konfigurator & Team
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
     safeUpdate('l-info', s.lInfo);
@@ -555,7 +558,7 @@ function setLanguage(l) {
     safeUpdate('st-p', s.stP);
     safeUpdate('tm-title', s.tmTitle, true);
 
-    // Roles & Cards
+    // Karten-Inhalte
     const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
@@ -563,7 +566,7 @@ function setLanguage(l) {
     const teamPs = [s.t1p, s.t2p, s.t3p, s.t4p, s.t5p];
     teamPs.forEach((val, i) => { safeUpdate(`t${i+1}-p`, val); });
 
-    // Lang Button Active State
+    // Aktiver Sprach-Button
     document.querySelectorAll('.lang-btn').forEach(b => {
         const btnText = b.innerText.toLowerCase().trim();
         b.classList.toggle('active', btnText === l);
@@ -571,6 +574,7 @@ function setLanguage(l) {
     localStorage.setItem('selectedLang', l);
 }
 
+// Konfigurator Logik
 function upd(v) { 
     const count = document.getElementById('l-count');
     const price = document.getElementById('l-price');
@@ -578,27 +582,48 @@ function upd(v) {
     if(price) price.innerText = (v * 10).toLocaleString('de-DE'); 
 }
 
+// Stripe Weiterleitung
+function pay() { 
+    const slider = document.getElementById('l-slide');
+    const qty = slider ? slider.value : 100;
+    window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`; 
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
 
-    // Fix Konfigurator
+    // Konfigurator Initialisierung
     const slider = document.getElementById('l-slide');
     if(slider) {
         slider.addEventListener('input', (e) => upd(e.target.value));
         upd(slider.value);
     }
+    
+    // Stripe Button Bindung
+    const lBtn = document.getElementById('l-btn');
+    if(lBtn) {
+        lBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            pay();
+        });
+    }
 
-    // Fix Team-Scroll & Links
+    // Präziser Scroll-Anker Fix
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            // Suchen nach der Sektion "team" oder dem Titel "tm-title"
-            const target = document.getElementById(targetId) || document.getElementById('tm-title').closest('section');
+            
+            // Priorität: Sektion mit ID 'team' oder das Element 'tm-title'
+            let target = document.getElementById(targetId);
+            if (targetId === 'team' && !target) {
+                target = document.getElementById('tm-title')?.closest('section');
+            }
+
             if (target) {
-                const offset = 100;
-                const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                const headerOffset = 120; // Puffer für das Menü oben
+                const pos = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
                 window.scrollTo({ top: pos, behavior: 'smooth' });
             }
         });
