@@ -443,11 +443,11 @@ const trans = {
         tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>", bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
         lInfo: "Analyse-Paket pro Prozess (zzgl. MwSt.)", 
         stP: "Vom Marineoffizier zum promovierten Data Scientist bei Mercedes-Benz und Porsche. 2010 persönlich von Bundeskanzlerin Merkel geehrt.",
-        t1r: "CEO & KI-Experte", t1p: "Visionär autonomer Agenten-Crews. 15 Jahre High-End Automotive-Erfahrung.",
-        t2r: "Operation Director", t2p: "Transformiert Strategien in operative Dominanz.",
-        t3r: "Executive Assistant", t3p: "Garantiert höchste Effizienz.",
-        t4r: "Lead AI Developer", t4p: "Optimiert On-Premise Sicherheit.",
-        t5r: "Senior Data Scientist", t5p: "Extrahiert den Wettbewerbsvorteil.",
+        t1r: "CEO & Erfinder", t1p: "Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.",
+        t2r: "Operation Director", t2p: "Das organisatorische Rückgrat. Sie transformiert komplexe KI-Strategien in reibungslose operative Prozesse.",
+        t3r: "Assistentin", t3p: "Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business von AISOLUTIOS.",
+        t4r: "KI-Experte", t4p: "Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze, die unsere Agenten-Crews antreiben.",
+        t5r: "Data Analyst", t5p: "Übersetzt Daten in Wissen. Er findet die entscheidenden Muster, die Unternehmen einen echten Wettbewerbsvorteil verschaffen.",
         imH: "Impressum", daH: "Datenschutz"
     },
     en: {
@@ -475,11 +475,11 @@ const trans = {
         tmTitle: "The Minds Behind <span>The Revolution</span>", bkTitle: "Book Strategy Session", fChat: "Book Session",
         lInfo: "Analysis package per process (excl. VAT)", 
         stP: "From naval officer to PhD Data Scientist at Mercedes and Porsche. Honored by Chancellor Merkel in 2010.",
-        t1r: "CEO & AI Expert", t1p: "Architect of autonomous crews. 15 years experience.",
-        t2r: "Operations Director", t2p: "Organizational backbone for dominance.",
-        t3r: "Executive Assistant", t3p: "Ensuring maximum efficiency.",
-        t4r: "Lead AI Developer", t4p: "Master of algorithms for secure infrastructure.",
-        t5r: "Senior Data Scientist", t5p: "Turning data into advantage.",
+        t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous agent crews. Combines excellence with foresight.",
+        t2r: "Operations Director", t2p: "The organizational backbone. Transforms strategies into smooth processes.",
+        t3r: "Assistant", t3p: "Interface between management and partners. Guarantees maximum efficiency.",
+        t4r: "AI Expert", t4p: "Master of algorithms. Develops and optimizes the neural networks of our crews.",
+        t5r: "Data Analyst", t5p: "Translates data into knowledge. Finds the patterns for real competitive advantage.",
         imH: "Legal Notice", daH: "Privacy Policy"
     },
     fr: {
@@ -507,16 +507,15 @@ const trans = {
         tmTitle: "Les Esprits derrière <span>la Révolution</span>", bkTitle: "Réserver Session", fChat: "Réserver Session",
         lInfo: "Forfait d'analyse par processus (hors TVA)", 
         stP: "De l'officier de marine au PhD Data Scientist chez Mercedes et Porsche. Honoré par la chancelière Merkel en 2010.",
-        t1r: "CEO & Expert IA", t1p: "Architecte des crews autonomes. 15 ans d'expérience.",
-        t2r: "Directeur des Opérations", t2p: "Le pilier de la dominance opérationnelle.",
-        t3r: "Executive Assistant", t3p: "Garantit une efficacité maximale.",
-        t4r: "Lead Développeur IA", t4p: "Expert en sécurité On-Premise.",
-        t5r: "Senior Data Scientist", t5p: "Transforme les données en avantage.",
+        t1r: "CEO & Inventeur", t1p: "Visionnaire et architecte des équipages d'agents autonomes.",
+        t2r: "Directeur des Opérations", t2p: "Le pilier organisationnel. Transforme les stratégies en processus fluides.",
+        t3r: "Assistante", t3p: "Interface entre direction et partenaires. Garantit une efficacité maximale.",
+        t4r: "Expert IA", t4p: "Maître des algorithmes. Développe et optimise les réseaux neuronaux.",
+        t5r: "Analyste de Données", t5p: "Transforme les données en connaissances et avantages concurrentiels.",
         imH: "Mentions Légales", daH: "Confidentialité"
     }
 };
 
-// Aktualisiert Texte und Button-Zustände
 function setLanguage(l) {
     const s = trans[l] || trans['de'];
     const safeUpdate = (id, val, isHtml = false) => {
@@ -524,7 +523,7 @@ function setLanguage(l) {
         if (el) isHtml ? el.innerHTML = val : el.innerText = val;
     };
 
-    // Nav & Header
+    // UI Updates
     safeUpdate('m-agents', s.mAgents);
     safeUpdate('m-llm', s.mLlm);
     safeUpdate('m-story', s.mStory);
@@ -535,8 +534,6 @@ function setLanguage(l) {
     safeUpdate('h-btn', s.hBtn);
     safeUpdate('h-btn2', s.hBtn2);
     safeUpdate('f-chat', s.fChat);
-
-    // Strategie & Evolution
     safeUpdate('ms-title', s.msTitle);
     safeUpdate('ms-p', s.msP);
     safeUpdate('ms-f1', s.msF1);
@@ -547,10 +544,8 @@ function setLanguage(l) {
     safeUpdate('ag-title', s.agTitle, true);
     safeUpdate('llm-title', s.llmTitle, true);
     safeUpdate('llm-exp-h', s.llmExpH);
-    const expP = document.getElementById('llm-exp-p');
-    if(expP) expP.innerText = s.llmExpP;
+    if(document.getElementById('llm-exp-p')) document.getElementById('llm-exp-p').innerText = s.llmExpP;
 
-    // Konfigurator & Team
     safeUpdate('l-title', s.lTitle);
     safeUpdate('l-btn', s.lBtn);
     safeUpdate('l-info', s.lInfo);
@@ -558,7 +553,7 @@ function setLanguage(l) {
     safeUpdate('st-p', s.stP);
     safeUpdate('tm-title', s.tmTitle, true);
 
-    // Karten-Inhalte
+    // Rollen & Beschreibungen (Team)
     const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
@@ -566,10 +561,8 @@ function setLanguage(l) {
     const teamPs = [s.t1p, s.t2p, s.t3p, s.t4p, s.t5p];
     teamPs.forEach((val, i) => { safeUpdate(`t${i+1}-p`, val); });
 
-    // Aktiver Sprach-Button
     document.querySelectorAll('.lang-btn').forEach(b => {
-        const btnText = b.innerText.toLowerCase().trim();
-        b.classList.toggle('active', btnText === l);
+        b.classList.toggle('active', b.innerText.toLowerCase().trim() === l);
     });
     localStorage.setItem('selectedLang', l);
 }
@@ -582,7 +575,6 @@ function upd(v) {
     if(price) price.innerText = (v * 10).toLocaleString('de-DE'); 
 }
 
-// Stripe Weiterleitung
 function pay() { 
     const slider = document.getElementById('l-slide');
     const qty = slider ? slider.value : 100;
@@ -593,38 +585,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
 
-    // Konfigurator Initialisierung
+    // Konfigurator reaktivieren
     const slider = document.getElementById('l-slide');
     if(slider) {
         slider.addEventListener('input', (e) => upd(e.target.value));
         upd(slider.value);
     }
-    
-    // Stripe Button Bindung
     const lBtn = document.getElementById('l-btn');
-    if(lBtn) {
-        lBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            pay();
-        });
-    }
+    if(lBtn) lBtn.addEventListener('click', (e) => { e.preventDefault(); pay(); });
 
-    // Präziser Scroll-Anker Fix
+    // TEAM SCROLL FIX: Punktlandung auf section id="team"
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            
-            // Priorität: Sektion mit ID 'team' oder das Element 'tm-title'
-            let target = document.getElementById(targetId);
-            if (targetId === 'team' && !target) {
-                target = document.getElementById('tm-title')?.closest('section');
-            }
-
-            if (target) {
-                const headerOffset = 120; // Puffer für das Menü oben
-                const pos = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: pos, behavior: 'smooth' });
+            if (targetId === 'team') {
+                e.preventDefault();
+                const target = document.getElementById('team');
+                if (target) {
+                    const headerOffset = 100; // Puffer für das fixierte Menü
+                    const pos = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                }
             }
         });
     });
