@@ -52,18 +52,15 @@
 
 <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
     <div style="font-weight:900; color:white; font-size: 18px; letter-spacing: 1px;">AISOLUTIOS</div>
-    
     <nav class="nav-links" style="display: flex; align-items: center; gap: 20px;">
-        <a href="#agents" id="m-agents" style="color:white; text-decoration:none; font-size: 14px;">KI Agenten & Crews</a>
-        <a href="#llm" id="m-llm" style="color:white; text-decoration:none; font-size: 14px;">LLM Platform</a>
-        <a href="#story" id="m-story" style="color:white; text-decoration:none; font-size: 14px;">Story</a>
-        <a href="#team" id="m-team" style="color:white; text-decoration:none; font-size: 14px;">Team</a>
-        <a href="#booking" id="m-book" style="color:white; text-decoration:none; font-size: 14px; background:var(--accent); color:black; padding: 5px 12px; border-radius: 4px; font-weight: bold;">Booking</a>
+        <a href="#agents" id="m-agents" style="color:white; text-decoration:none;">KI Agenten & Crews</a>
+        <a href="#llm" id="m-llm" style="color:white; text-decoration:none;">LLM Platform</a>
+        <a href="#booking" id="m-book" style="color:white; text-decoration:none; background:var(--accent); color:black; padding: 5px 12px; border-radius: 4px; font-weight: bold;">Booking</a>
         
         <div class="lang-switch" style="display: flex; gap: 8px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
-            <button class="lang-btn active" onclick="setLanguage('de')" style="background:transparent; border:1px solid var(--accent); color:var(--accent); cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px; font-weight:bold; transition: 0.3s;">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px; font-weight:bold; transition: 0.3s;">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px; font-weight:bold; transition: 0.3s;">FR</button>
+            <button class="lang-btn" onclick="setLanguage('de')" style="background:transparent; border:1px solid var(--accent); color:var(--accent); cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px;">DE</button>
+            <button class="lang-btn" onclick="setLanguage('en')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px;">EN</button>
+            <button class="lang-btn" onclick="setLanguage('fr')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px;">FR</button>
         </div>
     </nav>
 </header>
@@ -229,6 +226,25 @@
     </div>
 </section>
 
+<section id="configurator" style="padding: 100px 5%; background: rgba(255,255,255,0.02); text-align: center;">
+    <h2 id="l-title" style="color: var(--accent); font-size: 2.5rem; margin-bottom: 20px;">Effizienz Konfigurator</h2>
+    <p id="l-info" style="opacity: 0.8; margin-bottom: 40px;">Berechnen Sie das Potenzial Ihrer autonomen KI-Crews.</p>
+    
+    <div style="max-width: 600px; margin: 0 auto; background: rgba(0,0,0,0.3); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+        <input type="range" id="l-slide" min="10" max="500" value="100" 
+               style="width:100%; margin: 20px 0; accent-color: var(--accent); cursor: pointer;">
+        
+        <div style="font-size: 24px; margin: 20px 0; font-weight: bold;">
+            <span id="l-count">100</span> Prozesse | 
+            ROI: <span id="l-price" style="color: var(--accent);">1.000</span> €
+        </div>
+        
+        <button id="l-btn" class="cta" style="background: var(--accent); color: black; border: none; padding: 15px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px;">
+            Analyse-Paket buchen
+        </button>
+    </div>
+</section>
+    
 <section id="leads" class="container">
     <div class="lead-calc" style="max-width: 600px; margin: 40px auto; text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid var(--accent);">
         <h2 id="l-title" style="border:none; text-align:center; margin-bottom: 30px;">Lead Konfigurator</h2>
@@ -410,7 +426,7 @@
         </div>
     </div>
 </footer>
-    
+
 <button class="floating-btn" id="f-chat" onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
     Strategie-Termin buchen
 </button>
@@ -503,6 +519,7 @@ const trans = {
     }
 };
 
+// Hauptfunktion Sprache
 function setLanguage(l) {
     const lang = l.toLowerCase().trim();
     const s = trans[lang] || trans['de'];
@@ -512,7 +529,6 @@ function setLanguage(l) {
         if (el) isHtml ? el.innerHTML = val : el.innerText = val;
     };
 
-    // Mapping ausführen
     update('m-agents', s.mAgents);
     update('m-llm', s.mLlm);
     update('m-story', s.mStory);
@@ -539,8 +555,6 @@ function setLanguage(l) {
     update('st-title', s.stTitle, true);
     update('st-p', s.stP);
     update('tm-title', s.tmTitle, true);
-    
-    // Footer FIX
     update('im-h', s.imH);
     update('da-h', s.daH);
     update('im-title', s.imH);
@@ -548,35 +562,56 @@ function setLanguage(l) {
     update('im-body', s.imContent, true);
     update('da-body', s.daContent, true);
 
-    // Team
-    const teamRoles = document.querySelectorAll('.card p[style*="uppercase"]');
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
-    teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
+    document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
     update('t1-p', s.t1p); update('t2-p', s.t2p); update('t3-p', s.t3p); update('t4-p', s.t4p); update('t5-p', s.t5p);
 
-    // Buttons hervorheben
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase().trim() === lang);
+        b.style.borderColor = b.innerText.toLowerCase().trim() === lang ? 'var(--accent)' : 'rgba(255,255,255,0.3)';
     });
     localStorage.setItem('selectedLang', lang);
 }
 
+// Configurator Berechnung
+function updateConfig(val) {
+    const countEl = document.getElementById('l-count');
+    const priceEl = document.getElementById('l-price');
+    if(countEl) countEl.innerText = val;
+    if(priceEl) priceEl.innerText = (val * 10).toLocaleString('de-DE');
+}
+
+// Ein/Ausblenden
 function tog(id) {
     const el = document.getElementById(id);
-    if(el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    if(el) el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sprache laden
+    // 1. Sprache initialisieren
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
 
-    // 2. Klick-Event für Buttons binden (Wichtig!)
+    // 2. Sprachevent für Buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.onclick = function() {
-            setLanguage(this.innerText);
-        };
+        btn.onclick = function() { setLanguage(this.innerText); };
     });
+
+    // 3. Slider Logik
+    const slider = document.getElementById('l-slide');
+    if(slider) {
+        slider.oninput = function() { updateConfig(this.value); };
+        updateConfig(slider.value);
+    }
+
+    // 4. Stripe Checkout
+    const lBtn = document.getElementById('l-btn');
+    if(lBtn) {
+        lBtn.onclick = function() {
+            const qty = document.getElementById('l-slide').value;
+            window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`;
+        };
+    }
 });
 </script>
     
