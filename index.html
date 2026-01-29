@@ -355,7 +355,7 @@
     </div>
 </section>
 
-<footer style="padding: 60px 5% 100px; background: rgba(0,0,0,0.9); border-top: 1px solid rgba(255,255,255,0.1);">
+<footer style="padding: 60px 5% 100px; background: rgba(0,0,0,0.9); border-top: 1px solid rgba(255,255,255,0.1); color: white;">
     <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;">
         <div>
             <strong style="color:var(--accent); display:block; margin-bottom:15px;">AISOLUTIOS</strong>
@@ -367,7 +367,7 @@
         </div>
 
         <div>
-            <strong id="footer-contact" style="display:block; margin-bottom:15px;">Kontakt</strong>
+            <strong style="display:block; margin-bottom:15px;">Kontakt</strong>
             <p style="line-height:1.6;">
                 <a href="mailto:vertrieb@aisolutios.de" style="color:white; text-decoration:none; opacity:0.8;">vertrieb@aisolutios.de</a><br>
                 <span style="opacity:0.8;">00 49 176 31591931</span><br>
@@ -376,48 +376,38 @@
         </div>
 
         <div>
-            <strong id="footer-legal" style="display:block; margin-bottom:15px;">Rechtliches</strong>
+            <strong style="display:block; margin-bottom:15px;">Rechtliches</strong>
             <p>
-                <a onclick="tog('im')" id="im-h" style="cursor:pointer; color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:0.3s;" onmouseover="this.style.borderBottom='1px solid var(--accent)'" onmouseout="this.style.borderBottom='1px solid transparent'">Impressum</a>
+                <a onclick="tog('im')" id="im-h" style="cursor:pointer; color:var(--accent); text-decoration:none;">Impressum</a>
                 <span style="margin: 0 10px; opacity:0.3;">|</span>
-                <a onclick="tog('da')" id="da-h" style="cursor:pointer; color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:0.3s;" onmouseover="this.style.borderBottom='1px solid var(--accent)'" onmouseout="this.style.borderBottom='1px solid transparent'">Datenschutz</a>
+                <a onclick="tog('da')" id="da-h" style="cursor:pointer; color:var(--accent); text-decoration:none;">Datenschutz</a>
             </p>
         </div>
     </div>
 
-    <div id="im" class="legal-box" style="display:none; max-width:1200px; margin: 40px auto 0; padding: 30px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); border-radius:10px;">
-        <h4 id="im-title" style="color:var(--accent); margin-bottom:20px; font-size:1.5rem;">Impressum</h4>
+    <div id="im" style="display:none; max-width:1200px; margin: 40px auto 0; padding: 30px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); border-radius:10px;">
+        <h4 id="im-title" style="color:var(--accent); margin-bottom:20px;">Impressum</h4>
         <div id="im-body" style="line-height:1.8; opacity:0.9; font-size:14px;">
             <p><strong>Angaben gemäß § 5 TMG:</strong><br>
             Dr. Sidi Weiss | AISOLUTIOS<br>
             Obere Waiblinger Str. 147a<br>
             70374 Stuttgart</p>
-            
             <p><strong>Kontakt:</strong><br>
             E-Mail: vertrieb@aisolutios.de<br>
             Mobil: 00 49 176 31591931</p>
-
             <p><strong>Steuernummer:</strong><br>
-            95408/32096 (Finanzamt Stuttgart II)</p>
-
+            95408/32096<br>
+            Zuständiges Finanzamt: Stuttgart II</p>
             <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
-            Dr. Sidi Weiss<br>
-            Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
-            
-            <p style="font-size:12px; margin-top:20px; opacity:0.5; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
-                Online-Streitbeilegung: Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
-                <a href="https://ec.europa.eu/consumers/odr" target="_blank" style="color:var(--accent);">https://ec.europa.eu/consumers/odr</a>.
-            </p>
+            Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
         </div>
     </div>
 
-    <div id="da" class="legal-box" style="display:none; max-width:1200px; margin: 40px auto 0; padding: 30px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); border-radius:10px;">
-        <h4 id="da-title" style="color:var(--accent); margin-bottom:20px; font-size:1.5rem;">Datenschutzerklärung</h4>
+    <div id="da" style="display:none; max-width:1200px; margin: 40px auto 0; padding: 30px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); border-radius:10px;">
+        <h4 id="da-title" style="color:var(--accent); margin-bottom:20px;">Datenschutzerklärung</h4>
         <div id="da-body" style="line-height:1.8; opacity:0.9; font-size:14px;">
-            <p><strong>1. Datenschutz auf einen Blick:</strong> Wir verarbeiten personenbezogene Daten gemäß der EU-DSGVO. Verantwortlich ist Dr. Sidi Weiss.</p>
-            <p><strong>2. Datenerfassung:</strong> Diese Website nutzt SSL-Verschlüsselung (HTTPS) zum Schutz Ihrer Daten.</p>
-            <p><strong>3. Drittanbieter & Tools:</strong> Zur Bereitstellung unserer Dienste nutzen wir Stripe (Zahlungsabwicklung) und Calendly (Terminbuchung).</p>
-            <p><strong>4. Ihre Rechte:</strong> Sie haben jederzeit das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten (Aufsichtsbehörde: LfDI Baden-Württemberg).</p>
+            <p>Wir verarbeiten personenbezogene Daten gemäß der EU-DSGVO. Verantwortlich ist Dr. Sidi Weiss.</p>
+            <p>Diese Website nutzt SSL-Verschlüsselung zum Schutz Ihrer Daten. Sie haben jederzeit das Recht auf Auskunft, Berichtigung und Löschung (LfDI Baden-Württemberg).</p>
         </div>
     </div>
 </footer>
@@ -565,7 +555,7 @@
             t5p: "Transforme les données en connaissances et avantages concurrentiels."
         }
     };
-
+        
     function setLanguage(l) {
         const lang = l.toLowerCase().trim();
         const s = trans[lang] || trans['de'];
@@ -589,7 +579,7 @@
         update('h-btn2', s.hBtn2);
         update('f-chat', s.fChat);
 
-        // 3. EVOLUTION & AGENTS
+        // 3. AGENTS & CREWS (Sektion: agents)
         update('ev-badge', s.evBadge, true);
         update('ev-title', s.evTitle, true);
         update('ag-title', s.agTitle, true);
@@ -599,7 +589,7 @@
         update('ms-f2', s.msF2);
         update('ms-f3', s.msF3);
 
-        // 4. ENTERPRISE LLM SEKTION
+        // 4. ENTERPRISE LLM / DIGITALSTRATEGIE (Sektion: llm)
         update('llm-title', s.llmTitle, true);
         update('llm-exp-h', s.llmExpH);
         update('llm-exp-p', s.llmExpP);
@@ -613,7 +603,7 @@
         update('st-title', s.stTitle, true);
         update('st-p', s.stP);
 
-        // 7. TEAM SEKTION
+        // 7. TEAM SEKTION & ROLLEN
         update('tm-title', s.tmTitle, true);
         const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
         document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => {
@@ -625,16 +615,21 @@
         update('t4-p', s.t4p);
         update('t5-p', s.t5p);
 
-        // 8. BOOKING & FOOTER
+        // 8. BOOKING & FOOTER TITEL
         update('bk-title', s.bkTitle);
         update('im-h', s.imH);
         update('da-h', s.daH);
-        update('im-title', s.imH);
-        update('da-title', s.daH);
-        update('im-body', s.imContent, true);
-        update('da-body', s.daContent, true);
+        update('im-title', s.imH); 
+        update('da-title', s.daH); 
 
-        // 10. SPRACH-BUTTONS OPTIK
+        // 9. RECHTSSICHERES IMPRESSUM & DATENSCHUTZ (Inkl. Stuttgart II Logik)
+        const imBody = document.getElementById('im-body');
+        if (imBody) imBody.innerHTML = s.imContent;
+        
+        const daBody = document.getElementById('da-body');
+        if (daBody) daBody.innerHTML = s.daContent;
+
+        // 10. SPRACH-BUTTONS OPTIK (Aktiv-Status)
         document.querySelectorAll('.lang-btn').forEach(b => {
             const isMatch = b.innerText.toLowerCase().trim() === lang;
             b.classList.toggle('active', isMatch);
@@ -646,61 +641,42 @@
         localStorage.setItem('selectedLang', lang);
     }
 
-    // Angepasst für 20.000 Leads & korrekte Formatierung
+    /**
+     * ROI RECHNER: 
+     * Formatiert Eingabewerte bis 20.000 Leads mit Tausenderpunkt
+     */
     function updateConfig(val) {
         const countEl = document.getElementById('l-count');
         const priceEl = document.getElementById('l-price');
 
-        // Zahl mit Punkt formatieren (z.B. 20.000)
         const formattedVal = Number(val).toLocaleString('de-DE');
         if (countEl) countEl.innerText = formattedVal;
 
         if (priceEl) {
-            // Kalkulation: 10€ ROI pro Lead
             const roi = val * 10;
             priceEl.innerText = roi.toLocaleString('de-DE');
         }
     }
 
+    /**
+     * TOGGLE FUNKTION FÜR RECHTLICHES
+     * Öffnet Impressum/Datenschutz und schließt das jeweils andere
+     */
     function tog(id) {
         const el = document.getElementById(id);
         if (el) {
+            const otherId = id === 'im' ? 'da' : 'im';
+            const otherEl = document.getElementById(otherId);
+            if (otherEl) otherEl.style.display = 'none';
+
             const isHidden = el.style.display === 'none' || el.style.display === '';
             el.style.display = isHidden ? 'block' : 'none';
-            if (isHidden) el.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest'
-            });
+            
+            if (isHidden) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         }
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const saved = localStorage.getItem('selectedLang') || 'de';
-        setLanguage(saved);
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.onclick = function() {
-                setLanguage(this.innerText);
-            };
-        });
-
-        const slider = document.getElementById('l-slide');
-        if (slider) {
-            slider.oninput = function() {
-                updateConfig(this.value);
-            };
-            updateConfig(slider.value);
-        }
-
-        const lBtn = document.getElementById('l-btn');
-        if (lBtn) {
-            lBtn.onclick = function() {
-                const qty = document.getElementById('l-slide').value;
-                // Stripe Link mit dynamischer Menge (Leads)
-                window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`;
-            };
-        }
-    });
 </script>
     
 </body>
