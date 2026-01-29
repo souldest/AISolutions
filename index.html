@@ -228,24 +228,6 @@
     </div>
 </section>
 
-<section id="configurator" style="padding: 100px 5%; background: rgba(255,255,255,0.02); text-align: center;">
-    <h2 id="l-title" style="color: var(--accent); font-size: 2.5rem; margin-bottom: 20px;">Effizienz Konfigurator</h2>
-    <p id="l-info" style="opacity: 0.8; margin-bottom: 40px;">Berechnen Sie das Potenzial Ihrer autonomen KI-Crews.</p>
-    
-    <div style="max-width: 600px; margin: 0 auto; background: rgba(0,0,0,0.3); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
-        <input type="range" id="l-slide" min="10" max="500" value="100" 
-               style="width:100%; margin: 20px 0; accent-color: var(--accent); cursor: pointer;">
-        
-        <div style="font-size: 24px; margin: 20px 0; font-weight: bold;">
-            <span id="l-count">100</span> Prozesse | 
-            ROI: <span id="l-price" style="color: var(--accent);">1.000</span> €
-        </div>
-        
-        <button id="l-btn" class="cta" style="background: var(--accent); color: black; border: none; padding: 15px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 20px;">
-            Analyse-Paket buchen
-        </button>
-    </div>
-</section>
     
 <section id="leads" class="container">
     <div class="lead-calc" style="max-width: 600px; margin: 40px auto; text-align: center; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border: 1px solid var(--accent);">
@@ -373,58 +355,69 @@
     </div>
 </section>
 
-<footer>
-    <div class="grid">
+<footer style="padding: 60px 5% 100px; background: rgba(0,0,0,0.9); border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;">
         <div>
-            <strong>AISOLUTIOS</strong><br>
-            Dr. Sidi Weiss<br>
-            Obere Waiblinger Str. 147a<br>
-            70374 Stuttgart
+            <strong style="color:var(--accent); display:block; margin-bottom:15px;">AISOLUTIOS</strong>
+            <p style="line-height:1.6; opacity:0.8;">
+                Dr. Sidi Weiss<br>
+                Obere Waiblinger Str. 147a<br>
+                70374 Stuttgart
+            </p>
         </div>
+
         <div>
-            <strong>Kontakt</strong><br>
-            <a href="mailto:vertrieb@aisolutios.de" style="color:var(--text); text-decoration:none;">vertrieb@aisolutios.de</a><br>
-            00 49 176 31591931<br>
-            <a href="https://www.aisolutios.de" target="_blank" style="color:var(--text); text-decoration:none;">www.aisolutios.de</a>
+            <strong id="footer-contact" style="display:block; margin-bottom:15px;">Kontakt</strong>
+            <p style="line-height:1.6;">
+                <a href="mailto:vertrieb@aisolutios.de" style="color:white; text-decoration:none; opacity:0.8;">vertrieb@aisolutios.de</a><br>
+                <span style="opacity:0.8;">00 49 176 31591931</span><br>
+                <a href="https://www.aisolutios.de" target="_blank" style="color:var(--accent); text-decoration:none;">www.aisolutios.de</a>
+            </p>
         </div>
+
         <div>
-            <strong>Rechtliches</strong><br>
-            <a onclick="tog('im')" id="im-h" style="cursor:pointer; color:var(--accent);">Impressum</a> | 
-            <a onclick="tog('da')" id="da-h" style="cursor:pointer; color:var(--accent);">Datenschutz</a>
+            <strong id="footer-legal" style="display:block; margin-bottom:15px;">Rechtliches</strong>
+            <p>
+                <a onclick="tog('im')" id="im-h" style="cursor:pointer; color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:0.3s;" onmouseover="this.style.borderBottom='1px solid var(--accent)'" onmouseout="this.style.borderBottom='1px solid transparent'">Impressum</a>
+                <span style="margin: 0 10px; opacity:0.3;">|</span>
+                <a onclick="tog('da')" id="da-h" style="cursor:pointer; color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:0.3s;" onmouseover="this.style.borderBottom='1px solid var(--accent)'" onmouseout="this.style.borderBottom='1px solid transparent'">Datenschutz</a>
+            </p>
         </div>
     </div>
 
-    <div id="im" class="legal-box" style="display:none; margin-top: 30px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02);">
-        <h4 id="im-title" style="color:var(--accent); margin-bottom:10px;">Impressum</h4>
-        <div id="im-body">
+    <div id="im" class="legal-box" style="display:none; max-width:1200px; margin: 40px auto 0; padding: 30px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); border-radius:10px;">
+        <h4 id="im-title" style="color:var(--accent); margin-bottom:20px; font-size:1.5rem;">Impressum</h4>
+        <div id="im-body" style="line-height:1.8; opacity:0.9; font-size:14px;">
             <p><strong>Angaben gemäß § 5 TMG:</strong><br>
             Dr. Sidi Weiss | AISOLUTIOS<br>
             Obere Waiblinger Str. 147a<br>
             70374 Stuttgart</p>
             
             <p><strong>Kontakt:</strong><br>
-            Telefon: 00 49 176 31591931<br>
-            E-Mail: vertrieb@aisolutios.de</p>
+            E-Mail: vertrieb@aisolutios.de<br>
+            Mobil: 00 49 176 31591931</p>
 
             <p><strong>Steuernummer:</strong><br>
-            95408/32096<br>
-            Zuständiges Finanzamt: Stuttgart II</p>
+            95408/32096 (Finanzamt Stuttgart II)</p>
 
-            <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+            <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
             Dr. Sidi Weiss<br>
             Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
             
-            <p style="font-size:11px; margin-top:10px; opacity:0.6;">Online-Streitbeilegung: Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: https://ec.europa.eu/consumers/odr.</p>
+            <p style="font-size:12px; margin-top:20px; opacity:0.5; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
+                Online-Streitbeilegung: Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+                <a href="https://ec.europa.eu/consumers/odr" target="_blank" style="color:var(--accent);">https://ec.europa.eu/consumers/odr</a>.
+            </p>
         </div>
     </div>
 
-    <div id="da" class="legal-box" style="display:none; margin-top: 30px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02);">
-        <h4 id="da-title" style="color:var(--accent); margin-bottom:10px;">Datenschutzerklärung</h4>
-        <div id="da-body">
+    <div id="da" class="legal-box" style="display:none; max-width:1200px; margin: 40px auto 0; padding: 30px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); border-radius:10px;">
+        <h4 id="da-title" style="color:var(--accent); margin-bottom:20px; font-size:1.5rem;">Datenschutzerklärung</h4>
+        <div id="da-body" style="line-height:1.8; opacity:0.9; font-size:14px;">
             <p><strong>1. Datenschutz auf einen Blick:</strong> Wir verarbeiten personenbezogene Daten gemäß der EU-DSGVO. Verantwortlich ist Dr. Sidi Weiss.</p>
             <p><strong>2. Datenerfassung:</strong> Diese Website nutzt SSL-Verschlüsselung (HTTPS) zum Schutz Ihrer Daten.</p>
-            <p><strong>3. Drittanbieter & Tools:</strong> Stripe (Zahlung), Calendly (Termine).</p>
-            <p><strong>4. Ihre Rechte:</strong> Auskunft, Berichtigung und Löschung Ihrer Daten (LfDI Baden-Württemberg).</p>
+            <p><strong>3. Drittanbieter & Tools:</strong> Zur Bereitstellung unserer Dienste nutzen wir Stripe (Zahlungsabwicklung) und Calendly (Terminbuchung).</p>
+            <p><strong>4. Ihre Rechte:</strong> Sie haben jederzeit das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten (Aufsichtsbehörde: LfDI Baden-Württemberg).</p>
         </div>
     </div>
 </footer>
