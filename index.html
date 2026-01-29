@@ -50,17 +50,19 @@
 </head>
 <body>
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
-    <div style="font-weight:900; color:white; font-size: 18px; letter-spacing: 1px;">AISOLUTIOS</div>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;">
+    <div style="font-weight:900; font-size: 18px; letter-spacing: 1px; color: white;">AISOLUTIOS</div>
     <nav class="nav-links" style="display: flex; align-items: center; gap: 20px;">
-        <a href="#agents" id="m-agents" style="color:white; text-decoration:none;">KI Agenten & Crews</a>
-        <a href="#llm" id="m-llm" style="color:white; text-decoration:none;">LLM Platform</a>
-        <a href="#booking" id="m-book" style="color:white; text-decoration:none; background:var(--accent); color:black; padding: 5px 12px; border-radius: 4px; font-weight: bold;">Booking</a>
+        <a href="#agents" id="m-agents" style="color:white; text-decoration:none; font-size:14px;">KI Agenten & Crews</a>
+        <a href="#llm" id="m-llm" style="color:white; text-decoration:none; font-size:14px;">Enterprise LLM</a>
+        <a href="#story" id="m-story" style="color:white; text-decoration:none; font-size:14px;">Story</a>
+        <a href="#team" id="m-team" style="color:white; text-decoration:none; font-size:14px;">Team</a>
+        <a href="#booking" id="m-book" style="color:white; text-decoration:none; font-size:14px; background:var(--accent); color:black; padding: 5px 12px; border-radius: 4px; font-weight: bold;">Booking</a>
         
-        <div class="lang-switch" style="display: flex; gap: 8px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
-            <button class="lang-btn" onclick="setLanguage('de')" style="background:transparent; border:1px solid var(--accent); color:var(--accent); cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px;">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px;">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px;">FR</button>
+        <div class="lang-switch" style="display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
+            <button class="lang-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:10px; border-radius:3px; transition: 0.3s;">DE</button>
+            <button class="lang-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:10px; border-radius:3px; transition: 0.3s;">EN</button>
+            <button class="lang-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:10px; border-radius:3px; transition: 0.3s;">FR</button>
         </div>
     </nav>
 </header>
@@ -427,201 +429,285 @@
     </div>
 </footer>
 
-<button class="floating-btn" id="f-chat" onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
+<button class="floating-btn" id="f-chat" 
+        style="position: fixed; bottom: 30px; right: 30px; z-index: 2000; background: var(--accent); color: black; border: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(0,242,255,0.4); font-size: 15px; transition: transform 0.3s;"
+        onmouseover="this.style.transform='scale(1.05)'"
+        onmouseout="this.style.transform='scale(1)'"
+        onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
     Strategie-Termin buchen
 </button>
-    
-<script>
-const trans = {
-    de: {
-        mAgents: "KI Agenten & Crews", mLlm: "Enterprise LLM", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "KI-Exzellenz für Marktführer", 
-        hSub: "Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.",
-        hBtn: "ROI berechnen", hBtn2: "Strategie-Termin",
-        msTitle: "Dominanz durch strukturierte KI-Prozesse",
-        msP: "KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Mit Erfahrung bei Porsche, Mercedes-Benz, LBBW, Hallesche, Deutsche Bahn und Soka-Bau entwickle ich Ihre Souveränitäts-Strategie – 100% sicher, 100% On-Premise.",
-        msF1: "Souveräne Infrastruktur", msF2: "Autonome Crews", msF3: "Maximale Skalierung",
-        evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
-        evBadge: "DER NEUE STANDARD FÜR MARKTFÜHRER",
-        agTitle: "KI Agenten <span>& Crews</span>", 
-        llmTitle: "Enterprise <span>Digitalstrategie</span>",
-        llmExpH: "Referenzen & Expertise:",
-        llmExpP: "Mercedes-Benz, Porsche, LBBW, Hallesche, Deutsche Bahn, Transdev, K2-Systems, Soka-Bau, LKV-Bayern, KWS.",
-        lTitle: "Effizienz Konfigurator", lBtn: "Analyse-Termin buchen", lInfo: "Analyse-Paket pro Prozess (zzgl. MwSt.)",
-        stTitle: "KI-Visionär – <span>Dr. Sidi Weiss</span>", 
-        stP: "Vom Marineoffizier zum promovierten Data Scientist bei Mercedes-Benz und Porsche. 2010 persönlich von Bundeskanzlerin Merkel geehrt.",
-        tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>",
-        bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
-        imH: "Impressum", daH: "Datenschutz",
-        imContent: "<strong>Angaben gemäß § 5 TMG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-        daContent: "<strong>Datenschutz:</strong> Wir verarbeiten Daten gemäß DSGVO. Verantwortlich: Dr. Sidi Weiss.",
-        t1r: "CEO & Erfinder", t1p: "Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.",
-        t2r: "Operation Director", t2p: "Das organisatorische Rückgrat. Sie transformiert komplexe KI-Strategien in reibungslose Prozesse.",
-        t3r: "Assistentin", t3p: "Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business.",
-        t4r: "KI-Experte", t4p: "Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze unserer Agenten-Crews.",
-        t5r: "Data Analyst", t5p: "Übersetzt Daten in Wissen. Er findet die entscheidenden Muster für Ihren Wettbewerbsvorteil."
-    },
-    en: {
-        mAgents: "AI Agents & Crews", mLlm: "Enterprise LLM", mStory: "Story", mTeam: "Team", mBook: "Booking",
-        hTitle: "AI Excellence for Market Leaders",
-        hSub: "Sovereign Enterprise AI Solutions. Transforming leaders like Mercedes-Benz and Porsche into digital pioneers.",
-        hBtn: "Calculate ROI", hBtn2: "Strategy Session",
-        msTitle: "Dominance through Structured AI",
-        msP: "AI is the ultimate competitive edge for global leaders. Experience with Porsche, Mercedes, and DB.",
-        msF1: "Sovereign Infra", msF2: "Autonomous Crews", msF3: "Max Scaling",
-        evTitle: "The Evolution: To <span>Agentic AI</span>",
-        evBadge: "THE NEW STANDARD FOR MARKET LEADERS",
-        agTitle: "AI Agents <span>& Crews</span>",
-        llmTitle: "Enterprise <span>Digital Strategy</span>",
-        llmExpH: "References & Expertise:",
-        llmExpP: "Mercedes-Benz, Porsche, LBBW, Deutsche Bahn, Transdev, K2-Systems, Soka-Bau, KWS.",
-        lTitle: "Efficiency Configurator", lBtn: "Book Analysis", lInfo: "Analysis package per process (excl. VAT)",
-        stTitle: "AI Visionary – <span>Dr. Sidi Weiss</span>", 
-        stP: "From naval officer to PhD Data Scientist at Mercedes and Porsche. Honored by Chancellor Merkel in 2010.",
-        tmTitle: "The Minds Behind <span>The Revolution</span>",
-        bkTitle: "Book Strategy Session", fChat: "Book Session",
-        imH: "Legal Notice", daH: "Privacy Policy",
-        imContent: "<strong>Legal Information:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-        daContent: "<strong>Privacy:</strong> Data processed according to GDPR. Controller: Dr. Sidi Weiss.",
-        t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous crews. Combining excellence with foresight.",
-        t2r: "Operations Director", t2p: "The organizational backbone. Transforming strategies into smooth operations.",
-        t3r: "Assistant", t3p: "Interface between management and partners. Ensuring maximum daily efficiency.",
-        t4r: "AI Expert", t4p: "Master of algorithms. Developing the neural networks powering our crews.",
-        t5r: "Data Analyst", t5p: "Translating data into knowledge. Finding the patterns for your competitive edge."
-    },
-    fr: {
-        mAgents: "Agents IA & Crews", mLlm: "Enterprise LLM", mStory: "Histoire", mTeam: "Équipe", mBook: "Booking",
-        hTitle: "L'Excellence IA pour les Leaders",
-        hSub: "Solutions d'IA d'entreprise souveraines. Transformant des leaders comme Mercedes-Benz et Porsche.",
-        hBtn: "Calculer le ROI", hBtn2: "Session Stratégique",
-        msTitle: "Dominance par les processus IA",
-        msP: "L'IA est l'avantage concurrentiel des leaders mondiaux. Expertise chez Porsche et Mercedes-Benz.",
-        msF1: "Infra Souveraine", msF2: "Crews Autonomes", msF3: "Scaling Maximum",
-        evTitle: "L'Évolution: Vers l'<span>Agentic AI</span>",
-        evBadge: "LE NOUVEAU STANDARD DES LEADERS",
-        agTitle: "Agents IA <span>& Crews</span>",
-        llmTitle: "Stratégie <span>Digitale Enterprise</span>",
-        llmExpH: "Références & Expertise:",
-        llmExpP: "Mercedes-Benz, Porsche, LBBW, Deutsche Bahn, Soka-Bau, KWS.",
-        lTitle: "Configurateur d'Efficacité", lBtn: "Réserver Analyse", lInfo: "Forfait d'analyse par processus (hors TVA)",
-        stTitle: "Visionnaire IA – <span>Dr. Sidi Weiss</span>", 
-        stP: "De l'officier de marine au PhD Data Scientist chez Mercedes et Porsche.",
-        tmTitle: "Les Esprits derrière <span>la Révolution</span>",
-        bkTitle: "Réserver Session", fChat: "Réserver Session",
-        imH: "Mentions Légales", daH: "Confidentialité",
-        imContent: "<strong>Mentions Légales:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-        daContent: "<strong>Confidentialité:</strong> Traitement conforme au RGPD. Responsable: Dr. Sidi Weiss.",
-        t1r: "CEO & Inventeur", t1p: "Architecte des crews autonomes. Alliant excellence scientifique et vision.",
-        t2r: "Directeur des Opérations", t2p: "Le pilier organisationnel. Transforme les stratégies en processus fluides.",
-        t3r: "Assistante", t3p: "Lien entre direction et partenaires. Garantit une efficacité maximale.",
-        t4r: "Expert IA", t4p: "Maître des algorithmes. Développe et optimise les réseaux neuronaux.",
-        t5r: "Analyste de Données", t5p: "Transforme les données en connaissances et avantages concurrentiels."
-    }
-};
 
-function setLanguage(l) {
-    const lang = l.toLowerCase().trim();
-    const s = trans[lang] || trans['de'];
-    
-    const update = (id, val, isHtml = false) => {
-        const el = document.getElementById(id);
-        if (el) isHtml ? el.innerHTML = val : el.innerText = val;
+    <script>
+    const trans = {
+        de: {
+            mAgents: "KI Agenten & Crews",
+            mLlm: "Enterprise LLM",
+            mStory: "Story",
+            mTeam: "Team",
+            mBook: "Booking",
+            hTitle: "KI-Exzellenz für Marktführer",
+            hSub: "Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.",
+            hBtn: "ROI berechnen",
+            hBtn2: "Strategie-Termin",
+            msTitle: "Dominanz durch strukturierte KI-Prozesse",
+            msP: "KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Mit Erfahrung bei Porsche, Mercedes-Benz, LBBW, Hallesche, Deutsche Bahn und Soka-Bau entwickle ich Ihre Souveränitäts-Strategie – 100% sicher, 100% On-Premise.",
+            msF1: "Souveräne Infrastruktur",
+            msF2: "Autonome Crews",
+            msF3: "Maximale Skalierung",
+            evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
+            evBadge: "DER NEUE STANDARD FÜR MARKTFÜHRER",
+            agTitle: "KI Agenten <span>& Crews</span>",
+            llmTitle: "Enterprise <span>Digitalstrategie</span>",
+            llmExpH: "Referenzen & Expertise:",
+            llmExpP: "Mercedes-Benz, Porsche, LBBW, Hallesche, Deutsche Bahn, Transdev, K2-Systems, Soka-Bau, LKV-Bayern, KWS.",
+            lTitle: "Effizienz Konfigurator",
+            lBtn: "Analyse-Termin buchen",
+            lInfo: "Analyse-Paket pro Prozess (zzgl. MwSt.)",
+            stTitle: "KI-Visionär – <span>Dr. Sidi Weiss</span>",
+            stP: "Vom Marineoffizier zum promovierten Data Scientist bei Mercedes-Benz und Porsche. 2010 persönlich von Bundeskanzlerin Merkel geehrt.",
+            tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>",
+            bkTitle: "Strategie-Termin buchen",
+            fChat: "Strategie-Termin buchen",
+            imH: "Impressum",
+            daH: "Datenschutz",
+            imContent: "<strong>Angaben gemäß § 5 TMG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
+            daContent: "<strong>Datenschutz:</strong> Wir verarbeiten Daten gemäß DSGVO. Verantwortlich: Dr. Sidi Weiss.",
+            t1r: "CEO & Erfinder",
+            t1p: "Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.",
+            t2r: "Operation Director",
+            t2p: "Das organisatorische Rückgrat. Sie transformiert komplexe KI-Strategien in reibungslose Prozesse.",
+            t3r: "Assistentin",
+            t3p: "Schnittstelle zwischen Management und Partnern. Sie garantiert höchste Effizienz im Daily Business.",
+            t4r: "KI-Experte",
+            t4p: "Meister der Algorithmen. Er entwickelt und optimiert die neuronalen Netze unserer Agenten-Crews.",
+            t5r: "Data Analyst",
+            t5p: "Übersetzt Daten in Wissen. Er findet die entscheidenden Muster für Ihren Wettbewerbsvorteil."
+        },
+        en: {
+            mAgents: "AI Agents & Crews",
+            mLlm: "Enterprise LLM",
+            mStory: "Story",
+            mTeam: "Team",
+            mBook: "Booking",
+            hTitle: "AI Excellence for Market Leaders",
+            hSub: "Sovereign Enterprise AI Solutions. Transforming leaders like Mercedes-Benz and Porsche into digital pioneers.",
+            hBtn: "Calculate ROI",
+            hBtn2: "Strategy Session",
+            msTitle: "Dominance through Structured AI",
+            msP: "AI is the ultimate competitive edge for global leaders. Experience with Porsche, Mercedes, and DB.",
+            msF1: "Sovereign Infra",
+            msF2: "Autonomous Crews",
+            msF3: "Max Scaling",
+            evTitle: "The Evolution: To <span>Agentic AI</span>",
+            evBadge: "THE NEW STANDARD FOR MARKET LEADERS",
+            agTitle: "AI Agents <span>& Crews</span>",
+            llmTitle: "Enterprise <span>Digital Strategy</span>",
+            llmExpH: "References & Expertise:",
+            llmExpP: "Mercedes-Benz, Porsche, LBBW, Deutsche Bahn, Transdev, K2-Systems, Soka-Bau, KWS.",
+            lTitle: "Efficiency Configurator",
+            lBtn: "Book Analysis",
+            lInfo: "Analysis package per process (excl. VAT)",
+            stTitle: "AI Visionary – <span>Dr. Sidi Weiss</span>",
+            stP: "From naval officer to PhD Data Scientist at Mercedes and Porsche. Honored by Chancellor Merkel in 2010.",
+            tmTitle: "The Minds Behind <span>The Revolution</span>",
+            bkTitle: "Book Strategy Session",
+            fChat: "Book Session",
+            imH: "Legal Notice",
+            daH: "Privacy Policy",
+            imContent: "<strong>Legal Information:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
+            daContent: "<strong>Privacy:</strong> Data processed according to GDPR. Controller: Dr. Sidi Weiss.",
+            t1r: "CEO & Inventor",
+            t1p: "Visionary and architect of autonomous crews. Combining excellence with foresight.",
+            t2r: "Operations Director",
+            t2p: "The organizational backbone. Transforming strategies into smooth operations.",
+            t3r: "Assistant",
+            t3p: "Interface between management and partners. Ensuring maximum daily efficiency.",
+            t4r: "AI Expert",
+            t4p: "Master of algorithms. Developing the neural networks powering our crews.",
+            t5r: "Data Analyst",
+            t5p: "Translating data into knowledge. Finding the patterns for your competitive edge."
+        },
+        fr: {
+            mAgents: "Agents IA & Crews",
+            mLlm: "Enterprise LLM",
+            mStory: "Histoire",
+            mTeam: "Équipe",
+            mBook: "Booking",
+            hTitle: "L'Excellence IA pour les Leaders",
+            hSub: "Solutions d'IA d'entreprise souveraines. Transformant des leaders comme Mercedes-Benz et Porsche.",
+            hBtn: "Calculer le ROI",
+            hBtn2: "Session Stratégique",
+            msTitle: "Dominance par les processus IA",
+            msP: "L'IA est l'avantage concurrentiel des leaders mondiaux. Expertise chez Porsche et Mercedes-Benz.",
+            msF1: "Infra Souveraine",
+            msF2: "Crews Autonomes",
+            msF3: "Scaling Maximum",
+            evTitle: "L'Évolution: Vers l'<span>Agentic AI</span>",
+            evBadge: "LE NOUVEAU STANDARD DES LEADERS",
+            agTitle: "Agents IA <span>& Crews</span>",
+            llmTitle: "Stratégie <span>Digitale Enterprise</span>",
+            llmExpH: "Références & Expertise:",
+            llmExpP: "Mercedes-Benz, Porsche, LBBW, Deutsche Bahn, Soka-Bau, KWS.",
+            lTitle: "Configurateur d'Efficacité",
+            lBtn: "Réserver Analyse",
+            lInfo: "Forfait d'analyse par processus (hors TVA)",
+            stTitle: "Visionnaire IA – <span>Dr. Sidi Weiss</span>",
+            stP: "De l'officier de marine au PhD Data Scientist chez Mercedes et Porsche.",
+            tmTitle: "Les Esprits derrière <span>la Révolution</span>",
+            bkTitle: "Réserver Session",
+            fChat: "Réserver Session",
+            imH: "Mentions Légales",
+            daH: "Confidentialité",
+            imContent: "<strong>Mentions Légales:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
+            daContent: "<strong>Confidentialité:</strong> Traitement conforme au RGPD. Responsable: Dr. Sidi Weiss.",
+            t1r: "CEO & Inventeur",
+            t1p: "Architecte des crews autonomes. Alliant excellence scientifique et vision.",
+            t2r: "Directeur des Opérations",
+            t2p: "Le pilier organisationnel. Transforme les stratégies en processus fluides.",
+            t3r: "Assistante",
+            t3p: "Lien entre direction et partenaires. Garantit une efficacité maximale.",
+            t4r: "Expert IA",
+            t4p: "Maître des algorithmes. Développe et optimise les réseaux neuronaux.",
+            t5r: "Analyste de Données",
+            t5p: "Transforme les données en connaissances et avantages concurrentiels."
+        }
     };
 
-    // Navigation & Header
-    update('m-agents', s.mAgents);
-    update('m-llm', s.mLlm);
-    update('m-story', s.mStory);
-    update('m-team', s.mTeam);
-    update('m-book', s.mBook);
-    update('h-title', s.hTitle);
-    update('h-sub', s.hSub);
-    update('h-btn', s.hBtn);
-    update('h-btn2', s.hBtn2);
-    update('f-chat', s.fChat);
+    function setLanguage(l) {
+        const lang = l.toLowerCase().trim();
+        const s = trans[lang] || trans['de'];
 
-    // Sektionen
-    update('ev-title', s.evTitle, true);
-    update('ev-badge', s.evBadge, true);
-    update('ms-title', s.msTitle);
-    update('ms-p', s.msP);
-    update('ms-f1', s.msF1);
-    update('ms-f2', s.msF2);
-    update('ms-f3', s.msF3);
-    update('ag-title', s.agTitle, true);
-    update('llm-title', s.llmTitle, true);
-    update('llm-exp-h', s.llmExpH);
-    update('llm-exp-p', s.llmExpP);
-    update('l-title', s.lTitle);
-    update('l-btn', s.lBtn);
-    update('l-info', s.lInfo);
-    update('st-title', s.stTitle, true);
-    update('st-p', s.stP);
-    update('tm-title', s.tmTitle, true);
-    update('bk-title', s.bkTitle);
-
-    // Footer
-    update('im-h', s.imH);
-    update('da-h', s.daH);
-    update('im-title', s.imH);
-    update('da-title', s.daH);
-    update('im-body', s.imContent, true);
-    update('da-body', s.daContent, true);
-
-    // Teamrollen dynamisch
-    const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
-    document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
-    update('t1-p', s.t1p); update('t2-p', s.t2p); update('t3-p', s.t3p); update('t4-p', s.t4p); update('t5-p', s.t5p);
-
-    // Button-Hervorhebung
-    document.querySelectorAll('.lang-btn').forEach(b => {
-        const isMatch = b.innerText.toLowerCase().trim() === lang;
-        b.classList.toggle('active', isMatch);
-        b.style.borderColor = isMatch ? 'var(--accent)' : 'rgba(255,255,255,0.3)';
-        b.style.color = isMatch ? 'var(--accent)' : 'white';
-    });
-    localStorage.setItem('selectedLang', lang);
-}
-
-// Interaktive Funktionen
-function updateConfig(val) {
-    const countEl = document.getElementById('l-count');
-    const priceEl = document.getElementById('l-price');
-    if(countEl) countEl.innerText = val;
-    if(priceEl) priceEl.innerText = (val * 10).toLocaleString('de-DE');
-}
-
-function tog(id) {
-    const el = document.getElementById(id);
-    if(el) el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialisierung
-    const saved = localStorage.getItem('selectedLang') || 'de';
-    setLanguage(saved);
-
-    // 2. Click-Events für Sprache
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.onclick = function() { setLanguage(this.innerText); };
-    });
-
-    // 3. Slider Event
-    const slider = document.getElementById('l-slide');
-    if(slider) {
-        slider.oninput = function() { updateConfig(this.value); };
-        updateConfig(slider.value);
-    }
-
-    // 4. Stripe Checkout Link
-    const lBtn = document.getElementById('l-btn');
-    if(lBtn) {
-        lBtn.onclick = function() {
-            const qty = document.getElementById('l-slide').value;
-            window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`;
+        const update = (id, val, isHtml = false) => {
+            const el = document.getElementById(id);
+            if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
+
+        // 1. NAVIGATION & HEADER
+        update('m-agents', s.mAgents);
+        update('m-llm', s.mLlm);
+        update('m-story', s.mStory);
+        update('m-team', s.mTeam);
+        update('m-book', s.mBook);
+
+        // 2. HERO SEKTION & FLOATING BUTTON
+        update('h-title', s.hTitle);
+        update('h-sub', s.hSub);
+        update('h-btn', s.hBtn);
+        update('h-btn2', s.hBtn2);
+        update('f-chat', s.fChat);
+
+        // 3. EVOLUTION & AGENTS
+        update('ev-badge', s.evBadge, true);
+        update('ev-title', s.evTitle, true);
+        update('ag-title', s.agTitle, true);
+        update('ms-title', s.msTitle);
+        update('ms-p', s.msP);
+        update('ms-f1', s.msF1);
+        update('ms-f2', s.msF2);
+        update('ms-f3', s.msF3);
+
+        // 4. ENTERPRISE LLM SEKTION
+        update('llm-title', s.llmTitle, true);
+        update('llm-exp-h', s.llmExpH);
+        update('llm-exp-p', s.llmExpP);
+
+        // 5. EFFIZIENZ KONFIGURATOR
+        update('l-title', s.lTitle);
+        update('l-btn', s.lBtn);
+        update('l-info', s.lInfo);
+
+        // 6. STORY SEKTION
+        update('st-title', s.stTitle, true);
+        update('st-p', s.stP);
+
+        // 7. TEAM SEKTION
+        update('tm-title', s.tmTitle, true);
+        const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
+        document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => {
+            if (roles[i]) el.innerText = roles[i];
+        });
+        update('t1-p', s.t1p);
+        update('t2-p', s.t2p);
+        update('t3-p', s.t3p);
+        update('t4-p', s.t4p);
+        update('t5-p', s.t5p);
+
+        // 8. BOOKING & FOOTER
+        update('bk-title', s.bkTitle);
+        update('im-h', s.imH);
+        update('da-h', s.daH);
+        update('im-title', s.imH);
+        update('da-title', s.daH);
+        update('im-body', s.imContent, true);
+        update('da-body', s.daContent, true);
+
+        // 10. SPRACH-BUTTONS OPTIK
+        document.querySelectorAll('.lang-btn').forEach(b => {
+            const isMatch = b.innerText.toLowerCase().trim() === lang;
+            b.classList.toggle('active', isMatch);
+            b.style.borderColor = isMatch ? 'var(--accent)' : 'rgba(255,255,255,0.3)';
+            b.style.color = isMatch ? 'var(--accent)' : 'white';
+            b.style.fontWeight = isMatch ? '900' : 'normal';
+        });
+
+        localStorage.setItem('selectedLang', lang);
     }
-});
+
+    // Angepasst für 20.000 Leads & korrekte Formatierung
+    function updateConfig(val) {
+        const countEl = document.getElementById('l-count');
+        const priceEl = document.getElementById('l-price');
+
+        // Zahl mit Punkt formatieren (z.B. 20.000)
+        const formattedVal = Number(val).toLocaleString('de-DE');
+        if (countEl) countEl.innerText = formattedVal;
+
+        if (priceEl) {
+            // Kalkulation: 10€ ROI pro Lead
+            const roi = val * 10;
+            priceEl.innerText = roi.toLocaleString('de-DE');
+        }
+    }
+
+    function tog(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            const isHidden = el.style.display === 'none' || el.style.display === '';
+            el.style.display = isHidden ? 'block' : 'none';
+            if (isHidden) el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const saved = localStorage.getItem('selectedLang') || 'de';
+        setLanguage(saved);
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.onclick = function() {
+                setLanguage(this.innerText);
+            };
+        });
+
+        const slider = document.getElementById('l-slide');
+        if (slider) {
+            slider.oninput = function() {
+                updateConfig(this.value);
+            };
+            updateConfig(slider.value);
+        }
+
+        const lBtn = document.getElementById('l-btn');
+        if (lBtn) {
+            lBtn.onclick = function() {
+                const qty = document.getElementById('l-slide').value;
+                // Stripe Link mit dynamischer Menge (Leads)
+                window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`;
+            };
+        }
+    });
 </script>
     
 </body>
