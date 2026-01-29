@@ -54,16 +54,16 @@
     <div style="font-weight:900; color:white; font-size: 18px; letter-spacing: 1px;">AISOLUTIOS</div>
     
     <nav class="nav-links" style="display: flex; align-items: center; gap: 20px;">
-        <a href="#agents" id="m-agents" style="color:white; text-decoration:none;">KI Agenten & Crews</a>
-        <a href="#llm" id="m-llm" style="color:white; text-decoration:none;">LLM Platform</a>
-        <a href="#story" id="m-story" style="color:white; text-decoration:none;">Story</a>
-        <a href="#team" id="m-team" style="color:white; text-decoration:none;">Team</a>
-        <a href="#booking" id="m-book" style="color:white; text-decoration:none;">Booking</a>
+        <a href="#agents" id="m-agents" style="color:white; text-decoration:none; font-size: 14px;">KI Agenten & Crews</a>
+        <a href="#llm" id="m-llm" style="color:white; text-decoration:none; font-size: 14px;">LLM Platform</a>
+        <a href="#story" id="m-story" style="color:white; text-decoration:none; font-size: 14px;">Story</a>
+        <a href="#team" id="m-team" style="color:white; text-decoration:none; font-size: 14px;">Team</a>
+        <a href="#booking" id="m-book" style="color:white; text-decoration:none; font-size: 14px; background:var(--accent); color:black; padding: 5px 12px; border-radius: 4px; font-weight: bold;">Booking</a>
         
-        <div class="lang-switch" style="display: flex; gap: 5px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
-            <button class="lang-btn active" onclick="setLanguage('de')" style="background:transparent; border:1px solid var(--accent); color:var(--accent); cursor:pointer; padding:2px 6px; font-size:11px; border-radius:3px;">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:11px; border-radius:3px;">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:11px; border-radius:3px;">FR</button>
+        <div class="lang-switch" style="display: flex; gap: 8px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
+            <button class="lang-btn active" onclick="setLanguage('de')" style="background:transparent; border:1px solid var(--accent); color:var(--accent); cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px; font-weight:bold; transition: 0.3s;">DE</button>
+            <button class="lang-btn" onclick="setLanguage('en')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px; font-weight:bold; transition: 0.3s;">EN</button>
+            <button class="lang-btn" onclick="setLanguage('fr')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:3px 8px; font-size:10px; border-radius:3px; font-weight:bold; transition: 0.3s;">FR</button>
         </div>
     </nav>
 </header>
@@ -377,41 +377,40 @@
     </div>
 
     <div id="im" class="legal-box" style="display:none; margin-top: 30px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02);">
-        <h4 style="color:var(--accent); margin-bottom:10px;">Impressum</h4>
-        <p><strong>Angaben gemäß § 5 TMG:</strong><br>
-        Dr. Sidi Weiss | AISOLUTIOS<br>
-        Obere Waiblinger Str. 147a<br>
-        70374 Stuttgart</p>
-        
-        <p><strong>Kontakt:</strong><br>
-        Telefon: 00 49 176 31591931<br>
-        E-Mail: vertrieb@aisolutios.de</p>
+        <h4 id="im-title" style="color:var(--accent); margin-bottom:10px;">Impressum</h4>
+        <div id="im-body">
+            <p><strong>Angaben gemäß § 5 TMG:</strong><br>
+            Dr. Sidi Weiss | AISOLUTIOS<br>
+            Obere Waiblinger Str. 147a<br>
+            70374 Stuttgart</p>
+            
+            <p><strong>Kontakt:</strong><br>
+            Telefon: 00 49 176 31591931<br>
+            E-Mail: vertrieb@aisolutios.de</p>
 
-        <p><strong>Steuernummer:</strong><br>
-        95408/32096<br>
-        Zuständiges Finanzamt: Stuttgart II</p>
+            <p><strong>Steuernummer:</strong><br>
+            95408/32096<br>
+            Zuständiges Finanzamt: Stuttgart II</p>
 
-        <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
-        Dr. Sidi Weiss<br>
-        Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
-        
-        <p style="font-size:11px; margin-top:10px; opacity:0.6;">Online-Streitbeilegung: Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: https://ec.europa.eu/consumers/odr. Wir sind nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+            <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
+            Dr. Sidi Weiss<br>
+            Obere Waiblinger Str. 147a, 70374 Stuttgart</p>
+            
+            <p style="font-size:11px; margin-top:10px; opacity:0.6;">Online-Streitbeilegung: Die EU-Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: https://ec.europa.eu/consumers/odr.</p>
+        </div>
     </div>
 
     <div id="da" class="legal-box" style="display:none; margin-top: 30px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02);">
-        <h4 style="color:var(--accent); margin-bottom:10px;">Datenschutzerklärung</h4>
-        <p><strong>1. Datenschutz auf einen Blick:</strong> Wir verarbeiten personenbezogene Daten gemäß der EU-DSGVO. Verantwortlich ist Dr. Sidi Weiss.</p>
-        
-        <p><strong>2. Datenerfassung:</strong> Diese Website nutzt technisch notwendige Cookies und SSL-Verschlüsselung (HTTPS) zum Schutz Ihrer Daten.</p>
-        
-        <p><strong>3. Drittanbieter & Tools:</strong><br>
-        - <strong>Stripe:</strong> Zur Zahlungsabwicklung im Lead-Konfigurator. Datenübermittlung erfolgt gemäß Art. 6 Abs. 1 lit. b DSGVO.<br>
-        - <strong>Calendly:</strong> Zur Online-Terminbuchung. Die Datenverarbeitung erfolgt zur Terminverwaltung (Art. 6 Abs. 1 lit. f DSGVO).<br>
-        - <strong>Hosting:</strong> Die Website wird auf sicheren Servern innerhalb der EU betrieben.</p>
-        
-        <p><strong>4. Ihre Rechte:</strong> Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten sowie ein Beschwerderecht bei der zuständigen Aufsichtsbehörde (LfDI Baden-Württemberg).</p>
+        <h4 id="da-title" style="color:var(--accent); margin-bottom:10px;">Datenschutzerklärung</h4>
+        <div id="da-body">
+            <p><strong>1. Datenschutz auf einen Blick:</strong> Wir verarbeiten personenbezogene Daten gemäß der EU-DSGVO. Verantwortlich ist Dr. Sidi Weiss.</p>
+            <p><strong>2. Datenerfassung:</strong> Diese Website nutzt SSL-Verschlüsselung (HTTPS) zum Schutz Ihrer Daten.</p>
+            <p><strong>3. Drittanbieter & Tools:</strong> Stripe (Zahlung), Calendly (Termine).</p>
+            <p><strong>4. Ihre Rechte:</strong> Auskunft, Berichtigung und Löschung Ihrer Daten (LfDI Baden-Württemberg).</p>
+        </div>
     </div>
 </footer>
+    
 <button class="floating-btn" id="f-chat" onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
     Strategie-Termin buchen
 </button>
@@ -438,7 +437,6 @@ const trans = {
         tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>",
         bkTitle: "Strategie-Termin buchen", fChat: "Strategie-Termin buchen",
         imH: "Impressum", daH: "Datenschutz",
-        // NEU: Inhalte für die Boxen
         imContent: "<strong>Angaben gemäß § 5 TMG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
         daContent: "<strong>Datenschutz:</strong> Wir verarbeiten Daten gemäß DSGVO. Verantwortlich: Dr. Sidi Weiss.",
         t1r: "CEO & Erfinder", t1p: "Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.",
@@ -468,7 +466,7 @@ const trans = {
         bkTitle: "Book Strategy Session", fChat: "Book Session",
         imH: "Legal Notice", daH: "Privacy Policy",
         imContent: "<strong>Legal Information:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-        daContent: "<strong>Privacy:</strong> We process data according to GDPR. Controller: Dr. Sidi Weiss.",
+        daContent: "<strong>Privacy:</strong> Data processed according to GDPR. Controller: Dr. Sidi Weiss.",
         t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous crews. Combining excellence with foresight.",
         t2r: "Operations Director", t2p: "The organizational backbone. Transforming strategies into smooth operations.",
         t3r: "Assistant", t3p: "Interface between management and partners. Ensuring maximum daily efficiency.",
@@ -514,7 +512,7 @@ function setLanguage(l) {
         if (el) isHtml ? el.innerHTML = val : el.innerText = val;
     };
 
-    // UI Elemente
+    // Mapping ausführen
     update('m-agents', s.mAgents);
     update('m-llm', s.mLlm);
     update('m-story', s.mStory);
@@ -542,7 +540,7 @@ function setLanguage(l) {
     update('st-p', s.stP);
     update('tm-title', s.tmTitle, true);
     
-    // Rechtstexte im Footer (Links & Überschriften)
+    // Footer FIX
     update('im-h', s.imH);
     update('da-h', s.daH);
     update('im-title', s.imH);
@@ -556,24 +554,31 @@ function setLanguage(l) {
     teamRoles.forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
     update('t1-p', s.t1p); update('t2-p', s.t2p); update('t3-p', s.t3p); update('t4-p', s.t4p); update('t5-p', s.t5p);
 
-    // Active Button
+    // Buttons hervorheben
     document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.innerText.toLowerCase().trim() === lang);
     });
     localStorage.setItem('selectedLang', lang);
 }
 
-// TOGGLE FUNKTION FÜR IMPRESSUM
 function tog(id) {
     const el = document.getElementById(id);
     if(el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Sprache laden
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
+
+    // 2. Klick-Event für Buttons binden (Wichtig!)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.onclick = function() {
+            setLanguage(this.innerText);
+        };
+    });
 });
 </script>
-
+    
 </body>
 </html>
