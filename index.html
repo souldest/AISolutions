@@ -50,18 +50,20 @@
 </head>
 <body>
 
-<header>
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
     <div style="font-weight:900; color:white; font-size: 18px; letter-spacing: 1px;">AISOLUTIOS</div>
-    <nav class="nav-links">
-        <a href="#agents" id="m-agents">KI Agenten & Crews</a>
-        <a href="#llm" id="m-llm">LLM Platform</a>
-        <a href="#story" id="m-story">Story</a>
-        <a href="#team" id="m-team">Team</a>
-        <a href="#booking" id="m-book">Booking</a>
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+    
+    <nav class="nav-links" style="display: flex; align-items: center; gap: 20px;">
+        <a href="#agents" id="m-agents" style="color:white; text-decoration:none;">KI Agenten & Crews</a>
+        <a href="#llm" id="m-llm" style="color:white; text-decoration:none;">LLM Platform</a>
+        <a href="#story" id="m-story" style="color:white; text-decoration:none;">Story</a>
+        <a href="#team" id="m-team" style="color:white; text-decoration:none;">Team</a>
+        <a href="#booking" id="m-book" style="color:white; text-decoration:none;">Booking</a>
+        
+        <div class="lang-switch" style="display: flex; gap: 5px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
+            <button class="lang-btn active" onclick="setLanguage('de')" style="background:transparent; border:1px solid var(--accent); color:var(--accent); cursor:pointer; padding:2px 6px; font-size:11px; border-radius:3px;">DE</button>
+            <button class="lang-btn" onclick="setLanguage('en')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:11px; border-radius:3px;">EN</button>
+            <button class="lang-btn" onclick="setLanguage('fr')" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:11px; border-radius:3px;">FR</button>
         </div>
     </nav>
 </header>
@@ -369,8 +371,8 @@
         </div>
         <div>
             <strong>Rechtliches</strong><br>
-            <a onclick="tog('im')" style="cursor:pointer; color:var(--accent);">Impressum</a> | 
-            <a onclick="tog('da')" style="cursor:pointer; color:var(--accent);">Datenschutz</a>
+            <a onclick="tog('im')" id="im-h" style="cursor:pointer; color:var(--accent);">Impressum</a> | 
+            <a onclick="tog('da')" id="da-h" style="cursor:pointer; color:var(--accent);">Datenschutz</a>
         </div>
     </div>
 
@@ -410,7 +412,6 @@
         <p><strong>4. Ihre Rechte:</strong> Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten sowie ein Beschwerderecht bei der zuständigen Aufsichtsbehörde (LfDI Baden-Württemberg).</p>
     </div>
 </footer>
-
 <button class="floating-btn" id="f-chat" onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
     Strategie-Termin buchen
 </button>
