@@ -346,6 +346,7 @@
 
     </div>
 </section>
+    
 <section id="booking" class="container">
     <h2 id="bk-title" style="border:none; text-align:center;">Termin buchen</h2>
     
@@ -420,7 +421,7 @@
     Strategie-Termin buchen
 </button>
 
-    <script>
+<script>
     const trans = {
         de: {
             mAgents: "KI Agenten & Crews",
@@ -453,8 +454,8 @@
             fChat: "Strategie-Termin buchen",
             imH: "Impressum",
             daH: "Datenschutz",
-            imContent: "<strong>Angaben gemäß § 5 TMG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-            daContent: "<strong>Datenschutz:</strong> Wir verarbeiten Daten gemäß DSGVO. Verantwortlich: Dr. Sidi Weiss.",
+            imContent: "<strong>Angaben gemäß § 5 TMG:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart<br><br><strong>Kontakt:</strong><br>E-Mail: vertrieb@aisolutios.de<br>Mobil: 00 49 176 31591931<br><br><strong>Steuernummer:</strong> 95408/32096<br>Finanzamt Stuttgart II<br><br><strong>Inhaltlich verantwortlich:</strong><br>Dr. Sidi Weiss",
+            daContent: "<strong>Datenschutzerklärung:</strong><br>Wir verarbeiten personenbezogene Daten gemäß EU-DSGVO. Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten (LfDI Baden-Württemberg). Verantwortlich: Dr. Sidi Weiss.",
             t1r: "CEO & Erfinder",
             t1p: "Visionär und Architekt der autonomen Agenten-Crews. Er verbindet wissenschaftliche Exzellenz mit strategischer Weitsicht.",
             t2r: "Operation Director",
@@ -497,8 +498,8 @@
             fChat: "Book Session",
             imH: "Legal Notice",
             daH: "Privacy Policy",
-            imContent: "<strong>Legal Information:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-            daContent: "<strong>Privacy:</strong> Data processed according to GDPR. Controller: Dr. Sidi Weiss.",
+            imContent: "<strong>Legal Information (§ 5 TMG):</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Germany<br><br><strong>Tax ID:</strong> 95408/32096<br>Tax Office: Stuttgart II",
+            daContent: "<strong>Privacy Policy:</strong> Data processing according to GDPR. You have the right to access, rectification, and erasure. Controller: Dr. Sidi Weiss.",
             t1r: "CEO & Inventor",
             t1p: "Visionary and architect of autonomous crews. Combining excellence with foresight.",
             t2r: "Operations Director",
@@ -541,8 +542,8 @@
             fChat: "Réserver Session",
             imH: "Mentions Légales",
             daH: "Confidentialité",
-            imContent: "<strong>Mentions Légales:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart",
-            daContent: "<strong>Confidentialité:</strong> Traitement conforme au RGPD. Responsable: Dr. Sidi Weiss.",
+            imContent: "<strong>Mentions Légales:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Allemagne<br><br><strong>N° d'identification fiscale:</strong> 95408/32096<br>Bureau des impôts: Stuttgart II",
+            daContent: "<strong>Confidentialité:</strong> Traitement conforme au RGPD. Vous disposez d'un droit d'accès et de suppression. Responsable: Dr. Sidi Weiss.",
             t1r: "CEO & Inventeur",
             t1p: "Architecte des crews autonomes. Alliant excellence scientifique et vision.",
             t2r: "Directeur des Opérations",
@@ -555,7 +556,7 @@
             t5p: "Transforme les données en connaissances et avantages concurrentiels."
         }
     };
-        
+
     function setLanguage(l) {
         const lang = l.toLowerCase().trim();
         const s = trans[lang] || trans['de'];
@@ -579,7 +580,7 @@
         update('h-btn2', s.hBtn2);
         update('f-chat', s.fChat);
 
-        // 3. AGENTS & CREWS (Sektion: agents)
+        // 3. AGENTS & CREWS
         update('ev-badge', s.evBadge, true);
         update('ev-title', s.evTitle, true);
         update('ag-title', s.agTitle, true);
@@ -589,7 +590,7 @@
         update('ms-f2', s.msF2);
         update('ms-f3', s.msF3);
 
-        // 4. ENTERPRISE LLM / DIGITALSTRATEGIE (Sektion: llm)
+        // 4. ENTERPRISE LLM
         update('llm-title', s.llmTitle, true);
         update('llm-exp-h', s.llmExpH);
         update('llm-exp-p', s.llmExpP);
@@ -603,7 +604,7 @@
         update('st-title', s.stTitle, true);
         update('st-p', s.stP);
 
-        // 7. TEAM SEKTION & ROLLEN
+        // 7. TEAM SEKTION
         update('tm-title', s.tmTitle, true);
         const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
         document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => {
@@ -615,21 +616,19 @@
         update('t4-p', s.t4p);
         update('t5-p', s.t5p);
 
-        // 8. BOOKING & FOOTER TITEL
+        // 8. FOOTER & LEGAL
         update('bk-title', s.bkTitle);
         update('im-h', s.imH);
         update('da-h', s.daH);
         update('im-title', s.imH); 
         update('da-title', s.daH); 
 
-        // 9. RECHTSSICHERES IMPRESSUM & DATENSCHUTZ (Inkl. Stuttgart II Logik)
         const imBody = document.getElementById('im-body');
         if (imBody) imBody.innerHTML = s.imContent;
-        
         const daBody = document.getElementById('da-body');
         if (daBody) daBody.innerHTML = s.daContent;
 
-        // 10. SPRACH-BUTTONS OPTIK (Aktiv-Status)
+        // 9. ACTIVE BUTTONS
         document.querySelectorAll('.lang-btn').forEach(b => {
             const isMatch = b.innerText.toLowerCase().trim() === lang;
             b.classList.toggle('active', isMatch);
@@ -641,42 +640,52 @@
         localStorage.setItem('selectedLang', lang);
     }
 
-    /**
-     * ROI RECHNER: 
-     * Formatiert Eingabewerte bis 20.000 Leads mit Tausenderpunkt
-     */
     function updateConfig(val) {
         const countEl = document.getElementById('l-count');
         const priceEl = document.getElementById('l-price');
-
         const formattedVal = Number(val).toLocaleString('de-DE');
         if (countEl) countEl.innerText = formattedVal;
-
         if (priceEl) {
             const roi = val * 10;
             priceEl.innerText = roi.toLocaleString('de-DE');
         }
     }
 
-    /**
-     * TOGGLE FUNKTION FÜR RECHTLICHES
-     * Öffnet Impressum/Datenschutz und schließt das jeweils andere
-     */
     function tog(id) {
         const el = document.getElementById(id);
         if (el) {
             const otherId = id === 'im' ? 'da' : 'im';
             const otherEl = document.getElementById(otherId);
             if (otherEl) otherEl.style.display = 'none';
-
             const isHidden = el.style.display === 'none' || el.style.display === '';
             el.style.display = isHidden ? 'block' : 'none';
-            
-            if (isHidden) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+            if (isHidden) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     }
+
+    // INITIALISIERUNG BEIM LADEN
+    document.addEventListener('DOMContentLoaded', () => {
+        const saved = localStorage.getItem('selectedLang') || 'de';
+        setLanguage(saved);
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.onclick = function() { setLanguage(this.innerText); };
+        });
+
+        const slider = document.getElementById('l-slide');
+        if (slider) {
+            slider.oninput = function() { updateConfig(this.value); };
+            updateConfig(slider.value);
+        }
+
+        const lBtn = document.getElementById('l-btn');
+        if (lBtn) {
+            lBtn.onclick = function() {
+                const qty = document.getElementById('l-slide').value;
+                window.location.href = `https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03?quantity=${qty}`;
+            };
+        }
+    });
 </script>
     
 </body>
