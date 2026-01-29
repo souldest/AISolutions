@@ -519,7 +519,6 @@ const trans = {
     }
 };
 
-// Hauptfunktion Sprache
 function setLanguage(l) {
     const lang = l.toLowerCase().trim();
     const s = trans[lang] || trans['de'];
@@ -529,6 +528,7 @@ function setLanguage(l) {
         if (el) isHtml ? el.innerHTML = val : el.innerText = val;
     };
 
+    // Navigation & Header
     update('m-agents', s.mAgents);
     update('m-llm', s.mLlm);
     update('m-story', s.mStory);
@@ -539,22 +539,28 @@ function setLanguage(l) {
     update('h-btn', s.hBtn);
     update('h-btn2', s.hBtn2);
     update('f-chat', s.fChat);
+
+    // Sektionen
+    update('ev-title', s.evTitle, true);
+    update('ev-badge', s.evBadge, true);
     update('ms-title', s.msTitle);
     update('ms-p', s.msP);
     update('ms-f1', s.msF1);
     update('ms-f2', s.msF2);
     update('ms-f3', s.msF3);
-    update('ev-title', s.evTitle, true);
-    update('ev-badge', s.evBadge, true);
     update('ag-title', s.agTitle, true);
     update('llm-title', s.llmTitle, true);
     update('llm-exp-h', s.llmExpH);
+    update('llm-exp-p', s.llmExpP);
     update('l-title', s.lTitle);
     update('l-btn', s.lBtn);
     update('l-info', s.lInfo);
     update('st-title', s.stTitle, true);
     update('st-p', s.stP);
     update('tm-title', s.tmTitle, true);
+    update('bk-title', s.bkTitle);
+
+    // Footer
     update('im-h', s.imH);
     update('da-h', s.daH);
     update('im-title', s.imH);
@@ -562,18 +568,22 @@ function setLanguage(l) {
     update('im-body', s.imContent, true);
     update('da-body', s.daContent, true);
 
+    // Teamrollen dynamisch
     const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
     document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => { if(roles[i]) el.innerText = roles[i]; });
     update('t1-p', s.t1p); update('t2-p', s.t2p); update('t3-p', s.t3p); update('t4-p', s.t4p); update('t5-p', s.t5p);
 
+    // Button-Hervorhebung
     document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.toggle('active', b.innerText.toLowerCase().trim() === lang);
-        b.style.borderColor = b.innerText.toLowerCase().trim() === lang ? 'var(--accent)' : 'rgba(255,255,255,0.3)';
+        const isMatch = b.innerText.toLowerCase().trim() === lang;
+        b.classList.toggle('active', isMatch);
+        b.style.borderColor = isMatch ? 'var(--accent)' : 'rgba(255,255,255,0.3)';
+        b.style.color = isMatch ? 'var(--accent)' : 'white';
     });
     localStorage.setItem('selectedLang', lang);
 }
 
-// Configurator Berechnung
+// Interaktive Funktionen
 function updateConfig(val) {
     const countEl = document.getElementById('l-count');
     const priceEl = document.getElementById('l-price');
@@ -581,30 +591,29 @@ function updateConfig(val) {
     if(priceEl) priceEl.innerText = (val * 10).toLocaleString('de-DE');
 }
 
-// Ein/Ausblenden
 function tog(id) {
     const el = document.getElementById(id);
     if(el) el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sprache initialisieren
+    // 1. Initialisierung
     const saved = localStorage.getItem('selectedLang') || 'de';
     setLanguage(saved);
 
-    // 2. Sprachevent für Buttons
+    // 2. Click-Events für Sprache
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.onclick = function() { setLanguage(this.innerText); };
     });
 
-    // 3. Slider Logik
+    // 3. Slider Event
     const slider = document.getElementById('l-slide');
     if(slider) {
         slider.oninput = function() { updateConfig(this.value); };
         updateConfig(slider.value);
     }
 
-    // 4. Stripe Checkout
+    // 4. Stripe Checkout Link
     const lBtn = document.getElementById('l-btn');
     if(lBtn) {
         lBtn.onclick = function() {
