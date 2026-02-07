@@ -90,22 +90,40 @@
     </div>
 </section>
 
-<section id="agents-section" class="container">
-    <h2>KI Agenten <span>& Branchen-Crews</span></h2>
+<section id="agents-section" class="container" style="padding: 60px 20px;">
+    <h2 id="ki-title" style="text-align: center; margin-bottom: 40px;">KI Agenten <span>& Branchen-Crews</span></h2>
 
-    <div class="lead-calculator">
-        <div style="flex: 1; min-width: 300px;">
-            <i class="fab fa-stripe" style="color: #6772e5; font-size: 30px; margin-bottom: 10px;"></i>
-            <h3>Lead-Verkauf via Stripe</h3>
-            <p>Unsere Crews generieren exklusive B2B-Leads für Sie. Wählen Sie die gewünschte Anzahl.</p>
+    <div class="stripe-card" style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 24px; border: 1px solid #6772e5; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+        
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+            <i class="fab fa-stripe" style="font-size: 45px; color: #6772e5;"></i>
+            <h3 id="stripe-h" style="margin: 0; font-size: 24px;">B2B Leads kaufen</h3>
         </div>
-        <div style="text-align: right; min-width: 200px;">
-            <label>Anzahl Leads: </label>
-            <input type="number" id="leads" value="50" min="10" step="10" oninput="document.getElementById('total').innerText = this.value * 10">
-            <div style="font-size: 28px; font-weight: 900; margin: 10px 0;"><span id="total">500</span>€</div>
-            <a href="#" class="btn-main" style="background: #6772e5; padding: 10px 20px;">Jetzt kaufen</a>
+        
+        <p id="stripe-p" style="opacity: 0.8; line-height: 1.6; margin: 0;">
+            Unsere Crews übernehmen die Akquise autonom für Sie. Wählen Sie die gewünschte Anzahl an exklusiven B2B-Leads.
+        </p>
+
+        <div style="margin-top: 10px; text-align: left;">
+            <label style="font-size: 11px; opacity: 0.6; letter-spacing: 1.5px; text-transform: uppercase; font-weight: bold;">Anzahl Leads (10€ pro Lead)</label>
+            <input type="number" id="lead-count" value="50" min="1" step="1" 
+                   style="width: 100%; background: #000; color: #fff; border: 1px solid #333; padding: 15px; border-radius: 12px; margin-top: 8px; font-size: 20px; outline: none; border-color: #6772e5;">
         </div>
+        
+        <div style="font-size: 32px; font-weight: 900; color: #fff; text-align: center; margin: 10px 0;">
+            Gesamt: <span id="total-price">500</span>€
+        </div>
+        
+        <button id="stripe-btn" class="btn-main" 
+                style="background: #6772e5; color: #fff; width: 100%; border: none; cursor: pointer; padding: 18px; border-radius: 12px; font-weight: bold; font-size: 18px; transition: 0.3s;">
+            Leads jetzt sichern
+        </button>
+        
+        <p style="font-size: 12px; opacity: 0.5; text-align: center; margin: 0;">
+            Sichere Abwicklung via Stripe Checkout.
+        </p>
     </div>
+</section>
     
     <div class="grid">
         <div class="card">
@@ -315,127 +333,72 @@
 <script>
     /**
      * AISOLUTIOS - Dr. Sidi Weiss
-     * Master Script: Multi-Language & Stripe Payment Integration
+     * Master Script: Multi-Language & Stripe Integration
      */
 
-    // 1. KONFIGURATION
     const STRIPE_LINK = "https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03";
 
     const trans = {
         de: {
-            mCrew: "AI Crews", mEvolution: "Evolution", mLlm: "Enterprise LLM", mStory: "Story & Team", mBook: "Booking",
-            hTitle: "KI-Exzellenz für Marktführer",
-            hSub: "Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.",
-            hBtn: "KI-Crews entdecken", hBtn2: "Strategie-Termin",
-            kiTitle: "KI Agenten <span>& Crews</span>",
-            avLoading: "Verbindung zum KI-Experten wird hergestellt...",
-            avConsultantH: "Live KI-Consultant: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Sprechen Sie direkt mit meinem interaktiven Agenten über Lead-Automatisierung.",
-            avBtnStart: "Gespräch starten →",
+            kiTitle: "KI Agenten <span>& Branchen-Crews</span>",
             stripeH: "B2B Leads kaufen",
             stripeP: "Wählen Sie die Anzahl der Leads. Unsere Crews übernehmen die Akquise autonom für Sie.",
             stripeBtn: "Leads jetzt sichern",
-            evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
-            evYesterday: "Gestern: GenAI", evYesterdayP: "Passiv. Wartet auf Befehle.",
-            evToday: "Heute: Agentic AI", evTodayP: "Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom.",
-            stTitle: "Vom Hirtenjungen zum <span>KI-Visionär</span>",
-            stQuote: "\"Wer gelernt hat, die Spuren im Sand zu lesen, erkennt auch die Muster in den Daten.\"",
-            stMainText: "<p>Vom Hirtenjungen in der Sahara zum promovierten Mathematiker und KI-Architekten für Weltkonzerne.</p>",
-            tmTitle: "Das <span>Experten-Team</span>",
-            t1r: "CEO & AI Architect", t2r: "Operation Director", t3r: "KI-Experte", t4r: "Data Analyst", t5r: "Assistentin",
-            bkTitle: "Strategie-Termin buchen",
-            fContact: "Kontakt", fLegal: "Rechtliches", floatBtn: "Termin buchen",
-            imH: "Impressum", dsH: "Datenschutz",
-            loading: "Wird geladen..."
+            loading: "Wird geladen...",
+            floatBtn: "Termin buchen",
+            imH: "Impressum", dsH: "Datenschutz"
         },
         en: {
-            mCrew: "AI Crews", mEvolution: "Evolution", mLlm: "Enterprise LLM", mStory: "Story & Team", mBook: "Booking",
-            hTitle: "AI Excellence for Leaders",
-            hSub: "Sovereign Enterprise AI Solutions. Transforming leaders like Mercedes-Benz and Porsche.",
-            hBtn: "Explore AI Crews", hBtn2: "Strategy Session",
-            kiTitle: "AI Agents <span>& Crews</span>",
-            avLoading: "Connecting to AI Expert...",
-            avConsultantH: "Live AI Consultant: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Talk directly to my interactive agent about lead automation.",
-            avBtnStart: "Start Conversation →",
+            kiTitle: "AI Agents <span>& Industry Crews</span>",
             stripeH: "Buy B2B Leads",
-            stripeP: "Choose the number of leads. Our crews handle the acquisition autonomously.",
+            stripeP: "Choose the number of leads. Our crews handle the acquisition autonomously for you.",
             stripeBtn: "Secure Leads Now",
-            evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
-            evYesterday: "Yesterday: GenAI", evYesterdayP: "Passive. Waiting for commands.",
-            evToday: "Today: Agentic AI", evTodayP: "Proactive. Completes work autonomously.",
-            stTitle: "From Shepherd Boy to <span>AI Visionary</span>",
-            stQuote: "\"Those who have learned to read tracks in the sand also recognize patterns in data.\"",
-            stMainText: "<p>From a shepherd in the Sahara to a PhD mathematician and AI architect.</p>",
-            tmTitle: "The <span>Expert Team</span>",
-            t1r: "CEO & AI Architect", t2r: "Operations Director", t3r: "AI Expert", t4r: "Data Analyst", t5r: "Assistant",
-            bkTitle: "Book Strategy Session",
-            fContact: "Contact", fLegal: "Legal", floatBtn: "Book Now",
-            imH: "Legal Notice", dsH: "Privacy Policy",
-            loading: "Loading..."
+            loading: "Loading...",
+            floatBtn: "Book Now",
+            imH: "Legal Notice", dsH: "Privacy Policy"
         },
         fr: {
-            mCrew: "Crews IA", mEvolution: "Évolution", mLlm: "IA Entreprise", mStory: "Histoire & Équipe", mBook: "Réservation",
-            hTitle: "L'Excellence IA",
-            hSub: "Solutions d'IA souveraines. Nous transformons les leaders en pionniers du numérique.",
-            hBtn: "Découvrir les Crews", hBtn2: "Session Stratégique",
-            kiTitle: "Agents IA <span>& Crews</span>",
-            avLoading: "Connexion en cours...",
-            avConsultantH: "Consultant IA Live: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Parlez directement à mon agent interactif.",
-            avBtnStart: "Démarrer →",
+            kiTitle: "Agents IA <span>& Crews Sectorielles</span>",
             stripeH: "Acheter Leads B2B",
-            stripeP: "Choisissez le nombre de leads.",
+            stripeP: "Choisissez le nombre de leads. Nos équipes s'occupent de l'acquisition.",
             stripeBtn: "Sécuriser les Leads",
-            evTitle: "L'Évolution : De GenAI à <span>Agentic AI</span>",
-            evYesterday: "Hier: GenAI", evYesterdayP: "Passif.",
-            evToday: "Aujourd'hui: Agentic IA", evTodayP: "Proactif.",
-            stTitle: "Du berger au <span>visionnaire IA</span>",
-            stQuote: "\"Celui qui a appris à lire les traces...\"",
-            stMainText: "<p>Du berger au Sahara à l'architecte IA.</p>",
-            tmTitle: "L'équipe d'<span>experts</span>",
-            t1r: "CEO & AI Architect", t2r: "Directrice Opérations", t3r: "Expert IA", t4r: "Analyste", t5r: "Assistante",
-            bkTitle: "Réserver Session",
-            fContact: "Contact", fLegal: "Juridique", floatBtn: "Réserver",
-            imH: "Mentions Légales", dsH: "Confidentialité",
-            loading: "Chargement..."
+            loading: "Chargement...",
+            floatBtn: "Réserver",
+            imH: "Mentions Légales", dsH: "Confidentialité"
         }
     };
 
-    // 2. DYNAMISCHE STRIPE-PREISBERECHNUNG
     function updatePrice() {
         const countInput = document.getElementById('lead-count');
         const priceDisplay = document.getElementById('total-price');
         const stripeBtn = document.getElementById('stripe-btn');
-        
+        const lang = localStorage.getItem('selectedLang') || 'de';
+
         if (countInput && priceDisplay) {
             const count = parseInt(countInput.value) || 0;
             const total = count * 10;
             priceDisplay.innerText = total.toLocaleString('de-DE');
             
-            const lang = localStorage.getItem('selectedLang') || 'de';
             if (stripeBtn) {
-                const baseText = trans[lang].stripeBtn;
+                const baseText = trans[lang]?.stripeBtn || "Leads";
                 stripeBtn.innerText = `${baseText} (${total}€)`;
             }
         }
     }
 
-    // 3. ZAHLUNG ABWICKELN
     function handlePayment() {
         const count = document.getElementById('lead-count').value;
         const btn = document.getElementById('stripe-btn');
         const lang = localStorage.getItem('selectedLang') || 'de';
         
-        btn.innerText = trans[lang].loading;
+        btn.innerText = trans[lang]?.loading || "Loading...";
         btn.style.opacity = "0.7";
         btn.disabled = true;
 
-        // Weiterleitung mit dynamischem Quantity-Parameter
+        // Stripe Redirect mit Quantity
         window.location.href = `${STRIPE_LINK}?quantity=${count}`;
     }
 
-    // 4. SPRACHSTEUERUNG
     function setLanguage(l) {
         const lang = l.toLowerCase().trim();
         const s = trans[lang] || trans['de'];
@@ -446,29 +409,17 @@
             if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
 
-        update('m-crew', s.mCrew); update('m-evolution', s.mEvolution);
-        update('m-llm', s.mLlm); update('m-team', s.mStory); update('m-book', s.mBook);
-        update('h-title', s.hTitle); update('h-sub', s.hSub);
-        update('h-btn-crew', s.hBtn); update('h-btn-book', s.hBtn2);
         update('ki-title', s.kiTitle, true);
-        update('stripe-h', s.stripeH); update('stripe-p', s.stripeP);
-        update('st-title', s.stTitle, true); update('st-quote', s.stQuote);
-        update('st-main-text', s.stMainText, true);
-        update('tm-title', s.tmTitle, true);
-        update('bk-title', s.bkTitle);
+        update('stripe-h', s.stripeH);
+        update('stripe-p', s.stripeP);
         update('floating-book-btn', s.floatBtn);
         
         const imH2 = document.querySelector('#impressum h2'); if(imH2) imH2.innerText = s.imH;
         const dsH2 = document.querySelector('#datenschutz h2'); if(dsH2) dsH2.innerText = s.dsH;
 
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-        });
-
         updatePrice();
     }
 
-    // 5. INITIALISIERUNG
     document.addEventListener('DOMContentLoaded', () => {
         const saved = localStorage.getItem('selectedLang') || 'de';
         setLanguage(saved);
@@ -478,16 +429,12 @@
 
         const stripeBtn = document.getElementById('stripe-btn');
         if (stripeBtn) stripeBtn.addEventListener('click', handlePayment);
-
+        
+        // Language Button Listener
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() { setLanguage(this.innerText); });
         });
-
-        const floatBtn = document.getElementById('floating-book-btn');
-        if (floatBtn) floatBtn.onclick = () => {
-            const el = document.getElementById('booking');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-        };
     });
 </script>
+</body>
 </html>
