@@ -22,8 +22,7 @@
             position: fixed; top: 0; width: 100%; z-index: 1000;
             background: rgba(11, 15, 26, 0.95); backdrop-filter: blur(15px);
             padding: 5px 5%; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            height: 90px;
+            border-bottom: 1px solid rgba(255,255,255,0.05); height: 90px;
         }
         
         .logo-text { font-weight: 900; color: white; font-size: 24px; letter-spacing: 2px; text-decoration: none; }
@@ -32,29 +31,26 @@
         .nav-links a:hover { opacity: 1; color: var(--accent); }
         
         .lang-switch { display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
-        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; transition: 0.3s; }
-        .lang-btn:hover, .lang-btn.active { border-color: var(--accent); color: var(--accent); }
+        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; }
+        .lang-btn.active { border-color: var(--accent); color: var(--accent); }
 
         .container { max-width: 1200px; margin: auto; padding: 100px 20px; }
         h2 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 20px; }
         h2 span { color: var(--accent); }
         
         .hero { text-align: center; padding: 180px 20px 80px; background: radial-gradient(circle at center, rgba(0,74,153,0.15) 0%, transparent 70%); }
-        .btn-main { background: var(--gradient); color: white; padding: 16px 35px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-main { background: var(--gradient); color: white; padding: 16px 35px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; text-align: center; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative; overflow: hidden; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative; }
         .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); transform: translateY(-5px); }
         
         .card i { font-size: 30px; color: var(--accent); margin-bottom: 20px; display: block; }
-        .ref-list { font-size: 11px; color: var(--muted); margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
-        
         .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: 800; text-transform: uppercase; }
 
         .avatar-container {
-            position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden;
+            position: relative; width: 100%; height: 450px; border-radius: 12px; overflow: hidden;
             margin-bottom: 20px; background: #000; border: 2px solid var(--accent);
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
         }
 
         .floating-btn {
@@ -76,9 +72,9 @@
         <a id="m-team" href="#story">Story & Team</a>
         <a id="m-book" href="#booking" style="background:var(--accent); color:black; padding: 8px 15px; border-radius: 4px;">Booking</a>
         <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
-            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+            <button class="lang-btn active">DE</button>
+            <button class="lang-btn">EN</button>
+            <button class="lang-btn">FR</button>
         </div>
     </nav>
 </header>
@@ -97,64 +93,36 @@
     <div class="grid">
         <div class="card" style="grid-column: 1 / -1;">
             <div class="avatar-container" id="heygen-streaming-container">
-                <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: var(--muted); text-align: center; padding: 20px;">
-                    <div>
-                        <i class="fas fa-spinner fa-spin" style="font-size: 40px; color: var(--accent); margin-bottom: 15px;"></i>
-                        <p id="av-loading">Verbindung zum KI-Experten wird hergestellt...</p>
-                    </div>
+                <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: var(--muted); text-align: center;">
+                    <div><i class="fas fa-spinner fa-spin" style="font-size: 40px; color: var(--accent); margin-bottom: 15px;"></i><p id="av-loading">Initialisiere KI-Berater...</p></div>
                 </div>
             </div>
             <h3 id="av-consultant-h">Live KI-Consultant: Dr. Sidi Weiss (AI)</h3>
-            <p id="av-consultant-p">Sprechen Sie direkt mit meinem interaktiven Agenten über Lead-Automatisierung und die Effizienz autonomer Agenten-Crews.</p>
-            <button id="av-btn-start" class="btn-main" style="margin-top:15px; padding: 10px 20px;">Gespräch starten →</button>
+            <p id="av-consultant-p">Interaktive Beratung zu Lead-Automatisierung und autonomen Crews.</p>
+            <button id="av-btn-start" class="btn-main" style="margin-top:15px;">Gespräch starten →</button>
         </div>
 
-        <div class="card">
-            <i class="fas fa-funnel-dollar"></i>
-            <h4 id="c1-h">Sales & Marketing Crew</h4>
-            <p id="c1-p">Vollautonome End-to-End Lösung: Lead-Generierung, KI-Werbekampagnen und automatisiertes Prospecting.</p>
-            <div class="ref-list"><strong>Referenz:</strong> Springer Verlag, Serviceplan</div>
-            <div class="badge">Sales & Growth</div>
+        <div class="card" style="border: 2px solid #6772e5; background: rgba(103, 114, 229, 0.05);">
+            <i class="fab fa-stripe" style="color: #6772e5;"></i>
+            <h4 id="stripe-h">B2B Leads kaufen</h4>
+            <p id="stripe-p">Direkter Zugang zu vorqualifizierten Kontakten, generiert durch unsere autonomen Crews.</p>
+            <div style="font-size: 24px; font-weight: 900; margin: 15px 0; color: white;">ab 490€</div>
+            <a href="https://buy.stripe.com/your-link" class="btn-main" id="stripe-btn" style="background: #6772e5; width: 100%;">Leads jetzt sichern</a>
         </div>
 
-        <div class="card">
-            <i class="fas fa-landmark"></i>
-            <h4 id="c2-h">Finance & Insurance Crew</h4>
-            <p id="c2-p">Spezialisierte Agenten für Validierung, Risikoprüfung und automatisierte Sachbearbeitung.</p>
-            <div class="ref-list"><strong>Referenz:</strong> LBBW, Hallesche, Soka-Bau</div>
-            <div class="badge">Finance</div>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-car"></i>
-            <h4 id="c3-h">Automotive & Solar Crew</h4>
-            <p id="c3-p">KI-Agenten für komplexe technische Vertriebszyklen und After-Sales Automatisierung.</p>
-            <div class="ref-list"><strong>Referenz:</strong> Mercedes-Benz, Porsche, K2-Systems</div>
-            <div class="badge">Industry</div>
-        </div>
+        <div class="card"><i class="fas fa-funnel-dollar"></i><h4 id="c1-h">Sales Crew</h4><p id="c1-p">Vollautonome Lead-Generierung und KI-Werbekampagnen.</p><div class="badge">Growth</div></div>
+        <div class="card"><i class="fas fa-landmark"></i><h4 id="c2-h">Finance Crew</h4><p id="c2-p">Spezialisierte Agenten für Risikoprüfung und Sachbearbeitung.</p><div class="badge">Finance</div></div>
+        <div class="card"><i class="fas fa-car"></i><h4 id="c3-h">Automotive Crew</h4><p id="c3-p">KI-Agenten für technische Vertriebszyklen und After-Sales.</p><div class="badge">Industry</div></div>
+        <div class="card"><i class="fas fa-user-shield"></i><h4 id="c4-h">HR & Recruiting Crew</h4><p id="c4-p">Autonomes Sourcing und Pre-Vetting von Fachkräften.</p><div class="badge">People</div></div>
     </div>
 </section>
 
 <section id="evolution" class="container" style="background: rgba(255,255,255,0.01);">
-    <h2 id="ev-title">Die Evolution: Von GenAI zu <span>Agentic AI</span></h2>
+    <h2 id="ev-title">Von GenAI zu <span>Agentic AI</span></h2>
     <div class="grid">
-        <div class="card" style="opacity: 0.7;">
-            <i class="fas fa-comment-dots" style="color: #666;"></i>
-            <h3 id="ev-yesterday">Gestern: GenAI</h3>
-            <p id="ev-yesterday-p">Passiv. Wartet auf Befehle. Ein Berater ohne Hände.</p>
-        </div>
-        <div class="card" style="border-top: 3px solid var(--accent); background: rgba(0, 170, 255, 0.05);">
-            <i class="fas fa-robot"></i>
-            <h3 id="ev-today">Heute: Agentic AI</h3>
-            <p id="ev-today-p">Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom – der neue Standard von AISOLUTIOS.</p>
-            <div class="badge">Proaktives Handeln</div>
-        </div>
-        <div class="card" style="background: var(--bg); border: 1px solid var(--accent); text-align: center;">
-            <h3 id="ev-roi" style="color:var(--accent);">Ihr Margen-Hebel</h3>
-            <div style="font-size: 48px; font-weight: 900; color: white;">-90%</div>
-            <p id="ev-roi-p">Zeitaufwand in der Steuerung</p>
-            <div class="badge">ROI Fokus</div>
-        </div>
+        <div class="card" style="opacity: 0.7;"><i class="fas fa-comment-dots"></i><h3 id="ev-yesterday">Gestern: GenAI</h3><p id="ev-yesterday-p">Passiv. Wartet auf Befehle. Ein Berater ohne Hände.</p></div>
+        <div class="card" style="border-top: 3px solid var(--accent);"><i class="fas fa-robot"></i><h3 id="ev-today">Heute: Agentic AI</h3><p id="ev-today-p">Proaktiv. Erledigt die Arbeit autonom – unser neuer Standard.</p></div>
+        <div class="card" style="text-align: center;"><h3 id="ev-roi" style="color:var(--accent);">Ihr Hebel</h3><div style="font-size: 48px; font-weight: 900;">-90%</div><p id="ev-roi-p">Zeitaufwand in der Steuerung</p></div>
     </div>
 </section>
 
@@ -162,18 +130,8 @@
     <h2 id="llm-title">Enterprise <span>Souveränität</span></h2>
     <div class="card" style="background: var(--bg2); border: 2px solid var(--accent);">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <div>
-                <h3 id="llm-def-h" style="color: var(--accent); margin-bottom: 15px;">On-Premise Fokus</h3>
-                <p id="llm-def" style="font-size: 15px; line-height: 1.7;">
-                    Marktführer benötigen 100% Kontrolle. Wir eliminieren die Risiken von Cloud-KI und garantieren volle DSGVO-Konformität durch Installation in Ihrem eigenen Rechenzentrum.
-                </p>
-            </div>
-            <div>
-                <h3 id="llm-mot-h" style="color: var(--accent); margin-bottom: 15px;">Kein Datenabfluss</h3>
-                <p id="llm-mot" style="font-size: 15px; line-height: 1.7;">
-                    Ihre Daten sind Ihr Kapital. Unsere Enterprise LLM Platform trainiert nicht auf öffentlichen Servern. Absolute Sicherheit für Mercedes-Benz, Porsche und LBBW Standards.
-                </p>
-            </div>
+            <div><h3 id="llm-def-h" style="color: var(--accent);">On-Premise Fokus</h3><p id="llm-def">100% Kontrolle. Wir eliminieren Cloud-Risiken durch lokale Installation.</p></div>
+            <div><h3 id="llm-mot-h" style="color: var(--accent);">Kein Datenabfluss</h3><p id="llm-mot">Ihre Daten sind Ihr Kapital. Sicherheit für Porsche & LBBW Standards.</p></div>
         </div>
     </div>
 </section>
@@ -182,19 +140,15 @@
     <h2 id="st-title">Vom Hirtenjungen zum <span>KI-Visionär</span></h2>
     <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
         <div style="flex: 1; min-width: 320px;">
-            <img src="Sidi-Ould-Foto-xxl.jpg" alt="Dr. Sidi Weiss" style="width: 100%; border-radius: 20px; border: 1px solid rgba(0, 170, 255, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <img src="Sidi-Ould-Foto-xxl.jpg" alt="Dr. Sidi Weiss" style="width: 100%; border-radius: 20px;">
             <div style="margin-top: 20px; padding: 20px; background: var(--card-bg); border-radius: 15px; border-left: 4px solid var(--accent);">
-                <span style="display: block; font-weight: 900; color: white;">Dr. Sidi Weiss</span>
-                <span style="color: var(--accent); font-size: 14px; text-transform: uppercase;">CEO & Founder, AISOLUTIOS</span>
+                <strong>Dr. Sidi Weiss</strong><br><small>CEO & Founder</small>
             </div>
         </div>
         <div style="flex: 2; min-width: 350px;">
-            <div id="st-p" style="font-size: 17px; line-height: 1.8; color: var(--text);">
+            <div id="st-p" style="font-size: 17px; line-height: 1.8;">
                 <p id="st-quote" style="margin-bottom: 20px; font-style: italic; font-size: 22px; color: var(--accent);">"Wer gelernt hat, die Spuren im Sand zu lesen, erkennt auch die Muster in den Daten."</p>
-                <div id="st-main-text">
-                    <p>Die Reise begann in der <strong>Sahara Mauretaniens</strong>. Als Hirtenjunge lernte Dr. Weiss die Kunst der Mustererkennung. Über den Dienst als <strong>Offizier der Marine</strong> und das Mathematikstudium führte ihn sein Weg zur Promotion und der persönlichen Ehrung durch <strong>Bundeskanzlerin Angela Merkel</strong>.</p>
-                    <p style="margin-top:20px;">Heute ist er der Architekt hinter den KI-Strategien globaler Konzerne. Er verbindet militärische Präzision mit modernster Data Science.</p>
-                </div>
+                <div id="st-main-text"><p>Vom Hirtenjungen in der Sahara zum promovierten Mathematiker und KI-Architekten für Weltkonzerne.</p></div>
             </div>
         </div>
     </div>
@@ -202,22 +156,12 @@
 
 <section id="team" class="container">
     <h2 id="tm-title">Das <span>Experten-Team</span></h2>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-        <div class="card" style="text-align: center;">
-            <div style="font-size: 40px; color: var(--accent);"><i class="fas fa-microchip"></i></div>
-            <h3>Dr. Sidi Weiss</h3>
-            <p id="t1-role" style="font-size: 12px; color: var(--accent);">CEO & Erfinder</p>
-        </div>
-        <div class="card" style="text-align: center;">
-            <div style="font-size: 40px; color: var(--primary);"><i class="fas fa-cogs"></i></div>
-            <h3>Mona Distler</h3>
-            <p id="t2-role" style="font-size: 12px; color: var(--primary);">Operation Director</p>
-        </div>
-        <div class="card" style="text-align: center;">
-            <div style="font-size: 40px; color: var(--accent);"><i class="fas fa-brain"></i></div>
-            <h3>Aziz Hamoud</h3>
-            <p id="t3-role" style="font-size: 12px; color: var(--accent);">KI-Experte</p>
-        </div>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="card" style="text-align:center;"><i class="fas fa-microchip"></i><h3>Dr. Sidi Weiss</h3><p id="t1-role">CEO & AI Architect</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-cogs"></i><h3>Mona Distler</h3><p id="t2-role">Operation Director</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-brain"></i><h3>Aziz Hamoud</h3><p id="t3-role">KI-Experte</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-chart-line"></i><h3>Ahmedou Didi</h3><p id="t4-role">Data Analyst</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-user-tie"></i><h3>Eva Lenz</h3><p id="t5-role">Assistentin</p></div>
     </div>
 </section>
 
@@ -228,60 +172,16 @@
 
 <footer style="padding: 60px 5%; background: rgba(0,0,0,0.9); border-top: 1px solid rgba(255,255,255,0.1);">
     <div class="grid">
-        <div>
-            <strong style="color:var(--accent);">AISOLUTIOS</strong>
-            <p style="font-size: 14px; opacity: 0.7;">Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p>
-        </div>
-        <div>
-            <strong id="f-contact">Kontakt</strong>
-            <p style="font-size: 14px; opacity: 0.7;">
-                <a href="mailto:vertrieb@aisolutios.de" style="color:inherit; text-decoration:none;">vertrieb@aisolutios.de</a><br>
-                00 49 176 31591931
-            </p>
-        </div>
-        <div>
-            <strong id="f-legal">Rechtliches</strong>
-            <p style="font-size: 14px; opacity: 0.7;">
-                <a href="#impressum" style="color:inherit; text-decoration:none; display:block; margin-bottom:5px;">Impressum</a>
-                <a href="#datenschutz" style="color:inherit; text-decoration:none; display:block;">Datenschutz</a>
-            </p>
-        </div>
+        <div><strong>AISOLUTIOS</strong><p>Dr. Sidi Weiss<br>Obere Waiblinger Str. 147a<br>70374 Stuttgart</p></div>
+        <div><strong id="f-contact">Kontakt</strong><p>vertrieb@aisolutios.de<br>00 49 176 31591931</p></div>
+        <div><strong id="f-legal">Rechtliches</strong><p><a href="#impressum">Impressum</a><br><a href="#datenschutz">Datenschutz</a></p></div>
     </div>
 </footer>
 
-<section id="impressum" class="container" style="padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.05);">
-    <h2>Impressum</h2>
-    <div class="card" style="font-size: 14px; color: var(--muted);">
-        <p><strong>AISOLUTIOS</strong><br>
-        Dr. Sidi Weiss<br>
-        Obere Waiblinger Str. 147a<br>
-        70374 Stuttgart</p>
-        <p style="margin-top: 15px;">
-            <strong>Kontakt:</strong><br>
-            Telefon: 00 49 176 31591931<br>
-            E-Mail: vertrieb@aisolutios.de<br>
-            Web: www.aisolutios.de
-        </p>
-        <p style="margin-top: 15px;">
-            <strong>Verantwortlich für den Inhalt:</strong><br>
-            Dr. Sidi Weiss
-        </p>
-    </div>
-</section>
+<section id="impressum" class="container"><h2>Impressum</h2><div class="card"><p>Dr. Sidi Weiss, Obere Waiblinger Str. 147a, 70374 Stuttgart</p></div></section>
+<section id="datenschutz" class="container"><h2>Datenschutz</h2><div class="card"><p>Wir verarbeiten Ihre Daten DSGVO-konform zur Terminvereinbarung.</p></div></section>
 
-<section id="datenschutz" class="container" style="padding-top: 50px;">
-    <h2>Datenschutz</h2>
-    <div class="card" style="font-size: 14px; color: var(--muted); line-height: 1.6;">
-        <p><strong>1. Datenschutz auf einen Blick</strong><br>
-        Der Schutz Ihrer Daten ist uns wichtig. Wir verarbeiten personenbezogene Daten gemäß DSGVO.</p>
-        <p style="margin-top: 10px;"><strong>2. Tools von Drittanbietern</strong><br>
-        Diese Website nutzt Calendly (Termine) und HeyGen (KI-Avatar). Dabei werden IP-Adressen und ggf. Formulardaten an diese Dienste übertragen.</p>
-    </div>
-</section>
-
-<button id="floating-book-btn" class="floating-btn" onclick="location.href='#booking'">
-    Termin buchen
-</button>
+<button id="floating-book-btn" class="floating-btn">Termin buchen</button>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script>
@@ -296,79 +196,91 @@
             avConsultantH: "Live KI-Consultant: Dr. Sidi Weiss (AI)",
             avConsultantP: "Sprechen Sie direkt mit meinem interaktiven Agenten über Lead-Automatisierung und die Effizienz autonomer Agenten-Crews.",
             avBtnStart: "Gespräch starten →",
-            c1H: "Sales & Marketing Crew", c1P: "Vollautonome End-to-End Lösung: Lead-Generierung und KI-Kampagnen.",
-            c2H: "Finance & Insurance Crew", c2P: "Spezialisierte Agenten für Validierung und automatisierte Sachbearbeitung.",
-            c3H: "Automotive & Solar Crew", c3P: "KI-Agenten für komplexe technische Vertriebszyklen.",
+            stripeH: "B2B Leads kaufen",
+            stripeP: "Direkter Zugang zu vorqualifizierten Kontakten via Stripe.",
+            stripeBtn: "Leads jetzt sichern",
+            c1H: "Sales Crew", c1P: "Vollautonome Lead-Generierung und KI-Werbekampagnen.",
+            c2H: "Finance Crew", c2P: "Spezialisierte Agenten für Risikoprüfung und Sachbearbeitung.",
+            c3H: "Automotive Crew", c3P: "KI-Agenten für technische Vertriebszyklen und After-Sales.",
+            c4H: "HR & Recruiting Crew", c4P: "Autonomes Sourcing und Pre-Vetting von Fachkräften.",
             evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
             evYesterday: "Gestern: GenAI", evYesterdayP: "Passiv. Wartet auf Befehle. Ein Berater ohne Hände.",
-            evToday: "Heute: Agentic AI", evTodayP: "Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom – der neue Standard.",
-            evRoi: "Ihr Margen-Hebel", evRoiP: "Zeitaufwand in der Steuerung",
+            evToday: "Heute: Agentic AI", evTodayP: "Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom – unser Standard.",
+            evRoi: "Ihr Hebel", evRoiP: "Zeitaufwand in der Steuerung",
             llmTitle: "Enterprise <span>Souveränität</span>",
-            llmDefH: "On-Premise Fokus", llmDef: "Marktführer benötigen 100% Kontrolle. Wir eliminieren Risiken von Cloud-KI durch lokale Installation.",
-            llmMotH: "Kein Datenabfluss", llmMot: "Ihre Daten sind Ihr Kapital. Unsere Enterprise LLM Platform trainiert nicht auf öffentlichen Servern.",
+            llmDefH: "On-Premise Fokus", llmDef: "100% Kontrolle. Wir eliminieren Cloud-Risiken durch lokale Installation.",
+            llmMotH: "Kein Datenabfluss", llmMot: "Ihre Daten sind Ihr Kapital. Sicherheit für Porsche & LBBW Standards.",
             stTitle: "Vom Hirtenjungen zum <span>KI-Visionär</span>",
             stQuote: "\"Wer gelernt hat, die Spuren im Sand zu lesen, erkennt auch die Muster in den Daten.\"",
-            stMainText: "<p>Die Reise begann in der Sahara Mauretaniens. Heute ist Dr. Weiss der Architekt hinter den KI-Strategien globaler Konzerne. 2010 persönlich von Bundeskanzlerin Merkel geehrt.</p>",
+            stMainText: "<p>Vom Hirtenjungen in der Sahara zum promovierten Mathematiker und KI-Architekten für Weltkonzerne. 2010 persönlich von Bundeskanzlerin Merkel geehrt.</p>",
             tmTitle: "Das <span>Experten-Team</span>",
-            t1r: "CEO & Erfinder", t2r: "Operation Director", t3r: "KI-Experte",
+            t1r: "CEO & AI Architect", t2r: "Operation Director", t3r: "KI-Experte", t4r: "Data Analyst", t5r: "Assistentin",
             bkTitle: "Strategie-Termin buchen",
             fContact: "Kontakt", fLegal: "Rechtliches", floatBtn: "Termin buchen",
             imH: "Impressum", dsH: "Datenschutz"
         },
         en: {
             mCrew: "AI Crews", mEvolution: "Evolution", mLlm: "Enterprise LLM", mStory: "Story & Team", mBook: "Booking",
-            hTitle: "AI Excellence for Market Leaders",
+            hTitle: "AI Excellence for Leaders",
             hSub: "Sovereign Enterprise AI Solutions. Transforming leaders like Mercedes-Benz and Porsche into digital pioneers.",
             hBtn: "Explore AI Crews", hBtn2: "Strategy Session",
             kiTitle: "AI Agents <span>& Crews</span>",
             avLoading: "Connecting to AI Expert...",
             avConsultantH: "Live AI Consultant: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Talk directly to my interactive agent about lead automation and autonomous agent crews.",
+            avConsultantP: "Talk directly to my interactive agent about lead automation.",
             avBtnStart: "Start Conversation →",
-            c1H: "Sales & Marketing Crew", c1P: "Fully autonomous end-to-end solutions: Lead generation and AI campaigns.",
-            c2H: "Finance & Insurance Crew", c2P: "Specialized agents for validation and automated processing.",
-            c3H: "Automotive & Solar Crew", c3P: "AI agents for complex technical sales cycles.",
+            stripeH: "Buy B2B Leads",
+            stripeP: "Direct access to pre-qualified contacts via Stripe.",
+            stripeBtn: "Secure Leads Now",
+            c1H: "Sales Crew", c1P: "Fully autonomous lead generation and AI campaigns.",
+            c2H: "Finance Crew", c2P: "Specialized agents for risk assessment and processing.",
+            c3H: "Automotive Crew", c3P: "AI agents for technical sales and after-sales.",
+            c4H: "HR & Recruiting Crew", c4P: "Autonomous sourcing and pre-vetting of talent.",
             evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
             evYesterday: "Yesterday: GenAI", evYesterdayP: "Passive. Waiting for commands. A consultant without hands.",
-            evToday: "Today: Agentic AI", evTodayP: "Proactive. Uses tools. Completes work autonomously – the new standard.",
-            evRoi: "Your Margin Lever", evRoiP: "Time spent on management",
+            evToday: "Today: Agentic AI", evTodayP: "Proactive. Uses tools. Completes work autonomously – our standard.",
+            evRoi: "Your Lever", evRoiP: "Time spent on management",
             llmTitle: "Enterprise <span>Sovereignty</span>",
-            llmDefH: "On-Premise Focus", llmDef: "Leaders need 100% control. We eliminate cloud AI risks via local installation.",
-            llmMotH: "No Data Leakage", llmMot: "Your data is your capital. Our Enterprise LLM Platform does not train on public servers.",
+            llmDefH: "On-Premise Focus", llmDef: "100% control. We eliminate cloud risks via local installation.",
+            llmMotH: "No Data Leakage", llmMot: "Your data is your capital. Security for Porsche & LBBW standards.",
             stTitle: "From Shepherd Boy to <span>AI Visionary</span>",
             stQuote: "\"Those who have learned to read tracks in the sand also recognize patterns in data.\"",
-            stMainText: "<p>The journey began in the Mauritanian Sahara. Today, Dr. Weiss is the architect behind the AI strategies of global corporations.</p>",
+            stMainText: "<p>From a shepherd in the Sahara to a PhD mathematician and AI architect for global corporations.</p>",
             tmTitle: "The <span>Expert Team</span>",
-            t1r: "CEO & Inventor", t2r: "Operations Director", t3r: "AI Expert",
+            t1r: "CEO & AI Architect", t2r: "Operations Director", t3r: "AI Expert", t4r: "Data Analyst", t5r: "Assistant",
             bkTitle: "Book Strategy Session",
-            fContact: "Contact", fLegal: "Legal", floatBtn: "Book a Call",
+            fContact: "Contact", fLegal: "Legal", floatBtn: "Book Now",
             imH: "Legal Notice", dsH: "Privacy Policy"
         },
         fr: {
             mCrew: "Crews IA", mEvolution: "Évolution", mLlm: "IA Entreprise", mStory: "Histoire & Équipe", mBook: "Réservation",
-            hTitle: "L'Excellence IA pour les Leaders",
-            hSub: "Solutions d'IA souveraines pour entreprises. Nous transformons des leaders en pionniers du numérique.",
+            hTitle: "L'Excellence IA",
+            hSub: "Solutions d'IA souveraines. Nous transformons les leaders en pionniers du numérique.",
             hBtn: "Découvrir les Crews", hBtn2: "Session Stratégique",
             kiTitle: "Agents IA <span>& Crews</span>",
             avLoading: "Connexion en cours...",
             avConsultantH: "Consultant IA Live: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Parlez directement à mon agent interactif de l'automatisation et de l'efficacité des crews.",
+            avConsultantP: "Parlez directement à mon agent interactif de l'automatisation.",
             avBtnStart: "Démarrer →",
-            c1H: "Crew Ventes & Marketing", c1P: "Solutions de bout en bout : génération de leads et campagnes IA.",
-            c2H: "Crew Finance & Assurance", c2P: "Agents spécialisés pour la validation et le traitement automatisé.",
-            c3H: "Crew Auto & Solaire", c3P: "Agents IA pour cycles de vente techniques complexes.",
-            evTitle: "L'Évolution : De la GenAI à l'<span>Agentic AI</span>",
+            stripeH: "Acheter Leads B2B",
+            stripeP: "Accès direct aux contacts qualifiés via Stripe.",
+            stripeBtn: "Sécuriser les Leads",
+            c1H: "Crew Ventes", c1P: "Génération de leads et campagnes IA autonomes.",
+            c2H: "Crew Finance", c2P: "Agents spécialisés pour l'évaluation des risques.",
+            c3H: "Crew Auto", c3P: "Agents IA pour cycles de vente techniques.",
+            c4H: "Crew RH", c4P: "Sourcing et pré-qualification autonomes des talents.",
+            evTitle: "L'Évolution : De GenAI à <span>Agentic AI</span>",
             evYesterday: "Hier: GenAI", evYesterdayP: "Passif. Attend des ordres. Un consultant sans mains.",
             evToday: "Aujourd'hui: Agentic IA", evTodayP: "Proactif. Utilise des outils. Travaille de manière autonome.",
-            evRoi: "Levier de Marge", evRoiP: "Temps passé à la gestion",
+            evRoi: "Votre Levier", evRoiP: "Temps passé à la gestion",
             llmTitle: "Souveraineté <span>Entreprise</span>",
-            llmDefH: "Focus On-Premise", llmDef: "Les leaders ont besoin d'un contrôle à 100%. Nous éliminons les risques de l'IA cloud.",
-            llmMotH: "Pas de fuite de données", llmMot: "Vos données sont votre capital. Notre plateforme n'utilise pas de serveurs publics.",
-            stTitle: "Du berger au <span>visionnaire de l'IA</span>",
+            llmDefH: "Focus On-Premise", llmDef: "Contrôle à 100%. Nous éliminons les risques cloud.",
+            llmMotH: "Pas de fuite", llmMot: "Vos données sont votre capital. Sécurité maximale.",
+            stTitle: "Du berger au <span>visionnaire IA</span>",
             stQuote: "\"Celui qui a appris à lire les traces dans le sable reconnaît aussi les modèles dans les données.\"",
-            stMainText: "<p>Le voyage a commencé dans le Sahara mauritanien. Dr. Weiss est l'architecte des stratégies d'IA mondiales.</p>",
+            stMainText: "<p>Du berger au Sahara à l'architecte IA pour les grands groupes mondiaux.</p>",
             tmTitle: "L'équipe d'<span>experts</span>",
-            t1r: "CEO & Inventeur", t2r: "Directeur des Opérations", t3r: "Expert IA",
+            t1r: "CEO & AI Architect", t2r: "Directrice Opérations", t3r: "Expert IA", t4r: "Analyste de Données", t5r: "Assistante",
             bkTitle: "Réserver Session",
             fContact: "Contact", fLegal: "Juridique", floatBtn: "Réserver",
             imH: "Mentions Légales", dsH: "Confidentialité"
@@ -384,7 +296,7 @@
             if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
 
-        // Header & Nav
+        // Navigation
         update('m-crew', s.mCrew); update('m-evolution', s.mEvolution);
         update('m-llm', s.mLlm); update('m-team', s.mStory); update('m-book', s.mBook);
         
@@ -392,15 +304,19 @@
         update('h-title', s.hTitle); update('h-sub', s.hSub);
         update('h-btn-crew', s.hBtn); update('h-btn-book', s.hBtn2);
 
-        // Agents
+        // Agents & Stripe
         update('ki-title', s.kiTitle, true);
         update('av-loading', s.avLoading);
         update('av-consultant-h', s.avConsultantH);
         update('av-consultant-p', s.avConsultantP);
         update('av-btn-start', s.avBtnStart);
+        update('stripe-h', s.stripeH);
+        update('stripe-p', s.stripeP);
+        update('stripe-btn', s.stripeBtn);
         update('c1-h', s.c1H); update('c1-p', s.c1P);
         update('c2-h', s.c2H); update('c2-p', s.c2P);
         update('c3-h', s.c3H); update('c3-p', s.c3P);
+        update('c4-h', s.c4H); update('c4-p', s.c4P);
 
         // Evolution
         update('ev-title', s.evTitle, true);
@@ -413,24 +329,22 @@
         update('llm-def-h', s.llmDefH); update('llm-def', s.llmDef);
         update('llm-mot-h', s.llmMotH); update('llm-mot', s.llmMot);
 
-        // Story & Team
+        // Story & Team (Komplett)
         update('st-title', s.stTitle, true);
         update('st-quote', s.stQuote);
         update('st-main-text', s.stMainText, true);
         update('tm-title', s.tmTitle, true);
-        update('t1-role', s.t1r); update('t2-role', s.t2r); update('t3-role', s.t3r);
+        update('t1-role', s.t1r); update('t2-role', s.t2r); update('t3-role', s.t3r); update('t4-role', s.t4r); update('t5-role', s.t5r);
 
-        // Booking & Footer
+        // Footer & Legal
         update('bk-title', s.bkTitle);
         update('f-contact', s.fContact);
         update('f-legal', s.fLegal);
         update('floating-book-btn', s.floatBtn);
         
-        // Legal Sections
         const imH2 = document.querySelector('#impressum h2'); if(imH2) imH2.innerText = s.imH;
         const dsH2 = document.querySelector('#datenschutz h2'); if(dsH2) dsH2.innerText = s.dsH;
 
-        // Active Button Styling
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
         });
@@ -452,16 +366,13 @@
         const saved = localStorage.getItem('selectedLang') || 'de';
         setLanguage(saved);
 
-        // Lang Button Listeners
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() { setLanguage(this.innerText); });
         });
 
-        // Floating Button
         const floatBtn = document.getElementById('floating-book-btn');
         if (floatBtn) floatBtn.onclick = () => scrollToSection('booking');
 
-        // Smooth Scroll for Nav Links
         document.querySelectorAll('nav a, footer a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href').substring(1);
