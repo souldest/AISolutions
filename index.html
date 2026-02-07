@@ -464,7 +464,6 @@
         onclick="document.querySelector('#booking').scrollIntoView({behavior: 'smooth'})">
     Strategie-Termin buchen
 </button>
-
 <script>
     const trans = {
         de: {
@@ -472,6 +471,7 @@
             hTitle: "KI-Exzellenz für Marktführer",
             hSub: "Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.",
             hBtn: "ROI berechnen", hBtn2: "Strategie-Termin",
+            // Kombinierte Agenten Sektion
             agTitle: "KI Agenten <span>& Crews</span>",
             msTitle: "Dominanz durch strukturierte KI-Prozesse",
             msP: "KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Mit Erfahrung bei Porsche, Mercedes-Benz, LBBW, Hallesche, Deutsche Bahn und Soka-Bau entwickle ich Ihre Souveränitäts-Strategie – 100% sicher, 100% On-Premise.",
@@ -485,10 +485,13 @@
             mbClosing: "Als Dr. Sidi Weiss begleite ich Sie persönlich von der KI-Prozessanalyse bis zur fertigen Digitalstrategie.",
             evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
             evBadge: "DER NEUE STANDARD FÜR MARKTFÜHRER",
+            // LLM Sektion
             llmTitle: "Enterprise <span>Digitalstrategie</span>",
             llmExpH: "Referenzen & Expertise:",
             llmExpP: "Mercedes-Benz, Porsche, LBBW, Hallesche, Deutsche Bahn, Transdev, K2-Systems, Soka-Bau, LKV-Bayern, KWS.",
+            // Konfigurator
             lTitle: "Effizienz Konfigurator", lBtn: "Analyse-Termin buchen", lInfo: "Analyse-Paket pro Prozess (zzgl. MwSt.)",
+            // Story & Team
             stTitle: "KI-Visionär – <span>Dr. Sidi Weiss</span>",
             stP: "Vom Marineoffizier zum promovierten Data Scientist bei Mercedes-Benz und Porsche. 2010 persönlich von Bundeskanzlerin Merkel geehrt.",
             tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>",
@@ -583,7 +586,7 @@
             if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
 
-        // 1. Navigation & Hero
+        // UI & Hero
         update('m-agents', s.mAgents);
         update('m-llm', s.mLlm);
         update('m-story', s.mStory);
@@ -595,7 +598,7 @@
         update('h-btn2', s.hBtn2);
         update('f-chat', s.fChat);
 
-        // 2. Sektionen
+        // Combined Agents Section
         update('ev-badge', s.evBadge, true);
         update('ev-title', s.evTitle, true);
         update('ag-title', s.agTitle, true);
@@ -612,6 +615,8 @@
         update('mb-h-title', s.mbHtitle);
         update('mb-h-sub', s.mbHsub);
         update('mb-closing', s.mbClosing);
+
+        // Others
         update('llm-title', s.llmTitle, true);
         update('llm-exp-h', s.llmExpH);
         update('llm-exp-p', s.llmExpP);
@@ -625,7 +630,7 @@
         update('im-h', s.imH);
         update('da-h', s.daH);
 
-        // 3. Team-Rollen & Beschreibungen
+        // Team
         const roles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
         const teamPs = [s.t1p, s.t2p, s.t3p, s.t4p, s.t5p];
         document.querySelectorAll('.card p[style*="uppercase"]').forEach((el, i) => {
@@ -633,11 +638,11 @@
         });
         ['t1', 't2', 't3', 't4', 't5'].forEach((t, i) => update(`${t}-p`, teamPs[i]));
 
-        // 4. Footer Legal
+        // Footer
         if (document.getElementById('im-body')) document.getElementById('im-body').innerHTML = s.imContent;
         if (document.getElementById('da-body')) document.getElementById('da-body').innerHTML = s.daContent;
 
-        // 5. Button Highlight
+        // Visual Language State
         document.querySelectorAll('.lang-btn').forEach(b => {
             const isMatch = b.innerText.toLowerCase().trim() === lang;
             b.style.borderColor = isMatch ? 'var(--accent)' : 'rgba(255,255,255,0.3)';
@@ -647,16 +652,13 @@
         localStorage.setItem('selectedLang', lang);
     }
 
-    // SCROLL FUNKTION (Verbessert mit Offset für den Header)
     function scrollToSection(id) {
         const el = document.getElementById(id);
         if (el) {
             const headerOffset = 100;
-            const elementPosition = el.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+            const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
             window.scrollTo({
-                top: offsetPosition,
+                top: elementPosition - headerOffset,
                 behavior: 'smooth'
             });
         }
@@ -681,16 +683,14 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Sprache initialisieren
         const saved = localStorage.getItem('selectedLang') || 'de';
         setLanguage(saved);
 
-        // Klick-Events für Sprache
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', function() { setLanguage(this.innerText); });
+            btn.onclick = function() { setLanguage(this.innerText); };
         });
 
-        // Navigation Klicks - stelle sicher, dass die IDs 'agents', 'llm' etc. in deinem HTML existieren
+        // Navigation Map (Kombinierte Sektion 'agents')
         const navMap = {
             'm-agents': 'agents',
             'm-llm': 'llm',
@@ -709,7 +709,7 @@
             }
         });
 
-        // Konfigurator
+        // Configurator Logic
         const slider = document.getElementById('l-slide');
         if (slider) {
             slider.oninput = function() { updateConfig(this.value); };
