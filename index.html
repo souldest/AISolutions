@@ -27,13 +27,12 @@
         }
         
         .logo-text { font-weight: 900; color: white; font-size: 24px; letter-spacing: 2px; text-decoration: none; }
-
         .nav-links { display: flex; gap: 15px; align-items: center; }
         .nav-links a { color: var(--text); text-decoration: none; font-size: 10px; font-weight: 700; text-transform: uppercase; opacity: 0.7; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
         
         .lang-switch { display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
-        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; transition: 0.3s; }
+        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; }
 
         .container { max-width: 1200px; margin: auto; padding: 100px 20px; }
         h2 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 20px; }
@@ -43,16 +42,19 @@
         .btn-main { background: var(--gradient); color: white; padding: 16px 35px; border-radius: 8px; font-weight: 800; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; margin-bottom: 30px; }
-        .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); }
+        .card { background: var(--card-bg); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative; overflow: hidden; }
+        .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); transform: translateY(-5px); }
         
+        .card i { font-size: 30px; color: var(--accent); margin-bottom: 20px; display: block; }
+        .ref-list { font-size: 11px; color: var(--muted); margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
+        
+        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: 800; text-transform: uppercase; }
+
         .avatar-container {
             position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden;
             margin-bottom: 20px; background: #000; border: 2px solid var(--accent);
             box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
         }
-
-        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: 800; text-transform: uppercase; margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -60,13 +62,11 @@
 <header>
     <a href="#" class="logo-text">AISOLUTIOS</a>
     <nav class="nav-links">
-        <a id="m-crew">Crew AI & Leads</a>
-        <a id="m-agents">KI Agents & Crews</a>
-        <a id="m-llm">Enterprise LLMs</a>
-        <a id="m-story">Story</a>
-        <a id="m-team">Team</a>
+        <a id="m-crew" href="#agents-section">Crew AI & Leads</a>
+        <a id="m-llm" href="#evolution">Technology</a>
+        <a id="m-industry" href="#industry-standard">Industry</a>
+        <a id="m-team" href="#story">Team</a>
         <a id="m-book" style="background:var(--accent); color:black; padding: 8px 15px; border-radius: 4px;">Booking</a>
-        
         <div class="lang-switch">
             <button class="lang-btn">DE</button>
             <button class="lang-btn">EN</button>
@@ -79,13 +79,13 @@
     <h1 id="h-title">KI-Exzellenz für Marktführer</h1>
     <p id="h-sub">Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.</p>
     <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a id="h-btn" href="#crew-section" class="btn-main">ROI berechnen</a>
-        <a id="h-btn2" class="btn-main" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
+        <a href="#agents-section" class="btn-main">KI-Crews entdecken</a>
+        <a class="btn-main" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
     </div>
 </section>
 
 <section id="agents-section" class="container">
-    <h2 id="ki-title">Crew AI & Leads <span>KI Agents & Crews</span></h2>
+    <h2 id="ki-title">KI Agenten <span>& Crews</span></h2>
     
     <div class="grid">
         <div class="card" style="grid-column: 1 / -1;">
@@ -102,130 +102,91 @@
             <button id="av-btn-start" class="btn-main" style="margin-top:15px; padding: 10px 20px;">Gespräch starten →</button>
         </div>
 
-        <div class="card" style="grid-column: 1 / -1;">
+        <div class="card" style="grid-column: 1 / -1; border-left: 5px solid var(--accent); background: rgba(0, 170, 255, 0.05);">
             <h3 id="ms-title">Dominanz durch strukturierte KI-Prozesse</h3>
-            <p id="ms-p">KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Wir entwickeln Ihre Souveränitäts-Strategie für maximale Performance.</p>
-            <div style="margin-top: 20px;">
-                <div class="badge" id="ms-f1">Souveräne Infrastruktur</div>
-                <div class="badge" id="ms-f2">Autonome Crews</div>
-                <div class="badge" id="ms-f3">Maximale Skalierung</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="mission" class="container" style="padding: 80px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; margin: 40px auto; border: 1px solid rgba(255,255,255,0.05);">
-    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-        <h2 id="ms-title" style="margin-bottom: 30px; font-size: 32px; color: var(--accent);">AISOLUTIOS: Wo Datensouveränität auf autonome Exzellenz trifft</h2>
-        
-        <p id="ms-p" style="font-size: 18px; line-height: 1.8; color: #eee; margin-bottom: 40px;">
-        
-        </p>
-        
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; border-bottom: 2px solid var(--accent);">
-                <i class="fas fa-shield-alt" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                <h4 id="ms-f1">100% On-Premise</h4>
-            </div>
-            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; border-bottom: 2px solid var(--accent);">
-                <i class="fas fa-users-cog" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                <h4 id="ms-f2">Individuelle Crews</h4>
-            </div>
-            <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; border-bottom: 2px solid var(--accent);">
-                <i class="fas fa-lock" style="color: var(--accent); font-size: 30px; margin-bottom: 15px;"></i>
-                <h4 id="ms-f3">Kein Datenabfluss</h4>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="evolution" class="container" style="padding-top: 60px;">
-    <h2 id="ev-title" style="text-align:center;">Die Evolution: Von GenAI zu <span>Agentic AI</span></h2>
-    
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-        
-        <div class="card" style="background: rgba(255,255,255,0.02); border-top: 3px solid #666;">
-            <div style="font-size: 40px; margin-bottom: 20px; opacity: 0.5;"><i class="fas fa-comment-dots"></i></div>
-            <h3 id="ev-h1" style="color: #999;">Gestern: Statische GenAI</h3>
-            <p id="ev-p1" style="font-size: 15px; line-height: 1.6; color: var(--muted);">
-                ChatGPT & Co. sind passiv. Sie warten auf Befehle, liefern Texte und stoppen. Es sind Berater ohne Hände.
-            </p>
-        </div>
-
-        <div class="card" style="background: rgba(0, 170, 255, 0.05); border-top: 3px solid var(--accent); transform: scale(1.05); z-index: 1;">
-            <div style="font-size: 40px; color: var(--accent); margin-bottom: 20px;"><i class="fas fa-robot"></i></div>
-            <h3 id="ev-h2" style="color: var(--accent);">Heute: Agentic AI</h3>
-            <p id="ev-p2" style="font-size: 15px; line-height: 1.6; font-weight: 500;">
-                Die Geburtsstunde autonomer Agenten. Agentic AI handelt proaktiv, nutzt Tools und erledigt die Arbeit autonom statt nur darüber zu schreiben.
-            </p>
-            <div id="ev-badge" class="badge" style="margin-top: 15px; background: transparent; padding: 0;">
-                <i class="fas fa-bolt"></i> DER NEUE STANDARD BEI AISOLUTIOS
+            <p id="ms-p">KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Mit Erfahrung bei <strong>Porsche, Mercedes-Benz, LBBW, Hallesche, Deutsche Bahn und Soka-Bau</strong> entwickle ich Ihre Souveränitäts-Strategie – 100% sicher, 100% On-Premise.</p>
+            <div>
+                <span class="badge">100% On-Premise</span>
+                <span class="badge">Individuelle Crews</span>
+                <span class="badge">Kein Datenabfluss</span>
             </div>
         </div>
 
-    </div>
-</section>
-
-<section id="industry-standard" class="container" style="padding: 80px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; margin-top: 50px;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-        <div>
-            <h2 id="ind-h" style="color: var(--accent); font-size: 28px;">Warum der Maschinenbau jetzt handeln muss</h2>
-            <p id="ind-p" style="font-size: 18px; line-height: 1.6; opacity: 0.8;">
-                Die Zeit der Experimente ist vorbei. Während der Wettbewerb noch manuell prüft, setzen Marktführer auf autonome Systeme.
-            </p>
-            <ul style="list-style: none; padding: 0; margin-top: 20px;">
-                <li style="margin-bottom: 15px;">✅ <strong id="ind-l1">Amazon: 30.000 Stellen durch KI-Effizienz ersetzt.</strong></li>
-                <li style="margin-bottom: 15px;">✅ <strong id="ind-l2">Siemens: 300 Werke weltweit per KI optimiert.</strong></li>
-                <li style="margin-bottom: 15px;">✅ <strong id="ind-l3">Ihr Vorteil: Prüfprozesse in Minuten statt Tagen.</strong></li>
-            </ul>
-        </div>
-        <div style="background: rgba(0,255,135,0.05); padding: 40px; border-radius: 20px; border: 1px solid var(--accent); text-align: center;">
-            <h3 id="ind-mh" style="margin-bottom: 10px;">Ihr Margen-Hebel</h3>
-            <div style="font-size: 48px; font-weight: 800; color: var(--accent);">-90%</div>
-            <p id="ind-sub" style="font-size: 18px;">Zeitaufwand in der Prozess-Steuerung</p>
-            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-            <p id="ind-doc">Als <strong>Dr. Sidi Weiss</strong> begleite ich Sie persönlich von der <strong>KI-Prozessanalyse</strong> bis zur fertigen <strong>Digitalstrategie</strong>.</p>
-        </div>
-    </div>
-</section>
-
-<section id="agents" class="container">
-    <h2 id="ag-title">KI Agenten <span>& Crews</span></h2>
-    <div class="grid">
         <div class="card">
             <i class="fas fa-funnel-dollar"></i>
             <h4 id="c1-h">Sales & Marketing Crew</h4>
-            <p id="c1-p">Vollautonome End-to-End Lösung: Lead-Generierung, KI-Werbekampagnen, automatisiertes Prospecting und Kundengewinnung.</p>
-            <div class="ref-list">Referenz: Springer Verlag, Serviceplan</div>
-            <div class="badge" id="b1">Sales & Growth</div>
+            <p id="c1-p">Vollautonome End-to-End Lösung: Lead-Generierung, KI-Werbekampagnen und automatisiertes Prospecting.</p>
+            <div class="ref-list"><strong>Referenz:</strong> Springer Verlag, Serviceplan</div>
+            <div class="badge">Sales & Growth</div>
         </div>
+
         <div class="card">
             <i class="fas fa-landmark"></i>
             <h4 id="c2-h">Finance & Insurance Crew</h4>
-            <p id="c2-p">Spezialisierte Agenten für Validierung, Risikoprüfung und automatisierte Sachbearbeitung im Hochsicherheitsbereich.</p>
-            <div class="ref-list">Referenz: LBBW, Hallesche Versicherung, Soka-Bau</div>
-            <div class="badge" id="b2">Finance</div>
+            <p id="c2-p">Spezialisierte Agenten für Validierung, Risikoprüfung und automatisierte Sachbearbeitung.</p>
+            <div class="ref-list"><strong>Referenz:</strong> LBBW, Hallesche Versicherung, Soka-Bau</div>
+            <div class="badge">Finance</div>
         </div>
+
         <div class="card">
             <i class="fas fa-car"></i>
             <h4 id="c3-h">Automotive & Solar Crew</h4>
             <p id="c3-p">KI-Agenten für komplexe technische Vertriebszyklen und After-Sales Automatisierung.</p>
-            <div class="ref-list">Referenz: Mercedes-Benz, Porsche, K2-Systems</div>
-            <div class="badge" id="b3">Industry</div>
+            <div class="ref-list"><strong>Referenz:</strong> Mercedes-Benz, Porsche, K2-Systems</div>
+            <div class="badge">Industry</div>
         </div>
+
         <div class="card">
             <i class="fas fa-train"></i>
             <h4 id="c4-h">Mobility & Logistics Crew</h4>
             <p id="c4-p">Optimierung von Transport-Workflows und autonomes Kundenmanagement für Großkonzerne.</p>
-            <div class="ref-list">Referenz: Deutsche Bahn, Transdev-Vertrieb</div>
-            <div class="badge" id="b4">Logistics</div>
+            <div class="ref-list"><strong>Referenz:</strong> Deutsche Bahn, Transdev-Vertrieb</div>
+            <div class="badge">Logistics</div>
         </div>
+
         <div class="card">
             <i class="fas fa-seedling"></i>
             <h4 id="c5-h">Agri-Tech & Data Crew</h4>
             <p id="c5-p">Data-Analysten Agenten für präzise Marktanalysen und landwirtschaftliche Prozessoptimierung.</p>
-            <div class="ref-list">Referenz: LKV Bayern, KWS</div>
-            <div class="badge" id="b5">Agri-Tech</div>
+            <div class="ref-list"><strong>Referenz:</strong> LKV Bayern, KWS</div>
+            <div class="badge">Agri-Tech</div>
+        </div>
+    </div>
+</section>
+
+<section id="evolution" class="container" style="background: rgba(255,255,255,0.01);">
+    <h2 id="ev-title" style="text-align:center;">Die Evolution: Von GenAI zu <span>Agentic AI</span></h2>
+    <div class="grid" style="margin-top: 40px;">
+        <div class="card" style="opacity: 0.7;">
+            <i class="fas fa-comment-dots" style="color: #666;"></i>
+            <h3>Gestern: Statische GenAI</h3>
+            <p>ChatGPT & Co. sind passiv. Sie warten auf Befehle und liefern Texte. Es sind Berater ohne Hände.</p>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--accent); background: rgba(0, 170, 255, 0.05);">
+            <i class="fas fa-robot"></i>
+            <h3>Heute: Agentic AI</h3>
+            <p>Autonome Agenten handeln proaktiv, nutzen Tools und erledigen die Arbeit autonom – der neue Standard bei AISOLUTIOS.</p>
+            <div class="badge">Proaktives Handeln</div>
+        </div>
+    </div>
+</section>
+
+<section id="industry-standard" class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: rgba(255,255,255,0.02); padding: 50px; border-radius: 30px;">
+        <div>
+            <h2 id="ind-h" style="border:none; padding:0;">Warum der Maschinenbau jetzt handeln muss</h2>
+            <p style="margin-bottom:20px; opacity:0.8;">Die Zeit der Experimente ist vorbei. Während der Wettbewerb noch manuell prüft, setzen Marktführer auf autonome Systeme.</p>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 10px;">✅ Amazon: 30.000 Stellen durch KI-Effizienz ersetzt.</li>
+                <li style="margin-bottom: 10px;">✅ Siemens: 300 Werke weltweit optimiert.</li>
+                <li style="margin-bottom: 10px;">✅ Ihr Vorteil: Prozesse in Minuten statt Tagen.</li>
+            </ul>
+        </div>
+        <div style="background: var(--bg); padding: 40px; border-radius: 20px; border: 1px solid var(--accent); text-align: center;">
+            <h3 style="color:var(--accent);">Ihr Margen-Hebel</h3>
+            <div style="font-size: 64px; font-weight: 900; color: white;">-90%</div>
+            <p>Zeitaufwand in der Prozess-Steuerung</p>
+            <p style="font-size: 13px; margin-top: 20px; color: var(--muted);">Dr. Sidi Weiss begleitet Sie persönlich von der Analyse bis zur Strategie.</p>
         </div>
     </div>
 </section>
@@ -462,23 +423,34 @@
             mCrew: "Crew AI & Leads", mAgents: "KI Agents & Crews", mLlm: "Enterprise LLMs", mStory: "Story", mTeam: "Team", mBook: "Booking",
             hTitle: "KI-Exzellenz für Marktführer",
             hSub: "Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.",
-            hBtn: "ROI berechnen", hBtn2: "Strategie-Termin",
-            // Zusammengefasste Sektion
-            kiTitle: "Crew AI & Leads <span>KI Agents & Crews</span>",
+            hBtn: "KI-Crews entdecken", hBtn2: "Strategie-Termin",
+            
+            // Sektion: KI Agents & Crews (Zusammengefasst)
+            kiTitle: "KI Agenten <span>& Crews</span>",
             avLoading: "Verbindung zum KI-Experten wird hergestellt...",
             avConsultantH: "Live KI-Consultant: Crew AI & Leads",
             avConsultantP: "Sprechen Sie direkt mit meinem interaktiven Agenten über Lead-Automatisierung und die Effizienz autonomer Agenten-Crews.",
             avBtnStart: "Gespräch starten →",
             msTitle: "Dominanz durch strukturierte KI-Prozesse",
             msP: "KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Mit Erfahrung bei Porsche, Mercedes-Benz, LBBW, Hallesche, Deutsche Bahn und Soka-Bau entwickle ich Ihre Souveränitäts-Strategie – 100% sicher, 100% On-Premise.",
-            msF1: "Souveräne Infrastruktur", msF2: "Autonome Crews", msF3: "Maximale Skalierung",
-            // Sektion Enterprise LLMs
-            llmTitle: "Enterprise <span>LLMs & Strategie</span>",
-            llmExpP: "Referenzen: Mercedes-Benz, Porsche, LBBW, Hallesche, Deutsche Bahn, Transdev, K2-Systems, Soka-Bau, LKV-Bayern, KWS.",
-            // Sektion Story
+            
+            // Branchen-Crews
+            c1H: "Sales & Marketing Crew", c1P: "Vollautonome End-to-End Lösung: Lead-Generierung, KI-Werbekampagnen und automatisiertes Prospecting.",
+            c2H: "Finance & Insurance Crew", c2P: "Spezialisierte Agenten für Validierung, Risikoprüfung und automatisierte Sachbearbeitung.",
+            c3H: "Automotive & Solar Crew", c3P: "KI-Agenten für komplexe technische Vertriebszyklen und After-Sales Automatisierung.",
+            c4H: "Mobility & Logistics Crew", c4P: "Optimierung von Transport-Workflows und autonomes Kundenmanagement für Großkonzerne.",
+            c5H: "Agri-Tech & Data Crew", c5P: "Data-Analysten Agenten für präzise Marktanalysen und landwirtschaftliche Prozessoptimierung.",
+
+            // Sektion: Evolution & Industrie
+            evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
+            indH: "Warum der Maschinenbau jetzt handeln muss",
+            indL1: "Amazon: 30.000 Stellen durch KI-Effizienz ersetzt.",
+            indL2: "Siemens: 300 Werke weltweit optimiert.",
+            indL3: "Ihr Vorteil: Prozesse in Minuten statt Tagen.",
+
+            // Sektion Story & Team
             stTitle: "KI-Visionär – <span>Dr. Sidi Weiss</span>",
             stP: "Vom Marineoffizier zum promovierten Data Scientist bei Mercedes-Benz und Porsche. 2010 persönlich von Bundeskanzlerin Merkel geehrt.",
-            // Sektion Team & Booking
             tmTitle: "Die Köpfe hinter der <span>KI-Revolution</span>",
             bkTitle: "Strategie-Termin buchen",
             t1r: "CEO & Erfinder", t1p: "Visionär und Architekt der autonomen Agenten-Crews.",
@@ -491,17 +463,24 @@
             mCrew: "Crew AI & Leads", mAgents: "AI Agents & Crews", mLlm: "Enterprise LLMs", mStory: "Story", mTeam: "Team", mBook: "Booking",
             hTitle: "AI Excellence for Market Leaders",
             hSub: "Sovereign Enterprise AI Solutions. Transforming leaders like Mercedes-Benz and Porsche into digital pioneers.",
-            hBtn: "Calculate ROI", hBtn2: "Strategy Session",
-            kiTitle: "Crew AI & Leads <span>AI Agents & Crews</span>",
+            hBtn: "Explore AI Crews", hBtn2: "Strategy Session",
+            kiTitle: "AI Agents <span>& Crews</span>",
             avLoading: "Connecting to AI Expert...",
             avConsultantH: "Live AI Consultant: Crew AI & Leads",
             avConsultantP: "Talk directly to my interactive agent about lead automation and the efficiency of autonomous agent crews.",
             avBtnStart: "Start Conversation →",
             msTitle: "Dominance through Structured AI",
             msP: "AI is the ultimate competitive edge for global leaders. Experience with Porsche, Mercedes-Benz, and DB.",
-            msF1: "Sovereign Infra", msF2: "Autonomous Crews", msF3: "Max Scaling",
-            llmTitle: "Enterprise <span>LLMs & Strategy</span>",
-            llmExpP: "References: Mercedes-Benz, Porsche, LBBW, DB, Transdev, K2-Systems, Soka-Bau.",
+            c1H: "Sales & Marketing Crew", c1P: "Fully autonomous end-to-end solutions: Lead generation, AI campaigns, and automated prospecting.",
+            c2H: "Finance & Insurance Crew", c2P: "Specialized agents for validation, risk assessment, and automated processing.",
+            c3H: "Automotive & Solar Crew", c3P: "AI agents for complex technical sales cycles and after-sales automation.",
+            c4H: "Mobility & Logistics Crew", c4P: "Optimization of transport workflows and autonomous customer management.",
+            c5H: "Agri-Tech & Data Crew", c5P: "Data analyst agents for precise market analysis and agricultural optimization.",
+            evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
+            indH: "Why Manufacturing Must Act Now",
+            indL1: "Amazon: 30,000 roles replaced by AI efficiency.",
+            indL2: "Siemens: 300 plants optimized globally.",
+            indL3: "Your Advantage: Processes in minutes instead of days.",
             stTitle: "AI Visionary – <span>Dr. Sidi Weiss</span>",
             stP: "From naval officer to PhD Data Scientist at Mercedes and Porsche. Honored by Chancellor Merkel in 2010.",
             tmTitle: "The Minds Behind <span>The Revolution</span>",
@@ -516,20 +495,27 @@
             mCrew: "Crew AI & Leads", mAgents: "Agents IA & Crews", mLlm: "Enterprise LLMs", mStory: "Histoire", mTeam: "Équipe", mBook: "Réservation",
             hTitle: "L'Excellence IA pour les Leaders",
             hSub: "Solutions d'IA souveraines pour entreprises. Nous transformons des leaders comme Mercedes-Benz et Porsche en pionniers du numérique.",
-            hBtn: "Calculer le ROI", hBtn2: "Session Stratégique",
-            kiTitle: "Crew AI & Leads <span>Agents IA & Crews</span>",
+            hBtn: "Découvrir les Crews", hBtn2: "Session Stratégique",
+            kiTitle: "Agents IA <span>& Crews</span>",
             avLoading: "Connexion en cours...",
             avConsultantH: "Consultant IA Live: Crew AI & Leads",
-            avConsultantP: "Parlez directement à mon agent interactif de l'automatisation des leads et de l'efficacité des crews d'agents autonomes.",
-            avBtnStart: "Démarrer l'entretien →",
+            avConsultantP: "Parlez directement à mon agent interactif de l'automatisation des leads.",
+            avBtnStart: "Démarrer →",
             msTitle: "Dominance par des processus IA structurés",
             msP: "L'IA est l'avantage concurrentiel ultime des leaders mondiaux. Expertise chez Porsche et Mercedes-Benz.",
-            msF1: "Infrastructure souveraine", msF2: "Crews autonomes", msF3: "Scaling maximum",
-            llmTitle: "Enterprise <span>LLMs & Stratégie</span>",
-            llmExpP: "Références : Mercedes-Benz, Porsche, LBBW, Deutsche Bahn.",
+            c1H: "Crew Ventes & Marketing", c1P: "Solutions de bout en bout : génération de leads et campagnes IA automatisées.",
+            c2H: "Crew Finance & Assurance", c2P: "Agents spécialisés pour la validation et le traitement automatisé.",
+            c3H: "Crew Auto & Solaire", c3P: "Agents IA pour cycles de vente techniques complexes.",
+            c4H: "Crew Mobilité & Logistique", c4P: "Optimisation des flux de transport et gestion client autonome.",
+            c5H: "Crew Agri-Tech & Data", c5P: "Agents d'analyse pour l'optimisation des processus agricoles.",
+            evTitle: "L'Évolution : De la GenAI à l'<span>Agentic AI</span>",
+            indH: "Pourquoi l'industrie doit agir maintenant",
+            indL1: "Amazon : 30 000 postes optimisés par l'IA.",
+            indL2: "Siemens : 300 usines optimisées dans le monde.",
+            indL3: "Votre avantage : Minutes au lieu de jours.",
             stTitle: "Visionnaire IA – <span>Dr. Sidi Weiss</span>",
-            stP: "D'officier de marine à docteur en Data Science chez Mercedes et Porsche. Honoré par la chancelière Merkel en 2010.",
-            tmTitle: "Les esprits derrière la <span>Révolution</span>",
+            stP: "D'officier de marine à docteur en Data Science. Honoré par la chancelière Merkel en 2010.",
+            tmTitle: "Les esprits de la <span>Révolution</span>",
             bkTitle: "Réserver Session",
             t1r: "CEO & Inventeur", t1p: "Architecte des crews autonomes.",
             t2r: "Directeur des Opérations", t2p: "Le pilier organisationnel.",
@@ -548,21 +534,12 @@
             if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
 
-        // Navigation
-        update('m-crew', s.mCrew);
-        update('m-agents', s.mAgents);
-        update('m-llm', s.mLlm);
-        update('m-story', s.mStory);
-        update('m-team', s.mTeam);
-        update('m-book', s.mBook);
-        
-        // Hero
-        update('h-title', s.hTitle);
-        update('h-sub', s.hSub);
-        update('h-btn', s.hBtn);
-        update('h-btn2', s.hBtn2);
+        // Navigation & Hero
+        update('m-crew', s.mCrew); update('m-llm', s.mLlm); update('m-story', s.mStory);
+        update('m-team', s.mTeam); update('m-book', s.mBook);
+        update('h-title', s.hTitle); update('h-sub', s.hSub); update('h-btn', s.hBtn);
 
-        // Content Sections
+        // KI Agents & Crews
         update('ki-title', s.kiTitle, true);
         update('av-loading', s.avLoading);
         update('av-consultant-h', s.avConsultantH);
@@ -570,22 +547,28 @@
         update('av-btn-start', s.avBtnStart);
         update('ms-title', s.msTitle);
         update('ms-p', s.msP);
-        update('ms-f1', s.msF1);
-        update('ms-f2', s.msF2);
-        update('ms-f3', s.msF3);
 
-        update('llm-title', s.llmTitle, true);
-        update('llm-exp-p', s.llmExpP);
+        // Branchen Cards
+        update('c1-h', s.c1H); update('c1-p', s.c1P);
+        update('c2-h', s.c2H); update('c2-p', s.c2P);
+        update('c3-h', s.c3H); update('c3-p', s.c3P);
+        update('c4-h', s.c4H); update('c4-p', s.c4P);
+        update('c5-h', s.c5H); update('c5-p', s.c5P);
+
+        // Evolution & Industrie
+        update('ev-title', s.evTitle, true);
+        update('ind-h', s.indH);
+        update('ind-l1', s.indL1); update('ind-l2', s.indL2); update('ind-l3', s.indL3);
+
+        // Story & Team
         update('st-title', s.stTitle, true);
         update('st-p', s.stP);
         update('tm-title', s.tmTitle, true);
         update('bk-title', s.bkTitle);
 
-        // Team Roles (Mapping)
+        // Team Roles Mapping
         const teamRoles = [s.t1r, s.t2r, s.t3r, s.t4r, s.t5r];
         const teamDesc = [s.t1p, s.t2p, s.t3p, s.t4p, s.t5p];
-        
-        // Hier wird vorausgesetzt, dass die Team-IDs im HTML existieren (z.B. t1-role, t1-p)
         ['t1', 't2', 't3', 't4', 't5'].forEach((t, i) => {
             update(`${t}-role`, teamRoles[i]);
             update(`${t}-p`, teamDesc[i]);
@@ -611,13 +594,12 @@
             btn.onclick = function() { setLanguage(this.innerText); };
         });
 
-        // navMap angepasst auf die zusammengefasste ID "agents-section"
         const navMap = {
-            'm-crew': 'agents-section',    
-            'm-agents': 'agents-section', 
-            'm-llm': 'llm',
-            'm-story': 'story',
-            'm-team': 'team',
+            'm-crew': 'agents-section',
+            'm-llm': 'evolution',
+            'm-industry': 'industry-standard',
+            'm-story': 'story', // Falls ID vorhanden
+            'm-team': 'story',
             'm-book': 'booking'
         };
 
