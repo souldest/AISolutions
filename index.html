@@ -6,7 +6,6 @@
     <title>AISOLUTIOS | Dr. Sidi Weiss – Enterprise AI Agents & Crews</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     
     <style>
         :root {
@@ -27,20 +26,15 @@
             height: 90px;
         }
         
-        .logo-img {
-            height: 80px; 
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
+        .logo-img { height: 80px; width: auto; display: block; transition: transform 0.3s ease; }
         .logo-img:hover { transform: scale(1.05); }
 
         .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.7; transition: 0.3s; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.7; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
         
         .lang-switch { display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
-        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; }
+        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; transition: 0.3s; }
 
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         h2 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 20px; }
@@ -53,20 +47,13 @@
         .card { background: var(--card-bg); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); }
         
-        /* Interaktiver Avatar Container */
         .avatar-container {
-            position: relative;
-            width: 100%;
-            height: 550px; /* Erhöht für bessere Sichtbarkeit des Agenten */
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            background: #000;
-            border: 2px solid var(--accent);
+            position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden;
+            margin-bottom: 20px; background: #000; border: 2px solid var(--accent);
             box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
         }
 
-        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: 800; text-transform: uppercase; }
+        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: 800; text-transform: uppercase; margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -76,61 +63,63 @@
         <img src="AISOLUTIOS-LOGO.jpg" alt="AISOLUTIOS Logo" class="logo-img">
     </a>
     <nav class="nav-links">
-        <a href="#agents">KI Agenten & Crews</a>
-        <a href="#llm">Enterprise LLM</a>
-        <a href="#story">Story</a>
-        <a href="#team">Team</a>
-        <a href="#booking" style="background:var(--accent); color:black; padding: 8px 15px; border-radius: 4px;">Booking</a>
+        <a id="m-agents" onclick="scrollToSection('agents')">KI Agenten & Crews</a>
+        <a id="m-llm" onclick="scrollToSection('llm')">Enterprise LLM</a>
+        <a id="m-story" onclick="scrollToSection('story')">Story</a>
+        <a id="m-team" onclick="scrollToSection('team')">Team</a>
+        <a id="m-book" onclick="scrollToSection('booking')" style="background:var(--accent); color:black; padding: 8px 15px; border-radius: 4px;">Booking</a>
         <div class="lang-switch">
             <button class="lang-btn">DE</button>
             <button class="lang-btn">EN</button>
+            <button class="lang-btn">FR</button>
         </div>
     </nav>
 </header>
 
 <section class="hero">
-    <h1 style="font-size: clamp(30px, 5vw, 60px); font-weight:900;">KI-Exzellenz für Marktführer</h1>
-    <p style="color:var(--muted); max-width:800px; margin:20px auto; font-size: 18px;">
+    <h1 id="h-title" style="font-size: clamp(30px, 5vw, 60px); font-weight:900;">KI-Exzellenz für Marktführer</h1>
+    <p id="h-sub" style="color:var(--muted); max-width:800px; margin:20px auto; font-size: 18px;">
         Souveräne Enterprise KI-Lösungen. Von autonomen Agenten-Crews bis zu hochsicheren On-Premise LLM-Plattformen – wir skalieren Ihr Business ohne Datenabfluss.
     </p>
     <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="#leads" class="btn-main">Leads konfigurieren</a>
-        <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
+        <a id="h-btn" href="#leads" class="btn-main">ROI berechnen</a>
+        <a id="h-btn2" onclick="scrollToSection('booking')" class="btn-main" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
     </div>
 </section>
 
 <section id="agents" class="container">
-    <h2>Unsere <span>KI-Menschen</span> & Agenten</h2>
+    <h2 id="ag-title">Unsere <span>KI-Menschen</span> & Agenten</h2>
     <div class="grid">
         
-        <div class="card" style="grid-column: 1 / -1;"> <div class="avatar-container" id="heygen-streaming-container">
+        <div class="card" style="grid-column: 1 / -1;"> 
+            <div class="avatar-container" id="heygen-streaming-container">
                 <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: var(--muted); text-align: center; padding: 20px;">
                     <div>
                         <i class="fas fa-spinner fa-spin" style="font-size: 40px; color: var(--accent); margin-bottom: 15px;"></i>
-                        <p>Verbindung zum KI-Experten wird hergestellt...</p>
+                        <p id="av-loading">Verbindung zum KI-Experten wird hergestellt...</p>
                     </div>
                 </div>
             </div>
-            <h3>Live KI-Consultant: Crew AI & Leads</h3>
-            <p>Stellen Sie Ihre Fragen direkt an unseren interaktiven Agenten. Erfahren Sie in Echtzeit, wie wir mit CrewAI den gesamten Prozess von der Lead-Generierung bis zur Kundengewinnung für Sie automatisieren.</p>
+            <h3 id="av-consultant-h">Live KI-Consultant: Crew AI & Leads</h3>
+            <p id="av-consultant-p">Sprechen Sie direkt mit meinem interaktiven Agenten. Erfahren Sie in Echtzeit, wie wir mit CrewAI Prozesse von der Lead-Generierung bis zur Kundengewinnung automatisieren.</p>
             <div>
-                <span class="badge">Live Streaming</span>
-                <span class="badge">Interaktive Beratung</span>
-                <span class="badge">Saskia Avatar</span>
+                <span id="av-badge-live" class="badge">Live Interaktion</span>
+                <span id="av-badge-voice" class="badge">Saskia AI Voice</span>
+                <button id="av-btn-start" class="btn-main" style="margin-top:15px; padding: 10px 20px;">Gespräch starten →</button>
             </div>
         </div>
 
-        <div class="card">
-            <div style="background: rgba(0,170,255,0.05); height: 200px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-                <i class="fas fa-bullhorn" style="font-size: 50px; opacity: 0.5;"></i>
-            </div>
-            <h3>Content & Marketing Crew</h3>
-            <p>KI-Agenten, die Ihre Marke verstehen und plattformübergreifend Content in Ihrer Brand-Voice erstellen.</p>
-            <span class="badge">Brand Safety</span>
         </div>
-
-    </div>
 </section>
+
+<script>
+    // ... (Hier das komplette JavaScript-Objekt trans { de, en, fr } und die Funktionen einfügen)
+    
+    // Einfache Scroll-Funktion direkt hier für die Demo:
+    function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
 
 <section id="mission" class="container" style="padding: 80px 20px; background: rgba(255,255,255,0.02); border-radius: 30px; margin: 40px auto; border: 1px solid rgba(255,255,255,0.05);">
     <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
