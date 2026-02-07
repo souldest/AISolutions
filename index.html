@@ -22,17 +22,25 @@
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             background: rgba(11, 15, 26, 0.95); backdrop-filter: blur(15px);
-            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            padding: 5px 5%; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            height: 90px;
         }
+        
+        .logo-img {
+            height: 80px; 
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover { transform: scale(1.05); }
+
         .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 10px; font-weight: 700; text-transform: uppercase; opacity: 0.7; transition: 0.3s; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 11px; font-weight: 700; text-transform: uppercase; opacity: 0.7; transition: 0.3s; }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
         
         .lang-switch { display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
-        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; transition: 0.3s; }
-        .lang-btn.active { background: var(--primary); border-color: var(--accent); }
-        .lang-btn:hover { border-color: var(--accent); }
+        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; }
 
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
         h2 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 20px; }
@@ -43,38 +51,84 @@
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card { background: var(--card-bg); padding: 35px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255,255,255,0.06); }
-        .card i { font-size: 30px; color: var(--accent); margin-bottom: 20px; }
-        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: auto; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); }
+        
+        /* Interaktiver Avatar Container */
+        .avatar-container {
+            position: relative;
+            width: 100%;
+            height: 550px; /* Erhöht für bessere Sichtbarkeit des Agenten */
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #000;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
+        }
+
+        .badge { font-size: 10px; background: rgba(0,170,255,0.1); color: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-top: 15px; font-weight: 800; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;">
-    <div style="font-weight:900; font-size: 18px; letter-spacing: 1px; color: white;">AISOLUTIOS</div>
-    <nav class="nav-links" style="display: flex; align-items: center; gap: 20px;">
-        <a href="#agents" id="m-agents" style="color:white; text-decoration:none; font-size:14px;">KI Agenten & Crews</a>
-        <a href="#llm" id="m-llm" style="color:white; text-decoration:none; font-size:14px;">Enterprise LLM</a>
-        <a href="#story" id="m-story" style="color:white; text-decoration:none; font-size:14px;">Story</a>
-        <a href="#team" id="m-team" style="color:white; text-decoration:none; font-size:14px;">Team</a>
-        <a href="#booking" id="m-book" style="color:white; text-decoration:none; font-size:14px; background:var(--accent); color:black; padding: 5px 12px; border-radius: 4px; font-weight: bold;">Booking</a>
-        
-        <div class="lang-switch" style="display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
-            <button class="lang-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:10px; border-radius:3px; transition: 0.3s;">DE</button>
-            <button class="lang-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:10px; border-radius:3px; transition: 0.3s;">EN</button>
-            <button class="lang-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.3); color:white; cursor:pointer; padding:2px 6px; font-size:10px; border-radius:3px; transition: 0.3s;">FR</button>
+<header>
+    <a href="#">
+        <img src="AISOLUTIOS-LOGO.jpg" alt="AISOLUTIOS Logo" class="logo-img">
+    </a>
+    <nav class="nav-links">
+        <a href="#agents">KI Agenten & Crews</a>
+        <a href="#llm">Enterprise LLM</a>
+        <a href="#story">Story</a>
+        <a href="#team">Team</a>
+        <a href="#booking" style="background:var(--accent); color:black; padding: 8px 15px; border-radius: 4px;">Booking</a>
+        <div class="lang-switch">
+            <button class="lang-btn">DE</button>
+            <button class="lang-btn">EN</button>
         </div>
     </nav>
 </header>
 
 <section class="hero">
-    <h1 id="h-title" style="font-size: clamp(30px, 5vw, 60px); font-weight:900;">KI-Exzellenz für Marktführer</h1>
-    <p id="h-sub" style="color:var(--muted); max-width:800px; margin:20px auto; font-size: 18px;">
+    <h1 style="font-size: clamp(30px, 5vw, 60px); font-weight:900;">KI-Exzellenz für Marktführer</h1>
+    <p style="color:var(--muted); max-width:800px; margin:20px auto; font-size: 18px;">
         Souveräne Enterprise KI-Lösungen. Von autonomen Agenten-Crews bis zu hochsicheren On-Premise LLM-Plattformen – wir skalieren Ihr Business ohne Datenabfluss.
     </p>
     <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="#leads" class="btn-main" id="h-btn">Leads konfigurieren</a>
-        <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);" id="h-btn2">Strategie-Termin</a>
+        <a href="#leads" class="btn-main">Leads konfigurieren</a>
+        <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
+    </div>
+</section>
+
+<section id="agents" class="container">
+    <h2>Unsere <span>KI-Menschen</span> & Agenten</h2>
+    <div class="grid">
+        
+        <div class="card" style="grid-column: 1 / -1;"> <div class="avatar-container" id="heygen-streaming-container">
+                <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: var(--muted); text-align: center; padding: 20px;">
+                    <div>
+                        <i class="fas fa-spinner fa-spin" style="font-size: 40px; color: var(--accent); margin-bottom: 15px;"></i>
+                        <p>Verbindung zum KI-Experten wird hergestellt...</p>
+                    </div>
+                </div>
+            </div>
+            <h3>Live KI-Consultant: Crew AI & Leads</h3>
+            <p>Stellen Sie Ihre Fragen direkt an unseren interaktiven Agenten. Erfahren Sie in Echtzeit, wie wir mit CrewAI den gesamten Prozess von der Lead-Generierung bis zur Kundengewinnung für Sie automatisieren.</p>
+            <div>
+                <span class="badge">Live Streaming</span>
+                <span class="badge">Interaktive Beratung</span>
+                <span class="badge">Saskia Avatar</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div style="background: rgba(0,170,255,0.05); height: 200px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <i class="fas fa-bullhorn" style="font-size: 50px; opacity: 0.5;"></i>
+            </div>
+            <h3>Content & Marketing Crew</h3>
+            <p>KI-Agenten, die Ihre Marke verstehen und plattformübergreifend Content in Ihrer Brand-Voice erstellen.</p>
+            <span class="badge">Brand Safety</span>
+        </div>
+
     </div>
 </section>
 
@@ -433,8 +487,14 @@
             hSub: "Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.",
             hBtn: "ROI berechnen",
             hBtn2: "Strategie-Termin",
-            // Sektion Agents & Maschinenbau
+            // Agent & Live Consultant Sektion
             agTitle: "KI Agenten <span>& Crews</span>",
+            avConsultantH: "Live KI-Consultant: Crew AI & Leads",
+            avConsultantP: "Spreche direkt mit meinem interaktiven Agenten. Erfahre in Echtzeit, wie wir mit CrewAI Prozesse von der Lead-Generierung bis zur Kundengewinnung automatisieren.",
+            avBadgeLive: "Live Interaktion",
+            avBadgeVoice: "Saskia AI Voice",
+            avBtnStart: "Gespräch starten →",
+            // Maschinenbau & Strategie
             msTitle: "Dominanz durch strukturierte KI-Prozesse",
             msP: "KI-Nutzung ist der entscheidende Wettbewerbsvorteil globaler Marktführer. Mit Erfahrung bei Porsche, Mercedes-Benz, LBBW, Hallesche, Deutsche Bahn und Soka-Bau entwickle ich Ihre Souveränitäts-Strategie – 100% sicher, 100% On-Premise.",
             msF1: "Souveräne Infrastruktur",
@@ -486,19 +546,24 @@
             hBtn: "Calculate ROI",
             hBtn2: "Strategy Session",
             agTitle: "AI Agents <span>& Crews</span>",
+            avConsultantH: "Live AI Consultant: Crew AI & Leads",
+            avConsultantP: "Talk directly to my interactive agent. Discover in real-time how we use CrewAI to automate everything from lead generation to customer acquisition.",
+            avBadgeLive: "Live Interaction",
+            avBadgeVoice: "Saskia AI Voice",
+            avBtnStart: "Start conversation →",
             msTitle: "Dominance through Structured AI",
             msP: "AI is the ultimate competitive edge for global leaders. Experience with Porsche, Mercedes, and DB.",
             msF1: "Sovereign Infra",
             msF2: "Autonomous Crews",
             msF3: "Max Scaling",
-            mbAction: "Why the Manufacturing Industry Must Act Now",
-            mbP1: "The time for experimentation is over. While the competition still relies on manual checks, market leaders are deploying autonomous systems.",
+            mbAction: "Why Manufacturing Must Act Now",
+            mbP1: "The time for experimentation is over. While competitors still check manually, leaders deploy autonomous systems.",
             mbF1: "✅ Amazon: 30,000 roles replaced by AI efficiency.",
             mbF2: "✅ Siemens: 300 plants worldwide optimized by AI.",
-            mbF3: "✅ Your Advantage: Testing processes in minutes instead of days.",
+            mbF3: "✅ Your Advantage: Processes in minutes instead of days.",
             mbHtitle: "Your Margin Leverage",
             mbHsub: "Time spent on process control",
-            mbClosing: "As Dr. Sidi Weiss, I personally guide you from AI process analysis to the final digital strategy.",
+            mbClosing: "As Dr. Sidi Weiss, I personally guide you from AI analysis to final digital strategy.",
             evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
             evBadge: "THE NEW STANDARD FOR MARKET LEADERS",
             llmTitle: "Enterprise <span>Digital Strategy</span>",
@@ -514,7 +579,7 @@
             fChat: "Book Session",
             imH: "Legal Notice",
             daH: "Privacy Policy",
-            imContent: "<strong>Legal Information (§ 5 TMG):</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Germany<br><br><strong>Tax ID:</strong> 95408/32096<br>Tax Office: Stuttgart II",
+            imContent: "<strong>Legal Information (§ 5 TMG):</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Germany<br><br><strong>Tax ID:</strong> 95408/32096",
             daContent: "<strong>Privacy Policy:</strong> Data processing according to GDPR. Controller: Dr. Sidi Weiss.",
             t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous crews.",
             t2r: "Operations Director", t2p: "The organizational backbone.",
@@ -533,19 +598,24 @@
             hBtn: "Calculer le ROI",
             hBtn2: "Session Stratégique",
             agTitle: "Agents IA <span>& Crews</span>",
+            avConsultantH: "Consultant IA en direct : Crew AI & Leads",
+            avConsultantP: "Parlez directement à mon agent interactif. Découvrez comment nous utilisons CrewAI pour automatiser vos processus.",
+            avBadgeLive: "Interaction en Direct",
+            avBadgeVoice: "Saskia AI Voice",
+            avBtnStart: "Démarrer conversation →",
             msTitle: "Dominance par les processus IA",
             msP: "L'IA est l'avantage concurrentiel des leaders mondiaux. Expertise chez Porsche et Mercedes-Benz.",
             msF1: "Infra Souveraine",
             msF2: "Crews Autonomes",
             msF3: "Scaling Maximum",
-            mbAction: "Pourquoi l'industrie mécanique doit agir maintenant",
-            mbP1: "Le temps des expérimentations est révolu. Alors que la concurrence vérifie encore manuellement, les leaders misent sur des systèmes autonomes.",
-            mbF1: "✅ Amazon : 30 000 postes remplacés par l'efficacité de l'IA.",
-            mbF2: "✅ Siemens : 300 usines mondiales optimisées par l'IA.",
-            mbF3: "✅ Votre avantage : Processus de contrôle en minutes au lieu de jours.",
+            mbAction: "L'industrie mécanique doit agir",
+            mbP1: "Le temps des expérimentations est révolu. Les leaders misent sur des systèmes autonomes.",
+            mbF1: "✅ Amazon : 30 000 postes remplacés par l'IA.",
+            mbF2: "✅ Siemens : 300 usines optimisées par l'IA.",
+            mbF3: "✅ Votre avantage : Contrôle en minutes au lieu de jours.",
             mbHtitle: "Votre levier de marge",
-            mbHsub: "Temps passé sur le contrôle des processus",
-            mbClosing: "En tant que Dr. Sidi Weiss, je vous accompagne personnellement de l'analyse des processus IA à la stratégie digitale finale.",
+            mbHsub: "Temps passé sur le contrôle",
+            mbClosing: "En tant que Dr. Sidi Weiss, je vous accompagne personnellement.",
             evTitle: "L'Évolution: De GenAI à <span>Agentic AI</span>",
             evBadge: "LE NOUVEAU STANDARD DES LEADERS",
             llmTitle: "Stratégie <span>Digitale Entreprise</span>",
@@ -553,7 +623,7 @@
             llmExpP: "Mercedes-Benz, Porsche, LBBW, Deutsche Bahn, Soka-Bau, KWS.",
             lTitle: "Configurateur d'Efficacité",
             lBtn: "Réserver Analyse",
-            lInfo: "Forfait d'analyse par processus (hors TVA)",
+            lInfo: "Forfait par processus (hors TVA)",
             stTitle: "Visionnaire IA – <span>Dr. Sidi Weiss</span>",
             stP: "De l'officier de marine au PhD Data Scientist chez Mercedes et Porsche.",
             tmTitle: "Les Esprits derrière <span>la Révolution</span>",
@@ -561,8 +631,8 @@
             fChat: "Réserver Session",
             imH: "Mentions Légales",
             daH: "Confidentialité",
-            imContent: "<strong>Mentions Légales:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Obere Waiblinger Str. 147a, 70374 Stuttgart, Allemagne<br><br><strong>N° d'identification fiscale:</strong> 95408/32096<br>Bureau des impôts: Stuttgart II",
-            daContent: "<strong>Confidentialité:</strong> Traitement conforme au RGPD. Responsable: Dr. Sidi Weiss.",
+            imContent: "<strong>Mentions Légales:</strong><br>Dr. Sidi Weiss | AISOLUTIOS<br>Stuttgart, Allemagne",
+            daContent: "<strong>Confidentialité:</strong> Conforme au RGPD. Responsable: Dr. Sidi Weiss.",
             t1r: "CEO & Inventeur", t1p: "Architecte des crews autonomes.",
             t2r: "Directeur des Opérations", t2p: "Le pilier organisationnel.",
             t3r: "Assistante", t3p: "Garantit une efficacité maximale.",
@@ -594,17 +664,24 @@
         update('h-btn2', s.hBtn2);
         update('f-chat', s.fChat);
         
-        // 3. AGENTS, CREWS & MASCHINENBAU ACTION
+        // 3. AGENTS, CREWS & INTERACTIVE AVATAR
         update('ev-badge', s.evBadge, true);
         update('ev-title', s.evTitle, true);
         update('ag-title', s.agTitle, true); 
+        
+        // Neu: Live Consultant Saskia IDs
+        update('av-consultant-h', s.avConsultantH);
+        update('av-consultant-p', s.avConsultantP);
+        update('av-badge-live', s.avBadgeLive);
+        update('av-badge-voice', s.avBadgeVoice);
+        update('av-btn-start', s.avBtnStart);
+
         update('ms-title', s.msTitle);
         update('ms-p', s.msP);
         update('ms-f1', s.msF1);
         update('ms-f2', s.msF2);
         update('ms-f3', s.msF3);
         
-        // Neu: Maschinenbau Block
         update('mb-action', s.mbAction);
         update('mb-p1', s.mbP1);
         update('mb-f1', s.mbF1);
@@ -697,6 +774,5 @@
         }
     });
 </script>
-    
 </body>
 </html>
