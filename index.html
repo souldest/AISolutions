@@ -291,28 +291,36 @@
 
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
-<div class="stripe-card" style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid #6772e5;">
+<div class="stripe-card" style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid #6772e5; max-width: 450px; margin: 20px auto;">
     <i class="fab fa-stripe" style="font-size: 40px; color: #6772e5; margin-bottom: 15px;"></i>
     <h3 id="stripe-h">B2B Leads kaufen</h3>
-    <p id="stripe-p">Wählen Sie die Anzahl der Leads. Unsere Crews übernehmen die Akquise autonom.</p>
+    <p id="stripe-p">Wählen Sie die Anzahl der Leads. Unsere Crews übernehmen die Akquise autonom für Sie.</p>
     
-    <div style="margin: 20px 0;">
-        <label style="font-size: 12px; opacity: 0.7;">ANZAHL LEADS (10€/Lead)</label>
+    <div style="margin: 20px 0; text-align: left;">
+        <label style="font-size: 12px; opacity: 0.7; letter-spacing: 1px;">ANZAHL LEADS (10€/Lead)</label>
         <input type="number" id="lead-count" value="50" min="1" step="1" 
-               style="width: 100%; background: #000; color: #fff; border: 1px solid #333; padding: 10px; border-radius: 8px; margin-top: 5px;">
+               style="width: 100%; background: #000; color: #fff; border: 1px solid #333; padding: 12px; border-radius: 8px; margin-top: 5px; font-size: 16px;">
     </div>
     
-    <div style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">
+    <div style="font-size: 26px; font-weight: bold; margin-bottom: 20px; color: #fff;">
         Gesamt: <span id="total-price">500</span>€
     </div>
     
-    <button onclick="handlePayment()" class="btn-main" id="stripe-btn" 
-            style="background: #6772e5; color: #fff; width: 100%; border: none; cursor: pointer; padding: 15px; border-radius: 8px; font-weight: bold; transition: 0.3s;">
-        Leads jetzt sichern
+    <button id="stripe-btn" class="btn-main" 
+            style="background: #6772e5; color: #fff; width: 100%; border: none; cursor: pointer; padding: 16px; border-radius: 8px; font-weight: bold; font-size: 16px; transition: 0.3s;">
+        Leads jetzt sichern (500€)
     </button>
 </div>
     
 <script>
+    /**
+     * AISOLUTIOS - Dr. Sidi Weiss
+     * Master Script: Multi-Language & Stripe Payment Integration
+     */
+
+    // 1. KONFIGURATION
+    const STRIPE_LINK = "https://buy.stripe.com/14AbJ1c7Agw81Pm2ju5Vu03";
+
     const trans = {
         de: {
             mCrew: "AI Crews", mEvolution: "Evolution", mLlm: "Enterprise LLM", mStory: "Story & Team", mBook: "Booking",
@@ -365,6 +373,32 @@
             fContact: "Contact", fLegal: "Legal", floatBtn: "Book Now",
             imH: "Legal Notice", dsH: "Privacy Policy",
             loading: "Loading..."
+        },
+        fr: {
+            mCrew: "Crews IA", mEvolution: "Évolution", mLlm: "IA Entreprise", mStory: "Histoire & Équipe", mBook: "Réservation",
+            hTitle: "L'Excellence IA",
+            hSub: "Solutions d'IA souveraines. Nous transformons les leaders en pionniers du numérique.",
+            hBtn: "Découvrir les Crews", hBtn2: "Session Stratégique",
+            kiTitle: "Agents IA <span>& Crews</span>",
+            avLoading: "Connexion en cours...",
+            avConsultantH: "Consultant IA Live: Dr. Sidi Weiss (AI)",
+            avConsultantP: "Parlez directement à mon agent interactif.",
+            avBtnStart: "Démarrer →",
+            stripeH: "Acheter Leads B2B",
+            stripeP: "Choisissez le nombre de leads.",
+            stripeBtn: "Sécuriser les Leads",
+            evTitle: "L'Évolution : De GenAI à <span>Agentic AI</span>",
+            evYesterday: "Hier: GenAI", evYesterdayP: "Passif.",
+            evToday: "Aujourd'hui: Agentic IA", evTodayP: "Proactif.",
+            stTitle: "Du berger au <span>visionnaire IA</span>",
+            stQuote: "\"Celui qui a appris à lire les traces...\"",
+            stMainText: "<p>Du berger au Sahara à l'architecte IA.</p>",
+            tmTitle: "L'équipe d'<span>experts</span>",
+            t1r: "CEO & AI Architect", t2r: "Directrice Opérations", t3r: "Expert IA", t4r: "Analyste", t5r: "Assistante",
+            bkTitle: "Réserver Session",
+            fContact: "Contact", fLegal: "Juridique", floatBtn: "Réserver",
+            imH: "Mentions Légales", dsH: "Confidentialité",
+            loading: "Chargement..."
         }
     };
 
@@ -379,7 +413,6 @@
             const total = count * 10;
             priceDisplay.innerText = total.toLocaleString('de-DE');
             
-            // Button-Text mit Preis aktualisieren
             const lang = localStorage.getItem('selectedLang') || 'de';
             if (stripeBtn) {
                 const baseText = trans[lang].stripeBtn;
@@ -394,18 +427,12 @@
         const btn = document.getElementById('stripe-btn');
         const lang = localStorage.getItem('selectedLang') || 'de';
         
-        // Button-Status ändern
         btn.innerText = trans[lang].loading;
         btn.style.opacity = "0.7";
         btn.disabled = true;
 
-        // URL für Stripe Checkout mit Mengen-Parameter
-        // WICHTIG: In Stripe muss "Kunden die Anpassung der Stückzahl erlauben" aktiviert sein!
-        const checkoutUrl = `${STRIPE_LINK}?quantity=${count}`;
-        
-        setTimeout(() => {
-            window.location.href = checkoutUrl;
-        }, 300);
+        // Weiterleitung mit dynamischem Quantity-Parameter
+        window.location.href = `${STRIPE_LINK}?quantity=${count}`;
     }
 
     // 4. SPRACHSTEUERUNG
@@ -419,7 +446,6 @@
             if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
 
-        // UI-Elemente aktualisieren
         update('m-crew', s.mCrew); update('m-evolution', s.mEvolution);
         update('m-llm', s.mLlm); update('m-team', s.mStory); update('m-book', s.mBook);
         update('h-title', s.hTitle); update('h-sub', s.hSub);
@@ -432,11 +458,9 @@
         update('bk-title', s.bkTitle);
         update('floating-book-btn', s.floatBtn);
         
-        // Legal Tags
         const imH2 = document.querySelector('#impressum h2'); if(imH2) imH2.innerText = s.imH;
         const dsH2 = document.querySelector('#datenschutz h2'); if(dsH2) dsH2.innerText = s.dsH;
 
-        // Button-Highlighting
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
         });
@@ -449,20 +473,16 @@
         const saved = localStorage.getItem('selectedLang') || 'de';
         setLanguage(saved);
 
-        // Event-Listener für Lead-Anzahl
         const leadInput = document.getElementById('lead-count');
         if (leadInput) leadInput.addEventListener('input', updatePrice);
 
-        // Event-Listener für Stripe Button
         const stripeBtn = document.getElementById('stripe-btn');
         if (stripeBtn) stripeBtn.addEventListener('click', handlePayment);
 
-        // Language Buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() { setLanguage(this.innerText); });
         });
 
-        // Smooth Scroll & Floating Button
         const floatBtn = document.getElementById('floating-book-btn');
         if (floatBtn) floatBtn.onclick = () => {
             const el = document.getElementById('booking');
@@ -470,5 +490,4 @@
         };
     });
 </script>
-</body>
 </html>
