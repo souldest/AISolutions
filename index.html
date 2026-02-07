@@ -298,7 +298,7 @@
     
     <div style="margin: 20px 0;">
         <label style="font-size: 12px; opacity: 0.7;">ANZAHL LEADS (10€/Lead)</label>
-        <input type="number" id="lead-count" value="50" min="10" step="10" 
+        <input type="number" id="lead-count" value="50" min="1" step="1" 
                style="width: 100%; background: #000; color: #fff; border: 1px solid #333; padding: 10px; border-radius: 8px; margin-top: 5px;">
     </div>
     
@@ -307,21 +307,12 @@
     </div>
     
     <button onclick="handlePayment()" class="btn-main" id="stripe-btn" 
-            style="background: #6772e5; width: 100%; border: none; cursor: pointer;">
+            style="background: #6772e5; color: #fff; width: 100%; border: none; cursor: pointer; padding: 15px; border-radius: 8px; font-weight: bold; transition: 0.3s;">
         Leads jetzt sichern
     </button>
 </div>
     
 <script>
-    /**
-     * AISOLUTIOS - Dr. Sidi Weiss
-     * Master Script: Multi-Language, Dynamic Stripe Price & Payment Logic
-     */
-
-    // 1. STRIPE KONFIGURATION
-    // Ersetze 'DEIN_STRIPE_LINK' durch deinen echten Stripe Payment Link (z.B. https://buy.stripe.com/6oE...)
-    const STRIPE_LINK = "https://buy.stripe.com/DEIN_STRIPE_LINK";
-
     const trans = {
         de: {
             mCrew: "AI Crews", mEvolution: "Evolution", mLlm: "Enterprise LLM", mStory: "Story & Team", mBook: "Booking",
