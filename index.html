@@ -32,7 +32,8 @@
         .nav-links a:hover { opacity: 1; color: var(--accent); }
         
         .lang-switch { display: flex; gap: 5px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 10px; }
-        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; }
+        .lang-btn { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 4px 6px; border-radius: 4px; cursor: pointer; font-size: 9px; font-weight: 800; transition: 0.3s; }
+        .lang-btn:hover, .lang-btn.active { border-color: var(--accent); color: var(--accent); }
 
         .container { max-width: 1200px; margin: auto; padding: 100px 20px; }
         h2 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-transform: uppercase; border-left: 5px solid var(--primary); padding-left: 20px; }
@@ -55,6 +56,13 @@
             margin-bottom: 20px; background: #000; border: 2px solid var(--accent);
             box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
         }
+
+        .floating-btn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 2000; 
+            background: var(--accent); color: black; border: none; 
+            padding: 15px 25px; border-radius: 50px; font-weight: bold; 
+            cursor: pointer; box-shadow: 0 10px 30px rgba(0,242,255,0.4);
+        }
     </style>
 </head>
 <body>
@@ -68,9 +76,9 @@
         <a id="m-team" href="#story">Story & Team</a>
         <a id="m-book" href="#booking" style="background:var(--accent); color:black; padding: 8px 15px; border-radius: 4px;">Booking</a>
         <div class="lang-switch">
-            <button class="lang-btn">DE</button>
-            <button class="lang-btn">EN</button>
-            <button class="lang-btn">FR</button>
+            <button class="lang-btn active" onclick="setLanguage('de')">DE</button>
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
         </div>
     </nav>
 </header>
@@ -79,14 +87,13 @@
     <h1 id="h-title">KI-Exzellenz für Marktführer</h1>
     <p id="h-sub">Souveräne Enterprise KI-Lösungen. Wir transformieren Marktführer wie Mercedes-Benz und Porsche in digitale Vorreiter.</p>
     <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="#agents-section" class="btn-main">KI-Crews entdecken</a>
-        <a href="#booking" class="btn-main" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
+        <a href="#agents-section" class="btn-main" id="h-btn-crew">KI-Crews entdecken</a>
+        <a href="#booking" class="btn-main" id="h-btn-book" style="background: transparent; border: 1px solid var(--accent);">Strategie-Termin</a>
     </div>
 </section>
 
 <section id="agents-section" class="container">
     <h2 id="ki-title">KI Agenten <span>& Crews</span></h2>
-    
     <div class="grid">
         <div class="card" style="grid-column: 1 / -1;">
             <div class="avatar-container" id="heygen-streaming-container">
@@ -133,19 +140,19 @@
     <div class="grid">
         <div class="card" style="opacity: 0.7;">
             <i class="fas fa-comment-dots" style="color: #666;"></i>
-            <h3>Gestern: GenAI</h3>
-            <p>Passiv. Wartet auf Befehle. Ein Berater ohne Hände.</p>
+            <h3 id="ev-yesterday">Gestern: GenAI</h3>
+            <p id="ev-yesterday-p">Passiv. Wartet auf Befehle. Ein Berater ohne Hände.</p>
         </div>
         <div class="card" style="border-top: 3px solid var(--accent); background: rgba(0, 170, 255, 0.05);">
             <i class="fas fa-robot"></i>
-            <h3>Heute: Agentic AI</h3>
-            <p>Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom – der neue Standard von AISOLUTIOS.</p>
+            <h3 id="ev-today">Heute: Agentic AI</h3>
+            <p id="ev-today-p">Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom – der neue Standard von AISOLUTIOS.</p>
             <div class="badge">Proaktives Handeln</div>
         </div>
         <div class="card" style="background: var(--bg); border: 1px solid var(--accent); text-align: center;">
-            <h3 style="color:var(--accent);">Ihr Margen-Hebel</h3>
+            <h3 id="ev-roi" style="color:var(--accent);">Ihr Margen-Hebel</h3>
             <div style="font-size: 48px; font-weight: 900; color: white;">-90%</div>
-            <p>Zeitaufwand in der Steuerung</p>
+            <p id="ev-roi-p">Zeitaufwand in der Steuerung</p>
             <div class="badge">ROI Fokus</div>
         </div>
     </div>
@@ -183,9 +190,11 @@
         </div>
         <div style="flex: 2; min-width: 350px;">
             <div id="st-p" style="font-size: 17px; line-height: 1.8; color: var(--text);">
-                <p style="margin-bottom: 20px; font-style: italic; font-size: 22px; color: var(--accent);">"Wer gelernt hat, die Spuren im Sand zu lesen, erkennt auch die Muster in den Daten."</p>
-                <p>Die Reise begann in der <strong>Sahara Mauretaniens</strong>. Als Hirtenjunge lernte Dr. Weiss die Kunst der Mustererkennung. Über den Dienst als <strong>Offizier der Marine</strong> und das Mathematikstudium führte ihn sein Weg zur Promotion und der persönlichen Ehrung durch <strong>Bundeskanzlerin Angela Merkel</strong>.</p>
-                <p style="margin-top:20px;">Heute ist er der Architekt hinter den KI-Strategien globaler Konzerne. Er verbindet militärische Präzision mit modernster Data Science.</p>
+                <p id="st-quote" style="margin-bottom: 20px; font-style: italic; font-size: 22px; color: var(--accent);">"Wer gelernt hat, die Spuren im Sand zu lesen, erkennt auch die Muster in den Daten."</p>
+                <div id="st-main-text">
+                    <p>Die Reise begann in der <strong>Sahara Mauretaniens</strong>. Als Hirtenjunge lernte Dr. Weiss die Kunst der Mustererkennung. Über den Dienst als <strong>Offizier der Marine</strong> und das Mathematikstudium führte ihn sein Weg zur Promotion und der persönlichen Ehrung durch <strong>Bundeskanzlerin Angela Merkel</strong>.</p>
+                    <p style="margin-top:20px;">Heute ist er der Architekt hinter den KI-Strategien globaler Konzerne. Er verbindet militärische Präzision mit modernster Data Science.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -196,24 +205,24 @@
     <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
         <div class="card" style="text-align: center;">
             <div style="font-size: 40px; color: var(--accent);"><i class="fas fa-microchip"></i></div>
-            <h3 style="font-size: 18px;">Dr. Sidi Weiss</h3>
-            <p style="font-size: 12px; color: var(--accent);">CEO & Erfinder</p>
+            <h3>Dr. Sidi Weiss</h3>
+            <p id="t1-role" style="font-size: 12px; color: var(--accent);">CEO & Erfinder</p>
         </div>
         <div class="card" style="text-align: center;">
             <div style="font-size: 40px; color: var(--primary);"><i class="fas fa-cogs"></i></div>
-            <h3 style="font-size: 18px;">Mona Distler</h3>
-            <p style="font-size: 12px; color: var(--primary);">Operation Director</p>
+            <h3>Mona Distler</h3>
+            <p id="t2-role" style="font-size: 12px; color: var(--primary);">Operation Director</p>
         </div>
         <div class="card" style="text-align: center;">
             <div style="font-size: 40px; color: var(--accent);"><i class="fas fa-brain"></i></div>
-            <h3 style="font-size: 18px;">Aziz Hamoud</h3>
-            <p style="font-size: 12px; color: var(--accent);">KI-Experte</p>
+            <h3>Aziz Hamoud</h3>
+            <p id="t3-role" style="font-size: 12px; color: var(--accent);">KI-Experte</p>
         </div>
     </div>
 </section>
 
 <section id="booking" class="container">
-    <h2 style="text-align:center; border:none;">Strategie-Termin buchen</h2>
+    <h2 id="bk-title" style="text-align:center; border:none;">Strategie-Termin buchen</h2>
     <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px; height:750px;"></div>
 </section>
 
@@ -230,15 +239,51 @@
                 00 49 176 31591931
             </p>
         </div>
+        <div>
+            <strong id="f-legal">Rechtliches</strong>
+            <p style="font-size: 14px; opacity: 0.7;">
+                <a href="#impressum" style="color:inherit; text-decoration:none; display:block; margin-bottom:5px;">Impressum</a>
+                <a href="#datenschutz" style="color:inherit; text-decoration:none; display:block;">Datenschutz</a>
+            </p>
+        </div>
     </div>
 </footer>
 
-<button id="floating-book-btn" class="floating-btn" style="position: fixed; bottom: 30px; right: 30px; z-index: 2000; background: var(--accent); color: black; border: none; padding: 15px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 10px 30px rgba(0,242,255,0.4);">
+<section id="impressum" class="container" style="padding-top: 50px; border-top: 1px solid rgba(255,255,255,0.05);">
+    <h2>Impressum</h2>
+    <div class="card" style="font-size: 14px; color: var(--muted);">
+        <p><strong>AISOLUTIOS</strong><br>
+        Dr. Sidi Weiss<br>
+        Obere Waiblinger Str. 147a<br>
+        70374 Stuttgart</p>
+        <p style="margin-top: 15px;">
+            <strong>Kontakt:</strong><br>
+            Telefon: 00 49 176 31591931<br>
+            E-Mail: vertrieb@aisolutios.de<br>
+            Web: www.aisolutios.de
+        </p>
+        <p style="margin-top: 15px;">
+            <strong>Verantwortlich für den Inhalt:</strong><br>
+            Dr. Sidi Weiss
+        </p>
+    </div>
+</section>
+
+<section id="datenschutz" class="container" style="padding-top: 50px;">
+    <h2>Datenschutz</h2>
+    <div class="card" style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+        <p><strong>1. Datenschutz auf einen Blick</strong><br>
+        Der Schutz Ihrer Daten ist uns wichtig. Wir verarbeiten personenbezogene Daten gemäß DSGVO.</p>
+        <p style="margin-top: 10px;"><strong>2. Tools von Drittanbietern</strong><br>
+        Diese Website nutzt Calendly (Termine) und HeyGen (KI-Avatar). Dabei werden IP-Adressen und ggf. Formulardaten an diese Dienste übertragen.</p>
+    </div>
+</section>
+
+<button id="floating-book-btn" class="floating-btn" onclick="location.href='#booking'">
     Termin buchen
 </button>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
 <script>
     const trans = {
         de: {
@@ -255,16 +300,20 @@
             c2H: "Finance & Insurance Crew", c2P: "Spezialisierte Agenten für Validierung und automatisierte Sachbearbeitung.",
             c3H: "Automotive & Solar Crew", c3P: "KI-Agenten für komplexe technische Vertriebszyklen.",
             evTitle: "Die Evolution: Von GenAI zu <span>Agentic AI</span>",
+            evYesterday: "Gestern: GenAI", evYesterdayP: "Passiv. Wartet auf Befehle. Ein Berater ohne Hände.",
+            evToday: "Heute: Agentic AI", evTodayP: "Proaktiv. Nutzt Tools. Erledigt die Arbeit autonom – der neue Standard.",
+            evRoi: "Ihr Margen-Hebel", evRoiP: "Zeitaufwand in der Steuerung",
             llmTitle: "Enterprise <span>Souveränität</span>",
+            llmDefH: "On-Premise Fokus", llmDef: "Marktführer benötigen 100% Kontrolle. Wir eliminieren Risiken von Cloud-KI durch lokale Installation.",
+            llmMotH: "Kein Datenabfluss", llmMot: "Ihre Daten sind Ihr Kapital. Unsere Enterprise LLM Platform trainiert nicht auf öffentlichen Servern.",
             stTitle: "Vom Hirtenjungen zum <span>KI-Visionär</span>",
-            stP: "Die Reise begann in der Sahara Mauretaniens. Heute ist Dr. Weiss der Architekt hinter den KI-Strategien globaler Konzerne. 2010 persönlich von Bundeskanzlerin Merkel geehrt.",
+            stQuote: "\"Wer gelernt hat, die Spuren im Sand zu lesen, erkennt auch die Muster in den Daten.\"",
+            stMainText: "<p>Die Reise begann in der Sahara Mauretaniens. Heute ist Dr. Weiss der Architekt hinter den KI-Strategien globaler Konzerne. 2010 persönlich von Bundeskanzlerin Merkel geehrt.</p>",
             tmTitle: "Das <span>Experten-Team</span>",
+            t1r: "CEO & Erfinder", t2r: "Operation Director", t3r: "KI-Experte",
             bkTitle: "Strategie-Termin buchen",
-            fContact: "Kontakt",
-            floatBtn: "Termin buchen",
-            t1r: "CEO & Erfinder", t1p: "Visionär und Architekt der autonomen Agenten-Crews.",
-            t2r: "Operation Director", t2p: "Das organisatorische Rückgrat.",
-            t3r: "KI-Experte", t3p: "Meister der Algorithmen."
+            fContact: "Kontakt", fLegal: "Rechtliches", floatBtn: "Termin buchen",
+            imH: "Impressum", dsH: "Datenschutz"
         },
         en: {
             mCrew: "AI Crews", mEvolution: "Evolution", mLlm: "Enterprise LLM", mStory: "Story & Team", mBook: "Booking",
@@ -274,22 +323,26 @@
             kiTitle: "AI Agents <span>& Crews</span>",
             avLoading: "Connecting to AI Expert...",
             avConsultantH: "Live AI Consultant: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Talk directly to my interactive agent about lead automation.",
+            avConsultantP: "Talk directly to my interactive agent about lead automation and autonomous agent crews.",
             avBtnStart: "Start Conversation →",
             c1H: "Sales & Marketing Crew", c1P: "Fully autonomous end-to-end solutions: Lead generation and AI campaigns.",
             c2H: "Finance & Insurance Crew", c2P: "Specialized agents for validation and automated processing.",
             c3H: "Automotive & Solar Crew", c3P: "AI agents for complex technical sales cycles.",
             evTitle: "The Evolution: From GenAI to <span>Agentic AI</span>",
+            evYesterday: "Yesterday: GenAI", evYesterdayP: "Passive. Waiting for commands. A consultant without hands.",
+            evToday: "Today: Agentic AI", evTodayP: "Proactive. Uses tools. Completes work autonomously – the new standard.",
+            evRoi: "Your Margin Lever", evRoiP: "Time spent on management",
             llmTitle: "Enterprise <span>Sovereignty</span>",
+            llmDefH: "On-Premise Focus", llmDef: "Leaders need 100% control. We eliminate cloud AI risks via local installation.",
+            llmMotH: "No Data Leakage", llmMot: "Your data is your capital. Our Enterprise LLM Platform does not train on public servers.",
             stTitle: "From Shepherd Boy to <span>AI Visionary</span>",
-            stP: "The journey began in the Mauritanian Sahara. Today, Dr. Weiss is the architect behind the AI strategies of global corporations.",
+            stQuote: "\"Those who have learned to read tracks in the sand also recognize patterns in data.\"",
+            stMainText: "<p>The journey began in the Mauritanian Sahara. Today, Dr. Weiss is the architect behind the AI strategies of global corporations.</p>",
             tmTitle: "The <span>Expert Team</span>",
+            t1r: "CEO & Inventor", t2r: "Operations Director", t3r: "AI Expert",
             bkTitle: "Book Strategy Session",
-            fContact: "Contact",
-            floatBtn: "Book a Call",
-            t1r: "CEO & Inventor", t1p: "Visionary and architect of autonomous crews.",
-            t2r: "Operations Director", t2p: "The organizational backbone.",
-            t3r: "AI Expert", t3p: "Master of algorithms."
+            fContact: "Contact", fLegal: "Legal", floatBtn: "Book a Call",
+            imH: "Legal Notice", dsH: "Privacy Policy"
         },
         fr: {
             mCrew: "Crews IA", mEvolution: "Évolution", mLlm: "IA Entreprise", mStory: "Histoire & Équipe", mBook: "Réservation",
@@ -299,22 +352,26 @@
             kiTitle: "Agents IA <span>& Crews</span>",
             avLoading: "Connexion en cours...",
             avConsultantH: "Consultant IA Live: Dr. Sidi Weiss (AI)",
-            avConsultantP: "Parlez directement à mon agent interactif de l'automatisation.",
+            avConsultantP: "Parlez directement à mon agent interactif de l'automatisation et de l'efficacité des crews.",
             avBtnStart: "Démarrer →",
             c1H: "Crew Ventes & Marketing", c1P: "Solutions de bout en bout : génération de leads et campagnes IA.",
-            c2H: "Crew Finance & Assurance", c2P: "Agents spécialisés pour la validation.",
-            c3H: "Crew Auto & Solaire", c3P: "Agents IA pour cycles de vente techniques.",
+            c2H: "Crew Finance & Assurance", c2P: "Agents spécialisés pour la validation et le traitement automatisé.",
+            c3H: "Crew Auto & Solaire", c3P: "Agents IA pour cycles de vente techniques complexes.",
             evTitle: "L'Évolution : De la GenAI à l'<span>Agentic AI</span>",
+            evYesterday: "Hier: GenAI", evYesterdayP: "Passif. Attend des ordres. Un consultant sans mains.",
+            evToday: "Aujourd'hui: Agentic IA", evTodayP: "Proactif. Utilise des outils. Travaille de manière autonome.",
+            evRoi: "Levier de Marge", evRoiP: "Temps passé à la gestion",
             llmTitle: "Souveraineté <span>Entreprise</span>",
+            llmDefH: "Focus On-Premise", llmDef: "Les leaders ont besoin d'un contrôle à 100%. Nous éliminons les risques de l'IA cloud.",
+            llmMotH: "Pas de fuite de données", llmMot: "Vos données sont votre capital. Notre plateforme n'utilise pas de serveurs publics.",
             stTitle: "Du berger au <span>visionnaire de l'IA</span>",
-            stP: "Le voyage a commencé dans le Sahara mauritanien. Dr. Weiss est l'architecte des stratégies d'IA mondiales.",
+            stQuote: "\"Celui qui a appris à lire les traces dans le sable reconnaît aussi les modèles dans les données.\"",
+            stMainText: "<p>Le voyage a commencé dans le Sahara mauritanien. Dr. Weiss est l'architecte des stratégies d'IA mondiales.</p>",
             tmTitle: "L'équipe d'<span>experts</span>",
+            t1r: "CEO & Inventeur", t2r: "Directeur des Opérations", t3r: "Expert IA",
             bkTitle: "Réserver Session",
-            fContact: "Contact",
-            floatBtn: "Réserver",
-            t1r: "CEO & Inventeur", t1p: "Architecte des crews autonomes.",
-            t2r: "Directeur des Opérations", t2p: "Le pilier organisationnel.",
-            t3r: "Expert IA", t3p: "Maître des algorithmes."
+            fContact: "Contact", fLegal: "Juridique", floatBtn: "Réserver",
+            imH: "Mentions Légales", dsH: "Confidentialité"
         }
     };
 
@@ -327,14 +384,15 @@
             if (el) isHtml ? el.innerHTML = val : el.innerText = val;
         };
 
-        // Navigation & Buttons
+        // Header & Nav
         update('m-crew', s.mCrew); update('m-evolution', s.mEvolution);
-        update('m-llm', s.mLlm); update('m-story', s.mStory); update('m-book', s.mBook);
-        update('floating-book-btn', s.floatBtn);
-        update('f-contact', s.fContact);
-
-        // Content
+        update('m-llm', s.mLlm); update('m-team', s.mStory); update('m-book', s.mBook);
+        
+        // Hero
         update('h-title', s.hTitle); update('h-sub', s.hSub);
+        update('h-btn-crew', s.hBtn); update('h-btn-book', s.hBtn2);
+
+        // Agents
         update('ki-title', s.kiTitle, true);
         update('av-loading', s.avLoading);
         update('av-consultant-h', s.avConsultantH);
@@ -343,13 +401,39 @@
         update('c1-h', s.c1H); update('c1-p', s.c1P);
         update('c2-h', s.c2H); update('c2-p', s.c2P);
         update('c3-h', s.c3H); update('c3-p', s.c3P);
+
+        // Evolution
         update('ev-title', s.evTitle, true);
+        update('ev-yesterday', s.evYesterday); update('ev-yesterday-p', s.evYesterdayP);
+        update('ev-today', s.evToday); update('ev-today-p', s.evTodayP);
+        update('ev-roi', s.evRoi); update('ev-roi-p', s.evRoiP);
+
+        // LLM
         update('llm-title', s.llmTitle, true);
+        update('llm-def-h', s.llmDefH); update('llm-def', s.llmDef);
+        update('llm-mot-h', s.llmMotH); update('llm-mot', s.llmMot);
+
+        // Story & Team
         update('st-title', s.stTitle, true);
-        update('st-p', s.stP);
+        update('st-quote', s.stQuote);
+        update('st-main-text', s.stMainText, true);
         update('tm-title', s.tmTitle, true);
+        update('t1-role', s.t1r); update('t2-role', s.t2r); update('t3-role', s.t3r);
+
+        // Booking & Footer
         update('bk-title', s.bkTitle);
-        update('t1-p', s.t1p); update('t2-p', s.t2p); update('t4-p', s.t3p);
+        update('f-contact', s.fContact);
+        update('f-legal', s.fLegal);
+        update('floating-book-btn', s.floatBtn);
+        
+        // Legal Sections
+        const imH2 = document.querySelector('#impressum h2'); if(imH2) imH2.innerText = s.imH;
+        const dsH2 = document.querySelector('#datenschutz h2'); if(dsH2) dsH2.innerText = s.dsH;
+
+        // Active Button Styling
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+        });
 
         localStorage.setItem('selectedLang', lang);
     }
@@ -368,29 +452,26 @@
         const saved = localStorage.getItem('selectedLang') || 'de';
         setLanguage(saved);
 
+        // Lang Button Listeners
         document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.onclick = function() { setLanguage(this.innerText); };
+            btn.addEventListener('click', function() { setLanguage(this.innerText); });
         });
 
-        // Floating Button Action
+        // Floating Button
         const floatBtn = document.getElementById('floating-book-btn');
         if (floatBtn) floatBtn.onclick = () => scrollToSection('booking');
 
-        // Nav Mapping
-        const navMap = [
-            { id: 'm-crew', target: 'agents-section' },
-            { id: 'm-evolution', target: 'evolution' },
-            { id: 'm-llm', target: 'llm' },
-            { id: 'm-story', target: 'story' },
-            { id: 'm-book', target: 'booking' }
-        ];
-
-        navMap.forEach(item => {
-            const el = document.getElementById(item.id);
-            if (el) el.onclick = (e) => { e.preventDefault(); scrollToSection(item.target); };
+        // Smooth Scroll for Nav Links
+        document.querySelectorAll('nav a, footer a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').substring(1);
+                if (document.getElementById(targetId)) {
+                    e.preventDefault();
+                    scrollToSection(targetId);
+                }
+            });
         });
     });
 </script>
-
 </body>
 </html>
