@@ -250,7 +250,10 @@
 
 <section id="booking" class="container">
     <h2 style="text-align:center; border:none;">Strategie-Termin buchen</h2>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/vertrieb-aisolutios/new-meeting" style="min-width:320px; height:750px;"></div>
+
+    <div id="calendly-container"
+         style="min-width:320px; height:750px;">
+    </div>
 </section>
 
 <section id="impressum" class="container" style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px;">
@@ -294,7 +297,8 @@
 </section>
 <button class="floating-btn" onclick="location.href='#booking'">Termin buchen</button>
 
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<!-- Calendly Core -->
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
 
 
 <script>
@@ -359,6 +363,21 @@
         }
     };
 
+    /* =========================
+   CALENDLY
+========================= */
+function initCalendly() {
+    const container = document.getElementById("calendly-container");
+    if (!container || typeof Calendly === "undefined") return;
+
+    container.innerHTML = "";
+
+    Calendly.initInlineWidget({
+        url: "https://calendly.com/vertrieb-aisolutios/new-meeting",
+        parentElement: container
+    });
+}
+    
     function updatePrice() {
         const countInput = document.getElementById('lead-count');
         const priceDisplay = document.getElementById('total-price');
@@ -450,6 +469,7 @@
             const el = document.getElementById('booking');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         };
+        initCalendly();
     });
 </script>
 
